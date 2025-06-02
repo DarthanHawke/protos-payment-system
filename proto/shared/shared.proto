@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package shared;
+
+// Пользователь
+message User {
+  string id = 1;
+  string email = 2;
+  string full_name = 3;
+  repeated string roles = 4;  // ["user", "admin"]
+}
