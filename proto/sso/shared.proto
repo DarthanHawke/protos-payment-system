@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option go_package = "github.com/DarthanHawke/protos-payment-system/gen/go/shared;sharedv1";
+option go_package = "sso.v1;ssov1";
 
-package shared;
+package sso;
 
 import "google/protobuf/timestamp.proto";
 

@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-option go_package = "github.com/DarthanHawke/protos-payment-system/gen/go/sso;ssov1";
+option go_package = "sso.v1;ssov1";
 
 package sso;
 
-import "shared/shared.proto";
+import "sso/shared.proto";
 
 service RoleService {
   rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse);
@@ -20,7 +20,7 @@ message CreateRoleRequest {
 }
 
 message CreateRoleResponse {
-  shared.Role role = 1;
+  Role role = 1;
 }
 
 message AssignRoleRequest {

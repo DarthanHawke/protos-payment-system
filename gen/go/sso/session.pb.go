@@ -7,7 +7,6 @@
 package ssov1
 
 import (
-	_ "github.com/DarthanHawke/protos-payment-system/gen/go/shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -386,7 +385,7 @@ var File_sso_session_proto protoreflect.FileDescriptor
 
 const file_sso_session_proto_rawDesc = "" +
 	"\n" +
-	"\x11sso/session.proto\x12\x03sso\x1a\x13shared/shared.proto\"/\n" +
+	"\x11sso/session.proto\x12\x03sso\"/\n" +
 	"\x14CreateSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"_\n" +
 	"\x15CreateSessionResponse\x12!\n" +
@@ -409,7 +408,7 @@ const file_sso_session_proto_rawDesc = "" +
 	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
 	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
 	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x13.sso.LogoutResponse\x12:\n" +
-	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB@Z>github.com/DarthanHawke/protos-payment-system/gen/go/sso;ssov1b\x06proto3"
+	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_session_proto_rawDescOnce sync.Once

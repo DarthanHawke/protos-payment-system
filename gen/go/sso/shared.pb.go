@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.31.0
-// source: shared/shared.proto
+// source: sso/shared.proto
 
-package sharedv1
+package ssov1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -36,7 +36,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_shared_shared_proto_msgTypes[0]
+	mi := &file_sso_shared_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_shared_shared_proto_msgTypes[0]
+	mi := &file_sso_shared_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_shared_shared_proto_rawDescGZIP(), []int{0}
+	return file_sso_shared_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *User) GetId() int64 {
@@ -119,7 +119,7 @@ type Session struct {
 
 func (x *Session) Reset() {
 	*x = Session{}
-	mi := &file_shared_shared_proto_msgTypes[1]
+	mi := &file_sso_shared_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -131,7 +131,7 @@ func (x *Session) String() string {
 func (*Session) ProtoMessage() {}
 
 func (x *Session) ProtoReflect() protoreflect.Message {
-	mi := &file_shared_shared_proto_msgTypes[1]
+	mi := &file_sso_shared_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -144,7 +144,7 @@ func (x *Session) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Session.ProtoReflect.Descriptor instead.
 func (*Session) Descriptor() ([]byte, []int) {
-	return file_shared_shared_proto_rawDescGZIP(), []int{1}
+	return file_sso_shared_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Session) GetId() int64 {
@@ -194,7 +194,7 @@ type Role struct {
 
 func (x *Role) Reset() {
 	*x = Role{}
-	mi := &file_shared_shared_proto_msgTypes[2]
+	mi := &file_sso_shared_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -206,7 +206,7 @@ func (x *Role) String() string {
 func (*Role) ProtoMessage() {}
 
 func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_shared_shared_proto_msgTypes[2]
+	mi := &file_sso_shared_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,7 +219,7 @@ func (x *Role) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Role.ProtoReflect.Descriptor instead.
 func (*Role) Descriptor() ([]byte, []int) {
-	return file_shared_shared_proto_rawDescGZIP(), []int{2}
+	return file_sso_shared_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Role) GetId() int64 {
@@ -250,11 +250,11 @@ func (x *Role) GetDescription() string {
 	return ""
 }
 
-var File_shared_shared_proto protoreflect.FileDescriptor
+var File_sso_shared_proto protoreflect.FileDescriptor
 
-const file_shared_shared_proto_rawDesc = "" +
+const file_sso_shared_proto_rawDesc = "" +
 	"\n" +
-	"\x13shared/shared.proto\x12\x06shared\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
+	"\x10sso/shared.proto\x12\x03sso\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
@@ -273,32 +273,32 @@ const file_shared_shared_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
-	"\vDescription\x18\x04 \x01(\tR\vDescriptionBFZDgithub.com/DarthanHawke/protos-payment-system/gen/go/shared;sharedv1b\x06proto3"
+	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
-	file_shared_shared_proto_rawDescOnce sync.Once
-	file_shared_shared_proto_rawDescData []byte
+	file_sso_shared_proto_rawDescOnce sync.Once
+	file_sso_shared_proto_rawDescData []byte
 )
 
-func file_shared_shared_proto_rawDescGZIP() []byte {
-	file_shared_shared_proto_rawDescOnce.Do(func() {
-		file_shared_shared_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_shared_shared_proto_rawDesc), len(file_shared_shared_proto_rawDesc)))
+func file_sso_shared_proto_rawDescGZIP() []byte {
+	file_sso_shared_proto_rawDescOnce.Do(func() {
+		file_sso_shared_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_sso_shared_proto_rawDesc), len(file_sso_shared_proto_rawDesc)))
 	})
-	return file_shared_shared_proto_rawDescData
+	return file_sso_shared_proto_rawDescData
 }
 
-var file_shared_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_shared_shared_proto_goTypes = []any{
-	(*User)(nil),                  // 0: shared.User
-	(*Session)(nil),               // 1: shared.Session
-	(*Role)(nil),                  // 2: shared.Role
+var file_sso_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_sso_shared_proto_goTypes = []any{
+	(*User)(nil),                  // 0: sso.User
+	(*Session)(nil),               // 1: sso.Session
+	(*Role)(nil),                  // 2: sso.Role
 	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
-var file_shared_shared_proto_depIdxs = []int32{
-	3, // 0: shared.User.createdAt:type_name -> google.protobuf.Timestamp
-	3, // 1: shared.User.updatedAt:type_name -> google.protobuf.Timestamp
-	3, // 2: shared.Session.expires_at:type_name -> google.protobuf.Timestamp
-	3, // 3: shared.Session.createdAt:type_name -> google.protobuf.Timestamp
+var file_sso_shared_proto_depIdxs = []int32{
+	3, // 0: sso.User.createdAt:type_name -> google.protobuf.Timestamp
+	3, // 1: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
+	3, // 2: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
+	3, // 3: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -306,26 +306,26 @@ var file_shared_shared_proto_depIdxs = []int32{
 	0, // [0:4] is the sub-list for field type_name
 }
 
-func init() { file_shared_shared_proto_init() }
-func file_shared_shared_proto_init() {
-	if File_shared_shared_proto != nil {
+func init() { file_sso_shared_proto_init() }
+func file_sso_shared_proto_init() {
+	if File_sso_shared_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_shared_shared_proto_rawDesc), len(file_shared_shared_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_shared_proto_rawDesc), len(file_sso_shared_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_shared_shared_proto_goTypes,
-		DependencyIndexes: file_shared_shared_proto_depIdxs,
-		MessageInfos:      file_shared_shared_proto_msgTypes,
+		GoTypes:           file_sso_shared_proto_goTypes,
+		DependencyIndexes: file_sso_shared_proto_depIdxs,
+		MessageInfos:      file_sso_shared_proto_msgTypes,
 	}.Build()
-	File_shared_shared_proto = out.File
-	file_shared_shared_proto_goTypes = nil
-	file_shared_shared_proto_depIdxs = nil
+	File_sso_shared_proto = out.File
+	file_sso_shared_proto_goTypes = nil
+	file_sso_shared_proto_depIdxs = nil
 }

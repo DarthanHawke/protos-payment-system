@@ -7,7 +7,6 @@
 package ssov1
 
 import (
-	shared "github.com/DarthanHawke/protos-payment-system/gen/go/shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -76,7 +75,7 @@ func (x *CreateRoleRequest) GetPermissions() []string {
 
 type CreateRoleResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          *shared.Role           `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Role          *Role                  `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,7 +110,7 @@ func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateRoleResponse) GetRole() *shared.Role {
+func (x *CreateRoleResponse) GetRole() *Role {
 	if x != nil {
 		return x.Role
 	}
@@ -482,12 +481,12 @@ var File_sso_role_proto protoreflect.FileDescriptor
 
 const file_sso_role_proto_rawDesc = "" +
 	"\n" +
-	"\x0esso/role.proto\x12\x03sso\x1a\x13shared/shared.proto\"I\n" +
+	"\x0esso/role.proto\x12\x03sso\x1a\x10sso/shared.proto\"I\n" +
 	"\x11CreateRoleRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"6\n" +
-	"\x12CreateRoleResponse\x12 \n" +
-	"\x04role\x18\x01 \x01(\v2\f.shared.RoleR\x04role\"E\n" +
+	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"3\n" +
+	"\x12CreateRoleResponse\x12\x1d\n" +
+	"\x04role\x18\x01 \x01(\v2\t.sso.RoleR\x04role\"E\n" +
 	"\x11AssignRoleRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
@@ -515,7 +514,7 @@ const file_sso_role_proto_rawDesc = "" +
 	"\n" +
 	"RevokeRole\x12\x16.sso.RevokeRoleRequest\x1a\x17.sso.RevokeRoleResponse\x12L\n" +
 	"\x0fCheckPermission\x12\x1b.sso.CheckPermissionRequest\x1a\x1c.sso.CheckPermissionResponse\x12U\n" +
-	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB@Z>github.com/DarthanHawke/protos-payment-system/gen/go/sso;ssov1b\x06proto3"
+	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_role_proto_rawDescOnce sync.Once
@@ -541,10 +540,10 @@ var file_sso_role_proto_goTypes = []any{
 	(*CheckPermissionResponse)(nil),    // 7: sso.CheckPermissionResponse
 	(*GetUserPermissionsRequest)(nil),  // 8: sso.GetUserPermissionsRequest
 	(*GetUserPermissionsResponse)(nil), // 9: sso.GetUserPermissionsResponse
-	(*shared.Role)(nil),                // 10: shared.Role
+	(*Role)(nil),                       // 10: sso.Role
 }
 var file_sso_role_proto_depIdxs = []int32{
-	10, // 0: sso.CreateRoleResponse.role:type_name -> shared.Role
+	10, // 0: sso.CreateRoleResponse.role:type_name -> sso.Role
 	0,  // 1: sso.RoleService.CreateRole:input_type -> sso.CreateRoleRequest
 	2,  // 2: sso.RoleService.AssignRole:input_type -> sso.AssignRoleRequest
 	4,  // 3: sso.RoleService.RevokeRole:input_type -> sso.RevokeRoleRequest
@@ -567,6 +566,7 @@ func file_sso_role_proto_init() {
 	if File_sso_role_proto != nil {
 		return
 	}
+	file_sso_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
