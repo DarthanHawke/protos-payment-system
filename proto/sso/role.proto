@@ -20,7 +20,7 @@ message CreateRoleRequest {
 }
 
 message CreateRoleResponse {
-  shared.Role role = 1;
+  Role role = 1;
 }
 
 message AssignRoleRequest {

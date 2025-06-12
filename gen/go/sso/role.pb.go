@@ -484,9 +484,9 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x0esso/role.proto\x12\x03sso\x1a\x13shared/shared.proto\"I\n" +
 	"\x11CreateRoleRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"6\n" +
-	"\x12CreateRoleResponse\x12 \n" +
-	"\x04role\x18\x01 \x01(\v2\f.shared.RoleR\x04role\"E\n" +
+	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"3\n" +
+	"\x12CreateRoleResponse\x12\x1d\n" +
+	"\x04role\x18\x01 \x01(\v2\t.sso.RoleR\x04role\"E\n" +
 	"\x11AssignRoleRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
@@ -540,10 +540,10 @@ var file_sso_role_proto_goTypes = []any{
 	(*CheckPermissionResponse)(nil),    // 7: sso.CheckPermissionResponse
 	(*GetUserPermissionsRequest)(nil),  // 8: sso.GetUserPermissionsRequest
 	(*GetUserPermissionsResponse)(nil), // 9: sso.GetUserPermissionsResponse
-	(*Role)(nil),                       // 10: shared.Role
+	(*Role)(nil),                       // 10: sso.Role
 }
 var file_sso_role_proto_depIdxs = []int32{
-	10, // 0: sso.CreateRoleResponse.role:type_name -> shared.Role
+	10, // 0: sso.CreateRoleResponse.role:type_name -> sso.Role
 	0,  // 1: sso.RoleService.CreateRole:input_type -> sso.CreateRoleRequest
 	2,  // 2: sso.RoleService.AssignRole:input_type -> sso.AssignRoleRequest
 	4,  // 3: sso.RoleService.RevokeRole:input_type -> sso.RevokeRoleRequest

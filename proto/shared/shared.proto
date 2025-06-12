@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "sso.v1;ssov1";
 
-package shared;
+package sso;
 
 import "google/protobuf/timestamp.proto";
 
