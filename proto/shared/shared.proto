@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "shared.v1;sharedv1";
+option go_package = "./shared;sharedv1";
 
 package shared;
 

@@ -273,7 +273,7 @@ const file_shared_shared_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
-	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x14Z\x12shared.v1;sharedv1b\x06proto3"
+	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x13Z\x11./shared;sharedv1b\x06proto3"
 
 var (
 	file_shared_shared_proto_rawDescOnce sync.Once

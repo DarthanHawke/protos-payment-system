@@ -7,10 +7,10 @@
 package ssov1
 
 import (
+	shared "./shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	shared_v1 "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -268,7 +268,7 @@ func (x *GetProfileRequest) GetUserId() string {
 
 type GetProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *shared_v1.User        `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *shared.User           `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -303,7 +303,7 @@ func (*GetProfileResponse) Descriptor() ([]byte, []int) {
 	return file_sso_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetProfileResponse) GetUser() *shared_v1.User {
+func (x *GetProfileResponse) GetUser() *shared.User {
 	if x != nil {
 		return x.User
 	}
@@ -380,7 +380,7 @@ func (x *UpdateProfileRequest) GetPassword() string {
 
 type UpdateProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *shared_v1.User        `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *shared.User           `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -415,7 +415,7 @@ func (*UpdateProfileResponse) Descriptor() ([]byte, []int) {
 	return file_sso_user_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UpdateProfileResponse) GetUser() *shared_v1.User {
+func (x *UpdateProfileResponse) GetUser() *shared.User {
 	if x != nil {
 		return x.User
 	}
@@ -457,7 +457,7 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
 	"\n" +
 	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12F\n" +
-	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\rZ\v./sso;ssov1b\x06proto3"
 
 var (
 	file_sso_user_proto_rawDescOnce sync.Once
@@ -481,7 +481,7 @@ var file_sso_user_proto_goTypes = []any{
 	(*GetProfileResponse)(nil),    // 5: sso.GetProfileResponse
 	(*UpdateProfileRequest)(nil),  // 6: sso.UpdateProfileRequest
 	(*UpdateProfileResponse)(nil), // 7: sso.UpdateProfileResponse
-	(*shared_v1.User)(nil),        // 8: shared.User
+	(*shared.User)(nil),           // 8: shared.User
 }
 var file_sso_user_proto_depIdxs = []int32{
 	8, // 0: sso.GetProfileResponse.user:type_name -> shared.User

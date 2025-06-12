@@ -7,10 +7,10 @@
 package ssov1
 
 import (
+	shared "./shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	shared_v1 "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -76,7 +76,7 @@ func (x *CreateRoleRequest) GetPermissions() []string {
 
 type CreateRoleResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          *shared_v1.Role        `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Role          *shared.Role           `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,7 +111,7 @@ func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateRoleResponse) GetRole() *shared_v1.Role {
+func (x *CreateRoleResponse) GetRole() *shared.Role {
 	if x != nil {
 		return x.Role
 	}
@@ -515,7 +515,7 @@ const file_sso_role_proto_rawDesc = "" +
 	"\n" +
 	"RevokeRole\x12\x16.sso.RevokeRoleRequest\x1a\x17.sso.RevokeRoleResponse\x12L\n" +
 	"\x0fCheckPermission\x12\x1b.sso.CheckPermissionRequest\x1a\x1c.sso.CheckPermissionResponse\x12U\n" +
-	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\rZ\v./sso;ssov1b\x06proto3"
 
 var (
 	file_sso_role_proto_rawDescOnce sync.Once
@@ -541,7 +541,7 @@ var file_sso_role_proto_goTypes = []any{
 	(*CheckPermissionResponse)(nil),    // 7: sso.CheckPermissionResponse
 	(*GetUserPermissionsRequest)(nil),  // 8: sso.GetUserPermissionsRequest
 	(*GetUserPermissionsResponse)(nil), // 9: sso.GetUserPermissionsResponse
-	(*shared_v1.Role)(nil),             // 10: shared.Role
+	(*shared.Role)(nil),                // 10: shared.Role
 }
 var file_sso_role_proto_depIdxs = []int32{
 	10, // 0: sso.CreateRoleResponse.role:type_name -> shared.Role

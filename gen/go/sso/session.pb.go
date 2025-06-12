@@ -7,10 +7,10 @@
 package ssov1
 
 import (
+	_ "./shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	_ "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -409,7 +409,7 @@ const file_sso_session_proto_rawDesc = "" +
 	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
 	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
 	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x13.sso.LogoutResponse\x12:\n" +
-	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB\rZ\v./sso;ssov1b\x06proto3"
 
 var (
 	file_sso_session_proto_rawDescOnce sync.Once
