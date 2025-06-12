@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "./shared;sharedv1";
+option go_package = "github.com/DarthanHawke/protos-payment-system/gen/go/shared;sharedv1";
 
 package shared;
 
