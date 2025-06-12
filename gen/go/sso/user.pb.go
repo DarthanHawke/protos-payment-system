@@ -7,7 +7,7 @@
 package ssov1
 
 import (
-	shared "./shared"
+	shared "github.com/DarthanHawke/protos-payment-system/gen/go/shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -457,7 +457,7 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
 	"\n" +
 	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12F\n" +
-	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\rZ\v./sso;ssov1b\x06proto3"
+	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB@Z>github.com/DarthanHawke/protos-payment-system/gen/go/sso;ssov1b\x06proto3"
 
 var (
 	file_sso_user_proto_rawDescOnce sync.Once

@@ -7,7 +7,7 @@
 package ssov1
 
 import (
-	shared "./shared"
+	shared "github.com/DarthanHawke/protos-payment-system/gen/go/shared"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -515,7 +515,7 @@ const file_sso_role_proto_rawDesc = "" +
 	"\n" +
 	"RevokeRole\x12\x16.sso.RevokeRoleRequest\x1a\x17.sso.RevokeRoleResponse\x12L\n" +
 	"\x0fCheckPermission\x12\x1b.sso.CheckPermissionRequest\x1a\x1c.sso.CheckPermissionResponse\x12U\n" +
-	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\rZ\v./sso;ssov1b\x06proto3"
+	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB@Z>github.com/DarthanHawke/protos-payment-system/gen/go/sso;ssov1b\x06proto3"
 
 var (
 	file_sso_role_proto_rawDescOnce sync.Once
