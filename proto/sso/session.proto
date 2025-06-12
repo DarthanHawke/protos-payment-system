@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package sso;
+
+import "shared/shared.proto";
+
+service AuthService {
+  rpc CreateSession (CreateSessionRequest) returns (CreateSessionResponse);
+  rpc RefreshSession (RefreshSessionRequest) returns (RefreshSessionResponse);
+  rpc Logout (LogoutRequest) returns (LogoutResponse);
+  rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
+}
+
+message CreateSessionRequest {
+  int64 user_id = 1;
+}
+
+message CreateSessionResponse {
+  shared.Session session = 1;
+}
+
+message RefreshSessionRequest {
+  string refresh_token = 1;
+}
+
+message RefreshSessionResponse {
+  shared.Session session = 1;
+}
+
+message LogoutRequest {
+  int64 session_id = 1;
+}
+
+message LogoutResponse {}
+
+message LogoutAllRequest {
+  int64 user_id = 1;
+}
+
+message LogoutAllResponse {}

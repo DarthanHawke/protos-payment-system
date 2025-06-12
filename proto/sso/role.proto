@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package sso;
+
+import "shared/shared.proto";
+
+service RoleService {
+  rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse);
+  rpc AssignRole (AssignRoleRequest) returns (AssignRoleResponse);
+  rpc RevokeRole (RevokeRoleRequest) returns (RevokeRoleResponse);
+  rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
+  rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
+}
+
+message CreateRoleRequest {
+  string name = 1;
+  repeated string permissions = 2;
+}
+
+message CreateRoleResponse {
+  shared.Role role = 1;
+}
+
+message AssignRoleRequest {
+  int64 user_id = 1;
+  int64 role_id = 2;
+}
+
+message AssignRoleResponse {}
+
+message RevokeRoleRequest {
+  int64 user_id = 1;
+  int64 role_id = 2;
+}
+
+message RevokeRoleResponse {}
+
+message CheckPermissionRequest {
+  int64 user_id = 1;
+  string permission = 2;
+}
+
+message CheckPermissionResponse {
+  bool has_permission = 1;
+}
+
+message GetUserPermissionsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserPermissionsResponse {
+  repeated string permissions = 1;
+}
