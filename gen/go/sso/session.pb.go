@@ -67,7 +67,8 @@ func (x *CreateSessionRequest) GetUserId() int64 {
 
 type CreateSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Session       *Session               `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,16 +103,24 @@ func (*CreateSessionResponse) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateSessionResponse) GetSession() *Session {
+func (x *CreateSessionResponse) GetAccessToken() string {
 	if x != nil {
-		return x.Session
+		return x.AccessToken
 	}
-	return nil
+	return ""
+}
+
+func (x *CreateSessionResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
 }
 
 type RefreshSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -146,6 +155,13 @@ func (*RefreshSessionRequest) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{2}
 }
 
+func (x *RefreshSessionRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
 func (x *RefreshSessionRequest) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
@@ -155,7 +171,8 @@ func (x *RefreshSessionRequest) GetRefreshToken() string {
 
 type RefreshSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Session       *Session               `protobuf:"bytes,1,opt,name=session,proto3" json:"session,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -190,11 +207,18 @@ func (*RefreshSessionResponse) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *RefreshSessionResponse) GetSession() *Session {
+func (x *RefreshSessionResponse) GetAccessToken() string {
 	if x != nil {
-		return x.Session
+		return x.AccessToken
 	}
-	return nil
+	return ""
+}
+
+func (x *RefreshSessionResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
 }
 
 type LogoutRequest struct {
@@ -363,13 +387,16 @@ const file_sso_session_proto_rawDesc = "" +
 	"\n" +
 	"\x11sso/session.proto\x12\x03sso\x1a\x13shared/shared.proto\"/\n" +
 	"\x14CreateSessionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"B\n" +
-	"\x15CreateSessionResponse\x12)\n" +
-	"\asession\x18\x01 \x01(\v2\x0f.shared.SessionR\asession\"<\n" +
-	"\x15RefreshSessionRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"C\n" +
-	"\x16RefreshSessionResponse\x12)\n" +
-	"\asession\x18\x01 \x01(\v2\x0f.shared.SessionR\asession\".\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"_\n" +
+	"\x15CreateSessionResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"U\n" +
+	"\x15RefreshSessionRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"`\n" +
+	"\x16RefreshSessionResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\".\n" +
 	"\rLogoutRequest\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x03R\tsessionId\"\x10\n" +
@@ -405,24 +432,21 @@ var file_sso_session_proto_goTypes = []any{
 	(*LogoutResponse)(nil),         // 5: sso.LogoutResponse
 	(*LogoutAllRequest)(nil),       // 6: sso.LogoutAllRequest
 	(*LogoutAllResponse)(nil),      // 7: sso.LogoutAllResponse
-	(*Session)(nil),                // 8: shared.Session
 }
 var file_sso_session_proto_depIdxs = []int32{
-	8, // 0: sso.CreateSessionResponse.session:type_name -> shared.Session
-	8, // 1: sso.RefreshSessionResponse.session:type_name -> shared.Session
-	0, // 2: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
-	2, // 3: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
-	4, // 4: sso.SessionService.Logout:input_type -> sso.LogoutRequest
-	6, // 5: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
-	1, // 6: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
-	3, // 7: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
-	5, // 8: sso.SessionService.Logout:output_type -> sso.LogoutResponse
-	7, // 9: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
+	2, // 1: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
+	4, // 2: sso.SessionService.Logout:input_type -> sso.LogoutRequest
+	6, // 3: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
+	1, // 4: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
+	3, // 5: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
+	5, // 6: sso.SessionService.Logout:output_type -> sso.LogoutResponse
+	7, // 7: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_sso_session_proto_init() }

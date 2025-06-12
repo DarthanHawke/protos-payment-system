@@ -18,15 +18,18 @@ message CreateSessionRequest {
 }
 
 message CreateSessionResponse {
-  shared.Session session = 1;
+  string access_token = 1;
+  string refresh_token = 2;
 }
 
 message RefreshSessionRequest {
-  string refresh_token = 1;
+  int64 user_id = 1;
+  string refresh_token = 2;
 }
 
 message RefreshSessionResponse {
-  shared.Session session = 1;
+  string access_token = 1;
+  string refresh_token = 2;
 }
 
 message LogoutRequest {
