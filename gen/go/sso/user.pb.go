@@ -425,7 +425,7 @@ var File_sso_user_proto protoreflect.FileDescriptor
 
 const file_sso_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0esso/user.proto\x12\x04auth\x1a\x13shared/shared.proto\"W\n" +
+	"\x0esso/user.proto\x12\x03sso\x1a\x13shared/shared.proto\"W\n" +
 	"\x0fRegisterRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
@@ -450,13 +450,13 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x06_emailB\v\n" +
 	"\t_password\"9\n" +
 	"\x15UpdateProfileResponse\x12 \n" +
-	"\x04user\x18\x01 \x01(\v2\f.shared.UserR\x04user2\x85\x02\n" +
-	"\vUserService\x129\n" +
-	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12?\n" +
+	"\x04user\x18\x01 \x01(\v2\f.shared.UserR\x04user2\xfd\x01\n" +
+	"\vUserService\x127\n" +
+	"\bRegister\x12\x14.sso.RegisterRequest\x1a\x15.sso.RegisterResponse\x12.\n" +
+	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
 	"\n" +
-	"GetProfile\x12\x17.auth.GetProfileRequest\x1a\x18.auth.GetProfileResponse\x12H\n" +
-	"\rUpdateProfile\x12\x1a.auth.UpdateProfileRequest\x1a\x1b.auth.UpdateProfileResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12F\n" +
+	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_user_proto_rawDescOnce sync.Once
@@ -472,27 +472,27 @@ func file_sso_user_proto_rawDescGZIP() []byte {
 
 var file_sso_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sso_user_proto_goTypes = []any{
-	(*RegisterRequest)(nil),       // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil),      // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),          // 2: auth.LoginRequest
-	(*LoginResponse)(nil),         // 3: auth.LoginResponse
-	(*GetProfileRequest)(nil),     // 4: auth.GetProfileRequest
-	(*GetProfileResponse)(nil),    // 5: auth.GetProfileResponse
-	(*UpdateProfileRequest)(nil),  // 6: auth.UpdateProfileRequest
-	(*UpdateProfileResponse)(nil), // 7: auth.UpdateProfileResponse
+	(*RegisterRequest)(nil),       // 0: sso.RegisterRequest
+	(*RegisterResponse)(nil),      // 1: sso.RegisterResponse
+	(*LoginRequest)(nil),          // 2: sso.LoginRequest
+	(*LoginResponse)(nil),         // 3: sso.LoginResponse
+	(*GetProfileRequest)(nil),     // 4: sso.GetProfileRequest
+	(*GetProfileResponse)(nil),    // 5: sso.GetProfileResponse
+	(*UpdateProfileRequest)(nil),  // 6: sso.UpdateProfileRequest
+	(*UpdateProfileResponse)(nil), // 7: sso.UpdateProfileResponse
 	(*User)(nil),                  // 8: shared.User
 }
 var file_sso_user_proto_depIdxs = []int32{
-	8, // 0: auth.GetProfileResponse.user:type_name -> shared.User
-	8, // 1: auth.UpdateProfileResponse.user:type_name -> shared.User
-	0, // 2: auth.UserService.Register:input_type -> auth.RegisterRequest
-	2, // 3: auth.UserService.Login:input_type -> auth.LoginRequest
-	4, // 4: auth.UserService.GetProfile:input_type -> auth.GetProfileRequest
-	6, // 5: auth.UserService.UpdateProfile:input_type -> auth.UpdateProfileRequest
-	1, // 6: auth.UserService.Register:output_type -> auth.RegisterResponse
-	3, // 7: auth.UserService.Login:output_type -> auth.LoginResponse
-	5, // 8: auth.UserService.GetProfile:output_type -> auth.GetProfileResponse
-	7, // 9: auth.UserService.UpdateProfile:output_type -> auth.UpdateProfileResponse
+	8, // 0: sso.GetProfileResponse.user:type_name -> shared.User
+	8, // 1: sso.UpdateProfileResponse.user:type_name -> shared.User
+	0, // 2: sso.UserService.Register:input_type -> sso.RegisterRequest
+	2, // 3: sso.UserService.Login:input_type -> sso.LoginRequest
+	4, // 4: sso.UserService.GetProfile:input_type -> sso.GetProfileRequest
+	6, // 5: sso.UserService.UpdateProfile:input_type -> sso.UpdateProfileRequest
+	1, // 6: sso.UserService.Register:output_type -> sso.RegisterResponse
+	3, // 7: sso.UserService.Login:output_type -> sso.LoginResponse
+	5, // 8: sso.UserService.GetProfile:output_type -> sso.GetProfileResponse
+	7, // 9: sso.UserService.UpdateProfile:output_type -> sso.UpdateProfileResponse
 	6, // [6:10] is the sub-list for method output_type
 	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

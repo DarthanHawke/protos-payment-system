@@ -6,7 +6,7 @@ package sso;
 
 import "shared/shared.proto";
 
-service AuthService {
+service SessionService {
   rpc CreateSession (CreateSessionRequest) returns (CreateSessionResponse);
   rpc RefreshSession (RefreshSessionRequest) returns (RefreshSessionResponse);
   rpc Logout (LogoutRequest) returns (LogoutResponse);

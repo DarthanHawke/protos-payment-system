@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_Register_FullMethodName      = "/auth.UserService/Register"
-	UserService_Login_FullMethodName         = "/auth.UserService/Login"
-	UserService_GetProfile_FullMethodName    = "/auth.UserService/GetProfile"
-	UserService_UpdateProfile_FullMethodName = "/auth.UserService/UpdateProfile"
+	UserService_Register_FullMethodName      = "/sso.UserService/Register"
+	UserService_Login_FullMethodName         = "/sso.UserService/Login"
+	UserService_GetProfile_FullMethodName    = "/sso.UserService/GetProfile"
+	UserService_UpdateProfile_FullMethodName = "/sso.UserService/UpdateProfile"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -210,7 +210,7 @@ func _UserService_UpdateProfile_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var UserService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "auth.UserService",
+	ServiceName: "sso.UserService",
 	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -361,7 +361,7 @@ var File_sso_session_proto protoreflect.FileDescriptor
 
 const file_sso_session_proto_rawDesc = "" +
 	"\n" +
-	"\x11sso/session.proto\x12\x04auth\x1a\x13shared/shared.proto\"/\n" +
+	"\x11sso/session.proto\x12\x03sso\x1a\x13shared/shared.proto\"/\n" +
 	"\x14CreateSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"B\n" +
 	"\x15CreateSessionResponse\x12)\n" +
@@ -376,12 +376,12 @@ const file_sso_session_proto_rawDesc = "" +
 	"\x0eLogoutResponse\"+\n" +
 	"\x10LogoutAllRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"\x13\n" +
-	"\x11LogoutAllResponse2\x97\x02\n" +
-	"\vAuthService\x12H\n" +
-	"\rCreateSession\x12\x1a.auth.CreateSessionRequest\x1a\x1b.auth.CreateSessionResponse\x12K\n" +
-	"\x0eRefreshSession\x12\x1b.auth.RefreshSessionRequest\x1a\x1c.auth.RefreshSessionResponse\x123\n" +
-	"\x06Logout\x12\x13.auth.LogoutRequest\x1a\x14.auth.LogoutResponse\x12<\n" +
-	"\tLogoutAll\x12\x16.auth.LogoutAllRequest\x1a\x17.auth.LogoutAllResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\x11LogoutAllResponse2\x92\x02\n" +
+	"\x0eSessionService\x12F\n" +
+	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
+	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
+	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x13.sso.LogoutResponse\x12:\n" +
+	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_sso_session_proto_rawDescOnce sync.Once
@@ -397,27 +397,27 @@ func file_sso_session_proto_rawDescGZIP() []byte {
 
 var file_sso_session_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sso_session_proto_goTypes = []any{
-	(*CreateSessionRequest)(nil),   // 0: auth.CreateSessionRequest
-	(*CreateSessionResponse)(nil),  // 1: auth.CreateSessionResponse
-	(*RefreshSessionRequest)(nil),  // 2: auth.RefreshSessionRequest
-	(*RefreshSessionResponse)(nil), // 3: auth.RefreshSessionResponse
-	(*LogoutRequest)(nil),          // 4: auth.LogoutRequest
-	(*LogoutResponse)(nil),         // 5: auth.LogoutResponse
-	(*LogoutAllRequest)(nil),       // 6: auth.LogoutAllRequest
-	(*LogoutAllResponse)(nil),      // 7: auth.LogoutAllResponse
+	(*CreateSessionRequest)(nil),   // 0: sso.CreateSessionRequest
+	(*CreateSessionResponse)(nil),  // 1: sso.CreateSessionResponse
+	(*RefreshSessionRequest)(nil),  // 2: sso.RefreshSessionRequest
+	(*RefreshSessionResponse)(nil), // 3: sso.RefreshSessionResponse
+	(*LogoutRequest)(nil),          // 4: sso.LogoutRequest
+	(*LogoutResponse)(nil),         // 5: sso.LogoutResponse
+	(*LogoutAllRequest)(nil),       // 6: sso.LogoutAllRequest
+	(*LogoutAllResponse)(nil),      // 7: sso.LogoutAllResponse
 	(*Session)(nil),                // 8: shared.Session
 }
 var file_sso_session_proto_depIdxs = []int32{
-	8, // 0: auth.CreateSessionResponse.session:type_name -> shared.Session
-	8, // 1: auth.RefreshSessionResponse.session:type_name -> shared.Session
-	0, // 2: auth.AuthService.CreateSession:input_type -> auth.CreateSessionRequest
-	2, // 3: auth.AuthService.RefreshSession:input_type -> auth.RefreshSessionRequest
-	4, // 4: auth.AuthService.Logout:input_type -> auth.LogoutRequest
-	6, // 5: auth.AuthService.LogoutAll:input_type -> auth.LogoutAllRequest
-	1, // 6: auth.AuthService.CreateSession:output_type -> auth.CreateSessionResponse
-	3, // 7: auth.AuthService.RefreshSession:output_type -> auth.RefreshSessionResponse
-	5, // 8: auth.AuthService.Logout:output_type -> auth.LogoutResponse
-	7, // 9: auth.AuthService.LogoutAll:output_type -> auth.LogoutAllResponse
+	8, // 0: sso.CreateSessionResponse.session:type_name -> shared.Session
+	8, // 1: sso.RefreshSessionResponse.session:type_name -> shared.Session
+	0, // 2: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
+	2, // 3: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
+	4, // 4: sso.SessionService.Logout:input_type -> sso.LogoutRequest
+	6, // 5: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
+	1, // 6: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
+	3, // 7: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
+	5, // 8: sso.SessionService.Logout:output_type -> sso.LogoutResponse
+	7, // 9: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
 	6, // [6:10] is the sub-list for method output_type
 	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
