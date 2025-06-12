@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
+	shared_v1 "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -75,7 +76,7 @@ func (x *CreateRoleRequest) GetPermissions() []string {
 
 type CreateRoleResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          *Role                  `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Role          *shared_v1.Role        `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,7 +111,7 @@ func (*CreateRoleResponse) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CreateRoleResponse) GetRole() *Role {
+func (x *CreateRoleResponse) GetRole() *shared_v1.Role {
 	if x != nil {
 		return x.Role
 	}
@@ -484,9 +485,9 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x0esso/role.proto\x12\x03sso\x1a\x13shared/shared.proto\"I\n" +
 	"\x11CreateRoleRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"3\n" +
-	"\x12CreateRoleResponse\x12\x1d\n" +
-	"\x04role\x18\x01 \x01(\v2\t.sso.RoleR\x04role\"E\n" +
+	"\vpermissions\x18\x02 \x03(\tR\vpermissions\"6\n" +
+	"\x12CreateRoleResponse\x12 \n" +
+	"\x04role\x18\x01 \x01(\v2\f.shared.RoleR\x04role\"E\n" +
 	"\x11AssignRoleRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
@@ -540,10 +541,10 @@ var file_sso_role_proto_goTypes = []any{
 	(*CheckPermissionResponse)(nil),    // 7: sso.CheckPermissionResponse
 	(*GetUserPermissionsRequest)(nil),  // 8: sso.GetUserPermissionsRequest
 	(*GetUserPermissionsResponse)(nil), // 9: sso.GetUserPermissionsResponse
-	(*Role)(nil),                       // 10: sso.Role
+	(*shared_v1.Role)(nil),             // 10: shared.Role
 }
 var file_sso_role_proto_depIdxs = []int32{
-	10, // 0: sso.CreateRoleResponse.role:type_name -> sso.Role
+	10, // 0: sso.CreateRoleResponse.role:type_name -> shared.Role
 	0,  // 1: sso.RoleService.CreateRole:input_type -> sso.CreateRoleRequest
 	2,  // 2: sso.RoleService.AssignRole:input_type -> sso.AssignRoleRequest
 	4,  // 3: sso.RoleService.RevokeRole:input_type -> sso.RevokeRoleRequest
@@ -566,7 +567,6 @@ func file_sso_role_proto_init() {
 	if File_sso_role_proto != nil {
 		return
 	}
-	file_shared_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

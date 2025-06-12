@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
+	shared_v1 "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -267,7 +268,7 @@ func (x *GetProfileRequest) GetUserId() string {
 
 type GetProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *shared_v1.User        `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,7 +303,7 @@ func (*GetProfileResponse) Descriptor() ([]byte, []int) {
 	return file_sso_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetProfileResponse) GetUser() *User {
+func (x *GetProfileResponse) GetUser() *shared_v1.User {
 	if x != nil {
 		return x.User
 	}
@@ -379,7 +380,7 @@ func (x *UpdateProfileRequest) GetPassword() string {
 
 type UpdateProfileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User          *shared_v1.User        `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -414,7 +415,7 @@ func (*UpdateProfileResponse) Descriptor() ([]byte, []int) {
 	return file_sso_user_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *UpdateProfileResponse) GetUser() *User {
+func (x *UpdateProfileResponse) GetUser() *shared_v1.User {
 	if x != nil {
 		return x.User
 	}
@@ -438,9 +439,9 @@ const file_sso_user_proto_rawDesc = "" +
 	"\rLoginResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x11GetProfileRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"3\n" +
-	"\x12GetProfileResponse\x12\x1d\n" +
-	"\x04user\x18\x01 \x01(\v2\t.sso.UserR\x04user\"\xa4\x01\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"6\n" +
+	"\x12GetProfileResponse\x12 \n" +
+	"\x04user\x18\x01 \x01(\v2\f.shared.UserR\x04user\"\xa4\x01\n" +
 	"\x14UpdateProfileRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
@@ -448,9 +449,9 @@ const file_sso_user_proto_rawDesc = "" +
 	"\bpassword\x18\x04 \x01(\tH\x02R\bpassword\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
 	"\x06_emailB\v\n" +
-	"\t_password\"6\n" +
-	"\x15UpdateProfileResponse\x12\x1d\n" +
-	"\x04user\x18\x01 \x01(\v2\t.sso.UserR\x04user2\xfd\x01\n" +
+	"\t_password\"9\n" +
+	"\x15UpdateProfileResponse\x12 \n" +
+	"\x04user\x18\x01 \x01(\v2\f.shared.UserR\x04user2\xfd\x01\n" +
 	"\vUserService\x127\n" +
 	"\bRegister\x12\x14.sso.RegisterRequest\x1a\x15.sso.RegisterResponse\x12.\n" +
 	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
@@ -480,11 +481,11 @@ var file_sso_user_proto_goTypes = []any{
 	(*GetProfileResponse)(nil),    // 5: sso.GetProfileResponse
 	(*UpdateProfileRequest)(nil),  // 6: sso.UpdateProfileRequest
 	(*UpdateProfileResponse)(nil), // 7: sso.UpdateProfileResponse
-	(*User)(nil),                  // 8: sso.User
+	(*shared_v1.User)(nil),        // 8: shared.User
 }
 var file_sso_user_proto_depIdxs = []int32{
-	8, // 0: sso.GetProfileResponse.user:type_name -> sso.User
-	8, // 1: sso.UpdateProfileResponse.user:type_name -> sso.User
+	8, // 0: sso.GetProfileResponse.user:type_name -> shared.User
+	8, // 1: sso.UpdateProfileResponse.user:type_name -> shared.User
 	0, // 2: sso.UserService.Register:input_type -> sso.RegisterRequest
 	2, // 3: sso.UserService.Login:input_type -> sso.LoginRequest
 	4, // 4: sso.UserService.GetProfile:input_type -> sso.GetProfileRequest
@@ -505,7 +506,6 @@ func file_sso_user_proto_init() {
 	if File_sso_user_proto != nil {
 		return
 	}
-	file_shared_shared_proto_init()
 	file_sso_user_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

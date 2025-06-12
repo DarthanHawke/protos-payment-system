@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: shared/shared.proto
 
-package ssov1
+package sharedv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -254,7 +254,7 @@ var File_shared_shared_proto protoreflect.FileDescriptor
 
 const file_shared_shared_proto_rawDesc = "" +
 	"\n" +
-	"\x13shared/shared.proto\x12\x03sso\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
+	"\x13shared/shared.proto\x12\x06shared\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
@@ -273,7 +273,7 @@ const file_shared_shared_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
-	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x14Z\x12shared.v1;sharedv1b\x06proto3"
 
 var (
 	file_shared_shared_proto_rawDescOnce sync.Once
@@ -289,16 +289,16 @@ func file_shared_shared_proto_rawDescGZIP() []byte {
 
 var file_shared_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_shared_shared_proto_goTypes = []any{
-	(*User)(nil),                  // 0: sso.User
-	(*Session)(nil),               // 1: sso.Session
-	(*Role)(nil),                  // 2: sso.Role
+	(*User)(nil),                  // 0: shared.User
+	(*Session)(nil),               // 1: shared.Session
+	(*Role)(nil),                  // 2: shared.Role
 	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_shared_shared_proto_depIdxs = []int32{
-	3, // 0: sso.User.createdAt:type_name -> google.protobuf.Timestamp
-	3, // 1: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
-	3, // 2: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
-	3, // 3: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
+	3, // 0: shared.User.createdAt:type_name -> google.protobuf.Timestamp
+	3, // 1: shared.User.updatedAt:type_name -> google.protobuf.Timestamp
+	3, // 2: shared.Session.expires_at:type_name -> google.protobuf.Timestamp
+	3, // 3: shared.Session.createdAt:type_name -> google.protobuf.Timestamp
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name

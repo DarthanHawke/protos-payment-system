@@ -10,6 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
+	_ "shared.v1"
 	sync "sync"
 	unsafe "unsafe"
 )
@@ -454,7 +455,6 @@ func file_sso_session_proto_init() {
 	if File_sso_session_proto != nil {
 		return
 	}
-	file_shared_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
