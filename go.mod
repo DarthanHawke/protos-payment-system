@@ -1,4 +1,4 @@
-module protos
+module github.com/DarthanHawke/protos-payment-system
 
 go 1.23.6
 
