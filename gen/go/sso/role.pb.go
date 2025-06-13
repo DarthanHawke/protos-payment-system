@@ -120,7 +120,7 @@ func (x *CreateRoleResponse) GetRole() *Role {
 type AssignRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	RoleId        int64                  `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -162,11 +162,11 @@ func (x *AssignRoleRequest) GetUserId() string {
 	return ""
 }
 
-func (x *AssignRoleRequest) GetRoleId() string {
+func (x *AssignRoleRequest) GetRoleId() int64 {
 	if x != nil {
 		return x.RoleId
 	}
-	return ""
+	return 0
 }
 
 type AssignRoleResponse struct {
@@ -208,7 +208,7 @@ func (*AssignRoleResponse) Descriptor() ([]byte, []int) {
 type RevokeRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	RoleId        int64                  `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -250,11 +250,11 @@ func (x *RevokeRoleRequest) GetUserId() string {
 	return ""
 }
 
-func (x *RevokeRoleRequest) GetRoleId() string {
+func (x *RevokeRoleRequest) GetRoleId() int64 {
 	if x != nil {
 		return x.RoleId
 	}
-	return ""
+	return 0
 }
 
 type RevokeRoleResponse struct {
@@ -489,11 +489,11 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x04role\x18\x01 \x01(\v2\t.sso.RoleR\x04role\"E\n" +
 	"\x11AssignRoleRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"\x14\n" +
+	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
 	"\x12AssignRoleResponse\"E\n" +
 	"\x11RevokeRoleRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\tR\x06roleId\"\x14\n" +
+	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
 	"\x12RevokeRoleResponse\"Q\n" +
 	"\x16CheckPermissionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1e\n" +
