@@ -24,21 +24,21 @@ message CreateRoleResponse {
 }
 
 message AssignRoleRequest {
-  int64 user_id = 1;
-  int64 role_id = 2;
+  string user_id = 1;
+  string role_id = 2;
 }
 
 message AssignRoleResponse {}
 
 message RevokeRoleRequest {
-  int64 user_id = 1;
-  int64 role_id = 2;
+  string user_id = 1;
+  string role_id = 2;
 }
 
 message RevokeRoleResponse {}
 
 message CheckPermissionRequest {
-  int64 user_id = 1;
+  string user_id = 1;
   string permission = 2;
 }
 
@@ -47,7 +47,7 @@ message CheckPermissionResponse {
 }
 
 message GetUserPermissionsRequest {
-  int64 user_id = 1;
+  string user_id = 1;
 }
 
 message GetUserPermissionsResponse {

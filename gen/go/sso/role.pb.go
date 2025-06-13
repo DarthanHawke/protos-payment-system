@@ -119,8 +119,8 @@ func (x *CreateRoleResponse) GetRole() *Role {
 
 type AssignRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RoleId        int64                  `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -155,18 +155,18 @@ func (*AssignRoleRequest) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *AssignRoleRequest) GetUserId() int64 {
+func (x *AssignRoleRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
-func (x *AssignRoleRequest) GetRoleId() int64 {
+func (x *AssignRoleRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
-	return 0
+	return ""
 }
 
 type AssignRoleResponse struct {
@@ -207,8 +207,8 @@ func (*AssignRoleResponse) Descriptor() ([]byte, []int) {
 
 type RevokeRoleRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	RoleId        int64                  `protobuf:"varint,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RoleId        string                 `protobuf:"bytes,2,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,18 +243,18 @@ func (*RevokeRoleRequest) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *RevokeRoleRequest) GetUserId() int64 {
+func (x *RevokeRoleRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
-func (x *RevokeRoleRequest) GetRoleId() int64 {
+func (x *RevokeRoleRequest) GetRoleId() string {
 	if x != nil {
 		return x.RoleId
 	}
-	return 0
+	return ""
 }
 
 type RevokeRoleResponse struct {
@@ -295,7 +295,7 @@ func (*RevokeRoleResponse) Descriptor() ([]byte, []int) {
 
 type CheckPermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Permission    string                 `protobuf:"bytes,2,opt,name=permission,proto3" json:"permission,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -331,11 +331,11 @@ func (*CheckPermissionRequest) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CheckPermissionRequest) GetUserId() int64 {
+func (x *CheckPermissionRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 func (x *CheckPermissionRequest) GetPermission() string {
@@ -391,7 +391,7 @@ func (x *CheckPermissionResponse) GetHasPermission() bool {
 
 type GetUserPermissionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -426,11 +426,11 @@ func (*GetUserPermissionsRequest) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *GetUserPermissionsRequest) GetUserId() int64 {
+func (x *GetUserPermissionsRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type GetUserPermissionsResponse struct {
@@ -488,22 +488,22 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x12CreateRoleResponse\x12\x1d\n" +
 	"\x04role\x18\x01 \x01(\v2\t.sso.RoleR\x04role\"E\n" +
 	"\x11AssignRoleRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\"\x14\n" +
 	"\x12AssignRoleResponse\"E\n" +
 	"\x11RevokeRoleRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
-	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"\x14\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
+	"\arole_id\x18\x02 \x01(\tR\x06roleId\"\x14\n" +
 	"\x12RevokeRoleResponse\"Q\n" +
 	"\x16CheckPermissionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1e\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1e\n" +
 	"\n" +
 	"permission\x18\x02 \x01(\tR\n" +
 	"permission\"@\n" +
 	"\x17CheckPermissionResponse\x12%\n" +
 	"\x0ehas_permission\x18\x01 \x01(\bR\rhasPermission\"4\n" +
 	"\x19GetUserPermissionsRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\">\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\">\n" +
 	"\x1aGetUserPermissionsResponse\x12 \n" +
 	"\vpermissions\x18\x01 \x03(\tR\vpermissions2\xef\x02\n" +
 	"\vRoleService\x12=\n" +
