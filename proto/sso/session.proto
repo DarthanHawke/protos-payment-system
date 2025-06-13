@@ -12,7 +12,7 @@ service SessionService {
 }
 
 message CreateSessionRequest {
-  int64 user_id = 1;
+  bytes user_id = 1;
 }
 
 message CreateSessionResponse {
@@ -21,7 +21,7 @@ message CreateSessionResponse {
 }
 
 message RefreshSessionRequest {
-  int64 user_id = 1;
+  bytes user_id = 1;
   string refresh_token = 2;
 }
 
@@ -31,13 +31,13 @@ message RefreshSessionResponse {
 }
 
 message LogoutRequest {
-  int64 session_id = 1;
+  bytes session_id = 1;
 }
 
 message LogoutResponse {}
 
 message LogoutAllRequest {
-  int64 user_id = 1;
+  bytes user_id = 1;
 }
 
 message LogoutAllResponse {}

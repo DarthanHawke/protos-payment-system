@@ -24,7 +24,7 @@ const (
 
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            []byte                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	FullName      string                 `protobuf:"bytes,3,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
 	Roles         []string               `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"` //[]string
@@ -64,11 +64,11 @@ func (*User) Descriptor() ([]byte, []int) {
 	return file_sso_shared_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *User) GetId() int64 {
+func (x *User) GetId() []byte {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return nil
 }
 
 func (x *User) GetEmail() string {
@@ -108,8 +108,8 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 
 type Session struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Id            []byte                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        []byte                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
@@ -147,18 +147,18 @@ func (*Session) Descriptor() ([]byte, []int) {
 	return file_sso_shared_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Session) GetId() int64 {
+func (x *Session) GetId() []byte {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return nil
 }
 
-func (x *Session) GetUserId() int64 {
+func (x *Session) GetUserId() []byte {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return nil
 }
 
 func (x *Session) GetRefreshToken() string {
@@ -256,15 +256,15 @@ const file_sso_shared_proto_rawDesc = "" +
 	"\n" +
 	"\x10sso/shared.proto\x12\x03sso\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\fR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x12\x14\n" +
 	"\x05roles\x18\x04 \x03(\tR\x05roles\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
 	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xcc\x01\n" +
 	"\aSession\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x03R\x06userId\x12#\n" +
+	"\x02id\x18\x01 \x01(\fR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\fR\x06userId\x12#\n" +
 	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x129\n" +
 	"\n" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
