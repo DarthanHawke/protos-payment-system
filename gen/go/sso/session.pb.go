@@ -223,7 +223,8 @@ func (x *RefreshSessionResponse) GetRefreshToken() string {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -256,6 +257,13 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *LogoutRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
 }
 
 func (x *LogoutRequest) GetRefreshToken() string {
@@ -396,9 +404,10 @@ const file_sso_session_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"`\n" +
 	"\x16RefreshSessionResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"4\n" +
-	"\rLogoutRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\x10\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"M\n" +
+	"\rLogoutRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x10\n" +
 	"\x0eLogoutResponse\"+\n" +
 	"\x10LogoutAllRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x13\n" +
