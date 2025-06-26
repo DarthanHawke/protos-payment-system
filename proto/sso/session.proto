@@ -32,7 +32,7 @@ message RefreshSessionResponse {
 
 message LogoutRequest {
   string user_id = 1;
-  string refresh_token = 2;
+  string session_id = 2;
 }
 
 message LogoutResponse {}
