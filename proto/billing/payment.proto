@@ -9,6 +9,8 @@ import "billing/shared.proto";
 service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
+  rpc GetAllPayment (GetPaymentRequest) returns (GetPaymentResponse);
+
 }
 
 message CreatePaymentRequest {
@@ -29,4 +31,12 @@ message GetPaymentRequest {
 
 message GetPaymentResponse {
   Payment payment = 1;
+}
+
+message GetAllPaymentRequest {
+  string access_token = 1;
+}
+
+message GetAllPaymentResponse {
+  repeated Payment payment = 1;
 }

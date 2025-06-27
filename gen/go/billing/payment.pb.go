@@ -229,6 +229,94 @@ func (x *GetPaymentResponse) GetPayment() *Payment {
 	return nil
 }
 
+type GetAllPaymentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllPaymentRequest) Reset() {
+	*x = GetAllPaymentRequest{}
+	mi := &file_billing_payment_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllPaymentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllPaymentRequest) ProtoMessage() {}
+
+func (x *GetAllPaymentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_payment_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllPaymentRequest.ProtoReflect.Descriptor instead.
+func (*GetAllPaymentRequest) Descriptor() ([]byte, []int) {
+	return file_billing_payment_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetAllPaymentRequest) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+type GetAllPaymentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Payment       []*Payment             `protobuf:"bytes,1,rep,name=payment,proto3" json:"payment,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllPaymentResponse) Reset() {
+	*x = GetAllPaymentResponse{}
+	mi := &file_billing_payment_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllPaymentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllPaymentResponse) ProtoMessage() {}
+
+func (x *GetAllPaymentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_payment_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllPaymentResponse.ProtoReflect.Descriptor instead.
+func (*GetAllPaymentResponse) Descriptor() ([]byte, []int) {
+	return file_billing_payment_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetAllPaymentResponse) GetPayment() []*Payment {
+	if x != nil {
+		return x.Payment
+	}
+	return nil
+}
+
 var File_billing_payment_proto protoreflect.FileDescriptor
 
 const file_billing_payment_proto_rawDesc = "" +
@@ -247,11 +335,16 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\n" +
 	"payment_id\x18\x02 \x01(\tR\tpaymentId\"@\n" +
 	"\x12GetPaymentResponse\x12*\n" +
-	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment2\xa7\x01\n" +
+	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment\"9\n" +
+	"\x14GetAllPaymentRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"C\n" +
+	"\x15GetAllPaymentResponse\x12*\n" +
+	"\apayment\x18\x01 \x03(\v2\x10.billing.PaymentR\apayment2\xf1\x01\n" +
 	"\x0ePaymentService\x12N\n" +
 	"\rCreatePayment\x12\x1d.billing.CreatePaymentRequest\x1a\x1e.billing.CreatePaymentResponse\x12E\n" +
 	"\n" +
-	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponse\x12H\n" +
+	"\rGetAllPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_billing_payment_proto_rawDescOnce sync.Once
@@ -265,26 +358,31 @@ func file_billing_payment_proto_rawDescGZIP() []byte {
 	return file_billing_payment_proto_rawDescData
 }
 
-var file_billing_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_billing_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_billing_payment_proto_goTypes = []any{
 	(*CreatePaymentRequest)(nil),  // 0: billing.CreatePaymentRequest
 	(*CreatePaymentResponse)(nil), // 1: billing.CreatePaymentResponse
 	(*GetPaymentRequest)(nil),     // 2: billing.GetPaymentRequest
 	(*GetPaymentResponse)(nil),    // 3: billing.GetPaymentResponse
-	(*Payment)(nil),               // 4: billing.Payment
+	(*GetAllPaymentRequest)(nil),  // 4: billing.GetAllPaymentRequest
+	(*GetAllPaymentResponse)(nil), // 5: billing.GetAllPaymentResponse
+	(*Payment)(nil),               // 6: billing.Payment
 }
 var file_billing_payment_proto_depIdxs = []int32{
-	4, // 0: billing.CreatePaymentResponse.payment:type_name -> billing.Payment
-	4, // 1: billing.GetPaymentResponse.payment:type_name -> billing.Payment
-	0, // 2: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
-	2, // 3: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
-	1, // 4: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
-	3, // 5: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	6, // 0: billing.CreatePaymentResponse.payment:type_name -> billing.Payment
+	6, // 1: billing.GetPaymentResponse.payment:type_name -> billing.Payment
+	6, // 2: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
+	0, // 3: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
+	2, // 4: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
+	2, // 5: billing.PaymentService.GetAllPayment:input_type -> billing.GetPaymentRequest
+	1, // 6: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
+	3, // 7: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
+	3, // 8: billing.PaymentService.GetAllPayment:output_type -> billing.GetPaymentResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_billing_payment_proto_init() }
@@ -300,7 +398,7 @@ func file_billing_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_payment_proto_rawDesc), len(file_billing_payment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
