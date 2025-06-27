@@ -6,7 +6,7 @@ package billing;
 
 import "billing/shared.proto";
 
-service SessionService {
+service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
 }

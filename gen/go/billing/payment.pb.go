@@ -248,7 +248,7 @@ const file_billing_payment_proto_rawDesc = "" +
 	"payment_id\x18\x02 \x01(\tR\tpaymentId\"@\n" +
 	"\x12GetPaymentResponse\x12*\n" +
 	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment2\xa7\x01\n" +
-	"\x0eSessionService\x12N\n" +
+	"\x0ePaymentService\x12N\n" +
 	"\rCreatePayment\x12\x1d.billing.CreatePaymentRequest\x1a\x1e.billing.CreatePaymentResponse\x12E\n" +
 	"\n" +
 	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
@@ -276,10 +276,10 @@ var file_billing_payment_proto_goTypes = []any{
 var file_billing_payment_proto_depIdxs = []int32{
 	4, // 0: billing.CreatePaymentResponse.payment:type_name -> billing.Payment
 	4, // 1: billing.GetPaymentResponse.payment:type_name -> billing.Payment
-	0, // 2: billing.SessionService.CreatePayment:input_type -> billing.CreatePaymentRequest
-	2, // 3: billing.SessionService.GetPayment:input_type -> billing.GetPaymentRequest
-	1, // 4: billing.SessionService.CreatePayment:output_type -> billing.CreatePaymentResponse
-	3, // 5: billing.SessionService.GetPayment:output_type -> billing.GetPaymentResponse
+	0, // 2: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
+	2, // 3: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
+	1, // 4: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
+	3, // 5: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
