@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package billing;
+
+import "billing/shared.proto";
+
+service SessionService {
+  rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
+}
+
+message CreatePaymentRequest {
+  string access_token = 1;
+  float amount = 2;
+  string currency = 3;
+  optional string description = 4;
+}
+
+message CreatePaymentResponse {
+  Payment payment = 1;
+}
+
+message GetPaymentRequest {
+  string access_token = 1;
+  string payment_id = 2;
+}
+
+message GetPaymentResponse {
+  Payment payment = 1;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package billing;
+
+import "google/protobuf/timestamp.proto";
+
+message UserSession {
+  string user_id = 1;
+  string refresh_token = 2;
+  string access_token = 3;
+}
+
+message Payment {
+  string id = 1;
+  float amount = 2;
+  string currency = 3;
+  string status = 4;
+  optional string description = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message User {
+  string id = 1;
+  string email = 2;
+  string full_name = 3;
+  repeated string roles = 4; //[]string
+  google.protobuf.Timestamp createdAt = 5;
+  google.protobuf.Timestamp updatedAt = 6;
+}
