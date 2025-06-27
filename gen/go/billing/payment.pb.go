@@ -339,12 +339,12 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\x14GetAllPaymentRequest\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"C\n" +
 	"\x15GetAllPaymentResponse\x12*\n" +
-	"\apayment\x18\x01 \x03(\v2\x10.billing.PaymentR\apayment2\xf1\x01\n" +
+	"\apayment\x18\x01 \x03(\v2\x10.billing.PaymentR\apayment2\xf7\x01\n" +
 	"\x0ePaymentService\x12N\n" +
 	"\rCreatePayment\x12\x1d.billing.CreatePaymentRequest\x1a\x1e.billing.CreatePaymentResponse\x12E\n" +
 	"\n" +
-	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponse\x12H\n" +
-	"\rGetAllPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponse\x12N\n" +
+	"\rGetAllPayment\x12\x1d.billing.GetAllPaymentRequest\x1a\x1e.billing.GetAllPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
 
 var (
 	file_billing_payment_proto_rawDescOnce sync.Once
@@ -374,10 +374,10 @@ var file_billing_payment_proto_depIdxs = []int32{
 	6, // 2: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
 	0, // 3: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
 	2, // 4: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
-	2, // 5: billing.PaymentService.GetAllPayment:input_type -> billing.GetPaymentRequest
+	4, // 5: billing.PaymentService.GetAllPayment:input_type -> billing.GetAllPaymentRequest
 	1, // 6: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
 	3, // 7: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
-	3, // 8: billing.PaymentService.GetAllPayment:output_type -> billing.GetPaymentResponse
+	5, // 8: billing.PaymentService.GetAllPayment:output_type -> billing.GetAllPaymentResponse
 	6, // [6:9] is the sub-list for method output_type
 	3, // [3:6] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name

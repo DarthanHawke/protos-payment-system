@@ -9,7 +9,7 @@ import "billing/shared.proto";
 service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
-  rpc GetAllPayment (GetPaymentRequest) returns (GetPaymentResponse);
+  rpc GetAllPayment (GetAllPaymentRequest) returns (GetAllPaymentResponse);
 
 }
 

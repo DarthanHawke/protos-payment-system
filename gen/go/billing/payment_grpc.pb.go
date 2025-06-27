@@ -30,7 +30,7 @@ const (
 type PaymentServiceClient interface {
 	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*CreatePaymentResponse, error)
 	GetPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error)
-	GetAllPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error)
+	GetAllPayment(ctx context.Context, in *GetAllPaymentRequest, opts ...grpc.CallOption) (*GetAllPaymentResponse, error)
 }
 
 type paymentServiceClient struct {
@@ -61,9 +61,9 @@ func (c *paymentServiceClient) GetPayment(ctx context.Context, in *GetPaymentReq
 	return out, nil
 }
 
-func (c *paymentServiceClient) GetAllPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error) {
+func (c *paymentServiceClient) GetAllPayment(ctx context.Context, in *GetAllPaymentRequest, opts ...grpc.CallOption) (*GetAllPaymentResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetPaymentResponse)
+	out := new(GetAllPaymentResponse)
 	err := c.cc.Invoke(ctx, PaymentService_GetAllPayment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -77,7 +77,7 @@ func (c *paymentServiceClient) GetAllPayment(ctx context.Context, in *GetPayment
 type PaymentServiceServer interface {
 	CreatePayment(context.Context, *CreatePaymentRequest) (*CreatePaymentResponse, error)
 	GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error)
-	GetAllPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error)
+	GetAllPayment(context.Context, *GetAllPaymentRequest) (*GetAllPaymentResponse, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
 
@@ -94,7 +94,7 @@ func (UnimplementedPaymentServiceServer) CreatePayment(context.Context, *CreateP
 func (UnimplementedPaymentServiceServer) GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPayment not implemented")
 }
-func (UnimplementedPaymentServiceServer) GetAllPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error) {
+func (UnimplementedPaymentServiceServer) GetAllPayment(context.Context, *GetAllPaymentRequest) (*GetAllPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPayment not implemented")
 }
 func (UnimplementedPaymentServiceServer) mustEmbedUnimplementedPaymentServiceServer() {}
@@ -155,7 +155,7 @@ func _PaymentService_GetPayment_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _PaymentService_GetAllPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPaymentRequest)
+	in := new(GetAllPaymentRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -167,7 +167,7 @@ func _PaymentService_GetAllPayment_Handler(srv interface{}, ctx context.Context,
 		FullMethod: PaymentService_GetAllPayment_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).GetAllPayment(ctx, req.(*GetPaymentRequest))
+		return srv.(PaymentServiceServer).GetAllPayment(ctx, req.(*GetAllPaymentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
