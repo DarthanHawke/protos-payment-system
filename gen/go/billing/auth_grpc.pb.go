@@ -4,7 +4,7 @@
 // - protoc             v6.31.0
 // source: billing/auth.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	context "context"

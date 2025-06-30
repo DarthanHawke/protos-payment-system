@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "sso.v1;ssov1";
+option go_package = "pmtstm.v1;pmtstmv1";
 
 package payment;
 

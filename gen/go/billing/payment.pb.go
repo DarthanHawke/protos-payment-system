@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: billing/payment.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -430,7 +430,7 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\n" +
 	"GetPayment\x12\x1a.billing.GetPaymentRequest\x1a\x1b.billing.GetPaymentResponse\x12N\n" +
 	"\rGetAllPayment\x12\x1d.billing.GetAllPaymentRequest\x1a\x1e.billing.GetAllPaymentResponse\x12N\n" +
-	"\rCancelPayment\x12\x1d.billing.CancelPaymentRequest\x1a\x1e.billing.CancelPaymentResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\rCancelPayment\x12\x1d.billing.CancelPaymentRequest\x1a\x1e.billing.CancelPaymentResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_payment_proto_rawDescOnce sync.Once

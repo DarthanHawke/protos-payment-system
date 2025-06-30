@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: billing/shared.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -284,7 +284,7 @@ const file_billing_shared_proto_rawDesc = "" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x12\x14\n" +
 	"\x05roles\x18\x04 \x03(\tR\x05roles\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_shared_proto_rawDescOnce sync.Once

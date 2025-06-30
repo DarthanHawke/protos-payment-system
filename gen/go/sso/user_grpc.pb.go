@@ -4,7 +4,7 @@
 // - protoc             v6.31.0
 // source: sso/user.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	context "context"

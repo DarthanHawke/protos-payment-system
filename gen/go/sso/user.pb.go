@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: sso/user.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -456,7 +456,7 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
 	"\n" +
 	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12F\n" +
-	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\rUpdateProfile\x12\x19.sso.UpdateProfileRequest\x1a\x1a.sso.UpdateProfileResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_sso_user_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: sso/role.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -514,7 +514,7 @@ const file_sso_role_proto_rawDesc = "" +
 	"\n" +
 	"RevokeRole\x12\x16.sso.RevokeRoleRequest\x1a\x17.sso.RevokeRoleResponse\x12L\n" +
 	"\x0fCheckPermission\x12\x1b.sso.CheckPermissionRequest\x1a\x1c.sso.CheckPermissionResponse\x12U\n" +
-	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_sso_role_proto_rawDescOnce sync.Once

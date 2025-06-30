@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: sso/shared.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -273,7 +273,7 @@ const file_sso_shared_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
-	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_sso_shared_proto_rawDescOnce sync.Once

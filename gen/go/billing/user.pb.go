@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: billing/user.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -243,7 +243,7 @@ const file_billing_user_proto_rawDesc = "" +
 	"\vUserService\x12E\n" +
 	"\n" +
 	"GetProfile\x12\x1a.billing.GetProfileRequest\x1a\x1b.billing.GetProfileResponse\x12N\n" +
-	"\rUpdateProfile\x12\x1d.billing.UpdateProfileRequest\x1a\x1e.billing.UpdateProfileResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\rUpdateProfile\x12\x1d.billing.UpdateProfileRequest\x1a\x1e.billing.UpdateProfileResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_user_proto_rawDescOnce sync.Once

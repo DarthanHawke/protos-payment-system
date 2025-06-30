@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: payment/shared.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -129,7 +129,7 @@ const file_payment_shared_proto_rawDesc = "" +
 	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
-	"\f_descriptionB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\f_descriptionB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_payment_shared_proto_rawDescOnce sync.Once

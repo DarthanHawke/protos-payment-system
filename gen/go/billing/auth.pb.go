@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0
 // source: billing/auth.proto
 
-package ssov1
+package pmtstmv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -527,7 +527,7 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\bRegister\x12\x18.billing.RegisterRequest\x1a\x19.billing.RegisterResponse\x126\n" +
 	"\x05Login\x12\x15.billing.LoginRequest\x1a\x16.billing.LoginResponse\x129\n" +
 	"\x06Logout\x12\x16.billing.LogoutRequest\x1a\x17.billing.LogoutResponse\x12B\n" +
-	"\tLogoutAll\x12\x19.billing.LogoutAllRequest\x1a\x1a.billing.LogoutAllResponseB\x0eZ\fsso.v1;ssov1b\x06proto3"
+	"\tLogoutAll\x12\x19.billing.LogoutAllRequest\x1a\x1a.billing.LogoutAllResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_auth_proto_rawDescOnce sync.Once
