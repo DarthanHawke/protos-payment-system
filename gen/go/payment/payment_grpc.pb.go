@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.31.0
-// source: billing/payment.proto
+// source: payment/payment.proto
 
 package ssov1
 
@@ -19,10 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PaymentService_CreatePayment_FullMethodName = "/billing.PaymentService/CreatePayment"
-	PaymentService_GetPayment_FullMethodName    = "/billing.PaymentService/GetPayment"
-	PaymentService_GetAllPayment_FullMethodName = "/billing.PaymentService/GetAllPayment"
-	PaymentService_CancelPayment_FullMethodName = "/billing.PaymentService/CancelPayment"
+	PaymentService_CreatePayment_FullMethodName       = "/payment.PaymentService/CreatePayment"
+	PaymentService_GetPayment_FullMethodName          = "/payment.PaymentService/GetPayment"
+	PaymentService_UpdateStatusPayment_FullMethodName = "/payment.PaymentService/UpdateStatusPayment"
+	PaymentService_CancelPayment_FullMethodName       = "/payment.PaymentService/CancelPayment"
 )
 
 // PaymentServiceClient is the client API for PaymentService service.
@@ -31,7 +31,7 @@ const (
 type PaymentServiceClient interface {
 	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*CreatePaymentResponse, error)
 	GetPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error)
-	GetAllPayment(ctx context.Context, in *GetAllPaymentRequest, opts ...grpc.CallOption) (*GetAllPaymentResponse, error)
+	UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*UpdateStatusPaymentResponse, error)
 	CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*CancelPaymentResponse, error)
 }
 
@@ -63,10 +63,10 @@ func (c *paymentServiceClient) GetPayment(ctx context.Context, in *GetPaymentReq
 	return out, nil
 }
 
-func (c *paymentServiceClient) GetAllPayment(ctx context.Context, in *GetAllPaymentRequest, opts ...grpc.CallOption) (*GetAllPaymentResponse, error) {
+func (c *paymentServiceClient) UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*UpdateStatusPaymentResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllPaymentResponse)
-	err := c.cc.Invoke(ctx, PaymentService_GetAllPayment_FullMethodName, in, out, cOpts...)
+	out := new(UpdateStatusPaymentResponse)
+	err := c.cc.Invoke(ctx, PaymentService_UpdateStatusPayment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaym
 type PaymentServiceServer interface {
 	CreatePayment(context.Context, *CreatePaymentRequest) (*CreatePaymentResponse, error)
 	GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error)
-	GetAllPayment(context.Context, *GetAllPaymentRequest) (*GetAllPaymentResponse, error)
+	UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*UpdateStatusPaymentResponse, error)
 	CancelPayment(context.Context, *CancelPaymentRequest) (*CancelPaymentResponse, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
@@ -107,8 +107,8 @@ func (UnimplementedPaymentServiceServer) CreatePayment(context.Context, *CreateP
 func (UnimplementedPaymentServiceServer) GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPayment not implemented")
 }
-func (UnimplementedPaymentServiceServer) GetAllPayment(context.Context, *GetAllPaymentRequest) (*GetAllPaymentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllPayment not implemented")
+func (UnimplementedPaymentServiceServer) UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*UpdateStatusPaymentResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStatusPayment not implemented")
 }
 func (UnimplementedPaymentServiceServer) CancelPayment(context.Context, *CancelPaymentRequest) (*CancelPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelPayment not implemented")
@@ -170,20 +170,20 @@ func _PaymentService_GetPayment_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PaymentService_GetAllPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllPaymentRequest)
+func _PaymentService_UpdateStatusPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStatusPaymentRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PaymentServiceServer).GetAllPayment(ctx, in)
+		return srv.(PaymentServiceServer).UpdateStatusPayment(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PaymentService_GetAllPayment_FullMethodName,
+		FullMethod: PaymentService_UpdateStatusPayment_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).GetAllPayment(ctx, req.(*GetAllPaymentRequest))
+		return srv.(PaymentServiceServer).UpdateStatusPayment(ctx, req.(*UpdateStatusPaymentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -210,7 +210,7 @@ func _PaymentService_CancelPayment_Handler(srv interface{}, ctx context.Context,
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PaymentService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "billing.PaymentService",
+	ServiceName: "payment.PaymentService",
 	HandlerType: (*PaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -222,8 +222,8 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _PaymentService_GetPayment_Handler,
 		},
 		{
-			MethodName: "GetAllPayment",
-			Handler:    _PaymentService_GetAllPayment_Handler,
+			MethodName: "UpdateStatusPayment",
+			Handler:    _PaymentService_UpdateStatusPayment_Handler,
 		},
 		{
 			MethodName: "CancelPayment",
@@ -231,5 +231,5 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "billing/payment.proto",
+	Metadata: "payment/payment.proto",
 }

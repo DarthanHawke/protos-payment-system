@@ -2,19 +2,18 @@ syntax = "proto3";
 
 option go_package = "sso.v1;ssov1";
 
-package billing;
+package payment;
 
-import "billing/shared.proto";
+import "payment/shared.proto";
 
 service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
-  rpc GetAllPayment (GetAllPaymentRequest) returns (GetAllPaymentResponse);
+  rpc UpdateStatusPayment (UpdateStatusPaymentRequest) returns (UpdateStatusPaymentResponse);
   rpc CancelPayment (CancelPaymentRequest) returns (CancelPaymentResponse);
 }
 
 message CreatePaymentRequest {
-  string access_token = 1;
   float amount = 2;
   string currency = 3;
   optional string description = 4;
@@ -25,20 +24,19 @@ message CreatePaymentResponse {
 }
 
 message GetPaymentRequest {
-  string access_token = 1;
-  string payment_id = 2;
+  string payment_id = 1;
 }
 
 message GetPaymentResponse {
   Payment payment = 1;
 }
 
-message GetAllPaymentRequest {
-  string access_token = 1;
+message UpdateStatusPaymentRequest {
+  string payment_id = 1;
+  string status = 2;
 }
 
-message GetAllPaymentResponse {
-  repeated Payment payment = 1;
+message UpdateStatusPaymentResponse {
 }
 
 message CancelPaymentRequest {

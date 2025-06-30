@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "sso.v1;ssov1";
+
+package payment;
+
+import "google/protobuf/timestamp.proto";
+
+message Payment {
+  string id = 1;
+  float amount = 2;
+  string currency = 3;
+  string status = 4;
+  optional string description = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
