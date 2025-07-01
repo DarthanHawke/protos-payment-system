@@ -26,7 +26,6 @@ message User {
   string id = 1;
   string email = 2;
   string full_name = 3;
-  repeated string roles = 4; //[]string
   google.protobuf.Timestamp createdAt = 5;
   google.protobuf.Timestamp updatedAt = 6;
 }

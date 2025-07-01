@@ -27,7 +27,6 @@ type User struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	FullName      string                 `protobuf:"bytes,3,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	Roles         []string               `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"` //[]string
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -83,13 +82,6 @@ func (x *User) GetFullName() string {
 		return x.FullName
 	}
 	return ""
-}
-
-func (x *User) GetRoles() []string {
-	if x != nil {
-		return x.Roles
-	}
-	return nil
 }
 
 func (x *User) GetCreatedAt() *timestamppb.Timestamp {
@@ -184,7 +176,7 @@ func (x *Session) GetCreatedAt() *timestamppb.Timestamp {
 
 type Role struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=Description,proto3" json:"Description,omitempty"`
@@ -222,11 +214,11 @@ func (*Role) Descriptor() ([]byte, []int) {
 	return file_sso_shared_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Role) GetId() int64 {
+func (x *Role) GetId() string {
 	if x != nil {
 		return x.Id
 	}
-	return 0
+	return ""
 }
 
 func (x *Role) GetName() string {
@@ -254,12 +246,11 @@ var File_sso_shared_proto protoreflect.FileDescriptor
 
 const file_sso_shared_proto_rawDesc = "" +
 	"\n" +
-	"\x10sso/shared.proto\x12\x03sso\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
+	"\x10sso/shared.proto\x12\x03sso\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbd\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
-	"\tfull_name\x18\x03 \x01(\tR\bfullName\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x128\n" +
+	"\tfull_name\x18\x03 \x01(\tR\bfullName\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
 	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xcc\x01\n" +
 	"\aSession\x12\x0e\n" +
@@ -270,7 +261,7 @@ const file_sso_shared_proto_rawDesc = "" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"n\n" +
 	"\x04Role\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
 	"\vDescription\x18\x04 \x01(\tR\vDescriptionB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
