@@ -24,9 +24,8 @@ const (
 
 type UserSession struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	AccessToken   string                 `protobuf:"bytes,3,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,9 +60,9 @@ func (*UserSession) Descriptor() ([]byte, []int) {
 	return file_billing_shared_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *UserSession) GetUserId() string {
+func (x *UserSession) GetAccessToken() string {
 	if x != nil {
-		return x.UserId
+		return x.AccessToken
 	}
 	return ""
 }
@@ -71,13 +70,6 @@ func (x *UserSession) GetUserId() string {
 func (x *UserSession) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
-	}
-	return ""
-}
-
-func (x *UserSession) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
 	}
 	return ""
 }
@@ -254,11 +246,10 @@ var File_billing_shared_proto protoreflect.FileDescriptor
 
 const file_billing_shared_proto_rawDesc = "" +
 	"\n" +
-	"\x14billing/shared.proto\x12\abilling\x1a\x1fgoogle/protobuf/timestamp.proto\"n\n" +
-	"\vUserSession\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\x12!\n" +
-	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\"\x92\x02\n" +
+	"\x14billing/shared.proto\x12\abilling\x1a\x1fgoogle/protobuf/timestamp.proto\"U\n" +
+	"\vUserSession\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"\x92\x02\n" +
 	"\aPayment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12\x1a\n" +
