@@ -20,8 +20,7 @@ message RefreshSessionRequest {
 }
 
 message RefreshSessionResponse {
-  string access_token = 1;
-  string refresh_token = 2;
+  UserSession userSession = 1;
 }
 
 message RegisterRequest {

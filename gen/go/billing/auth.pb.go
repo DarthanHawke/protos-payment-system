@@ -75,8 +75,7 @@ func (x *RefreshSessionRequest) GetRefreshToken() string {
 
 type RefreshSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	UserSession   *UserSession           `protobuf:"bytes,1,opt,name=userSession,proto3" json:"userSession,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -111,18 +110,11 @@ func (*RefreshSessionResponse) Descriptor() ([]byte, []int) {
 	return file_billing_auth_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RefreshSessionResponse) GetAccessToken() string {
+func (x *RefreshSessionResponse) GetUserSession() *UserSession {
 	if x != nil {
-		return x.AccessToken
+		return x.UserSession
 	}
-	return ""
-}
-
-func (x *RefreshSessionResponse) GetRefreshToken() string {
-	if x != nil {
-		return x.RefreshToken
-	}
-	return ""
+	return nil
 }
 
 type RegisterRequest struct {
@@ -500,10 +492,9 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\x12billing/auth.proto\x12\abilling\x1a\x14billing/shared.proto\"U\n" +
 	"\x15RefreshSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"`\n" +
-	"\x16RefreshSessionResponse\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"W\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"P\n" +
+	"\x16RefreshSessionResponse\x126\n" +
+	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"W\n" +
 	"\x0fRegisterRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
@@ -556,23 +547,24 @@ var file_billing_auth_proto_goTypes = []any{
 	(*UserSession)(nil),            // 10: billing.UserSession
 }
 var file_billing_auth_proto_depIdxs = []int32{
-	10, // 0: billing.RegisterResponse.userSession:type_name -> billing.UserSession
-	10, // 1: billing.LoginResponse.userSession:type_name -> billing.UserSession
-	0,  // 2: billing.AuthService.RefreshSession:input_type -> billing.RefreshSessionRequest
-	2,  // 3: billing.AuthService.Register:input_type -> billing.RegisterRequest
-	4,  // 4: billing.AuthService.Login:input_type -> billing.LoginRequest
-	6,  // 5: billing.AuthService.Logout:input_type -> billing.LogoutRequest
-	8,  // 6: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
-	1,  // 7: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
-	3,  // 8: billing.AuthService.Register:output_type -> billing.RegisterResponse
-	5,  // 9: billing.AuthService.Login:output_type -> billing.LoginResponse
-	7,  // 10: billing.AuthService.Logout:output_type -> billing.LogoutResponse
-	9,  // 11: billing.AuthService.LogoutAll:output_type -> billing.LogoutAllResponse
-	7,  // [7:12] is the sub-list for method output_type
-	2,  // [2:7] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	10, // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
+	10, // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
+	10, // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
+	0,  // 3: billing.AuthService.RefreshSession:input_type -> billing.RefreshSessionRequest
+	2,  // 4: billing.AuthService.Register:input_type -> billing.RegisterRequest
+	4,  // 5: billing.AuthService.Login:input_type -> billing.LoginRequest
+	6,  // 6: billing.AuthService.Logout:input_type -> billing.LogoutRequest
+	8,  // 7: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
+	1,  // 8: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
+	3,  // 9: billing.AuthService.Register:output_type -> billing.RegisterResponse
+	5,  // 10: billing.AuthService.Login:output_type -> billing.LoginResponse
+	7,  // 11: billing.AuthService.Logout:output_type -> billing.LogoutResponse
+	9,  // 12: billing.AuthService.LogoutAll:output_type -> billing.LogoutAllResponse
+	8,  // [8:13] is the sub-list for method output_type
+	3,  // [3:8] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_billing_auth_proto_init() }
