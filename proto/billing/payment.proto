@@ -10,6 +10,7 @@ service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
   rpc GetAllPayment (GetAllPaymentRequest) returns (GetAllPaymentResponse);
+  rpc UpdateStatusPayment (UpdateStatusPaymentRequest) returns (UpdateStatusPaymentResponse);
   rpc CancelPayment (CancelPaymentRequest) returns (CancelPaymentResponse);
 }
 
@@ -41,8 +42,18 @@ message GetAllPaymentResponse {
   repeated Payment payment = 1;
 }
 
+message UpdateStatusPaymentRequest {
+  string access_token = 1;
+  string payment_id = 2;
+  string status = 3;
+}
+
+message UpdateStatusPaymentResponse {
+}
+
 message CancelPaymentRequest {
-  string payment_id = 1;
+  string access_token = 1;
+  string payment_id = 2;
 }
 
 message CancelPaymentResponse {

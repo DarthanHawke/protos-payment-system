@@ -49,8 +49,7 @@ message LogoutRequest {
 message LogoutResponse {}
 
 message LogoutAllRequest {
-  string user_id = 1;
-  string access_token = 2;
+  string access_token = 1;
 }
 
 message LogoutAllResponse {}
