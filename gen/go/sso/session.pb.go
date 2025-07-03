@@ -435,7 +435,7 @@ func (x *GetAllRequest) GetUserId() string {
 
 type GetAllResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionIds    []string               `protobuf:"bytes,1,rep,name=session_ids,json=sessionIds,proto3" json:"session_ids,omitempty"`
+	Session       []*Session             `protobuf:"bytes,1,rep,name=session,proto3" json:"session,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -470,9 +470,9 @@ func (*GetAllResponse) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GetAllResponse) GetSessionIds() []string {
+func (x *GetAllResponse) GetSession() []*Session {
 	if x != nil {
-		return x.SessionIds
+		return x.Session
 	}
 	return nil
 }
@@ -481,7 +481,7 @@ var File_sso_session_proto protoreflect.FileDescriptor
 
 const file_sso_session_proto_rawDesc = "" +
 	"\n" +
-	"\x11sso/session.proto\x12\x03sso\"/\n" +
+	"\x11sso/session.proto\x12\x03sso\x1a\x10sso/shared.proto\"/\n" +
 	"\x14CreateSessionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"_\n" +
 	"\x15CreateSessionResponse\x12!\n" +
@@ -502,10 +502,9 @@ const file_sso_session_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x13\n" +
 	"\x11LogoutAllResponse\"(\n" +
 	"\rGetAllRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"1\n" +
-	"\x0eGetAllResponse\x12\x1f\n" +
-	"\vsession_ids\x18\x01 \x03(\tR\n" +
-	"sessionIds2\xc5\x02\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"8\n" +
+	"\x0eGetAllResponse\x12&\n" +
+	"\asession\x18\x01 \x03(\v2\f.sso.SessionR\asession2\xc5\x02\n" +
 	"\x0eSessionService\x12F\n" +
 	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
 	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
@@ -537,23 +536,25 @@ var file_sso_session_proto_goTypes = []any{
 	(*LogoutAllResponse)(nil),      // 7: sso.LogoutAllResponse
 	(*GetAllRequest)(nil),          // 8: sso.GetAllRequest
 	(*GetAllResponse)(nil),         // 9: sso.GetAllResponse
+	(*Session)(nil),                // 10: sso.Session
 }
 var file_sso_session_proto_depIdxs = []int32{
-	0, // 0: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
-	2, // 1: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
-	4, // 2: sso.SessionService.Logout:input_type -> sso.LogoutRequest
-	6, // 3: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
-	8, // 4: sso.SessionService.GetAll:input_type -> sso.GetAllRequest
-	1, // 5: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
-	3, // 6: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
-	5, // 7: sso.SessionService.Logout:output_type -> sso.LogoutResponse
-	7, // 8: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
-	9, // 9: sso.SessionService.GetAll:output_type -> sso.GetAllResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	10, // 0: sso.GetAllResponse.session:type_name -> sso.Session
+	0,  // 1: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
+	2,  // 2: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
+	4,  // 3: sso.SessionService.Logout:input_type -> sso.LogoutRequest
+	6,  // 4: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
+	8,  // 5: sso.SessionService.GetAll:input_type -> sso.GetAllRequest
+	1,  // 6: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
+	3,  // 7: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
+	5,  // 8: sso.SessionService.Logout:output_type -> sso.LogoutResponse
+	7,  // 9: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
+	9,  // 10: sso.SessionService.GetAll:output_type -> sso.GetAllResponse
+	6,  // [6:11] is the sub-list for method output_type
+	1,  // [1:6] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_sso_session_proto_init() }
@@ -561,6 +562,7 @@ func file_sso_session_proto_init() {
 	if File_sso_session_proto != nil {
 		return
 	}
+	file_sso_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

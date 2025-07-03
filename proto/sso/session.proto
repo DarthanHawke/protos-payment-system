@@ -4,6 +4,8 @@ option go_package = "pmtstm.v1;pmtstmv1";
 
 package sso;
 
+import "sso/shared.proto";
+
 service SessionService {
   rpc CreateSession (CreateSessionRequest) returns (CreateSessionResponse);
   rpc RefreshSession (RefreshSessionRequest) returns (RefreshSessionResponse);
@@ -49,5 +51,6 @@ message GetAllRequest {
 }
 
 message GetAllResponse {
-    repeated string session_ids = 1;
+  repeated Session session = 1;
+
 }
