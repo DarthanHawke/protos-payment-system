@@ -23,6 +23,7 @@ const (
 	SessionService_RefreshSession_FullMethodName = "/sso.SessionService/RefreshSession"
 	SessionService_Logout_FullMethodName         = "/sso.SessionService/Logout"
 	SessionService_LogoutAll_FullMethodName      = "/sso.SessionService/LogoutAll"
+	SessionService_GetAll_FullMethodName         = "/sso.SessionService/GetAll"
 )
 
 // SessionServiceClient is the client API for SessionService service.
@@ -33,6 +34,7 @@ type SessionServiceClient interface {
 	RefreshSession(ctx context.Context, in *RefreshSessionRequest, opts ...grpc.CallOption) (*RefreshSessionResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
+	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
 }
 
 type sessionServiceClient struct {
@@ -83,6 +85,16 @@ func (c *sessionServiceClient) LogoutAll(ctx context.Context, in *LogoutAllReque
 	return out, nil
 }
 
+func (c *sessionServiceClient) GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllResponse)
+	err := c.cc.Invoke(ctx, SessionService_GetAll_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SessionServiceServer is the server API for SessionService service.
 // All implementations must embed UnimplementedSessionServiceServer
 // for forward compatibility.
@@ -91,6 +103,7 @@ type SessionServiceServer interface {
 	RefreshSession(context.Context, *RefreshSessionRequest) (*RefreshSessionResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
+	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
 	mustEmbedUnimplementedSessionServiceServer()
 }
 
@@ -112,6 +125,9 @@ func (UnimplementedSessionServiceServer) Logout(context.Context, *LogoutRequest)
 }
 func (UnimplementedSessionServiceServer) LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogoutAll not implemented")
+}
+func (UnimplementedSessionServiceServer) GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (UnimplementedSessionServiceServer) mustEmbedUnimplementedSessionServiceServer() {}
 func (UnimplementedSessionServiceServer) testEmbeddedByValue()                        {}
@@ -206,6 +222,24 @@ func _SessionService_LogoutAll_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SessionService_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SessionServiceServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SessionService_GetAll_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SessionServiceServer).GetAll(ctx, req.(*GetAllRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SessionService_ServiceDesc is the grpc.ServiceDesc for SessionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +262,10 @@ var SessionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LogoutAll",
 			Handler:    _SessionService_LogoutAll_Handler,
+		},
+		{
+			MethodName: "GetAll",
+			Handler:    _SessionService_GetAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

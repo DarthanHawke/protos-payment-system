@@ -389,6 +389,94 @@ func (*LogoutAllResponse) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{7}
 }
 
+type GetAllRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllRequest) Reset() {
+	*x = GetAllRequest{}
+	mi := &file_sso_session_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllRequest) ProtoMessage() {}
+
+func (x *GetAllRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_session_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllRequest.ProtoReflect.Descriptor instead.
+func (*GetAllRequest) Descriptor() ([]byte, []int) {
+	return file_sso_session_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type GetAllResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionIds    []string               `protobuf:"bytes,1,rep,name=session_ids,json=sessionIds,proto3" json:"session_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllResponse) Reset() {
+	*x = GetAllResponse{}
+	mi := &file_sso_session_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllResponse) ProtoMessage() {}
+
+func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_session_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
+func (*GetAllResponse) Descriptor() ([]byte, []int) {
+	return file_sso_session_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetAllResponse) GetSessionIds() []string {
+	if x != nil {
+		return x.SessionIds
+	}
+	return nil
+}
+
 var File_sso_session_proto protoreflect.FileDescriptor
 
 const file_sso_session_proto_rawDesc = "" +
@@ -412,12 +500,18 @@ const file_sso_session_proto_rawDesc = "" +
 	"\x0eLogoutResponse\"+\n" +
 	"\x10LogoutAllRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x13\n" +
-	"\x11LogoutAllResponse2\x92\x02\n" +
+	"\x11LogoutAllResponse\"(\n" +
+	"\rGetAllRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"1\n" +
+	"\x0eGetAllResponse\x12\x1f\n" +
+	"\vsession_ids\x18\x01 \x03(\tR\n" +
+	"sessionIds2\xc5\x02\n" +
 	"\x0eSessionService\x12F\n" +
 	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
 	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
 	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x13.sso.LogoutResponse\x12:\n" +
-	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponse\x121\n" +
+	"\x06GetAll\x12\x12.sso.GetAllRequest\x1a\x13.sso.GetAllResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_sso_session_proto_rawDescOnce sync.Once
@@ -431,7 +525,7 @@ func file_sso_session_proto_rawDescGZIP() []byte {
 	return file_sso_session_proto_rawDescData
 }
 
-var file_sso_session_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_sso_session_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_sso_session_proto_goTypes = []any{
 	(*CreateSessionRequest)(nil),   // 0: sso.CreateSessionRequest
 	(*CreateSessionResponse)(nil),  // 1: sso.CreateSessionResponse
@@ -441,18 +535,22 @@ var file_sso_session_proto_goTypes = []any{
 	(*LogoutResponse)(nil),         // 5: sso.LogoutResponse
 	(*LogoutAllRequest)(nil),       // 6: sso.LogoutAllRequest
 	(*LogoutAllResponse)(nil),      // 7: sso.LogoutAllResponse
+	(*GetAllRequest)(nil),          // 8: sso.GetAllRequest
+	(*GetAllResponse)(nil),         // 9: sso.GetAllResponse
 }
 var file_sso_session_proto_depIdxs = []int32{
 	0, // 0: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
 	2, // 1: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
 	4, // 2: sso.SessionService.Logout:input_type -> sso.LogoutRequest
 	6, // 3: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
-	1, // 4: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
-	3, // 5: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
-	5, // 6: sso.SessionService.Logout:output_type -> sso.LogoutResponse
-	7, // 7: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	8, // 4: sso.SessionService.GetAll:input_type -> sso.GetAllRequest
+	1, // 5: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
+	3, // 6: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
+	5, // 7: sso.SessionService.Logout:output_type -> sso.LogoutResponse
+	7, // 8: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
+	9, // 9: sso.SessionService.GetAll:output_type -> sso.GetAllResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -469,7 +567,7 @@ func file_sso_session_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_session_proto_rawDesc), len(file_sso_session_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
