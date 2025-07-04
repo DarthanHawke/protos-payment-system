@@ -23,7 +23,6 @@ const (
 
 type RefreshSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -56,13 +55,6 @@ func (x *RefreshSessionRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RefreshSessionRequest.ProtoReflect.Descriptor instead.
 func (*RefreshSessionRequest) Descriptor() ([]byte, []int) {
 	return file_billing_auth_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *RefreshSessionRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
-	}
-	return ""
 }
 
 type RefreshSessionResponse struct {
@@ -457,9 +449,8 @@ var File_billing_auth_proto protoreflect.FileDescriptor
 
 const file_billing_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12billing/auth.proto\x12\abilling\x1a\x14billing/shared.proto\"0\n" +
-	"\x15RefreshSessionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"P\n" +
+	"\x12billing/auth.proto\x12\abilling\x1a\x14billing/shared.proto\"\x17\n" +
+	"\x15RefreshSessionRequest\"P\n" +
 	"\x16RefreshSessionResponse\x126\n" +
 	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"W\n" +
 	"\x0fRegisterRequest\x12\x12\n" +

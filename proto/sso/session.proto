@@ -24,7 +24,7 @@ message CreateSessionResponse {
 }
 
 message RefreshSessionRequest {
-  string user_id = 1;
+  string access_token = 1;
   string refresh_token = 2;
 }
 

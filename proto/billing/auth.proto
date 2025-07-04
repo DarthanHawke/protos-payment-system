@@ -15,7 +15,6 @@ service AuthService {
 }
 
 message RefreshSessionRequest {
-  string user_id = 1;
 }
 
 message RefreshSessionResponse {
