@@ -42,14 +42,10 @@ message LoginResponse {
   UserSession userSession = 1;
 }
 
-message LogoutRequest {
-  string access_token = 1;
-}
+message LogoutRequest {}
 
 message LogoutResponse {}
 
-message LogoutAllRequest {
-  string access_token = 1;
-}
+message LogoutAllRequest {}
 
 message LogoutAllResponse {}

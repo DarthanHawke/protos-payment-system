@@ -23,7 +23,6 @@ const (
 
 type GetProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -56,13 +55,6 @@ func (x *GetProfileRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetProfileRequest.ProtoReflect.Descriptor instead.
 func (*GetProfileRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *GetProfileRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 type GetProfileResponse struct {
@@ -111,10 +103,9 @@ func (x *GetProfileResponse) GetUser() *User {
 
 type UpdateProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Email         *string                `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	Password      *string                `protobuf:"bytes,4,opt,name=password,proto3,oneof" json:"password,omitempty"`
+	Name          *string                `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
+	Password      *string                `protobuf:"bytes,3,opt,name=password,proto3,oneof" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -147,13 +138,6 @@ func (x *UpdateProfileRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateProfileRequest.ProtoReflect.Descriptor instead.
 func (*UpdateProfileRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *UpdateProfileRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 func (x *UpdateProfileRequest) GetName() string {
@@ -225,16 +209,14 @@ var File_billing_user_proto protoreflect.FileDescriptor
 
 const file_billing_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\"6\n" +
-	"\x11GetProfileRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"7\n" +
+	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\"\x13\n" +
+	"\x11GetProfileRequest\"7\n" +
 	"\x12GetProfileResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"\xae\x01\n" +
-	"\x14UpdateProfileRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x17\n" +
-	"\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
-	"\x05email\x18\x03 \x01(\tH\x01R\x05email\x88\x01\x01\x12\x1f\n" +
-	"\bpassword\x18\x04 \x01(\tH\x02R\bpassword\x88\x01\x01B\a\n" +
+	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"\x8b\x01\n" +
+	"\x14UpdateProfileRequest\x12\x17\n" +
+	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
+	"\x05email\x18\x02 \x01(\tH\x01R\x05email\x88\x01\x01\x12\x1f\n" +
+	"\bpassword\x18\x03 \x01(\tH\x02R\bpassword\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
 	"\x06_emailB\v\n" +
 	"\t_password\":\n" +

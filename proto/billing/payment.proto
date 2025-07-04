@@ -15,10 +15,9 @@ service PaymentService {
 }
 
 message CreatePaymentRequest {
-  string access_token = 1;
-  float amount = 2;
-  string currency = 3;
-  optional string description = 4;
+  float amount = 1;
+  string currency = 2;
+  optional string description = 3;
 }
 
 message CreatePaymentResponse {
@@ -26,34 +25,29 @@ message CreatePaymentResponse {
 }
 
 message GetPaymentRequest {
-  string access_token = 1;
-  string payment_id = 2;
+  string payment_id = 1;
 }
 
 message GetPaymentResponse {
   Payment payment = 1;
 }
 
-message GetAllPaymentRequest {
-  string access_token = 1;
-}
+message GetAllPaymentRequest {}
 
 message GetAllPaymentResponse {
   repeated Payment payment = 1;
 }
 
 message UpdateStatusPaymentRequest {
-  string access_token = 1;
-  string payment_id = 2;
-  string status = 3;
+  string payment_id = 1;
+  string status = 2;
 }
 
 message UpdateStatusPaymentResponse {
 }
 
 message CancelPaymentRequest {
-  string access_token = 1;
-  string payment_id = 2;
+  string payment_id = 1;
 }
 
 message CancelPaymentResponse {

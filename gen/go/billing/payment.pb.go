@@ -23,10 +23,9 @@ const (
 
 type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	Amount        float32                `protobuf:"fixed32,2,opt,name=amount,proto3" json:"amount,omitempty"`
-	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
-	Description   *string                `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Amount        float32                `protobuf:"fixed32,1,opt,name=amount,proto3" json:"amount,omitempty"`
+	Currency      string                 `protobuf:"bytes,2,opt,name=currency,proto3" json:"currency,omitempty"`
+	Description   *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,13 +58,6 @@ func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreatePaymentRequest.ProtoReflect.Descriptor instead.
 func (*CreatePaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *CreatePaymentRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 func (x *CreatePaymentRequest) GetAmount() float32 {
@@ -135,8 +127,7 @@ func (x *CreatePaymentResponse) GetPaymentId() string {
 
 type GetPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	PaymentId     string                 `protobuf:"bytes,2,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -169,13 +160,6 @@ func (x *GetPaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetPaymentRequest.ProtoReflect.Descriptor instead.
 func (*GetPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetPaymentRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 func (x *GetPaymentRequest) GetPaymentId() string {
@@ -231,7 +215,6 @@ func (x *GetPaymentResponse) GetPayment() *Payment {
 
 type GetAllPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -264,13 +247,6 @@ func (x *GetAllPaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetAllPaymentRequest.ProtoReflect.Descriptor instead.
 func (*GetAllPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GetAllPaymentRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 type GetAllPaymentResponse struct {
@@ -319,9 +295,8 @@ func (x *GetAllPaymentResponse) GetPayment() []*Payment {
 
 type UpdateStatusPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	PaymentId     string                 `protobuf:"bytes,2,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
-	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -354,13 +329,6 @@ func (x *UpdateStatusPaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateStatusPaymentRequest.ProtoReflect.Descriptor instead.
 func (*UpdateStatusPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateStatusPaymentRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 func (x *UpdateStatusPaymentRequest) GetPaymentId() string {
@@ -415,8 +383,7 @@ func (*UpdateStatusPaymentResponse) Descriptor() ([]byte, []int) {
 
 type CancelPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
-	PaymentId     string                 `protobuf:"bytes,2,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	PaymentId     string                 `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -449,13 +416,6 @@ func (x *CancelPaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CancelPaymentRequest.ProtoReflect.Descriptor instead.
 func (*CancelPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *CancelPaymentRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 func (x *CancelPaymentRequest) GetPaymentId() string {
@@ -505,36 +465,31 @@ var File_billing_payment_proto protoreflect.FileDescriptor
 
 const file_billing_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x15billing/payment.proto\x12\abilling\x1a\x14billing/shared.proto\"\xa4\x01\n" +
-	"\x14CreatePaymentRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12\x1a\n" +
-	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12%\n" +
-	"\vdescription\x18\x04 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
+	"\x15billing/payment.proto\x12\abilling\x1a\x14billing/shared.proto\"\x81\x01\n" +
+	"\x14CreatePaymentRequest\x12\x16\n" +
+	"\x06amount\x18\x01 \x01(\x02R\x06amount\x12\x1a\n" +
+	"\bcurrency\x18\x02 \x01(\tR\bcurrency\x12%\n" +
+	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
 	"\f_description\"6\n" +
 	"\x15CreatePaymentResponse\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x01 \x01(\tR\tpaymentId\"U\n" +
-	"\x11GetPaymentRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
+	"payment_id\x18\x01 \x01(\tR\tpaymentId\"2\n" +
+	"\x11GetPaymentRequest\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x02 \x01(\tR\tpaymentId\"@\n" +
+	"payment_id\x18\x01 \x01(\tR\tpaymentId\"@\n" +
 	"\x12GetPaymentResponse\x12*\n" +
-	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment\"9\n" +
-	"\x14GetAllPaymentRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"C\n" +
+	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment\"\x16\n" +
+	"\x14GetAllPaymentRequest\"C\n" +
 	"\x15GetAllPaymentResponse\x12*\n" +
-	"\apayment\x18\x01 \x03(\v2\x10.billing.PaymentR\apayment\"v\n" +
-	"\x1aUpdateStatusPaymentRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
+	"\apayment\x18\x01 \x03(\v2\x10.billing.PaymentR\apayment\"S\n" +
+	"\x1aUpdateStatusPaymentRequest\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x02 \x01(\tR\tpaymentId\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"\x1d\n" +
-	"\x1bUpdateStatusPaymentResponse\"X\n" +
-	"\x14CancelPaymentRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
+	"payment_id\x18\x01 \x01(\tR\tpaymentId\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\"\x1d\n" +
+	"\x1bUpdateStatusPaymentResponse\"5\n" +
+	"\x14CancelPaymentRequest\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x02 \x01(\tR\tpaymentId\"\x17\n" +
+	"payment_id\x18\x01 \x01(\tR\tpaymentId\"\x17\n" +
 	"\x15CancelPaymentResponse2\xa9\x03\n" +
 	"\x0ePaymentService\x12N\n" +
 	"\rCreatePayment\x12\x1d.billing.CreatePaymentRequest\x1a\x1e.billing.CreatePaymentResponse\x12E\n" +

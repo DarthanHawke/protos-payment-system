@@ -319,7 +319,6 @@ func (x *LoginResponse) GetUserSession() *UserSession {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -352,13 +351,6 @@ func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
 func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_billing_auth_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *LogoutRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 type LogoutResponse struct {
@@ -399,7 +391,6 @@ func (*LogoutResponse) Descriptor() ([]byte, []int) {
 
 type LogoutAllRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -432,13 +423,6 @@ func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutAllRequest.ProtoReflect.Descriptor instead.
 func (*LogoutAllRequest) Descriptor() ([]byte, []int) {
 	return file_billing_auth_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *LogoutAllRequest) GetAccessToken() string {
-	if x != nil {
-		return x.AccessToken
-	}
-	return ""
 }
 
 type LogoutAllResponse struct {
@@ -497,12 +481,10 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"G\n" +
 	"\rLoginResponse\x126\n" +
-	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"2\n" +
-	"\rLogoutRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\x10\n" +
-	"\x0eLogoutResponse\"5\n" +
-	"\x10LogoutAllRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\x13\n" +
+	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"\x0f\n" +
+	"\rLogoutRequest\"\x10\n" +
+	"\x0eLogoutResponse\"\x12\n" +
+	"\x10LogoutAllRequest\"\x13\n" +
 	"\x11LogoutAllResponse2\xd8\x02\n" +
 	"\vAuthService\x12Q\n" +
 	"\x0eRefreshSession\x12\x1e.billing.RefreshSessionRequest\x1a\x1f.billing.RefreshSessionResponse\x12?\n" +
