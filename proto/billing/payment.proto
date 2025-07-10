@@ -43,12 +43,10 @@ message UpdateStatusPaymentRequest {
   string status = 2;
 }
 
-message UpdateStatusPaymentResponse {
-}
+message UpdateStatusPaymentResponse {}
 
 message CancelPaymentRequest {
   string payment_id = 1;
 }
 
-message CancelPaymentResponse {
-}
+message CancelPaymentResponse {}

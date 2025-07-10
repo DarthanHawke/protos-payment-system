@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option go_package = "pmtstm.v1;pmtstmv1";
+
+package billing;
+
+import "billing/shared.proto";
+
+service RoleService {
+  rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse);
+  rpc AssignRole (AssignRoleRequest) returns (AssignRoleResponse);
+  rpc RevokeRole (RevokeRoleRequest) returns (RevokeRoleResponse);
+  rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
+  rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
+}
+
+message CreateRoleRequest {
+  string name = 1;
+  repeated string permissions = 2;
+}
+
+message CreateRoleResponse {
+  Role role = 1;
+}
+
+message AssignRoleRequest {
+  string user_id = 1;
+  string role_id = 2;
+}
+
+message AssignRoleResponse {}
+
+message RevokeRoleRequest {
+  string user_id = 1;
+  string role_id = 2;
+}
+
+message RevokeRoleResponse {}
+
+message CheckPermissionRequest {
+  string user_id = 1;
+  string permission = 2;
+}
+
+message CheckPermissionResponse {
+  bool has_permission = 1;
+}
+
+message GetUserPermissionsRequest {
+  string user_id = 1;
+}
+
+message GetUserPermissionsResponse {
+  repeated string permissions = 1;
+}

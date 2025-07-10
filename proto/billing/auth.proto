@@ -14,8 +14,7 @@ service AuthService {
   rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
 }
 
-message RefreshSessionRequest {
-}
+message RefreshSessionRequest {}
 
 message RefreshSessionResponse {
   UserSession userSession = 1;

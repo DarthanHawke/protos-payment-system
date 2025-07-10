@@ -28,3 +28,10 @@ message User {
   google.protobuf.Timestamp createdAt = 5;
   google.protobuf.Timestamp updatedAt = 6;
 }
+
+message Role {
+  string id = 1;
+  string name = 2;
+  repeated string permissions = 3;
+  string Description = 4;
+}
