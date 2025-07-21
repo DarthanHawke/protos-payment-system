@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option go_package = "pmtstm.v1;pmtstmv1";
+
+package billing;
+
+import "billing/shared.proto";
+
+service PermissionService {
+  rpc ListPermissions (ListPermissionsRequest) returns (ListPermissionsResponse);
+  rpc GetRolePermissions (GetRolePermissionsRequest) returns (GetRolePermissionsResponse);
+  rpc HasRolePermission (HasRolePermissionRequest) returns (HasRolePermissionResponse);
+  rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
+  rpc HasUserPermission (HasUserPermissionRequest) returns (HasUserPermissionResponse);
+}
+
+message ListPermissionsRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+}
+
+message ListPermissionsResponse {
+  repeated Permission permission = 1;
+}
+
+message GetRolePermissionsRequest {
+  string role_id = 1;
+}
+
+message GetRolePermissionsResponse {
+  repeated Permission permission = 1;
+}
+
+message HasRolePermissionRequest {
+  string role_id = 1;
+  string code = 2;
+}
+
+message HasRolePermissionResponse {
+  bool allowed = 1;
+}
+
+message GetUserPermissionsRequest {
+  string user_id = 1;
+}
+
+message GetUserPermissionsResponse {
+  repeated Permission permission = 1;
+}
+
+message HasUserPermissionRequest {
+  string user_id = 1;
+  string code = 2;
+}
+
+message HasUserPermissionResponse {
+  bool allowed = 1;
+}

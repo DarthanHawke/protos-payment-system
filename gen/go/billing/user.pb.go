@@ -23,6 +23,7 @@ const (
 
 type GetProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -55,6 +56,13 @@ func (x *GetProfileRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetProfileRequest.ProtoReflect.Descriptor instead.
 func (*GetProfileRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetProfileRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return ""
 }
 
 type GetProfileResponse struct {
@@ -101,29 +109,28 @@ func (x *GetProfileResponse) GetUser() *User {
 	return nil
 }
 
-type UpdateProfileRequest struct {
+type UpdateNameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          *string                `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	Password      *string                `protobuf:"bytes,3,opt,name=password,proto3,oneof" json:"password,omitempty"`
+	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateProfileRequest) Reset() {
-	*x = UpdateProfileRequest{}
+func (x *UpdateNameRequest) Reset() {
+	*x = UpdateNameRequest{}
 	mi := &file_billing_user_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateProfileRequest) String() string {
+func (x *UpdateNameRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateProfileRequest) ProtoMessage() {}
+func (*UpdateNameRequest) ProtoMessage() {}
 
-func (x *UpdateProfileRequest) ProtoReflect() protoreflect.Message {
+func (x *UpdateNameRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_billing_user_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -135,53 +142,45 @@ func (x *UpdateProfileRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateProfileRequest.ProtoReflect.Descriptor instead.
-func (*UpdateProfileRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateNameRequest.ProtoReflect.Descriptor instead.
+func (*UpdateNameRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateProfileRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
+func (x *UpdateNameRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
 	}
 	return ""
 }
 
-func (x *UpdateProfileRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
+func (x *UpdateNameRequest) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
 
-func (x *UpdateProfileRequest) GetPassword() string {
-	if x != nil && x.Password != nil {
-		return *x.Password
-	}
-	return ""
-}
-
-type UpdateProfileResponse struct {
+type UpdateNameResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateProfileResponse) Reset() {
-	*x = UpdateProfileResponse{}
+func (x *UpdateNameResponse) Reset() {
+	*x = UpdateNameResponse{}
 	mi := &file_billing_user_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateProfileResponse) String() string {
+func (x *UpdateNameResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateProfileResponse) ProtoMessage() {}
+func (*UpdateNameResponse) ProtoMessage() {}
 
-func (x *UpdateProfileResponse) ProtoReflect() protoreflect.Message {
+func (x *UpdateNameResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_billing_user_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -193,39 +192,223 @@ func (x *UpdateProfileResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateProfileResponse.ProtoReflect.Descriptor instead.
-func (*UpdateProfileResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpdateNameResponse.ProtoReflect.Descriptor instead.
+func (*UpdateNameResponse) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateProfileResponse) GetUser() *User {
+type UpdateEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateEmailRequest) Reset() {
+	*x = UpdateEmailRequest{}
+	mi := &file_billing_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateEmailRequest) ProtoMessage() {}
+
+func (x *UpdateEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_user_proto_msgTypes[4]
 	if x != nil {
-		return x.User
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	return nil
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateEmailRequest.ProtoReflect.Descriptor instead.
+func (*UpdateEmailRequest) Descriptor() ([]byte, []int) {
+	return file_billing_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateEmailRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return ""
+}
+
+func (x *UpdateEmailRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type UpdateEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateEmailResponse) Reset() {
+	*x = UpdateEmailResponse{}
+	mi := &file_billing_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateEmailResponse) ProtoMessage() {}
+
+func (x *UpdateEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateEmailResponse.ProtoReflect.Descriptor instead.
+func (*UpdateEmailResponse) Descriptor() ([]byte, []int) {
+	return file_billing_user_proto_rawDescGZIP(), []int{5}
+}
+
+type UpdatePasswordRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdatePasswordRequest) Reset() {
+	*x = UpdatePasswordRequest{}
+	mi := &file_billing_user_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePasswordRequest) ProtoMessage() {}
+
+func (x *UpdatePasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_user_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePasswordRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
+	return file_billing_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *UpdatePasswordRequest) GetUserId() string {
+	if x != nil && x.UserId != nil {
+		return *x.UserId
+	}
+	return ""
+}
+
+func (x *UpdatePasswordRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+type UpdatePasswordResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdatePasswordResponse) Reset() {
+	*x = UpdatePasswordResponse{}
+	mi := &file_billing_user_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdatePasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePasswordResponse) ProtoMessage() {}
+
+func (x *UpdatePasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_user_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePasswordResponse.ProtoReflect.Descriptor instead.
+func (*UpdatePasswordResponse) Descriptor() ([]byte, []int) {
+	return file_billing_user_proto_rawDescGZIP(), []int{7}
 }
 
 var File_billing_user_proto protoreflect.FileDescriptor
 
 const file_billing_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\"\x13\n" +
-	"\x11GetProfileRequest\"7\n" +
+	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\"=\n" +
+	"\x11GetProfileRequest\x12\x1c\n" +
+	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01B\n" +
+	"\n" +
+	"\b_user_id\"7\n" +
 	"\x12GetProfileResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"\x8b\x01\n" +
-	"\x14UpdateProfileRequest\x12\x17\n" +
-	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
-	"\x05email\x18\x02 \x01(\tH\x01R\x05email\x88\x01\x01\x12\x1f\n" +
-	"\bpassword\x18\x03 \x01(\tH\x02R\bpassword\x88\x01\x01B\a\n" +
-	"\x05_nameB\b\n" +
-	"\x06_emailB\v\n" +
-	"\t_password\":\n" +
-	"\x15UpdateProfileResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user2\xa4\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"Q\n" +
+	"\x11UpdateNameRequest\x12\x1c\n" +
+	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04nameB\n" +
+	"\n" +
+	"\b_user_id\"\x14\n" +
+	"\x12UpdateNameResponse\"T\n" +
+	"\x12UpdateEmailRequest\x12\x1c\n" +
+	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05emailB\n" +
+	"\n" +
+	"\b_user_id\"\x15\n" +
+	"\x13UpdateEmailResponse\"]\n" +
+	"\x15UpdatePasswordRequest\x12\x1c\n" +
+	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpasswordB\n" +
+	"\n" +
+	"\b_user_id\"\x18\n" +
+	"\x16UpdatePasswordResponse2\xb8\x02\n" +
 	"\vUserService\x12E\n" +
 	"\n" +
-	"GetProfile\x12\x1a.billing.GetProfileRequest\x1a\x1b.billing.GetProfileResponse\x12N\n" +
-	"\rUpdateProfile\x12\x1d.billing.UpdateProfileRequest\x1a\x1e.billing.UpdateProfileResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"GetProfile\x12\x1a.billing.GetProfileRequest\x1a\x1b.billing.GetProfileResponse\x12E\n" +
+	"\n" +
+	"UpdateName\x12\x1a.billing.UpdateNameRequest\x1a\x1b.billing.UpdateNameResponse\x12H\n" +
+	"\vUpdateEmail\x12\x1b.billing.UpdateEmailRequest\x1a\x1c.billing.UpdateEmailResponse\x12Q\n" +
+	"\x0eUpdatePassword\x12\x1e.billing.UpdatePasswordRequest\x1a\x1f.billing.UpdatePasswordResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_user_proto_rawDescOnce sync.Once
@@ -239,26 +422,33 @@ func file_billing_user_proto_rawDescGZIP() []byte {
 	return file_billing_user_proto_rawDescData
 }
 
-var file_billing_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_billing_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_billing_user_proto_goTypes = []any{
-	(*GetProfileRequest)(nil),     // 0: billing.GetProfileRequest
-	(*GetProfileResponse)(nil),    // 1: billing.GetProfileResponse
-	(*UpdateProfileRequest)(nil),  // 2: billing.UpdateProfileRequest
-	(*UpdateProfileResponse)(nil), // 3: billing.UpdateProfileResponse
-	(*User)(nil),                  // 4: billing.User
+	(*GetProfileRequest)(nil),      // 0: billing.GetProfileRequest
+	(*GetProfileResponse)(nil),     // 1: billing.GetProfileResponse
+	(*UpdateNameRequest)(nil),      // 2: billing.UpdateNameRequest
+	(*UpdateNameResponse)(nil),     // 3: billing.UpdateNameResponse
+	(*UpdateEmailRequest)(nil),     // 4: billing.UpdateEmailRequest
+	(*UpdateEmailResponse)(nil),    // 5: billing.UpdateEmailResponse
+	(*UpdatePasswordRequest)(nil),  // 6: billing.UpdatePasswordRequest
+	(*UpdatePasswordResponse)(nil), // 7: billing.UpdatePasswordResponse
+	(*User)(nil),                   // 8: billing.User
 }
 var file_billing_user_proto_depIdxs = []int32{
-	4, // 0: billing.GetProfileResponse.user:type_name -> billing.User
-	4, // 1: billing.UpdateProfileResponse.user:type_name -> billing.User
-	0, // 2: billing.UserService.GetProfile:input_type -> billing.GetProfileRequest
-	2, // 3: billing.UserService.UpdateProfile:input_type -> billing.UpdateProfileRequest
-	1, // 4: billing.UserService.GetProfile:output_type -> billing.GetProfileResponse
-	3, // 5: billing.UserService.UpdateProfile:output_type -> billing.UpdateProfileResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: billing.GetProfileResponse.user:type_name -> billing.User
+	0, // 1: billing.UserService.GetProfile:input_type -> billing.GetProfileRequest
+	2, // 2: billing.UserService.UpdateName:input_type -> billing.UpdateNameRequest
+	4, // 3: billing.UserService.UpdateEmail:input_type -> billing.UpdateEmailRequest
+	6, // 4: billing.UserService.UpdatePassword:input_type -> billing.UpdatePasswordRequest
+	1, // 5: billing.UserService.GetProfile:output_type -> billing.GetProfileResponse
+	3, // 6: billing.UserService.UpdateName:output_type -> billing.UpdateNameResponse
+	5, // 7: billing.UserService.UpdateEmail:output_type -> billing.UpdateEmailResponse
+	7, // 8: billing.UserService.UpdatePassword:output_type -> billing.UpdatePasswordResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_billing_user_proto_init() }
@@ -267,14 +457,17 @@ func file_billing_user_proto_init() {
 		return
 	}
 	file_billing_shared_proto_init()
+	file_billing_user_proto_msgTypes[0].OneofWrappers = []any{}
 	file_billing_user_proto_msgTypes[2].OneofWrappers = []any{}
+	file_billing_user_proto_msgTypes[4].OneofWrappers = []any{}
+	file_billing_user_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_user_proto_rawDesc), len(file_billing_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

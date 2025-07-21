@@ -25,28 +25,33 @@ message CreatePaymentResponse {
 }
 
 message GetPaymentRequest {
-  string payment_id = 1;
+  optional string user_id = 1;
+  string payment_id = 2;
 }
 
 message GetPaymentResponse {
   Payment payment = 1;
 }
 
-message GetAllPaymentRequest {}
+message GetAllPaymentRequest {
+  optional string user_id = 1;
+}
 
 message GetAllPaymentResponse {
   repeated Payment payment = 1;
 }
 
 message UpdateStatusPaymentRequest {
-  string payment_id = 1;
-  string status = 2;
+  string user_id = 1;
+  string payment_id = 2;
+  string status = 3;
 }
 
 message UpdateStatusPaymentResponse {}
 
 message CancelPaymentRequest {
-  string payment_id = 1;
+  optional string user_id = 1;
+  string payment_id = 2;
 }
 
 message CancelPaymentResponse {}

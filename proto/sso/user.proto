@@ -10,7 +10,9 @@ service UserService {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
-  rpc UpdateProfile (UpdateProfileRequest) returns (UpdateProfileResponse);
+  rpc UpdateName (UpdateNameRequest) returns (UpdateNameResponse);
+  rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
+  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse);
 }
 
 message RegisterRequest {
@@ -40,13 +42,23 @@ message GetProfileResponse {
   User user = 1;
 }
 
-message UpdateProfileRequest {
+message UpdateNameRequest {
   string user_id = 1;
-  optional string name = 2;
-  optional string email = 3;
-  optional string password = 4;
+  string name = 2;
 }
 
-message UpdateProfileResponse {
-  User user = 1;
+message UpdateNameResponse {}
+
+message UpdateEmailRequest {
+  string user_id = 1;
+  string email = 2;
 }
+
+message UpdateEmailResponse {}
+
+message UpdatePasswordRequest {
+  string user_id = 1;
+  string password = 2;
+}
+
+message UpdatePasswordResponse {}

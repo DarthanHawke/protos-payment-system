@@ -7,49 +7,39 @@ package billing;
 import "billing/shared.proto";
 
 service RoleService {
-  rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse);
-  rpc AssignRole (AssignRoleRequest) returns (AssignRoleResponse);
-  rpc RevokeRole (RevokeRoleRequest) returns (RevokeRoleResponse);
-  rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
-  rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
+  rpc ListRoles (ListRolesRequest) returns (ListRolesResponse);
+  rpc AssignRoleToUser (AssignRoleToUserRequest) returns (AssignRoleToUserResponse);
+  rpc RevokeRoleFromUser (RevokeRoleFromUserRequest) returns (RevokeRoleFromUserResponse);
+  rpc GetUserRoles (GetUserRolesRequest) returns (GetUserRolesResponse);
 }
 
-message CreateRoleRequest {
-  string name = 1;
-  repeated string permissions = 2;
+message ListRolesRequest {
+  int32 limit = 1;
+  int32 offset = 2;
 }
 
-message CreateRoleResponse {
-  Role role = 1;
+message ListRolesResponse {
+  repeated Role role = 1;
 }
 
-message AssignRoleRequest {
+message AssignRoleToUserRequest {
   string user_id = 1;
   string role_id = 2;
 }
 
-message AssignRoleResponse {}
+message AssignRoleToUserResponse {}
 
-message RevokeRoleRequest {
+message RevokeRoleFromUserRequest {
   string user_id = 1;
   string role_id = 2;
 }
 
-message RevokeRoleResponse {}
+message RevokeRoleFromUserResponse {}
 
-message CheckPermissionRequest {
-  string user_id = 1;
-  string permission = 2;
-}
-
-message CheckPermissionResponse {
-  bool has_permission = 1;
-}
-
-message GetUserPermissionsRequest {
+message GetUserRolesRequest {
   string user_id = 1;
 }
 
-message GetUserPermissionsResponse {
-  repeated string permissions = 1;
+message GetUserRolesResponse {
+  repeated Role role = 1;
 }

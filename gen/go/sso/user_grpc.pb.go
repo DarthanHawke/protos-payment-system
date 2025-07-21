@@ -19,10 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_Register_FullMethodName      = "/sso.UserService/Register"
-	UserService_Login_FullMethodName         = "/sso.UserService/Login"
-	UserService_GetProfile_FullMethodName    = "/sso.UserService/GetProfile"
-	UserService_UpdateProfile_FullMethodName = "/sso.UserService/UpdateProfile"
+	UserService_Register_FullMethodName       = "/sso.UserService/Register"
+	UserService_Login_FullMethodName          = "/sso.UserService/Login"
+	UserService_GetProfile_FullMethodName     = "/sso.UserService/GetProfile"
+	UserService_UpdateName_FullMethodName     = "/sso.UserService/UpdateName"
+	UserService_UpdateEmail_FullMethodName    = "/sso.UserService/UpdateEmail"
+	UserService_UpdatePassword_FullMethodName = "/sso.UserService/UpdatePassword"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -32,7 +34,9 @@ type UserServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	GetProfile(ctx context.Context, in *GetProfileRequest, opts ...grpc.CallOption) (*GetProfileResponse, error)
-	UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UpdateProfileResponse, error)
+	UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*UpdateNameResponse, error)
+	UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error)
+	UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error)
 }
 
 type userServiceClient struct {
@@ -73,10 +77,30 @@ func (c *userServiceClient) GetProfile(ctx context.Context, in *GetProfileReques
 	return out, nil
 }
 
-func (c *userServiceClient) UpdateProfile(ctx context.Context, in *UpdateProfileRequest, opts ...grpc.CallOption) (*UpdateProfileResponse, error) {
+func (c *userServiceClient) UpdateName(ctx context.Context, in *UpdateNameRequest, opts ...grpc.CallOption) (*UpdateNameResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateProfileResponse)
-	err := c.cc.Invoke(ctx, UserService_UpdateProfile_FullMethodName, in, out, cOpts...)
+	out := new(UpdateNameResponse)
+	err := c.cc.Invoke(ctx, UserService_UpdateName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateEmailResponse)
+	err := c.cc.Invoke(ctx, UserService_UpdateEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdatePasswordResponse)
+	err := c.cc.Invoke(ctx, UserService_UpdatePassword_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -90,7 +114,9 @@ type UserServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error)
-	UpdateProfile(context.Context, *UpdateProfileRequest) (*UpdateProfileResponse, error)
+	UpdateName(context.Context, *UpdateNameRequest) (*UpdateNameResponse, error)
+	UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error)
+	UpdatePassword(context.Context, *UpdatePasswordRequest) (*UpdatePasswordResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -110,8 +136,14 @@ func (UnimplementedUserServiceServer) Login(context.Context, *LoginRequest) (*Lo
 func (UnimplementedUserServiceServer) GetProfile(context.Context, *GetProfileRequest) (*GetProfileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProfile not implemented")
 }
-func (UnimplementedUserServiceServer) UpdateProfile(context.Context, *UpdateProfileRequest) (*UpdateProfileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateProfile not implemented")
+func (UnimplementedUserServiceServer) UpdateName(context.Context, *UpdateNameRequest) (*UpdateNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateName not implemented")
+}
+func (UnimplementedUserServiceServer) UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmail not implemented")
+}
+func (UnimplementedUserServiceServer) UpdatePassword(context.Context, *UpdatePasswordRequest) (*UpdatePasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePassword not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -188,20 +220,56 @@ func _UserService_GetProfile_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_UpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateProfileRequest)
+func _UserService_UpdateName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNameRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateProfile(ctx, in)
+		return srv.(UserServiceServer).UpdateName(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_UpdateProfile_FullMethodName,
+		FullMethod: UserService_UpdateName_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateProfile(ctx, req.(*UpdateProfileRequest))
+		return srv.(UserServiceServer).UpdateName(ctx, req.(*UpdateNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdateEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdateEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_UpdateEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdateEmail(ctx, req.(*UpdateEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_UpdatePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UpdatePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_UpdatePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UpdatePassword(ctx, req.(*UpdatePasswordRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -226,8 +294,16 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_GetProfile_Handler,
 		},
 		{
-			MethodName: "UpdateProfile",
-			Handler:    _UserService_UpdateProfile_Handler,
+			MethodName: "UpdateName",
+			Handler:    _UserService_UpdateName_Handler,
+		},
+		{
+			MethodName: "UpdateEmail",
+			Handler:    _UserService_UpdateEmail_Handler,
+		},
+		{
+			MethodName: "UpdatePassword",
+			Handler:    _UserService_UpdatePassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

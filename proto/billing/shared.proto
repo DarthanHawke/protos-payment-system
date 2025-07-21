@@ -33,5 +33,11 @@ message Role {
   string id = 1;
   string name = 2;
   repeated string permissions = 3;
-  string Description = 4;
+  string description = 4;
+}
+
+message Permission {
+  string id = 1;
+  string code = 2;
+  string description = 3;
 }
