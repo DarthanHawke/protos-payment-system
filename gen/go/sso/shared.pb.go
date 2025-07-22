@@ -145,7 +145,7 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 type Session struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
@@ -190,11 +190,11 @@ func (x *Session) GetId() *UUID {
 	return nil
 }
 
-func (x *Session) GetUserId() string {
+func (x *Session) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return nil
 }
 
 func (x *Session) GetRefreshToken() string {
@@ -350,10 +350,10 @@ const file_sso_shared_proto_rawDesc = "" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xd7\x01\n" +
+	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xe2\x01\n" +
 	"\aSession\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
+	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\"\n" +
+	"\auser_id\x18\x02 \x01(\v2\t.sso.UUIDR\x06userId\x12#\n" +
 	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x129\n" +
 	"\n" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
@@ -390,20 +390,21 @@ var file_sso_shared_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_sso_shared_proto_depIdxs = []int32{
-	0, // 0: sso.User.id:type_name -> sso.UUID
-	5, // 1: sso.User.createdAt:type_name -> google.protobuf.Timestamp
-	5, // 2: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
-	0, // 3: sso.Session.id:type_name -> sso.UUID
-	5, // 4: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
-	5, // 5: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
-	0, // 6: sso.Permission.id:type_name -> sso.UUID
-	0, // 7: sso.Relation.source_id:type_name -> sso.UUID
-	0, // 8: sso.Relation.target_id:type_name -> sso.UUID
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	9, // [9:9] is the sub-list for extension extendee
-	0, // [0:9] is the sub-list for field type_name
+	0,  // 0: sso.User.id:type_name -> sso.UUID
+	5,  // 1: sso.User.createdAt:type_name -> google.protobuf.Timestamp
+	5,  // 2: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
+	0,  // 3: sso.Session.id:type_name -> sso.UUID
+	0,  // 4: sso.Session.user_id:type_name -> sso.UUID
+	5,  // 5: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
+	5,  // 6: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
+	0,  // 7: sso.Permission.id:type_name -> sso.UUID
+	0,  // 8: sso.Relation.source_id:type_name -> sso.UUID
+	0,  // 9: sso.Relation.target_id:type_name -> sso.UUID
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_sso_shared_proto_init() }
