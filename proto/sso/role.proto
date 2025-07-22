@@ -15,6 +15,7 @@ service RoleService {
   rpc AddPermission (AddPermissionRequest) returns (AddPermissionResponse);
   rpc AssignPermission (AssignPermissionRequest) returns (google.protobuf.Empty);
   rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
+  rpc GetPermissionByName (GetPermissionByNameRequest) returns (GetPermissionByNameResponse);
   rpc GetAllPermissions (google.protobuf.Empty) returns (GetAllPermissionsResponse);
   rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse);
   rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
@@ -65,6 +66,14 @@ message CheckPermissionRequest {
 
 message CheckPermissionResponse {
   bool has_permission = 1;
+}
+
+message GetPermissionByNameRequest{
+  string name = 1;
+}
+
+message GetPermissionByNameResponse{
+  Permission permissions = 1;
 }
 
 message GetAllPermissionsResponse {
