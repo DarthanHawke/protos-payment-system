@@ -242,134 +242,6 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-type Role struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Permissions   []string               `protobuf:"bytes,3,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Role) Reset() {
-	*x = Role{}
-	mi := &file_billing_shared_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Role) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Role) ProtoMessage() {}
-
-func (x *Role) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Role.ProtoReflect.Descriptor instead.
-func (*Role) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *Role) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *Role) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *Role) GetPermissions() []string {
-	if x != nil {
-		return x.Permissions
-	}
-	return nil
-}
-
-func (x *Role) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-type Permission struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Code          string                 `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
-	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Permission) Reset() {
-	*x = Permission{}
-	mi := &file_billing_shared_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Permission) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Permission) ProtoMessage() {}
-
-func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Permission.ProtoReflect.Descriptor instead.
-func (*Permission) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *Permission) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *Permission) GetCode() string {
-	if x != nil {
-		return x.Code
-	}
-	return ""
-}
-
-func (x *Permission) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
 var File_billing_shared_proto protoreflect.FileDescriptor
 
 const file_billing_shared_proto_rawDesc = "" +
@@ -394,17 +266,7 @@ const file_billing_shared_proto_rawDesc = "" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x128\n" +
 	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"n\n" +
-	"\x04Role\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
-	"\vpermissions\x18\x03 \x03(\tR\vpermissions\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\"R\n" +
-	"\n" +
-	"Permission\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04code\x18\x02 \x01(\tR\x04code\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescriptionB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\tupdatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_shared_proto_rawDescOnce sync.Once
@@ -418,20 +280,18 @@ func file_billing_shared_proto_rawDescGZIP() []byte {
 	return file_billing_shared_proto_rawDescData
 }
 
-var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_billing_shared_proto_goTypes = []any{
 	(*UserSession)(nil),           // 0: billing.UserSession
 	(*Payment)(nil),               // 1: billing.Payment
 	(*User)(nil),                  // 2: billing.User
-	(*Role)(nil),                  // 3: billing.Role
-	(*Permission)(nil),            // 4: billing.Permission
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_billing_shared_proto_depIdxs = []int32{
-	5, // 0: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
-	5, // 1: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
-	5, // 2: billing.User.createdAt:type_name -> google.protobuf.Timestamp
-	5, // 3: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
+	3, // 0: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
+	3, // 1: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
+	3, // 2: billing.User.createdAt:type_name -> google.protobuf.Timestamp
+	3, // 3: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -451,7 +311,7 @@ func file_billing_shared_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_shared_proto_rawDesc), len(file_billing_shared_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

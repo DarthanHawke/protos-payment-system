@@ -73,7 +73,7 @@ message GetPermissionByNameRequest{
 }
 
 message GetPermissionByNameResponse{
-  Permission permissions = 1;
+  Permission permission = 1;
 }
 
 message GetAllPermissionsResponse {

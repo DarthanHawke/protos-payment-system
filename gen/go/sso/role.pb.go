@@ -536,7 +536,7 @@ func (x *GetPermissionByNameRequest) GetName() string {
 
 type GetPermissionByNameResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Permissions   *Permission            `protobuf:"bytes,1,opt,name=permissions,proto3" json:"permissions,omitempty"`
+	Permission    *Permission            `protobuf:"bytes,1,opt,name=permission,proto3" json:"permission,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -571,9 +571,9 @@ func (*GetPermissionByNameResponse) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *GetPermissionByNameResponse) GetPermissions() *Permission {
+func (x *GetPermissionByNameResponse) GetPermission() *Permission {
 	if x != nil {
-		return x.Permissions
+		return x.Permission
 	}
 	return nil
 }
@@ -1009,9 +1009,11 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x17CheckPermissionResponse\x12%\n" +
 	"\x0ehas_permission\x18\x01 \x01(\bR\rhasPermission\"0\n" +
 	"\x1aGetPermissionByNameRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"P\n" +
-	"\x1bGetPermissionByNameResponse\x121\n" +
-	"\vpermissions\x18\x01 \x01(\v2\x0f.sso.PermissionR\vpermissions\"N\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"N\n" +
+	"\x1bGetPermissionByNameResponse\x12/\n" +
+	"\n" +
+	"permission\x18\x01 \x01(\v2\x0f.sso.PermissionR\n" +
+	"permission\"N\n" +
 	"\x19GetAllPermissionsResponse\x121\n" +
 	"\vpermissions\x18\x01 \x03(\v2\x0f.sso.PermissionR\vpermissions\"=\n" +
 	"\x17GetUserRelationsRequest\x12\"\n" +
@@ -1096,7 +1098,7 @@ var file_sso_role_proto_depIdxs = []int32{
 	20, // 8: sso.CheckPermissionRequest.subject_id:type_name -> sso.UUID
 	20, // 9: sso.CheckPermissionRequest.object_id:type_name -> sso.UUID
 	20, // 10: sso.CheckPermissionRequest.permission_id:type_name -> sso.UUID
-	21, // 11: sso.GetPermissionByNameResponse.permissions:type_name -> sso.Permission
+	21, // 11: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
 	21, // 12: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
 	20, // 13: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
 	22, // 14: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
