@@ -9,6 +9,7 @@ package pmtstmv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -23,7 +24,7 @@ const (
 
 type CreateSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,11 +59,11 @@ func (*CreateSessionRequest) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateSessionRequest) GetUserId() string {
+func (x *CreateSessionRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return nil
 }
 
 type CreateSessionResponse struct {
@@ -119,7 +120,7 @@ func (x *CreateSessionResponse) GetRefreshToken() string {
 
 type RefreshSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -155,11 +156,11 @@ func (*RefreshSessionRequest) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *RefreshSessionRequest) GetUserId() string {
+func (x *RefreshSessionRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return nil
 }
 
 func (x *RefreshSessionRequest) GetRefreshToken() string {
@@ -223,8 +224,8 @@ func (x *RefreshSessionResponse) GetRefreshToken() string {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	SessionId     *UUID                  `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -259,66 +260,30 @@ func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_sso_session_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *LogoutRequest) GetUserId() string {
+func (x *LogoutRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return nil
 }
 
-func (x *LogoutRequest) GetSessionId() string {
+func (x *LogoutRequest) GetSessionId() *UUID {
 	if x != nil {
 		return x.SessionId
 	}
-	return ""
-}
-
-type LogoutResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutResponse) Reset() {
-	*x = LogoutResponse{}
-	mi := &file_sso_session_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutResponse) ProtoMessage() {}
-
-func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_session_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
-func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_sso_session_proto_rawDescGZIP(), []int{5}
+	return nil
 }
 
 type LogoutAllRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *LogoutAllRequest) Reset() {
 	*x = LogoutAllRequest{}
-	mi := &file_sso_session_proto_msgTypes[6]
+	mi := &file_sso_session_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -330,7 +295,7 @@ func (x *LogoutAllRequest) String() string {
 func (*LogoutAllRequest) ProtoMessage() {}
 
 func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_session_proto_msgTypes[6]
+	mi := &file_sso_session_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -343,62 +308,26 @@ func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogoutAllRequest.ProtoReflect.Descriptor instead.
 func (*LogoutAllRequest) Descriptor() ([]byte, []int) {
-	return file_sso_session_proto_rawDescGZIP(), []int{6}
+	return file_sso_session_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *LogoutAllRequest) GetUserId() string {
+func (x *LogoutAllRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
-}
-
-type LogoutAllResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutAllResponse) Reset() {
-	*x = LogoutAllResponse{}
-	mi := &file_sso_session_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutAllResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutAllResponse) ProtoMessage() {}
-
-func (x *LogoutAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_session_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutAllResponse.ProtoReflect.Descriptor instead.
-func (*LogoutAllResponse) Descriptor() ([]byte, []int) {
-	return file_sso_session_proto_rawDescGZIP(), []int{7}
+	return nil
 }
 
 type GetAllRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetAllRequest) Reset() {
 	*x = GetAllRequest{}
-	mi := &file_sso_session_proto_msgTypes[8]
+	mi := &file_sso_session_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -410,7 +339,7 @@ func (x *GetAllRequest) String() string {
 func (*GetAllRequest) ProtoMessage() {}
 
 func (x *GetAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_session_proto_msgTypes[8]
+	mi := &file_sso_session_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -423,14 +352,14 @@ func (x *GetAllRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllRequest.ProtoReflect.Descriptor instead.
 func (*GetAllRequest) Descriptor() ([]byte, []int) {
-	return file_sso_session_proto_rawDescGZIP(), []int{8}
+	return file_sso_session_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetAllRequest) GetUserId() string {
+func (x *GetAllRequest) GetUserId() *UUID {
 	if x != nil {
 		return x.UserId
 	}
-	return ""
+	return nil
 }
 
 type GetAllResponse struct {
@@ -442,7 +371,7 @@ type GetAllResponse struct {
 
 func (x *GetAllResponse) Reset() {
 	*x = GetAllResponse{}
-	mi := &file_sso_session_proto_msgTypes[9]
+	mi := &file_sso_session_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -454,7 +383,7 @@ func (x *GetAllResponse) String() string {
 func (*GetAllResponse) ProtoMessage() {}
 
 func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_session_proto_msgTypes[9]
+	mi := &file_sso_session_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -467,7 +396,7 @@ func (x *GetAllResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllResponse.ProtoReflect.Descriptor instead.
 func (*GetAllResponse) Descriptor() ([]byte, []int) {
-	return file_sso_session_proto_rawDescGZIP(), []int{9}
+	return file_sso_session_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetAllResponse) GetSession() []*Session {
@@ -481,35 +410,33 @@ var File_sso_session_proto protoreflect.FileDescriptor
 
 const file_sso_session_proto_rawDesc = "" +
 	"\n" +
-	"\x11sso/session.proto\x12\x03sso\x1a\x10sso/shared.proto\"/\n" +
-	"\x14CreateSessionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"_\n" +
+	"\x11sso/session.proto\x12\x03sso\x1a\x10sso/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n" +
+	"\x14CreateSessionRequest\x12\"\n" +
+	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"_\n" +
 	"\x15CreateSessionResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"U\n" +
-	"\x15RefreshSessionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"`\n" +
+	"\x15RefreshSessionRequest\x12\"\n" +
+	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"`\n" +
 	"\x16RefreshSessionResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"G\n" +
-	"\rLogoutRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1d\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"]\n" +
+	"\rLogoutRequest\x12\"\n" +
+	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\x12(\n" +
 	"\n" +
-	"session_id\x18\x02 \x01(\tR\tsessionId\"\x10\n" +
-	"\x0eLogoutResponse\"+\n" +
-	"\x10LogoutAllRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x13\n" +
-	"\x11LogoutAllResponse\"(\n" +
-	"\rGetAllRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"8\n" +
+	"session_id\x18\x02 \x01(\v2\t.sso.UUIDR\tsessionId\"6\n" +
+	"\x10LogoutAllRequest\x12\"\n" +
+	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"3\n" +
+	"\rGetAllRequest\x12\"\n" +
+	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"8\n" +
 	"\x0eGetAllResponse\x12&\n" +
-	"\asession\x18\x01 \x03(\v2\f.sso.SessionR\asession2\xc5\x02\n" +
+	"\asession\x18\x01 \x03(\v2\f.sso.SessionR\asession2\xc8\x02\n" +
 	"\x0eSessionService\x12F\n" +
 	"\rCreateSession\x12\x19.sso.CreateSessionRequest\x1a\x1a.sso.CreateSessionResponse\x12I\n" +
-	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x121\n" +
-	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x13.sso.LogoutResponse\x12:\n" +
-	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.sso.LogoutAllResponse\x121\n" +
+	"\x0eRefreshSession\x12\x1a.sso.RefreshSessionRequest\x1a\x1b.sso.RefreshSessionResponse\x124\n" +
+	"\x06Logout\x12\x12.sso.LogoutRequest\x1a\x16.google.protobuf.Empty\x12:\n" +
+	"\tLogoutAll\x12\x15.sso.LogoutAllRequest\x1a\x16.google.protobuf.Empty\x121\n" +
 	"\x06GetAll\x12\x12.sso.GetAllRequest\x1a\x13.sso.GetAllResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
@@ -524,37 +451,43 @@ func file_sso_session_proto_rawDescGZIP() []byte {
 	return file_sso_session_proto_rawDescData
 }
 
-var file_sso_session_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_sso_session_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sso_session_proto_goTypes = []any{
 	(*CreateSessionRequest)(nil),   // 0: sso.CreateSessionRequest
 	(*CreateSessionResponse)(nil),  // 1: sso.CreateSessionResponse
 	(*RefreshSessionRequest)(nil),  // 2: sso.RefreshSessionRequest
 	(*RefreshSessionResponse)(nil), // 3: sso.RefreshSessionResponse
 	(*LogoutRequest)(nil),          // 4: sso.LogoutRequest
-	(*LogoutResponse)(nil),         // 5: sso.LogoutResponse
-	(*LogoutAllRequest)(nil),       // 6: sso.LogoutAllRequest
-	(*LogoutAllResponse)(nil),      // 7: sso.LogoutAllResponse
-	(*GetAllRequest)(nil),          // 8: sso.GetAllRequest
-	(*GetAllResponse)(nil),         // 9: sso.GetAllResponse
-	(*Session)(nil),                // 10: sso.Session
+	(*LogoutAllRequest)(nil),       // 5: sso.LogoutAllRequest
+	(*GetAllRequest)(nil),          // 6: sso.GetAllRequest
+	(*GetAllResponse)(nil),         // 7: sso.GetAllResponse
+	(*UUID)(nil),                   // 8: sso.UUID
+	(*Session)(nil),                // 9: sso.Session
+	(*emptypb.Empty)(nil),          // 10: google.protobuf.Empty
 }
 var file_sso_session_proto_depIdxs = []int32{
-	10, // 0: sso.GetAllResponse.session:type_name -> sso.Session
-	0,  // 1: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
-	2,  // 2: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
-	4,  // 3: sso.SessionService.Logout:input_type -> sso.LogoutRequest
-	6,  // 4: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
-	8,  // 5: sso.SessionService.GetAll:input_type -> sso.GetAllRequest
-	1,  // 6: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
-	3,  // 7: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
-	5,  // 8: sso.SessionService.Logout:output_type -> sso.LogoutResponse
-	7,  // 9: sso.SessionService.LogoutAll:output_type -> sso.LogoutAllResponse
-	9,  // 10: sso.SessionService.GetAll:output_type -> sso.GetAllResponse
-	6,  // [6:11] is the sub-list for method output_type
-	1,  // [1:6] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	8,  // 0: sso.CreateSessionRequest.user_id:type_name -> sso.UUID
+	8,  // 1: sso.RefreshSessionRequest.user_id:type_name -> sso.UUID
+	8,  // 2: sso.LogoutRequest.user_id:type_name -> sso.UUID
+	8,  // 3: sso.LogoutRequest.session_id:type_name -> sso.UUID
+	8,  // 4: sso.LogoutAllRequest.user_id:type_name -> sso.UUID
+	8,  // 5: sso.GetAllRequest.user_id:type_name -> sso.UUID
+	9,  // 6: sso.GetAllResponse.session:type_name -> sso.Session
+	0,  // 7: sso.SessionService.CreateSession:input_type -> sso.CreateSessionRequest
+	2,  // 8: sso.SessionService.RefreshSession:input_type -> sso.RefreshSessionRequest
+	4,  // 9: sso.SessionService.Logout:input_type -> sso.LogoutRequest
+	5,  // 10: sso.SessionService.LogoutAll:input_type -> sso.LogoutAllRequest
+	6,  // 11: sso.SessionService.GetAll:input_type -> sso.GetAllRequest
+	1,  // 12: sso.SessionService.CreateSession:output_type -> sso.CreateSessionResponse
+	3,  // 13: sso.SessionService.RefreshSession:output_type -> sso.RefreshSessionResponse
+	10, // 14: sso.SessionService.Logout:output_type -> google.protobuf.Empty
+	10, // 15: sso.SessionService.LogoutAll:output_type -> google.protobuf.Empty
+	7,  // 16: sso.SessionService.GetAll:output_type -> sso.GetAllResponse
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_sso_session_proto_init() }
@@ -569,7 +502,7 @@ func file_sso_session_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_session_proto_rawDesc), len(file_sso_session_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

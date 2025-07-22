@@ -5,17 +5,18 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package sso;
 
 import "sso/shared.proto";
+import "google/protobuf/empty.proto";
 
 service SessionService {
   rpc CreateSession (CreateSessionRequest) returns (CreateSessionResponse);
   rpc RefreshSession (RefreshSessionRequest) returns (RefreshSessionResponse);
-  rpc Logout (LogoutRequest) returns (LogoutResponse);
-  rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
+  rpc Logout (LogoutRequest) returns (google.protobuf.Empty);
+  rpc LogoutAll (LogoutAllRequest) returns (google.protobuf.Empty);
   rpc GetAll (GetAllRequest) returns (GetAllResponse);
 }
 
 message CreateSessionRequest {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
 message CreateSessionResponse {
@@ -24,7 +25,7 @@ message CreateSessionResponse {
 }
 
 message RefreshSessionRequest {
-  string user_id = 1;
+  UUID user_id = 1;
   string refresh_token = 2;
 }
 
@@ -34,23 +35,18 @@ message RefreshSessionResponse {
 }
 
 message LogoutRequest {
-  string user_id = 1;
-  string session_id = 2;
+  UUID user_id = 1;
+  UUID session_id = 2;
 }
-
-message LogoutResponse {}
 
 message LogoutAllRequest {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
-message LogoutAllResponse {}
-
 message GetAllRequest {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
 message GetAllResponse {
   repeated Session session = 1;
-
 }

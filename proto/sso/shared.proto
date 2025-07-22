@@ -6,8 +6,12 @@ package sso;
 
 import "google/protobuf/timestamp.proto";
 
+message UUID {
+  string value = 1;
+}
+
 message User {
-  string id = 1;
+  UUID id = 1;
   string email = 2;
   string full_name = 3;
   google.protobuf.Timestamp createdAt = 5;
@@ -15,22 +19,21 @@ message User {
 }
 
 message Session {
-  string id = 1;
+  UUID id = 1;
   string user_id = 2;
   string refresh_token = 3;
   google.protobuf.Timestamp expires_at = 4;
   google.protobuf.Timestamp createdAt = 5;
 }
 
-message Role {
-  string id = 1;
+message Permission {
+  UUID id = 1;
   string name = 2;
-  repeated string permissions = 3;
-  string description = 4;
+  string description = 3;
 }
 
-message Permission {
-  string id = 1;
-  string code = 2;
-  string description = 3;
+message Relation {
+  UUID source_id = 1;
+  UUID target_id = 2;
+  string relation_type = 3;
 }

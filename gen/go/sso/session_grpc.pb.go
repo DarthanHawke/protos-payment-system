@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -32,8 +33,8 @@ const (
 type SessionServiceClient interface {
 	CreateSession(ctx context.Context, in *CreateSessionRequest, opts ...grpc.CallOption) (*CreateSessionResponse, error)
 	RefreshSession(ctx context.Context, in *RefreshSessionRequest, opts ...grpc.CallOption) (*RefreshSessionResponse, error)
-	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
-	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetAll(ctx context.Context, in *GetAllRequest, opts ...grpc.CallOption) (*GetAllResponse, error)
 }
 
@@ -65,9 +66,9 @@ func (c *sessionServiceClient) RefreshSession(ctx context.Context, in *RefreshSe
 	return out, nil
 }
 
-func (c *sessionServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+func (c *sessionServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LogoutResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, SessionService_Logout_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,9 +76,9 @@ func (c *sessionServiceClient) Logout(ctx context.Context, in *LogoutRequest, op
 	return out, nil
 }
 
-func (c *sessionServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*LogoutAllResponse, error) {
+func (c *sessionServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LogoutAllResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, SessionService_LogoutAll_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -101,8 +102,8 @@ func (c *sessionServiceClient) GetAll(ctx context.Context, in *GetAllRequest, op
 type SessionServiceServer interface {
 	CreateSession(context.Context, *CreateSessionRequest) (*CreateSessionResponse, error)
 	RefreshSession(context.Context, *RefreshSessionRequest) (*RefreshSessionResponse, error)
-	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
-	LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error)
+	Logout(context.Context, *LogoutRequest) (*emptypb.Empty, error)
+	LogoutAll(context.Context, *LogoutAllRequest) (*emptypb.Empty, error)
 	GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error)
 	mustEmbedUnimplementedSessionServiceServer()
 }
@@ -120,10 +121,10 @@ func (UnimplementedSessionServiceServer) CreateSession(context.Context, *CreateS
 func (UnimplementedSessionServiceServer) RefreshSession(context.Context, *RefreshSessionRequest) (*RefreshSessionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshSession not implemented")
 }
-func (UnimplementedSessionServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
+func (UnimplementedSessionServiceServer) Logout(context.Context, *LogoutRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
-func (UnimplementedSessionServiceServer) LogoutAll(context.Context, *LogoutAllRequest) (*LogoutAllResponse, error) {
+func (UnimplementedSessionServiceServer) LogoutAll(context.Context, *LogoutAllRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogoutAll not implemented")
 }
 func (UnimplementedSessionServiceServer) GetAll(context.Context, *GetAllRequest) (*GetAllResponse, error) {

@@ -5,85 +5,100 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package sso;
 
 import "sso/shared.proto";
+import "google/protobuf/empty.proto";
 
 service RoleService {
-  rpc CreateRole (CreateRoleRequest) returns (CreateRoleResponse);
-  rpc DeleteRole (DeleteRoleRequest) returns (DeleteRoleResponse);
-  rpc GetRoleByID (GetRoleByIDRequest) returns (GetRoleByIDResponse);
-  rpc GetRoleByName (GetRoleByNameRequest) returns (GetRoleByNameResponse);
-  rpc ListRoles (ListRolesRequest) returns (ListRolesResponse);
-  rpc UpdateRole (UpdateRoleRequest) returns (UpdateRoleResponse);
-  rpc AssignRoleToUser (AssignRoleToUserRequest) returns (AssignRoleToUserResponse);
-  rpc RevokeRoleFromUser (RevokeRoleFromUserRequest) returns (RevokeRoleFromUserResponse);
-  rpc GetUserRoles (GetUserRolesRequest) returns (GetUserRolesResponse);
+  rpc CreateEntity (CreateEntityRequest) returns (google.protobuf.Empty);
+  rpc DeleteEntity (DeleteEntityRequest) returns (google.protobuf.Empty);
+  rpc CreateRelation (CreateRelationRequest) returns (google.protobuf.Empty);
+  rpc DeleteRelation (DeleteRelationRequest) returns (google.protobuf.Empty);
+  rpc AddPermission (AddPermissionRequest) returns (AddPermissionResponse);
+  rpc AssignPermission (AssignPermissionRequest) returns (google.protobuf.Empty);
+  rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
+  rpc GetAllPermissions (google.protobuf.Empty) returns (GetAllPermissionsResponse);
+  rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse);
+  rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
+  rpc GetPermissionsForRelationType (GetPermissionsForRelationTypeRequest) returns (GetPermissionsForRelationTypeResponse);
+  rpc GetEntityRelations (GetEntityRelationsRequest) returns (GetEntityRelationsResponse);
 }
 
-message CreateRoleRequest {
+message CreateEntityRequest {
+  UUID id = 1;
+  string entity_type = 2;
+}
+
+message DeleteEntityRequest {
+  UUID id = 1;
+}
+
+message CreateRelationRequest {
+  UUID source_id = 1;
+  UUID target_id = 2;
+  string relation_type = 3;
+}
+
+message DeleteRelationRequest {
+  UUID source_id = 1;
+  UUID target_id = 2;
+  string relation_type = 3;
+}
+
+message AddPermissionRequest {
   string name = 1;
-  repeated string permissions = 2;
-  string description = 3;
-}
-
-message CreateRoleResponse {
-  string role_id = 1;
-}
-
-message DeleteRoleRequest {
-  string role_id = 1;
-}
-
-message DeleteRoleResponse {}
-
-message GetRoleByIDRequest {
-  string role_id = 1;
-}
-
-message GetRoleByIDResponse {
-  Role role = 1;
-}
-
-message GetRoleByNameRequest {
-  string name = 1;
-}
-
-message GetRoleByNameResponse {
-  Role role = 1;
-}
-
-message ListRolesRequest {
-  int32 limit = 1;
-  int32 offset = 2;
-}
-
-message ListRolesResponse {
-  repeated Role role = 1;
-}
-
-message UpdateRoleRequest {
-  string role_id = 1;
   string description = 2;
 }
 
-message UpdateRoleResponse {}
-
-message AssignRoleToUserRequest {
-  string user_id = 1;
-  string role_id = 2;
+message AddPermissionResponse {
+  UUID permission_id = 1;
 }
 
-message AssignRoleToUserResponse {}
-
-message RevokeRoleFromUserRequest {
-  string user_id = 1;
-  string role_id = 2;
+message AssignPermissionRequest {
+  UUID permission_id = 1;
+  string relation_type = 2;
 }
 
-message RevokeRoleFromUserResponse {}
-
-message GetUserRolesRequest {
-  string user_id = 1;
+message CheckPermissionRequest {
+  UUID subject_id = 1;
+  UUID object_id = 2;
+  UUID permission_id = 3;
 }
 
-message GetUserRolesResponse {
-  repeated Role role = 1;
+message CheckPermissionResponse {
+  bool has_permission = 1;
+}
+
+message GetAllPermissionsResponse {
+  repeated Permission permissions = 1;
+}
+
+message GetUserRelationsRequest {
+  UUID user_id = 1;
+}
+
+message GetUserRelationsResponse {
+  repeated Relation relations = 1;
+}
+
+message GetUserPermissionsRequest {
+  UUID user_id = 1;
+}
+
+message GetUserPermissionsResponse {
+  repeated Permission permissions = 1;
+}
+
+message GetPermissionsForRelationTypeRequest {
+  string relation_type = 1;
+}
+
+message GetPermissionsForRelationTypeResponse {
+  repeated Permission permissions = 1;
+}
+
+message GetEntityRelationsRequest {
+  UUID entity_id = 1;
+}
+
+message GetEntityRelationsResponse {
+  repeated Relation relations = 1;
 }

@@ -5,14 +5,15 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package sso;
 
 import "sso/shared.proto";
+import "google/protobuf/empty.proto";
 
 service UserService {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
-  rpc UpdateName (UpdateNameRequest) returns (UpdateNameResponse);
-  rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
-  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse);
+  rpc UpdateName (UpdateNameRequest) returns (google.protobuf.Empty);
+  rpc UpdateEmail (UpdateEmailRequest) returns (google.protobuf.Empty);
+  rpc UpdatePassword (UpdatePasswordRequest) returns (google.protobuf.Empty);
 }
 
 message RegisterRequest {
@@ -22,7 +23,7 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
 message LoginRequest {
@@ -31,11 +32,11 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
 message GetProfileRequest {
-  string user_id = 1;
+  UUID user_id = 1;
 }
 
 message GetProfileResponse {
@@ -43,22 +44,16 @@ message GetProfileResponse {
 }
 
 message UpdateNameRequest {
-  string user_id = 1;
+  UUID user_id = 1;
   string name = 2;
 }
 
-message UpdateNameResponse {}
-
 message UpdateEmailRequest {
-  string user_id = 1;
+  UUID user_id = 1;
   string email = 2;
 }
 
-message UpdateEmailResponse {}
-
 message UpdatePasswordRequest {
-  string user_id = 1;
+  UUID user_id = 1;
   string password = 2;
 }
-
-message UpdatePasswordResponse {}
