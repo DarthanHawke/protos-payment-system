@@ -6,6 +6,10 @@ package billing;
 
 import "google/protobuf/timestamp.proto";
 
+message UUID {
+  string value = 1;
+}
+
 message UserSession {
   string access_token = 1;
   string refresh_token = 2;
@@ -27,4 +31,16 @@ message User {
   string full_name = 3;
   google.protobuf.Timestamp createdAt = 5;
   google.protobuf.Timestamp updatedAt = 6;
+}
+
+message Permission {
+  UUID id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message Relation {
+  UUID source_id = 1;
+  UUID target_id = 2;
+  string relation_type = 3;
 }

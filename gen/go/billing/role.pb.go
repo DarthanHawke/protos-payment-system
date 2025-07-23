@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v6.31.0
-// source: sso/role.proto
+// source: billing/role.proto
 
 package pmtstmv1
 
@@ -32,7 +32,7 @@ type CreateEntityRequest struct {
 
 func (x *CreateEntityRequest) Reset() {
 	*x = CreateEntityRequest{}
-	mi := &file_sso_role_proto_msgTypes[0]
+	mi := &file_billing_role_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *CreateEntityRequest) String() string {
 func (*CreateEntityRequest) ProtoMessage() {}
 
 func (x *CreateEntityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[0]
+	mi := &file_billing_role_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *CreateEntityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateEntityRequest.ProtoReflect.Descriptor instead.
 func (*CreateEntityRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{0}
+	return file_billing_role_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *CreateEntityRequest) GetId() *UUID {
@@ -83,7 +83,7 @@ type DeleteEntityRequest struct {
 
 func (x *DeleteEntityRequest) Reset() {
 	*x = DeleteEntityRequest{}
-	mi := &file_sso_role_proto_msgTypes[1]
+	mi := &file_billing_role_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +95,7 @@ func (x *DeleteEntityRequest) String() string {
 func (*DeleteEntityRequest) ProtoMessage() {}
 
 func (x *DeleteEntityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[1]
+	mi := &file_billing_role_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,7 +108,7 @@ func (x *DeleteEntityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEntityRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEntityRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{1}
+	return file_billing_role_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *DeleteEntityRequest) GetId() *UUID {
@@ -129,7 +129,7 @@ type CreateRelationRequest struct {
 
 func (x *CreateRelationRequest) Reset() {
 	*x = CreateRelationRequest{}
-	mi := &file_sso_role_proto_msgTypes[2]
+	mi := &file_billing_role_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -141,7 +141,7 @@ func (x *CreateRelationRequest) String() string {
 func (*CreateRelationRequest) ProtoMessage() {}
 
 func (x *CreateRelationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[2]
+	mi := &file_billing_role_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -154,7 +154,7 @@ func (x *CreateRelationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRelationRequest.ProtoReflect.Descriptor instead.
 func (*CreateRelationRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{2}
+	return file_billing_role_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *CreateRelationRequest) GetSourceId() *UUID {
@@ -189,7 +189,7 @@ type DeleteRelationRequest struct {
 
 func (x *DeleteRelationRequest) Reset() {
 	*x = DeleteRelationRequest{}
-	mi := &file_sso_role_proto_msgTypes[3]
+	mi := &file_billing_role_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +201,7 @@ func (x *DeleteRelationRequest) String() string {
 func (*DeleteRelationRequest) ProtoMessage() {}
 
 func (x *DeleteRelationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[3]
+	mi := &file_billing_role_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +214,7 @@ func (x *DeleteRelationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRelationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRelationRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{3}
+	return file_billing_role_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeleteRelationRequest) GetSourceId() *UUID {
@@ -248,7 +248,7 @@ type AddPermissionRequest struct {
 
 func (x *AddPermissionRequest) Reset() {
 	*x = AddPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[4]
+	mi := &file_billing_role_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +260,7 @@ func (x *AddPermissionRequest) String() string {
 func (*AddPermissionRequest) ProtoMessage() {}
 
 func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[4]
+	mi := &file_billing_role_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +273,7 @@ func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AddPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{4}
+	return file_billing_role_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AddPermissionRequest) GetName() string {
@@ -299,7 +299,7 @@ type AddPermissionResponse struct {
 
 func (x *AddPermissionResponse) Reset() {
 	*x = AddPermissionResponse{}
-	mi := &file_sso_role_proto_msgTypes[5]
+	mi := &file_billing_role_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +311,7 @@ func (x *AddPermissionResponse) String() string {
 func (*AddPermissionResponse) ProtoMessage() {}
 
 func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[5]
+	mi := &file_billing_role_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +324,7 @@ func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionResponse.ProtoReflect.Descriptor instead.
 func (*AddPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{5}
+	return file_billing_role_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AddPermissionResponse) GetPermissionId() *UUID {
@@ -344,7 +344,7 @@ type AssignPermissionRequest struct {
 
 func (x *AssignPermissionRequest) Reset() {
 	*x = AssignPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[6]
+	mi := &file_billing_role_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +356,7 @@ func (x *AssignPermissionRequest) String() string {
 func (*AssignPermissionRequest) ProtoMessage() {}
 
 func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[6]
+	mi := &file_billing_role_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +369,7 @@ func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AssignPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{6}
+	return file_billing_role_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AssignPermissionRequest) GetPermissionId() *UUID {
@@ -396,7 +396,7 @@ type RevokePermissionRequest struct {
 
 func (x *RevokePermissionRequest) Reset() {
 	*x = RevokePermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[7]
+	mi := &file_billing_role_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -408,7 +408,7 @@ func (x *RevokePermissionRequest) String() string {
 func (*RevokePermissionRequest) ProtoMessage() {}
 
 func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[7]
+	mi := &file_billing_role_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +421,7 @@ func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RevokePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{7}
+	return file_billing_role_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *RevokePermissionRequest) GetPermissionId() *UUID {
@@ -449,7 +449,7 @@ type CheckPermissionRequest struct {
 
 func (x *CheckPermissionRequest) Reset() {
 	*x = CheckPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[8]
+	mi := &file_billing_role_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -461,7 +461,7 @@ func (x *CheckPermissionRequest) String() string {
 func (*CheckPermissionRequest) ProtoMessage() {}
 
 func (x *CheckPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[8]
+	mi := &file_billing_role_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,7 +474,7 @@ func (x *CheckPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermissionRequest.ProtoReflect.Descriptor instead.
 func (*CheckPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{8}
+	return file_billing_role_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CheckPermissionRequest) GetSubjectId() *UUID {
@@ -507,7 +507,7 @@ type CheckPermissionResponse struct {
 
 func (x *CheckPermissionResponse) Reset() {
 	*x = CheckPermissionResponse{}
-	mi := &file_sso_role_proto_msgTypes[9]
+	mi := &file_billing_role_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +519,7 @@ func (x *CheckPermissionResponse) String() string {
 func (*CheckPermissionResponse) ProtoMessage() {}
 
 func (x *CheckPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[9]
+	mi := &file_billing_role_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +532,7 @@ func (x *CheckPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermissionResponse.ProtoReflect.Descriptor instead.
 func (*CheckPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{9}
+	return file_billing_role_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CheckPermissionResponse) GetHasPermission() bool {
@@ -551,7 +551,7 @@ type GetPermissionByNameRequest struct {
 
 func (x *GetPermissionByNameRequest) Reset() {
 	*x = GetPermissionByNameRequest{}
-	mi := &file_sso_role_proto_msgTypes[10]
+	mi := &file_billing_role_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -563,7 +563,7 @@ func (x *GetPermissionByNameRequest) String() string {
 func (*GetPermissionByNameRequest) ProtoMessage() {}
 
 func (x *GetPermissionByNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[10]
+	mi := &file_billing_role_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -576,7 +576,7 @@ func (x *GetPermissionByNameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermissionByNameRequest.ProtoReflect.Descriptor instead.
 func (*GetPermissionByNameRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{10}
+	return file_billing_role_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetPermissionByNameRequest) GetName() string {
@@ -595,7 +595,7 @@ type GetPermissionByNameResponse struct {
 
 func (x *GetPermissionByNameResponse) Reset() {
 	*x = GetPermissionByNameResponse{}
-	mi := &file_sso_role_proto_msgTypes[11]
+	mi := &file_billing_role_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -607,7 +607,7 @@ func (x *GetPermissionByNameResponse) String() string {
 func (*GetPermissionByNameResponse) ProtoMessage() {}
 
 func (x *GetPermissionByNameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[11]
+	mi := &file_billing_role_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -620,7 +620,7 @@ func (x *GetPermissionByNameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermissionByNameResponse.ProtoReflect.Descriptor instead.
 func (*GetPermissionByNameResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{11}
+	return file_billing_role_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetPermissionByNameResponse) GetPermission() *Permission {
@@ -639,7 +639,7 @@ type GetAllPermissionsResponse struct {
 
 func (x *GetAllPermissionsResponse) Reset() {
 	*x = GetAllPermissionsResponse{}
-	mi := &file_sso_role_proto_msgTypes[12]
+	mi := &file_billing_role_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -651,7 +651,7 @@ func (x *GetAllPermissionsResponse) String() string {
 func (*GetAllPermissionsResponse) ProtoMessage() {}
 
 func (x *GetAllPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[12]
+	mi := &file_billing_role_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -664,7 +664,7 @@ func (x *GetAllPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*GetAllPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{12}
+	return file_billing_role_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetAllPermissionsResponse) GetPermissions() []*Permission {
@@ -683,7 +683,7 @@ type GetUserRelationsRequest struct {
 
 func (x *GetUserRelationsRequest) Reset() {
 	*x = GetUserRelationsRequest{}
-	mi := &file_sso_role_proto_msgTypes[13]
+	mi := &file_billing_role_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -695,7 +695,7 @@ func (x *GetUserRelationsRequest) String() string {
 func (*GetUserRelationsRequest) ProtoMessage() {}
 
 func (x *GetUserRelationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[13]
+	mi := &file_billing_role_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -708,7 +708,7 @@ func (x *GetUserRelationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRelationsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRelationsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{13}
+	return file_billing_role_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetUserRelationsRequest) GetUserId() *UUID {
@@ -727,7 +727,7 @@ type GetUserRelationsResponse struct {
 
 func (x *GetUserRelationsResponse) Reset() {
 	*x = GetUserRelationsResponse{}
-	mi := &file_sso_role_proto_msgTypes[14]
+	mi := &file_billing_role_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -739,7 +739,7 @@ func (x *GetUserRelationsResponse) String() string {
 func (*GetUserRelationsResponse) ProtoMessage() {}
 
 func (x *GetUserRelationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[14]
+	mi := &file_billing_role_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -752,7 +752,7 @@ func (x *GetUserRelationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRelationsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserRelationsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{14}
+	return file_billing_role_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetUserRelationsResponse) GetRelations() []*Relation {
@@ -771,7 +771,7 @@ type GetUserPermissionsRequest struct {
 
 func (x *GetUserPermissionsRequest) Reset() {
 	*x = GetUserPermissionsRequest{}
-	mi := &file_sso_role_proto_msgTypes[15]
+	mi := &file_billing_role_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -783,7 +783,7 @@ func (x *GetUserPermissionsRequest) String() string {
 func (*GetUserPermissionsRequest) ProtoMessage() {}
 
 func (x *GetUserPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[15]
+	mi := &file_billing_role_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,7 +796,7 @@ func (x *GetUserPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{15}
+	return file_billing_role_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetUserPermissionsRequest) GetUserId() *UUID {
@@ -815,7 +815,7 @@ type GetUserPermissionsResponse struct {
 
 func (x *GetUserPermissionsResponse) Reset() {
 	*x = GetUserPermissionsResponse{}
-	mi := &file_sso_role_proto_msgTypes[16]
+	mi := &file_billing_role_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +827,7 @@ func (x *GetUserPermissionsResponse) String() string {
 func (*GetUserPermissionsResponse) ProtoMessage() {}
 
 func (x *GetUserPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[16]
+	mi := &file_billing_role_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +840,7 @@ func (x *GetUserPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{16}
+	return file_billing_role_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetUserPermissionsResponse) GetPermissions() []*Permission {
@@ -859,7 +859,7 @@ type GetPermissionsForRelationTypeRequest struct {
 
 func (x *GetPermissionsForRelationTypeRequest) Reset() {
 	*x = GetPermissionsForRelationTypeRequest{}
-	mi := &file_sso_role_proto_msgTypes[17]
+	mi := &file_billing_role_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -871,7 +871,7 @@ func (x *GetPermissionsForRelationTypeRequest) String() string {
 func (*GetPermissionsForRelationTypeRequest) ProtoMessage() {}
 
 func (x *GetPermissionsForRelationTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[17]
+	mi := &file_billing_role_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -884,7 +884,7 @@ func (x *GetPermissionsForRelationTypeRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetPermissionsForRelationTypeRequest.ProtoReflect.Descriptor instead.
 func (*GetPermissionsForRelationTypeRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{17}
+	return file_billing_role_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetPermissionsForRelationTypeRequest) GetRelationType() string {
@@ -903,7 +903,7 @@ type GetPermissionsForRelationTypeResponse struct {
 
 func (x *GetPermissionsForRelationTypeResponse) Reset() {
 	*x = GetPermissionsForRelationTypeResponse{}
-	mi := &file_sso_role_proto_msgTypes[18]
+	mi := &file_billing_role_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -915,7 +915,7 @@ func (x *GetPermissionsForRelationTypeResponse) String() string {
 func (*GetPermissionsForRelationTypeResponse) ProtoMessage() {}
 
 func (x *GetPermissionsForRelationTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[18]
+	mi := &file_billing_role_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -928,7 +928,7 @@ func (x *GetPermissionsForRelationTypeResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use GetPermissionsForRelationTypeResponse.ProtoReflect.Descriptor instead.
 func (*GetPermissionsForRelationTypeResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{18}
+	return file_billing_role_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetPermissionsForRelationTypeResponse) GetPermissions() []*Permission {
@@ -947,7 +947,7 @@ type GetEntityRelationsRequest struct {
 
 func (x *GetEntityRelationsRequest) Reset() {
 	*x = GetEntityRelationsRequest{}
-	mi := &file_sso_role_proto_msgTypes[19]
+	mi := &file_billing_role_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -959,7 +959,7 @@ func (x *GetEntityRelationsRequest) String() string {
 func (*GetEntityRelationsRequest) ProtoMessage() {}
 
 func (x *GetEntityRelationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[19]
+	mi := &file_billing_role_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -972,7 +972,7 @@ func (x *GetEntityRelationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityRelationsRequest.ProtoReflect.Descriptor instead.
 func (*GetEntityRelationsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{19}
+	return file_billing_role_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetEntityRelationsRequest) GetEntityId() *UUID {
@@ -991,7 +991,7 @@ type GetEntityRelationsResponse struct {
 
 func (x *GetEntityRelationsResponse) Reset() {
 	*x = GetEntityRelationsResponse{}
-	mi := &file_sso_role_proto_msgTypes[20]
+	mi := &file_billing_role_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1003,7 +1003,7 @@ func (x *GetEntityRelationsResponse) String() string {
 func (*GetEntityRelationsResponse) ProtoMessage() {}
 
 func (x *GetEntityRelationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[20]
+	mi := &file_billing_role_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1016,7 +1016,7 @@ func (x *GetEntityRelationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityRelationsResponse.ProtoReflect.Descriptor instead.
 func (*GetEntityRelationsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{20}
+	return file_billing_role_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetEntityRelationsResponse) GetRelations() []*Relation {
@@ -1026,201 +1026,186 @@ func (x *GetEntityRelationsResponse) GetRelations() []*Relation {
 	return nil
 }
 
-var File_sso_role_proto protoreflect.FileDescriptor
+var File_billing_role_proto protoreflect.FileDescriptor
 
-const file_sso_role_proto_rawDesc = "" +
+const file_billing_role_proto_rawDesc = "" +
 	"\n" +
-	"\x0esso/role.proto\x12\x03sso\x1a\x10sso/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\"Q\n" +
-	"\x13CreateEntityRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x1f\n" +
+	"\x12billing/role.proto\x12\abilling\x1a\x14billing/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\"U\n" +
+	"\x13CreateEntityRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12\x1f\n" +
 	"\ventity_type\x18\x02 \x01(\tR\n" +
-	"entityType\"0\n" +
-	"\x13DeleteEntityRequest\x12\x19\n" +
-	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\"\x8c\x01\n" +
-	"\x15CreateRelationRequest\x12&\n" +
-	"\tsource_id\x18\x01 \x01(\v2\t.sso.UUIDR\bsourceId\x12&\n" +
-	"\ttarget_id\x18\x02 \x01(\v2\t.sso.UUIDR\btargetId\x12#\n" +
-	"\rrelation_type\x18\x03 \x01(\tR\frelationType\"\x8c\x01\n" +
-	"\x15DeleteRelationRequest\x12&\n" +
-	"\tsource_id\x18\x01 \x01(\v2\t.sso.UUIDR\bsourceId\x12&\n" +
-	"\ttarget_id\x18\x02 \x01(\v2\t.sso.UUIDR\btargetId\x12#\n" +
+	"entityType\"4\n" +
+	"\x13DeleteEntityRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\"\x94\x01\n" +
+	"\x15CreateRelationRequest\x12*\n" +
+	"\tsource_id\x18\x01 \x01(\v2\r.billing.UUIDR\bsourceId\x12*\n" +
+	"\ttarget_id\x18\x02 \x01(\v2\r.billing.UUIDR\btargetId\x12#\n" +
+	"\rrelation_type\x18\x03 \x01(\tR\frelationType\"\x94\x01\n" +
+	"\x15DeleteRelationRequest\x12*\n" +
+	"\tsource_id\x18\x01 \x01(\v2\r.billing.UUIDR\bsourceId\x12*\n" +
+	"\ttarget_id\x18\x02 \x01(\v2\r.billing.UUIDR\btargetId\x12#\n" +
 	"\rrelation_type\x18\x03 \x01(\tR\frelationType\"L\n" +
 	"\x14AddPermissionRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\"G\n" +
-	"\x15AddPermissionResponse\x12.\n" +
-	"\rpermission_id\x18\x01 \x01(\v2\t.sso.UUIDR\fpermissionId\"n\n" +
-	"\x17AssignPermissionRequest\x12.\n" +
-	"\rpermission_id\x18\x01 \x01(\v2\t.sso.UUIDR\fpermissionId\x12#\n" +
-	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"n\n" +
-	"\x17RevokePermissionRequest\x12.\n" +
-	"\rpermission_id\x18\x01 \x01(\v2\t.sso.UUIDR\fpermissionId\x12#\n" +
-	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"\x9a\x01\n" +
-	"\x16CheckPermissionRequest\x12(\n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\"K\n" +
+	"\x15AddPermissionResponse\x122\n" +
+	"\rpermission_id\x18\x01 \x01(\v2\r.billing.UUIDR\fpermissionId\"r\n" +
+	"\x17AssignPermissionRequest\x122\n" +
+	"\rpermission_id\x18\x01 \x01(\v2\r.billing.UUIDR\fpermissionId\x12#\n" +
+	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"r\n" +
+	"\x17RevokePermissionRequest\x122\n" +
+	"\rpermission_id\x18\x01 \x01(\v2\r.billing.UUIDR\fpermissionId\x12#\n" +
+	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"\xa6\x01\n" +
+	"\x16CheckPermissionRequest\x12,\n" +
 	"\n" +
-	"subject_id\x18\x01 \x01(\v2\t.sso.UUIDR\tsubjectId\x12&\n" +
-	"\tobject_id\x18\x02 \x01(\v2\t.sso.UUIDR\bobjectId\x12.\n" +
-	"\rpermission_id\x18\x03 \x01(\v2\t.sso.UUIDR\fpermissionId\"@\n" +
+	"subject_id\x18\x01 \x01(\v2\r.billing.UUIDR\tsubjectId\x12*\n" +
+	"\tobject_id\x18\x02 \x01(\v2\r.billing.UUIDR\bobjectId\x122\n" +
+	"\rpermission_id\x18\x03 \x01(\v2\r.billing.UUIDR\fpermissionId\"@\n" +
 	"\x17CheckPermissionResponse\x12%\n" +
 	"\x0ehas_permission\x18\x01 \x01(\bR\rhasPermission\"0\n" +
 	"\x1aGetPermissionByNameRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"N\n" +
-	"\x1bGetPermissionByNameResponse\x12/\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"R\n" +
+	"\x1bGetPermissionByNameResponse\x123\n" +
 	"\n" +
-	"permission\x18\x01 \x01(\v2\x0f.sso.PermissionR\n" +
-	"permission\"N\n" +
-	"\x19GetAllPermissionsResponse\x121\n" +
-	"\vpermissions\x18\x01 \x03(\v2\x0f.sso.PermissionR\vpermissions\"=\n" +
-	"\x17GetUserRelationsRequest\x12\"\n" +
-	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"G\n" +
-	"\x18GetUserRelationsResponse\x12+\n" +
-	"\trelations\x18\x01 \x03(\v2\r.sso.RelationR\trelations\"?\n" +
-	"\x19GetUserPermissionsRequest\x12\"\n" +
-	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"O\n" +
-	"\x1aGetUserPermissionsResponse\x121\n" +
-	"\vpermissions\x18\x01 \x03(\v2\x0f.sso.PermissionR\vpermissions\"K\n" +
+	"permission\x18\x01 \x01(\v2\x13.billing.PermissionR\n" +
+	"permission\"R\n" +
+	"\x19GetAllPermissionsResponse\x125\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x13.billing.PermissionR\vpermissions\"A\n" +
+	"\x17GetUserRelationsRequest\x12&\n" +
+	"\auser_id\x18\x01 \x01(\v2\r.billing.UUIDR\x06userId\"K\n" +
+	"\x18GetUserRelationsResponse\x12/\n" +
+	"\trelations\x18\x01 \x03(\v2\x11.billing.RelationR\trelations\"C\n" +
+	"\x19GetUserPermissionsRequest\x12&\n" +
+	"\auser_id\x18\x01 \x01(\v2\r.billing.UUIDR\x06userId\"S\n" +
+	"\x1aGetUserPermissionsResponse\x125\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x13.billing.PermissionR\vpermissions\"K\n" +
 	"$GetPermissionsForRelationTypeRequest\x12#\n" +
-	"\rrelation_type\x18\x01 \x01(\tR\frelationType\"Z\n" +
-	"%GetPermissionsForRelationTypeResponse\x121\n" +
-	"\vpermissions\x18\x01 \x03(\v2\x0f.sso.PermissionR\vpermissions\"C\n" +
-	"\x19GetEntityRelationsRequest\x12&\n" +
-	"\tentity_id\x18\x01 \x01(\v2\t.sso.UUIDR\bentityId\"I\n" +
-	"\x1aGetEntityRelationsResponse\x12+\n" +
-	"\trelations\x18\x01 \x03(\v2\r.sso.RelationR\trelations2\xe5\b\n" +
-	"\vRoleService\x12@\n" +
-	"\fCreateEntity\x12\x18.sso.CreateEntityRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
-	"\fDeleteEntity\x12\x18.sso.DeleteEntityRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
-	"\x0eCreateRelation\x12\x1a.sso.CreateRelationRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
-	"\x0eDeleteRelation\x12\x1a.sso.DeleteRelationRequest\x1a\x16.google.protobuf.Empty\x12F\n" +
-	"\rAddPermission\x12\x19.sso.AddPermissionRequest\x1a\x1a.sso.AddPermissionResponse\x12H\n" +
-	"\x10AssignPermission\x12\x1c.sso.AssignPermissionRequest\x1a\x16.google.protobuf.Empty\x12H\n" +
-	"\x10RevokePermission\x12\x1c.sso.RevokePermissionRequest\x1a\x16.google.protobuf.Empty\x12L\n" +
-	"\x0fCheckPermission\x12\x1b.sso.CheckPermissionRequest\x1a\x1c.sso.CheckPermissionResponse\x12X\n" +
-	"\x13GetPermissionByName\x12\x1f.sso.GetPermissionByNameRequest\x1a .sso.GetPermissionByNameResponse\x12K\n" +
-	"\x11GetAllPermissions\x12\x16.google.protobuf.Empty\x1a\x1e.sso.GetAllPermissionsResponse\x12O\n" +
-	"\x10GetUserRelations\x12\x1c.sso.GetUserRelationsRequest\x1a\x1d.sso.GetUserRelationsResponse\x12U\n" +
-	"\x12GetUserPermissions\x12\x1e.sso.GetUserPermissionsRequest\x1a\x1f.sso.GetUserPermissionsResponse\x12v\n" +
-	"\x1dGetPermissionsForRelationType\x12).sso.GetPermissionsForRelationTypeRequest\x1a*.sso.GetPermissionsForRelationTypeResponse\x12U\n" +
-	"\x12GetEntityRelations\x12\x1e.sso.GetEntityRelationsRequest\x1a\x1f.sso.GetEntityRelationsResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\rrelation_type\x18\x01 \x01(\tR\frelationType\"^\n" +
+	"%GetPermissionsForRelationTypeResponse\x125\n" +
+	"\vpermissions\x18\x01 \x03(\v2\x13.billing.PermissionR\vpermissions\"G\n" +
+	"\x19GetEntityRelationsRequest\x12*\n" +
+	"\tentity_id\x18\x01 \x01(\v2\r.billing.UUIDR\bentityId\"M\n" +
+	"\x1aGetEntityRelationsResponse\x12/\n" +
+	"\trelations\x18\x01 \x03(\v2\x11.billing.RelationR\trelations2\x9c\x06\n" +
+	"\vRoleService\x12H\n" +
+	"\x0eCreateRelation\x12\x1e.billing.CreateRelationRequest\x1a\x16.google.protobuf.Empty\x12H\n" +
+	"\x0eDeleteRelation\x12\x1e.billing.DeleteRelationRequest\x1a\x16.google.protobuf.Empty\x12L\n" +
+	"\x10AssignPermission\x12 .billing.AssignPermissionRequest\x1a\x16.google.protobuf.Empty\x12L\n" +
+	"\x10RevokePermission\x12 .billing.RevokePermissionRequest\x1a\x16.google.protobuf.Empty\x12T\n" +
+	"\x0fCheckPermission\x12\x1f.billing.CheckPermissionRequest\x1a .billing.CheckPermissionResponse\x12O\n" +
+	"\x11GetAllPermissions\x12\x16.google.protobuf.Empty\x1a\".billing.GetAllPermissionsResponse\x12W\n" +
+	"\x10GetUserRelations\x12 .billing.GetUserRelationsRequest\x1a!.billing.GetUserRelationsResponse\x12]\n" +
+	"\x12GetUserPermissions\x12\".billing.GetUserPermissionsRequest\x1a#.billing.GetUserPermissionsResponse\x12~\n" +
+	"\x1dGetPermissionsForRelationType\x12-.billing.GetPermissionsForRelationTypeRequest\x1a..billing.GetPermissionsForRelationTypeResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
-	file_sso_role_proto_rawDescOnce sync.Once
-	file_sso_role_proto_rawDescData []byte
+	file_billing_role_proto_rawDescOnce sync.Once
+	file_billing_role_proto_rawDescData []byte
 )
 
-func file_sso_role_proto_rawDescGZIP() []byte {
-	file_sso_role_proto_rawDescOnce.Do(func() {
-		file_sso_role_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_sso_role_proto_rawDesc), len(file_sso_role_proto_rawDesc)))
+func file_billing_role_proto_rawDescGZIP() []byte {
+	file_billing_role_proto_rawDescOnce.Do(func() {
+		file_billing_role_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_billing_role_proto_rawDesc), len(file_billing_role_proto_rawDesc)))
 	})
-	return file_sso_role_proto_rawDescData
+	return file_billing_role_proto_rawDescData
 }
 
-var file_sso_role_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
-var file_sso_role_proto_goTypes = []any{
-	(*CreateEntityRequest)(nil),                   // 0: sso.CreateEntityRequest
-	(*DeleteEntityRequest)(nil),                   // 1: sso.DeleteEntityRequest
-	(*CreateRelationRequest)(nil),                 // 2: sso.CreateRelationRequest
-	(*DeleteRelationRequest)(nil),                 // 3: sso.DeleteRelationRequest
-	(*AddPermissionRequest)(nil),                  // 4: sso.AddPermissionRequest
-	(*AddPermissionResponse)(nil),                 // 5: sso.AddPermissionResponse
-	(*AssignPermissionRequest)(nil),               // 6: sso.AssignPermissionRequest
-	(*RevokePermissionRequest)(nil),               // 7: sso.RevokePermissionRequest
-	(*CheckPermissionRequest)(nil),                // 8: sso.CheckPermissionRequest
-	(*CheckPermissionResponse)(nil),               // 9: sso.CheckPermissionResponse
-	(*GetPermissionByNameRequest)(nil),            // 10: sso.GetPermissionByNameRequest
-	(*GetPermissionByNameResponse)(nil),           // 11: sso.GetPermissionByNameResponse
-	(*GetAllPermissionsResponse)(nil),             // 12: sso.GetAllPermissionsResponse
-	(*GetUserRelationsRequest)(nil),               // 13: sso.GetUserRelationsRequest
-	(*GetUserRelationsResponse)(nil),              // 14: sso.GetUserRelationsResponse
-	(*GetUserPermissionsRequest)(nil),             // 15: sso.GetUserPermissionsRequest
-	(*GetUserPermissionsResponse)(nil),            // 16: sso.GetUserPermissionsResponse
-	(*GetPermissionsForRelationTypeRequest)(nil),  // 17: sso.GetPermissionsForRelationTypeRequest
-	(*GetPermissionsForRelationTypeResponse)(nil), // 18: sso.GetPermissionsForRelationTypeResponse
-	(*GetEntityRelationsRequest)(nil),             // 19: sso.GetEntityRelationsRequest
-	(*GetEntityRelationsResponse)(nil),            // 20: sso.GetEntityRelationsResponse
-	(*UUID)(nil),                                  // 21: sso.UUID
-	(*Permission)(nil),                            // 22: sso.Permission
-	(*Relation)(nil),                              // 23: sso.Relation
+var file_billing_role_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_billing_role_proto_goTypes = []any{
+	(*CreateEntityRequest)(nil),                   // 0: billing.CreateEntityRequest
+	(*DeleteEntityRequest)(nil),                   // 1: billing.DeleteEntityRequest
+	(*CreateRelationRequest)(nil),                 // 2: billing.CreateRelationRequest
+	(*DeleteRelationRequest)(nil),                 // 3: billing.DeleteRelationRequest
+	(*AddPermissionRequest)(nil),                  // 4: billing.AddPermissionRequest
+	(*AddPermissionResponse)(nil),                 // 5: billing.AddPermissionResponse
+	(*AssignPermissionRequest)(nil),               // 6: billing.AssignPermissionRequest
+	(*RevokePermissionRequest)(nil),               // 7: billing.RevokePermissionRequest
+	(*CheckPermissionRequest)(nil),                // 8: billing.CheckPermissionRequest
+	(*CheckPermissionResponse)(nil),               // 9: billing.CheckPermissionResponse
+	(*GetPermissionByNameRequest)(nil),            // 10: billing.GetPermissionByNameRequest
+	(*GetPermissionByNameResponse)(nil),           // 11: billing.GetPermissionByNameResponse
+	(*GetAllPermissionsResponse)(nil),             // 12: billing.GetAllPermissionsResponse
+	(*GetUserRelationsRequest)(nil),               // 13: billing.GetUserRelationsRequest
+	(*GetUserRelationsResponse)(nil),              // 14: billing.GetUserRelationsResponse
+	(*GetUserPermissionsRequest)(nil),             // 15: billing.GetUserPermissionsRequest
+	(*GetUserPermissionsResponse)(nil),            // 16: billing.GetUserPermissionsResponse
+	(*GetPermissionsForRelationTypeRequest)(nil),  // 17: billing.GetPermissionsForRelationTypeRequest
+	(*GetPermissionsForRelationTypeResponse)(nil), // 18: billing.GetPermissionsForRelationTypeResponse
+	(*GetEntityRelationsRequest)(nil),             // 19: billing.GetEntityRelationsRequest
+	(*GetEntityRelationsResponse)(nil),            // 20: billing.GetEntityRelationsResponse
+	(*UUID)(nil),                                  // 21: billing.UUID
+	(*Permission)(nil),                            // 22: billing.Permission
+	(*Relation)(nil),                              // 23: billing.Relation
 	(*emptypb.Empty)(nil),                         // 24: google.protobuf.Empty
 }
-var file_sso_role_proto_depIdxs = []int32{
-	21, // 0: sso.CreateEntityRequest.id:type_name -> sso.UUID
-	21, // 1: sso.DeleteEntityRequest.id:type_name -> sso.UUID
-	21, // 2: sso.CreateRelationRequest.source_id:type_name -> sso.UUID
-	21, // 3: sso.CreateRelationRequest.target_id:type_name -> sso.UUID
-	21, // 4: sso.DeleteRelationRequest.source_id:type_name -> sso.UUID
-	21, // 5: sso.DeleteRelationRequest.target_id:type_name -> sso.UUID
-	21, // 6: sso.AddPermissionResponse.permission_id:type_name -> sso.UUID
-	21, // 7: sso.AssignPermissionRequest.permission_id:type_name -> sso.UUID
-	21, // 8: sso.RevokePermissionRequest.permission_id:type_name -> sso.UUID
-	21, // 9: sso.CheckPermissionRequest.subject_id:type_name -> sso.UUID
-	21, // 10: sso.CheckPermissionRequest.object_id:type_name -> sso.UUID
-	21, // 11: sso.CheckPermissionRequest.permission_id:type_name -> sso.UUID
-	22, // 12: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
-	22, // 13: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
-	21, // 14: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
-	23, // 15: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
-	21, // 16: sso.GetUserPermissionsRequest.user_id:type_name -> sso.UUID
-	22, // 17: sso.GetUserPermissionsResponse.permissions:type_name -> sso.Permission
-	22, // 18: sso.GetPermissionsForRelationTypeResponse.permissions:type_name -> sso.Permission
-	21, // 19: sso.GetEntityRelationsRequest.entity_id:type_name -> sso.UUID
-	23, // 20: sso.GetEntityRelationsResponse.relations:type_name -> sso.Relation
-	0,  // 21: sso.RoleService.CreateEntity:input_type -> sso.CreateEntityRequest
-	1,  // 22: sso.RoleService.DeleteEntity:input_type -> sso.DeleteEntityRequest
-	2,  // 23: sso.RoleService.CreateRelation:input_type -> sso.CreateRelationRequest
-	3,  // 24: sso.RoleService.DeleteRelation:input_type -> sso.DeleteRelationRequest
-	4,  // 25: sso.RoleService.AddPermission:input_type -> sso.AddPermissionRequest
-	6,  // 26: sso.RoleService.AssignPermission:input_type -> sso.AssignPermissionRequest
-	7,  // 27: sso.RoleService.RevokePermission:input_type -> sso.RevokePermissionRequest
-	8,  // 28: sso.RoleService.CheckPermission:input_type -> sso.CheckPermissionRequest
-	10, // 29: sso.RoleService.GetPermissionByName:input_type -> sso.GetPermissionByNameRequest
-	24, // 30: sso.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
-	13, // 31: sso.RoleService.GetUserRelations:input_type -> sso.GetUserRelationsRequest
-	15, // 32: sso.RoleService.GetUserPermissions:input_type -> sso.GetUserPermissionsRequest
-	17, // 33: sso.RoleService.GetPermissionsForRelationType:input_type -> sso.GetPermissionsForRelationTypeRequest
-	19, // 34: sso.RoleService.GetEntityRelations:input_type -> sso.GetEntityRelationsRequest
-	24, // 35: sso.RoleService.CreateEntity:output_type -> google.protobuf.Empty
-	24, // 36: sso.RoleService.DeleteEntity:output_type -> google.protobuf.Empty
-	24, // 37: sso.RoleService.CreateRelation:output_type -> google.protobuf.Empty
-	24, // 38: sso.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
-	5,  // 39: sso.RoleService.AddPermission:output_type -> sso.AddPermissionResponse
-	24, // 40: sso.RoleService.AssignPermission:output_type -> google.protobuf.Empty
-	24, // 41: sso.RoleService.RevokePermission:output_type -> google.protobuf.Empty
-	9,  // 42: sso.RoleService.CheckPermission:output_type -> sso.CheckPermissionResponse
-	11, // 43: sso.RoleService.GetPermissionByName:output_type -> sso.GetPermissionByNameResponse
-	12, // 44: sso.RoleService.GetAllPermissions:output_type -> sso.GetAllPermissionsResponse
-	14, // 45: sso.RoleService.GetUserRelations:output_type -> sso.GetUserRelationsResponse
-	16, // 46: sso.RoleService.GetUserPermissions:output_type -> sso.GetUserPermissionsResponse
-	18, // 47: sso.RoleService.GetPermissionsForRelationType:output_type -> sso.GetPermissionsForRelationTypeResponse
-	20, // 48: sso.RoleService.GetEntityRelations:output_type -> sso.GetEntityRelationsResponse
-	35, // [35:49] is the sub-list for method output_type
-	21, // [21:35] is the sub-list for method input_type
+var file_billing_role_proto_depIdxs = []int32{
+	21, // 0: billing.CreateEntityRequest.id:type_name -> billing.UUID
+	21, // 1: billing.DeleteEntityRequest.id:type_name -> billing.UUID
+	21, // 2: billing.CreateRelationRequest.source_id:type_name -> billing.UUID
+	21, // 3: billing.CreateRelationRequest.target_id:type_name -> billing.UUID
+	21, // 4: billing.DeleteRelationRequest.source_id:type_name -> billing.UUID
+	21, // 5: billing.DeleteRelationRequest.target_id:type_name -> billing.UUID
+	21, // 6: billing.AddPermissionResponse.permission_id:type_name -> billing.UUID
+	21, // 7: billing.AssignPermissionRequest.permission_id:type_name -> billing.UUID
+	21, // 8: billing.RevokePermissionRequest.permission_id:type_name -> billing.UUID
+	21, // 9: billing.CheckPermissionRequest.subject_id:type_name -> billing.UUID
+	21, // 10: billing.CheckPermissionRequest.object_id:type_name -> billing.UUID
+	21, // 11: billing.CheckPermissionRequest.permission_id:type_name -> billing.UUID
+	22, // 12: billing.GetPermissionByNameResponse.permission:type_name -> billing.Permission
+	22, // 13: billing.GetAllPermissionsResponse.permissions:type_name -> billing.Permission
+	21, // 14: billing.GetUserRelationsRequest.user_id:type_name -> billing.UUID
+	23, // 15: billing.GetUserRelationsResponse.relations:type_name -> billing.Relation
+	21, // 16: billing.GetUserPermissionsRequest.user_id:type_name -> billing.UUID
+	22, // 17: billing.GetUserPermissionsResponse.permissions:type_name -> billing.Permission
+	22, // 18: billing.GetPermissionsForRelationTypeResponse.permissions:type_name -> billing.Permission
+	21, // 19: billing.GetEntityRelationsRequest.entity_id:type_name -> billing.UUID
+	23, // 20: billing.GetEntityRelationsResponse.relations:type_name -> billing.Relation
+	2,  // 21: billing.RoleService.CreateRelation:input_type -> billing.CreateRelationRequest
+	3,  // 22: billing.RoleService.DeleteRelation:input_type -> billing.DeleteRelationRequest
+	6,  // 23: billing.RoleService.AssignPermission:input_type -> billing.AssignPermissionRequest
+	7,  // 24: billing.RoleService.RevokePermission:input_type -> billing.RevokePermissionRequest
+	8,  // 25: billing.RoleService.CheckPermission:input_type -> billing.CheckPermissionRequest
+	24, // 26: billing.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
+	13, // 27: billing.RoleService.GetUserRelations:input_type -> billing.GetUserRelationsRequest
+	15, // 28: billing.RoleService.GetUserPermissions:input_type -> billing.GetUserPermissionsRequest
+	17, // 29: billing.RoleService.GetPermissionsForRelationType:input_type -> billing.GetPermissionsForRelationTypeRequest
+	24, // 30: billing.RoleService.CreateRelation:output_type -> google.protobuf.Empty
+	24, // 31: billing.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
+	24, // 32: billing.RoleService.AssignPermission:output_type -> google.protobuf.Empty
+	24, // 33: billing.RoleService.RevokePermission:output_type -> google.protobuf.Empty
+	9,  // 34: billing.RoleService.CheckPermission:output_type -> billing.CheckPermissionResponse
+	12, // 35: billing.RoleService.GetAllPermissions:output_type -> billing.GetAllPermissionsResponse
+	14, // 36: billing.RoleService.GetUserRelations:output_type -> billing.GetUserRelationsResponse
+	16, // 37: billing.RoleService.GetUserPermissions:output_type -> billing.GetUserPermissionsResponse
+	18, // 38: billing.RoleService.GetPermissionsForRelationType:output_type -> billing.GetPermissionsForRelationTypeResponse
+	30, // [30:39] is the sub-list for method output_type
+	21, // [21:30] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name
 	21, // [21:21] is the sub-list for extension extendee
 	0,  // [0:21] is the sub-list for field type_name
 }
 
-func init() { file_sso_role_proto_init() }
-func file_sso_role_proto_init() {
-	if File_sso_role_proto != nil {
+func init() { file_billing_role_proto_init() }
+func file_billing_role_proto_init() {
+	if File_billing_role_proto != nil {
 		return
 	}
-	file_sso_shared_proto_init()
+	file_billing_shared_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_role_proto_rawDesc), len(file_sso_role_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_role_proto_rawDesc), len(file_billing_role_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_sso_role_proto_goTypes,
-		DependencyIndexes: file_sso_role_proto_depIdxs,
-		MessageInfos:      file_sso_role_proto_msgTypes,
+		GoTypes:           file_billing_role_proto_goTypes,
+		DependencyIndexes: file_billing_role_proto_depIdxs,
+		MessageInfos:      file_billing_role_proto_msgTypes,
 	}.Build()
-	File_sso_role_proto = out.File
-	file_sso_role_proto_goTypes = nil
-	file_sso_role_proto_depIdxs = nil
+	File_billing_role_proto = out.File
+	file_billing_role_proto_goTypes = nil
+	file_billing_role_proto_depIdxs = nil
 }

@@ -2,26 +2,21 @@ syntax = "proto3";
 
 option go_package = "pmtstm.v1;pmtstmv1";
 
-package sso;
+package billing;
 
-import "sso/shared.proto";
+import "billing/shared.proto";
 import "google/protobuf/empty.proto";
 
 service RoleService {
-  rpc CreateEntity (CreateEntityRequest) returns (google.protobuf.Empty);
-  rpc DeleteEntity (DeleteEntityRequest) returns (google.protobuf.Empty);
   rpc CreateRelation (CreateRelationRequest) returns (google.protobuf.Empty);
   rpc DeleteRelation (DeleteRelationRequest) returns (google.protobuf.Empty);
-  rpc AddPermission (AddPermissionRequest) returns (AddPermissionResponse);
   rpc AssignPermission (AssignPermissionRequest) returns (google.protobuf.Empty);
   rpc RevokePermission (RevokePermissionRequest) returns (google.protobuf.Empty);
   rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
-  rpc GetPermissionByName (GetPermissionByNameRequest) returns (GetPermissionByNameResponse);
   rpc GetAllPermissions (google.protobuf.Empty) returns (GetAllPermissionsResponse);
   rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse);
   rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
   rpc GetPermissionsForRelationType (GetPermissionsForRelationTypeRequest) returns (GetPermissionsForRelationTypeResponse);
-  rpc GetEntityRelations (GetEntityRelationsRequest) returns (GetEntityRelationsResponse);
 }
 
 message CreateEntityRequest {
