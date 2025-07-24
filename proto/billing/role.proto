@@ -62,7 +62,7 @@ message RevokePermissionRequest {
 message CheckPermissionRequest {
   UUID subject_id = 1;
   UUID object_id = 2;
-  UUID permission_id = 3;
+  string name = 3;
 }
 
 message CheckPermissionResponse {

@@ -442,7 +442,7 @@ type CheckPermissionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SubjectId     *UUID                  `protobuf:"bytes,1,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
 	ObjectId      *UUID                  `protobuf:"bytes,2,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	PermissionId  *UUID                  `protobuf:"bytes,3,opt,name=permission_id,json=permissionId,proto3" json:"permission_id,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -491,11 +491,11 @@ func (x *CheckPermissionRequest) GetObjectId() *UUID {
 	return nil
 }
 
-func (x *CheckPermissionRequest) GetPermissionId() *UUID {
+func (x *CheckPermissionRequest) GetName() string {
 	if x != nil {
-		return x.PermissionId
+		return x.Name
 	}
-	return nil
+	return ""
 }
 
 type CheckPermissionResponse struct {
@@ -1055,12 +1055,12 @@ const file_sso_role_proto_rawDesc = "" +
 	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"n\n" +
 	"\x17RevokePermissionRequest\x12.\n" +
 	"\rpermission_id\x18\x01 \x01(\v2\t.sso.UUIDR\fpermissionId\x12#\n" +
-	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"\x9a\x01\n" +
+	"\rrelation_type\x18\x02 \x01(\tR\frelationType\"~\n" +
 	"\x16CheckPermissionRequest\x12(\n" +
 	"\n" +
 	"subject_id\x18\x01 \x01(\v2\t.sso.UUIDR\tsubjectId\x12&\n" +
-	"\tobject_id\x18\x02 \x01(\v2\t.sso.UUIDR\bobjectId\x12.\n" +
-	"\rpermission_id\x18\x03 \x01(\v2\t.sso.UUIDR\fpermissionId\"@\n" +
+	"\tobject_id\x18\x02 \x01(\v2\t.sso.UUIDR\bobjectId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"@\n" +
 	"\x17CheckPermissionResponse\x12%\n" +
 	"\x0ehas_permission\x18\x01 \x01(\bR\rhasPermission\"0\n" +
 	"\x1aGetPermissionByNameRequest\x12\x12\n" +
@@ -1155,49 +1155,48 @@ var file_sso_role_proto_depIdxs = []int32{
 	21, // 8: sso.RevokePermissionRequest.permission_id:type_name -> sso.UUID
 	21, // 9: sso.CheckPermissionRequest.subject_id:type_name -> sso.UUID
 	21, // 10: sso.CheckPermissionRequest.object_id:type_name -> sso.UUID
-	21, // 11: sso.CheckPermissionRequest.permission_id:type_name -> sso.UUID
-	22, // 12: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
-	22, // 13: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
-	21, // 14: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
-	23, // 15: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
-	21, // 16: sso.GetUserPermissionsRequest.user_id:type_name -> sso.UUID
-	22, // 17: sso.GetUserPermissionsResponse.permissions:type_name -> sso.Permission
-	22, // 18: sso.GetPermissionsForRelationTypeResponse.permissions:type_name -> sso.Permission
-	21, // 19: sso.GetEntityRelationsRequest.entity_id:type_name -> sso.UUID
-	23, // 20: sso.GetEntityRelationsResponse.relations:type_name -> sso.Relation
-	0,  // 21: sso.RoleService.CreateEntity:input_type -> sso.CreateEntityRequest
-	1,  // 22: sso.RoleService.DeleteEntity:input_type -> sso.DeleteEntityRequest
-	2,  // 23: sso.RoleService.CreateRelation:input_type -> sso.CreateRelationRequest
-	3,  // 24: sso.RoleService.DeleteRelation:input_type -> sso.DeleteRelationRequest
-	4,  // 25: sso.RoleService.AddPermission:input_type -> sso.AddPermissionRequest
-	6,  // 26: sso.RoleService.AssignPermission:input_type -> sso.AssignPermissionRequest
-	7,  // 27: sso.RoleService.RevokePermission:input_type -> sso.RevokePermissionRequest
-	8,  // 28: sso.RoleService.CheckPermission:input_type -> sso.CheckPermissionRequest
-	10, // 29: sso.RoleService.GetPermissionByName:input_type -> sso.GetPermissionByNameRequest
-	24, // 30: sso.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
-	13, // 31: sso.RoleService.GetUserRelations:input_type -> sso.GetUserRelationsRequest
-	15, // 32: sso.RoleService.GetUserPermissions:input_type -> sso.GetUserPermissionsRequest
-	17, // 33: sso.RoleService.GetPermissionsForRelationType:input_type -> sso.GetPermissionsForRelationTypeRequest
-	19, // 34: sso.RoleService.GetEntityRelations:input_type -> sso.GetEntityRelationsRequest
-	24, // 35: sso.RoleService.CreateEntity:output_type -> google.protobuf.Empty
-	24, // 36: sso.RoleService.DeleteEntity:output_type -> google.protobuf.Empty
-	24, // 37: sso.RoleService.CreateRelation:output_type -> google.protobuf.Empty
-	24, // 38: sso.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
-	5,  // 39: sso.RoleService.AddPermission:output_type -> sso.AddPermissionResponse
-	24, // 40: sso.RoleService.AssignPermission:output_type -> google.protobuf.Empty
-	24, // 41: sso.RoleService.RevokePermission:output_type -> google.protobuf.Empty
-	9,  // 42: sso.RoleService.CheckPermission:output_type -> sso.CheckPermissionResponse
-	11, // 43: sso.RoleService.GetPermissionByName:output_type -> sso.GetPermissionByNameResponse
-	12, // 44: sso.RoleService.GetAllPermissions:output_type -> sso.GetAllPermissionsResponse
-	14, // 45: sso.RoleService.GetUserRelations:output_type -> sso.GetUserRelationsResponse
-	16, // 46: sso.RoleService.GetUserPermissions:output_type -> sso.GetUserPermissionsResponse
-	18, // 47: sso.RoleService.GetPermissionsForRelationType:output_type -> sso.GetPermissionsForRelationTypeResponse
-	20, // 48: sso.RoleService.GetEntityRelations:output_type -> sso.GetEntityRelationsResponse
-	35, // [35:49] is the sub-list for method output_type
-	21, // [21:35] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	22, // 11: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
+	22, // 12: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
+	21, // 13: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
+	23, // 14: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
+	21, // 15: sso.GetUserPermissionsRequest.user_id:type_name -> sso.UUID
+	22, // 16: sso.GetUserPermissionsResponse.permissions:type_name -> sso.Permission
+	22, // 17: sso.GetPermissionsForRelationTypeResponse.permissions:type_name -> sso.Permission
+	21, // 18: sso.GetEntityRelationsRequest.entity_id:type_name -> sso.UUID
+	23, // 19: sso.GetEntityRelationsResponse.relations:type_name -> sso.Relation
+	0,  // 20: sso.RoleService.CreateEntity:input_type -> sso.CreateEntityRequest
+	1,  // 21: sso.RoleService.DeleteEntity:input_type -> sso.DeleteEntityRequest
+	2,  // 22: sso.RoleService.CreateRelation:input_type -> sso.CreateRelationRequest
+	3,  // 23: sso.RoleService.DeleteRelation:input_type -> sso.DeleteRelationRequest
+	4,  // 24: sso.RoleService.AddPermission:input_type -> sso.AddPermissionRequest
+	6,  // 25: sso.RoleService.AssignPermission:input_type -> sso.AssignPermissionRequest
+	7,  // 26: sso.RoleService.RevokePermission:input_type -> sso.RevokePermissionRequest
+	8,  // 27: sso.RoleService.CheckPermission:input_type -> sso.CheckPermissionRequest
+	10, // 28: sso.RoleService.GetPermissionByName:input_type -> sso.GetPermissionByNameRequest
+	24, // 29: sso.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
+	13, // 30: sso.RoleService.GetUserRelations:input_type -> sso.GetUserRelationsRequest
+	15, // 31: sso.RoleService.GetUserPermissions:input_type -> sso.GetUserPermissionsRequest
+	17, // 32: sso.RoleService.GetPermissionsForRelationType:input_type -> sso.GetPermissionsForRelationTypeRequest
+	19, // 33: sso.RoleService.GetEntityRelations:input_type -> sso.GetEntityRelationsRequest
+	24, // 34: sso.RoleService.CreateEntity:output_type -> google.protobuf.Empty
+	24, // 35: sso.RoleService.DeleteEntity:output_type -> google.protobuf.Empty
+	24, // 36: sso.RoleService.CreateRelation:output_type -> google.protobuf.Empty
+	24, // 37: sso.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
+	5,  // 38: sso.RoleService.AddPermission:output_type -> sso.AddPermissionResponse
+	24, // 39: sso.RoleService.AssignPermission:output_type -> google.protobuf.Empty
+	24, // 40: sso.RoleService.RevokePermission:output_type -> google.protobuf.Empty
+	9,  // 41: sso.RoleService.CheckPermission:output_type -> sso.CheckPermissionResponse
+	11, // 42: sso.RoleService.GetPermissionByName:output_type -> sso.GetPermissionByNameResponse
+	12, // 43: sso.RoleService.GetAllPermissions:output_type -> sso.GetAllPermissionsResponse
+	14, // 44: sso.RoleService.GetUserRelations:output_type -> sso.GetUserRelationsResponse
+	16, // 45: sso.RoleService.GetUserPermissions:output_type -> sso.GetUserPermissionsResponse
+	18, // 46: sso.RoleService.GetPermissionsForRelationType:output_type -> sso.GetPermissionsForRelationTypeResponse
+	20, // 47: sso.RoleService.GetEntityRelations:output_type -> sso.GetEntityRelationsResponse
+	34, // [34:48] is the sub-list for method output_type
+	20, // [20:34] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_sso_role_proto_init() }
