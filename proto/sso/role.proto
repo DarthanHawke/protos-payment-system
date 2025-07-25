@@ -26,7 +26,8 @@ service RoleService {
 }
 
 message CreateEntityRequest {
-  string entity_type = 1;
+  optional UUID id = 1;
+  string entity_type = 2;
 }
 
 message DeleteEntityRequest {
