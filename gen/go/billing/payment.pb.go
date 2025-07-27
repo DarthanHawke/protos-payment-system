@@ -144,7 +144,6 @@ func (x *CreatePaymentResponse) GetPaymentId() *UUID {
 
 type GetPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	PaymentId     *UUID                  `protobuf:"bytes,2,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -178,13 +177,6 @@ func (x *GetPaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetPaymentRequest.ProtoReflect.Descriptor instead.
 func (*GetPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GetPaymentRequest) GetUserId() *UUID {
-	if x != nil {
-		return x.UserId
-	}
-	return nil
 }
 
 func (x *GetPaymentRequest) GetPaymentId() *UUID {
@@ -436,13 +428,10 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\f_description\"E\n" +
 	"\x15CreatePaymentResponse\x12,\n" +
 	"\n" +
-	"payment_id\x18\x01 \x01(\v2\r.billing.UUIDR\tpaymentId\"z\n" +
-	"\x11GetPaymentRequest\x12+\n" +
-	"\auser_id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x06userId\x88\x01\x01\x12,\n" +
+	"payment_id\x18\x01 \x01(\v2\r.billing.UUIDR\tpaymentId\"A\n" +
+	"\x11GetPaymentRequest\x12,\n" +
 	"\n" +
-	"payment_id\x18\x02 \x01(\v2\r.billing.UUIDR\tpaymentIdB\n" +
-	"\n" +
-	"\b_user_id\"@\n" +
+	"payment_id\x18\x02 \x01(\v2\r.billing.UUIDR\tpaymentId\"@\n" +
 	"\x12GetPaymentResponse\x12*\n" +
 	"\apayment\x18\x01 \x01(\v2\x10.billing.PaymentR\apayment\"O\n" +
 	"\x14GetAllPaymentRequest\x12+\n" +
@@ -494,28 +483,27 @@ var file_billing_payment_proto_goTypes = []any{
 }
 var file_billing_payment_proto_depIdxs = []int32{
 	8,  // 0: billing.CreatePaymentResponse.payment_id:type_name -> billing.UUID
-	8,  // 1: billing.GetPaymentRequest.user_id:type_name -> billing.UUID
-	8,  // 2: billing.GetPaymentRequest.payment_id:type_name -> billing.UUID
-	9,  // 3: billing.GetPaymentResponse.payment:type_name -> billing.Payment
-	8,  // 4: billing.GetAllPaymentRequest.user_id:type_name -> billing.UUID
-	9,  // 5: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
-	8,  // 6: billing.UpdateStatusPaymentRequest.payment_id:type_name -> billing.UUID
-	8,  // 7: billing.CancelPaymentRequest.payment_id:type_name -> billing.UUID
-	0,  // 8: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
-	2,  // 9: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
-	4,  // 10: billing.PaymentService.GetAllPayment:input_type -> billing.GetAllPaymentRequest
-	6,  // 11: billing.PaymentService.UpdateStatusPayment:input_type -> billing.UpdateStatusPaymentRequest
-	7,  // 12: billing.PaymentService.CancelPayment:input_type -> billing.CancelPaymentRequest
-	1,  // 13: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
-	3,  // 14: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
-	5,  // 15: billing.PaymentService.GetAllPayment:output_type -> billing.GetAllPaymentResponse
-	10, // 16: billing.PaymentService.UpdateStatusPayment:output_type -> google.protobuf.Empty
-	10, // 17: billing.PaymentService.CancelPayment:output_type -> google.protobuf.Empty
-	13, // [13:18] is the sub-list for method output_type
-	8,  // [8:13] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	8,  // 1: billing.GetPaymentRequest.payment_id:type_name -> billing.UUID
+	9,  // 2: billing.GetPaymentResponse.payment:type_name -> billing.Payment
+	8,  // 3: billing.GetAllPaymentRequest.user_id:type_name -> billing.UUID
+	9,  // 4: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
+	8,  // 5: billing.UpdateStatusPaymentRequest.payment_id:type_name -> billing.UUID
+	8,  // 6: billing.CancelPaymentRequest.payment_id:type_name -> billing.UUID
+	0,  // 7: billing.PaymentService.CreatePayment:input_type -> billing.CreatePaymentRequest
+	2,  // 8: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
+	4,  // 9: billing.PaymentService.GetAllPayment:input_type -> billing.GetAllPaymentRequest
+	6,  // 10: billing.PaymentService.UpdateStatusPayment:input_type -> billing.UpdateStatusPaymentRequest
+	7,  // 11: billing.PaymentService.CancelPayment:input_type -> billing.CancelPaymentRequest
+	1,  // 12: billing.PaymentService.CreatePayment:output_type -> billing.CreatePaymentResponse
+	3,  // 13: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
+	5,  // 14: billing.PaymentService.GetAllPayment:output_type -> billing.GetAllPaymentResponse
+	10, // 15: billing.PaymentService.UpdateStatusPayment:output_type -> google.protobuf.Empty
+	10, // 16: billing.PaymentService.CancelPayment:output_type -> google.protobuf.Empty
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_billing_payment_proto_init() }
@@ -525,7 +513,6 @@ func file_billing_payment_proto_init() {
 	}
 	file_billing_shared_proto_init()
 	file_billing_payment_proto_msgTypes[0].OneofWrappers = []any{}
-	file_billing_payment_proto_msgTypes[2].OneofWrappers = []any{}
 	file_billing_payment_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

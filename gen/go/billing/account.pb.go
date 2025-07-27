@@ -112,7 +112,7 @@ func (x *GetBalanceRequest) GetCurrency() string {
 
 type GetBalanceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Balance       float32                `protobuf:"fixed32,1,opt,name=balance,proto3" json:"balance,omitempty"`
+	Balance       float64                `protobuf:"fixed64,1,opt,name=balance,proto3" json:"balance,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -147,7 +147,7 @@ func (*GetBalanceResponse) Descriptor() ([]byte, []int) {
 	return file_billing_account_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetBalanceResponse) GetBalance() float32 {
+func (x *GetBalanceResponse) GetBalance() float64 {
 	if x != nil {
 		return x.Balance
 	}
@@ -157,7 +157,7 @@ func (x *GetBalanceResponse) GetBalance() float32 {
 type DepositRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Currency      string                 `protobuf:"bytes,1,opt,name=currency,proto3" json:"currency,omitempty"`
-	Amount        float32                `protobuf:"fixed32,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -200,7 +200,7 @@ func (x *DepositRequest) GetCurrency() string {
 	return ""
 }
 
-func (x *DepositRequest) GetAmount() float32 {
+func (x *DepositRequest) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -261,7 +261,7 @@ func (x *DepositResponse) GetPaymentId() *UUID {
 type WithdrawRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Currency      string                 `protobuf:"bytes,1,opt,name=currency,proto3" json:"currency,omitempty"`
-	Amount        float32                `protobuf:"fixed32,2,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -304,7 +304,7 @@ func (x *WithdrawRequest) GetCurrency() string {
 	return ""
 }
 
-func (x *WithdrawRequest) GetAmount() float32 {
+func (x *WithdrawRequest) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -366,7 +366,7 @@ type TransferRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ToUserId      *UUID                  `protobuf:"bytes,1,opt,name=to_user_id,json=toUserId,proto3" json:"to_user_id,omitempty"`
 	Currency      string                 `protobuf:"bytes,2,opt,name=currency,proto3" json:"currency,omitempty"`
-	Amount        float32                `protobuf:"fixed32,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -416,7 +416,7 @@ func (x *TransferRequest) GetCurrency() string {
 	return ""
 }
 
-func (x *TransferRequest) GetAmount() float32 {
+func (x *TransferRequest) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -478,7 +478,7 @@ type ConvertCurrencyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FromCurrency  string                 `protobuf:"bytes,1,opt,name=from_currency,json=fromCurrency,proto3" json:"from_currency,omitempty"`
 	ToCurrency    string                 `protobuf:"bytes,2,opt,name=to_currency,json=toCurrency,proto3" json:"to_currency,omitempty"`
-	Amount        float32                `protobuf:"fixed32,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
 	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -528,7 +528,7 @@ func (x *ConvertCurrencyRequest) GetToCurrency() string {
 	return ""
 }
 
-func (x *ConvertCurrencyRequest) GetAmount() float32 {
+func (x *ConvertCurrencyRequest) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -700,17 +700,17 @@ const file_billing_account_proto_rawDesc = "" +
 	"\x11GetBalanceRequest\x12\x1a\n" +
 	"\bcurrency\x18\x01 \x01(\tR\bcurrency\".\n" +
 	"\x12GetBalanceResponse\x12\x18\n" +
-	"\abalance\x18\x01 \x01(\x02R\abalance\"f\n" +
+	"\abalance\x18\x01 \x01(\x01R\abalance\"f\n" +
 	"\x0eDepositRequest\x12\x1a\n" +
 	"\bcurrency\x18\x01 \x01(\tR\bcurrency\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12 \n" +
+	"\x06amount\x18\x02 \x01(\x01R\x06amount\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\"?\n" +
 	"\x0fDepositResponse\x12,\n" +
 	"\n" +
 	"payment_id\x18\x01 \x01(\v2\r.billing.UUIDR\tpaymentId\"g\n" +
 	"\x0fWithdrawRequest\x12\x1a\n" +
 	"\bcurrency\x18\x01 \x01(\tR\bcurrency\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12 \n" +
+	"\x06amount\x18\x02 \x01(\x01R\x06amount\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\"@\n" +
 	"\x10WithdrawResponse\x12,\n" +
 	"\n" +
@@ -719,7 +719,7 @@ const file_billing_account_proto_rawDesc = "" +
 	"\n" +
 	"to_user_id\x18\x01 \x01(\v2\r.billing.UUIDR\btoUserId\x12\x1a\n" +
 	"\bcurrency\x18\x02 \x01(\tR\bcurrency\x12\x16\n" +
-	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12 \n" +
+	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\"@\n" +
 	"\x10TransferResponse\x12,\n" +
 	"\n" +
@@ -728,7 +728,7 @@ const file_billing_account_proto_rawDesc = "" +
 	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
 	"\vto_currency\x18\x02 \x01(\tR\n" +
 	"toCurrency\x12\x16\n" +
-	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12 \n" +
+	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\"K\n" +
 	"\x17ConvertCurrencyResponse\x120\n" +
 	"\foperation_id\x18\x01 \x01(\v2\r.billing.UUIDR\voperationId\"f\n" +

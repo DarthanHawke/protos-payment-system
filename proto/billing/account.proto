@@ -26,12 +26,12 @@ message GetBalanceRequest {
 }
 
 message GetBalanceResponse {
-  float balance = 1;
+  double balance = 1;
 }
 
 message DepositRequest {
   string currency = 1;
-  float amount = 2;
+  double amount = 2;
   string description = 3;
 }
 
@@ -41,7 +41,7 @@ message DepositResponse {
 
 message WithdrawRequest {
   string currency = 1;
-  float amount = 2;
+  double amount = 2;
   string description = 3;
 }
 
@@ -52,7 +52,7 @@ message WithdrawResponse {
 message TransferRequest {
   UUID to_user_id = 1;
   string currency = 2;
-  float amount = 3;
+  double amount = 3;
   string description = 4;
 }
 
@@ -63,7 +63,7 @@ message TransferResponse {
 message ConvertCurrencyRequest {
   string from_currency = 1;
   string to_currency = 2;
-  float amount = 3;
+  double amount = 3;
   string description = 4;
 }
 

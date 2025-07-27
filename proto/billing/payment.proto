@@ -28,7 +28,6 @@ message CreatePaymentResponse {
 }
 
 message GetPaymentRequest {
-  optional UUID user_id = 1;
   UUID payment_id = 2;
 }
 
