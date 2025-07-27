@@ -22,22 +22,68 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UUID struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UUID) Reset() {
+	*x = UUID{}
+	mi := &file_payment_shared_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UUID) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UUID) ProtoMessage() {}
+
+func (x *UUID) ProtoReflect() protoreflect.Message {
+	mi := &file_payment_shared_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UUID.ProtoReflect.Descriptor instead.
+func (*UUID) Descriptor() ([]byte, []int) {
+	return file_payment_shared_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UUID) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
 type Payment struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Amount        float32                `protobuf:"fixed32,2,opt,name=amount,proto3" json:"amount,omitempty"`
-	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
-	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
-	Description   *string                `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Sender        string                 `protobuf:"bytes,2,opt,name=sender,proto3" json:"sender,omitempty"`
+	Receiver      string                 `protobuf:"bytes,3,opt,name=receiver,proto3" json:"receiver,omitempty"`
+	Amount        float32                `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	Currency      string                 `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
+	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
+	Description   *string                `protobuf:"bytes,7,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Payment) Reset() {
 	*x = Payment{}
-	mi := &file_payment_shared_proto_msgTypes[0]
+	mi := &file_payment_shared_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +95,7 @@ func (x *Payment) String() string {
 func (*Payment) ProtoMessage() {}
 
 func (x *Payment) ProtoReflect() protoreflect.Message {
-	mi := &file_payment_shared_proto_msgTypes[0]
+	mi := &file_payment_shared_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,12 +108,26 @@ func (x *Payment) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Payment.ProtoReflect.Descriptor instead.
 func (*Payment) Descriptor() ([]byte, []int) {
-	return file_payment_shared_proto_rawDescGZIP(), []int{0}
+	return file_payment_shared_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Payment) GetId() string {
+func (x *Payment) GetId() *UUID {
 	if x != nil {
 		return x.Id
+	}
+	return nil
+}
+
+func (x *Payment) GetSender() string {
+	if x != nil {
+		return x.Sender
+	}
+	return ""
+}
+
+func (x *Payment) GetReceiver() string {
+	if x != nil {
+		return x.Receiver
 	}
 	return ""
 }
@@ -118,17 +178,21 @@ var File_payment_shared_proto protoreflect.FileDescriptor
 
 const file_payment_shared_proto_rawDesc = "" +
 	"\n" +
-	"\x14payment/shared.proto\x12\apayment\x1a\x1fgoogle/protobuf/timestamp.proto\"\x92\x02\n" +
-	"\aPayment\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x02R\x06amount\x12\x1a\n" +
-	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\tR\x06status\x12%\n" +
-	"\vdescription\x18\x05 \x01(\tH\x00R\vdescription\x88\x01\x01\x129\n" +
+	"\x14payment/shared.proto\x12\apayment\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1c\n" +
+	"\x04UUID\x12\x14\n" +
+	"\x05value\x18\x01 \x01(\tR\x05value\"\xd5\x02\n" +
+	"\aPayment\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\v2\r.payment.UUIDR\x02id\x12\x16\n" +
+	"\x06sender\x18\x02 \x01(\tR\x06sender\x12\x1a\n" +
+	"\breceiver\x18\x03 \x01(\tR\breceiver\x12\x16\n" +
+	"\x06amount\x18\x04 \x01(\x02R\x06amount\x12\x1a\n" +
+	"\bcurrency\x18\x05 \x01(\tR\bcurrency\x12\x16\n" +
+	"\x06status\x18\x06 \x01(\tR\x06status\x12%\n" +
+	"\vdescription\x18\a \x01(\tH\x00R\vdescription\x88\x01\x01\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
+	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
 	"\f_descriptionB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
@@ -143,19 +207,21 @@ func file_payment_shared_proto_rawDescGZIP() []byte {
 	return file_payment_shared_proto_rawDescData
 }
 
-var file_payment_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_payment_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_payment_shared_proto_goTypes = []any{
-	(*Payment)(nil),               // 0: payment.Payment
-	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
+	(*UUID)(nil),                  // 0: payment.UUID
+	(*Payment)(nil),               // 1: payment.Payment
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_payment_shared_proto_depIdxs = []int32{
-	1, // 0: payment.Payment.created_at:type_name -> google.protobuf.Timestamp
-	1, // 1: payment.Payment.updated_at:type_name -> google.protobuf.Timestamp
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: payment.Payment.id:type_name -> payment.UUID
+	2, // 1: payment.Payment.created_at:type_name -> google.protobuf.Timestamp
+	2, // 2: payment.Payment.updated_at:type_name -> google.protobuf.Timestamp
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_payment_shared_proto_init() }
@@ -163,14 +229,14 @@ func file_payment_shared_proto_init() {
 	if File_payment_shared_proto != nil {
 		return
 	}
-	file_payment_shared_proto_msgTypes[0].OneofWrappers = []any{}
+	file_payment_shared_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_payment_shared_proto_rawDesc), len(file_payment_shared_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

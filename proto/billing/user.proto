@@ -13,7 +13,7 @@ service UserService {
   rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse);}
 
 message GetProfileRequest {
-  optional string user_id = 1;
+  optional UUID id = 1;
 }
 
 message GetProfileResponse {
@@ -21,21 +21,21 @@ message GetProfileResponse {
 }
 
 message UpdateNameRequest {
-  optional string user_id = 1;
+  optional UUID id = 1;
   string name = 2;
 }
 
 message UpdateNameResponse {}
 
 message UpdateEmailRequest {
-  optional string user_id = 1;
+  optional UUID id = 1;
   string email = 2;
 }
 
 message UpdateEmailResponse {}
 
 message UpdatePasswordRequest {
-  optional string user_id = 1;
+  optional UUID id = 1;
   string password = 2;
 }
 

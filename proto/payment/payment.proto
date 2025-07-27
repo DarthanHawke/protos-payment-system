@@ -5,26 +5,29 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package payment;
 
 import "payment/shared.proto";
+import "google/protobuf/empty.proto";
 
 service PaymentService {
   rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
-  rpc UpdateStatusPayment (UpdateStatusPaymentRequest) returns (UpdateStatusPaymentResponse);
-  rpc CancelPayment (CancelPaymentRequest) returns (CancelPaymentResponse);
+  rpc UpdateStatusPayment (UpdateStatusPaymentRequest) returns (google.protobuf.Empty);
+  rpc CancelPayment (CancelPaymentRequest) returns (google.protobuf.Empty);
 }
 
 message CreatePaymentRequest {
-  float amount = 2;
-  string currency = 3;
-  optional string description = 4;
+  string sender = 1;
+  string receiver = 2;
+  float amount = 3;
+  string currency = 4;
+  optional string description = 5;
 }
 
 message CreatePaymentResponse {
-  string payment_id = 1;
+  UUID id = 1;
 }
 
 message GetPaymentRequest {
-  string payment_id = 1;
+  UUID id = 1;
 }
 
 message GetPaymentResponse {
@@ -32,16 +35,10 @@ message GetPaymentResponse {
 }
 
 message UpdateStatusPaymentRequest {
-  string payment_id = 1;
+  UUID id = 1;
   string status = 2;
 }
 
-message UpdateStatusPaymentResponse {
-}
-
 message CancelPaymentRequest {
-  string payment_id = 1;
-}
-
-message CancelPaymentResponse {
+  UUID payment_id = 1;
 }

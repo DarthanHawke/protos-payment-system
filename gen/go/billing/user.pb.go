@@ -23,7 +23,7 @@ const (
 
 type GetProfileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,11 +58,11 @@ func (*GetProfileRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetProfileRequest) GetUserId() string {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
+func (x *GetProfileRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
 	}
-	return ""
+	return nil
 }
 
 type GetProfileResponse struct {
@@ -111,7 +111,7 @@ func (x *GetProfileResponse) GetUser() *User {
 
 type UpdateNameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -147,11 +147,11 @@ func (*UpdateNameRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateNameRequest) GetUserId() string {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
+func (x *UpdateNameRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
 	}
-	return ""
+	return nil
 }
 
 func (x *UpdateNameRequest) GetName() string {
@@ -199,7 +199,7 @@ func (*UpdateNameResponse) Descriptor() ([]byte, []int) {
 
 type UpdateEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -235,11 +235,11 @@ func (*UpdateEmailRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateEmailRequest) GetUserId() string {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
+func (x *UpdateEmailRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
 	}
-	return ""
+	return nil
 }
 
 func (x *UpdateEmailRequest) GetEmail() string {
@@ -287,7 +287,7 @@ func (*UpdateEmailResponse) Descriptor() ([]byte, []int) {
 
 type UpdatePasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        *string                `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -323,11 +323,11 @@ func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
 	return file_billing_user_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *UpdatePasswordRequest) GetUserId() string {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
+func (x *UpdatePasswordRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
 	}
-	return ""
+	return nil
 }
 
 func (x *UpdatePasswordRequest) GetPassword() string {
@@ -377,30 +377,26 @@ var File_billing_user_proto protoreflect.FileDescriptor
 
 const file_billing_user_proto_rawDesc = "" +
 	"\n" +
-	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\"=\n" +
-	"\x11GetProfileRequest\x12\x1c\n" +
-	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01B\n" +
-	"\n" +
-	"\b_user_id\"7\n" +
+	"\x12billing/user.proto\x12\abilling\x1a\x14billing/shared.proto\">\n" +
+	"\x11GetProfileRequest\x12\"\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"7\n" +
 	"\x12GetProfileResponse\x12!\n" +
-	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"Q\n" +
-	"\x11UpdateNameRequest\x12\x1c\n" +
-	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04nameB\n" +
-	"\n" +
-	"\b_user_id\"\x14\n" +
-	"\x12UpdateNameResponse\"T\n" +
-	"\x12UpdateEmailRequest\x12\x1c\n" +
-	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05emailB\n" +
-	"\n" +
-	"\b_user_id\"\x15\n" +
-	"\x13UpdateEmailResponse\"]\n" +
-	"\x15UpdatePasswordRequest\x12\x1c\n" +
-	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpasswordB\n" +
-	"\n" +
-	"\b_user_id\"\x18\n" +
+	"\x04user\x18\x01 \x01(\v2\r.billing.UserR\x04user\"R\n" +
+	"\x11UpdateNameRequest\x12\"\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04nameB\x05\n" +
+	"\x03_id\"\x14\n" +
+	"\x12UpdateNameResponse\"U\n" +
+	"\x12UpdateEmailRequest\x12\"\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05emailB\x05\n" +
+	"\x03_id\"\x15\n" +
+	"\x13UpdateEmailResponse\"^\n" +
+	"\x15UpdatePasswordRequest\x12\"\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpasswordB\x05\n" +
+	"\x03_id\"\x18\n" +
 	"\x16UpdatePasswordResponse2\xb8\x02\n" +
 	"\vUserService\x12E\n" +
 	"\n" +
@@ -432,23 +428,28 @@ var file_billing_user_proto_goTypes = []any{
 	(*UpdateEmailResponse)(nil),    // 5: billing.UpdateEmailResponse
 	(*UpdatePasswordRequest)(nil),  // 6: billing.UpdatePasswordRequest
 	(*UpdatePasswordResponse)(nil), // 7: billing.UpdatePasswordResponse
-	(*User)(nil),                   // 8: billing.User
+	(*UUID)(nil),                   // 8: billing.UUID
+	(*User)(nil),                   // 9: billing.User
 }
 var file_billing_user_proto_depIdxs = []int32{
-	8, // 0: billing.GetProfileResponse.user:type_name -> billing.User
-	0, // 1: billing.UserService.GetProfile:input_type -> billing.GetProfileRequest
-	2, // 2: billing.UserService.UpdateName:input_type -> billing.UpdateNameRequest
-	4, // 3: billing.UserService.UpdateEmail:input_type -> billing.UpdateEmailRequest
-	6, // 4: billing.UserService.UpdatePassword:input_type -> billing.UpdatePasswordRequest
-	1, // 5: billing.UserService.GetProfile:output_type -> billing.GetProfileResponse
-	3, // 6: billing.UserService.UpdateName:output_type -> billing.UpdateNameResponse
-	5, // 7: billing.UserService.UpdateEmail:output_type -> billing.UpdateEmailResponse
-	7, // 8: billing.UserService.UpdatePassword:output_type -> billing.UpdatePasswordResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	8, // 0: billing.GetProfileRequest.id:type_name -> billing.UUID
+	9, // 1: billing.GetProfileResponse.user:type_name -> billing.User
+	8, // 2: billing.UpdateNameRequest.id:type_name -> billing.UUID
+	8, // 3: billing.UpdateEmailRequest.id:type_name -> billing.UUID
+	8, // 4: billing.UpdatePasswordRequest.id:type_name -> billing.UUID
+	0, // 5: billing.UserService.GetProfile:input_type -> billing.GetProfileRequest
+	2, // 6: billing.UserService.UpdateName:input_type -> billing.UpdateNameRequest
+	4, // 7: billing.UserService.UpdateEmail:input_type -> billing.UpdateEmailRequest
+	6, // 8: billing.UserService.UpdatePassword:input_type -> billing.UpdatePasswordRequest
+	1, // 9: billing.UserService.GetProfile:output_type -> billing.GetProfileResponse
+	3, // 10: billing.UserService.UpdateName:output_type -> billing.UpdateNameResponse
+	5, // 11: billing.UserService.UpdateEmail:output_type -> billing.UpdateEmailResponse
+	7, // 12: billing.UserService.UpdatePassword:output_type -> billing.UpdatePasswordResponse
+	9, // [9:13] is the sub-list for method output_type
+	5, // [5:9] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_billing_user_proto_init() }

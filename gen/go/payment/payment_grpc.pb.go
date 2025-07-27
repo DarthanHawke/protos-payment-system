@@ -11,6 +11,7 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -31,8 +32,8 @@ const (
 type PaymentServiceClient interface {
 	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*CreatePaymentResponse, error)
 	GetPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error)
-	UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*UpdateStatusPaymentResponse, error)
-	CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*CancelPaymentResponse, error)
+	UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type paymentServiceClient struct {
@@ -63,9 +64,9 @@ func (c *paymentServiceClient) GetPayment(ctx context.Context, in *GetPaymentReq
 	return out, nil
 }
 
-func (c *paymentServiceClient) UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*UpdateStatusPaymentResponse, error) {
+func (c *paymentServiceClient) UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UpdateStatusPaymentResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, PaymentService_UpdateStatusPayment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -73,9 +74,9 @@ func (c *paymentServiceClient) UpdateStatusPayment(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*CancelPaymentResponse, error) {
+func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelPaymentResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, PaymentService_CancelPayment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -89,8 +90,8 @@ func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaym
 type PaymentServiceServer interface {
 	CreatePayment(context.Context, *CreatePaymentRequest) (*CreatePaymentResponse, error)
 	GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error)
-	UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*UpdateStatusPaymentResponse, error)
-	CancelPayment(context.Context, *CancelPaymentRequest) (*CancelPaymentResponse, error)
+	UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*emptypb.Empty, error)
+	CancelPayment(context.Context, *CancelPaymentRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
 
@@ -107,10 +108,10 @@ func (UnimplementedPaymentServiceServer) CreatePayment(context.Context, *CreateP
 func (UnimplementedPaymentServiceServer) GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPayment not implemented")
 }
-func (UnimplementedPaymentServiceServer) UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*UpdateStatusPaymentResponse, error) {
+func (UnimplementedPaymentServiceServer) UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateStatusPayment not implemented")
 }
-func (UnimplementedPaymentServiceServer) CancelPayment(context.Context, *CancelPaymentRequest) (*CancelPaymentResponse, error) {
+func (UnimplementedPaymentServiceServer) CancelPayment(context.Context, *CancelPaymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelPayment not implemented")
 }
 func (UnimplementedPaymentServiceServer) mustEmbedUnimplementedPaymentServiceServer() {}
