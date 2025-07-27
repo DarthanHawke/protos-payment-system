@@ -26,6 +26,11 @@ message Session {
   google.protobuf.Timestamp createdAt = 5;
 }
 
+message Entity {
+  UUID id = 1;
+  string type = 2;
+}
+
 message Permission {
   UUID id = 1;
   string name = 2;

@@ -310,6 +310,102 @@ func (x *GetProfileResponse) GetUser() *User {
 	return nil
 }
 
+type GetAllUsersRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersRequest) Reset() {
+	*x = GetAllUsersRequest{}
+	mi := &file_sso_user_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersRequest) ProtoMessage() {}
+
+func (x *GetAllUsersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_user_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersRequest.ProtoReflect.Descriptor instead.
+func (*GetAllUsersRequest) Descriptor() ([]byte, []int) {
+	return file_sso_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetAllUsersRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *GetAllUsersRequest) GetOffset() int32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type GetAllUsersResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Users         []*User                `protobuf:"bytes,1,rep,name=users,proto3" json:"users,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllUsersResponse) Reset() {
+	*x = GetAllUsersResponse{}
+	mi := &file_sso_user_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllUsersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllUsersResponse) ProtoMessage() {}
+
+func (x *GetAllUsersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_user_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllUsersResponse.ProtoReflect.Descriptor instead.
+func (*GetAllUsersResponse) Descriptor() ([]byte, []int) {
+	return file_sso_user_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllUsersResponse) GetUsers() []*User {
+	if x != nil {
+		return x.Users
+	}
+	return nil
+}
+
 type UpdateNameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -320,7 +416,7 @@ type UpdateNameRequest struct {
 
 func (x *UpdateNameRequest) Reset() {
 	*x = UpdateNameRequest{}
-	mi := &file_sso_user_proto_msgTypes[6]
+	mi := &file_sso_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -332,7 +428,7 @@ func (x *UpdateNameRequest) String() string {
 func (*UpdateNameRequest) ProtoMessage() {}
 
 func (x *UpdateNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_user_proto_msgTypes[6]
+	mi := &file_sso_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -345,7 +441,7 @@ func (x *UpdateNameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNameRequest.ProtoReflect.Descriptor instead.
 func (*UpdateNameRequest) Descriptor() ([]byte, []int) {
-	return file_sso_user_proto_rawDescGZIP(), []int{6}
+	return file_sso_user_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateNameRequest) GetUserId() *UUID {
@@ -372,7 +468,7 @@ type UpdateEmailRequest struct {
 
 func (x *UpdateEmailRequest) Reset() {
 	*x = UpdateEmailRequest{}
-	mi := &file_sso_user_proto_msgTypes[7]
+	mi := &file_sso_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -384,7 +480,7 @@ func (x *UpdateEmailRequest) String() string {
 func (*UpdateEmailRequest) ProtoMessage() {}
 
 func (x *UpdateEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_user_proto_msgTypes[7]
+	mi := &file_sso_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -397,7 +493,7 @@ func (x *UpdateEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateEmailRequest.ProtoReflect.Descriptor instead.
 func (*UpdateEmailRequest) Descriptor() ([]byte, []int) {
-	return file_sso_user_proto_rawDescGZIP(), []int{7}
+	return file_sso_user_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateEmailRequest) GetUserId() *UUID {
@@ -424,7 +520,7 @@ type UpdatePasswordRequest struct {
 
 func (x *UpdatePasswordRequest) Reset() {
 	*x = UpdatePasswordRequest{}
-	mi := &file_sso_user_proto_msgTypes[8]
+	mi := &file_sso_user_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -436,7 +532,7 @@ func (x *UpdatePasswordRequest) String() string {
 func (*UpdatePasswordRequest) ProtoMessage() {}
 
 func (x *UpdatePasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_user_proto_msgTypes[8]
+	mi := &file_sso_user_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -449,7 +545,7 @@ func (x *UpdatePasswordRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdatePasswordRequest.ProtoReflect.Descriptor instead.
 func (*UpdatePasswordRequest) Descriptor() ([]byte, []int) {
-	return file_sso_user_proto_rawDescGZIP(), []int{8}
+	return file_sso_user_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdatePasswordRequest) GetUserId() *UUID {
@@ -485,7 +581,12 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x11GetProfileRequest\x12\"\n" +
 	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\"3\n" +
 	"\x12GetProfileResponse\x12\x1d\n" +
-	"\x04user\x18\x01 \x01(\v2\t.sso.UserR\x04user\"K\n" +
+	"\x04user\x18\x01 \x01(\v2\t.sso.UserR\x04user\"B\n" +
+	"\x12GetAllUsersRequest\x12\x14\n" +
+	"\x05limit\x18\x01 \x01(\x05R\x05limit\x12\x16\n" +
+	"\x06offset\x18\x02 \x01(\x05R\x06offset\"6\n" +
+	"\x13GetAllUsersResponse\x12\x1f\n" +
+	"\x05users\x18\x01 \x03(\v2\t.sso.UserR\x05users\"K\n" +
 	"\x11UpdateNameRequest\x12\"\n" +
 	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"N\n" +
@@ -494,12 +595,13 @@ const file_sso_user_proto_rawDesc = "" +
 	"\x05email\x18\x02 \x01(\tR\x05email\"W\n" +
 	"\x15UpdatePasswordRequest\x12\"\n" +
 	"\auser_id\x18\x01 \x01(\v2\t.sso.UUIDR\x06userId\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword2\xf9\x02\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword2\xbb\x03\n" +
 	"\vUserService\x127\n" +
 	"\bRegister\x12\x14.sso.RegisterRequest\x1a\x15.sso.RegisterResponse\x12.\n" +
 	"\x05Login\x12\x11.sso.LoginRequest\x1a\x12.sso.LoginResponse\x12=\n" +
 	"\n" +
-	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12<\n" +
+	"GetProfile\x12\x16.sso.GetProfileRequest\x1a\x17.sso.GetProfileResponse\x12@\n" +
+	"\vGetAllUsers\x12\x17.sso.GetAllUsersRequest\x1a\x18.sso.GetAllUsersResponse\x12<\n" +
 	"\n" +
 	"UpdateName\x12\x16.sso.UpdateNameRequest\x1a\x16.google.protobuf.Empty\x12>\n" +
 	"\vUpdateEmail\x12\x17.sso.UpdateEmailRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
@@ -517,7 +619,7 @@ func file_sso_user_proto_rawDescGZIP() []byte {
 	return file_sso_user_proto_rawDescData
 }
 
-var file_sso_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_sso_user_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_sso_user_proto_goTypes = []any{
 	(*RegisterRequest)(nil),       // 0: sso.RegisterRequest
 	(*RegisterResponse)(nil),      // 1: sso.RegisterResponse
@@ -525,38 +627,43 @@ var file_sso_user_proto_goTypes = []any{
 	(*LoginResponse)(nil),         // 3: sso.LoginResponse
 	(*GetProfileRequest)(nil),     // 4: sso.GetProfileRequest
 	(*GetProfileResponse)(nil),    // 5: sso.GetProfileResponse
-	(*UpdateNameRequest)(nil),     // 6: sso.UpdateNameRequest
-	(*UpdateEmailRequest)(nil),    // 7: sso.UpdateEmailRequest
-	(*UpdatePasswordRequest)(nil), // 8: sso.UpdatePasswordRequest
-	(*UUID)(nil),                  // 9: sso.UUID
-	(*User)(nil),                  // 10: sso.User
-	(*emptypb.Empty)(nil),         // 11: google.protobuf.Empty
+	(*GetAllUsersRequest)(nil),    // 6: sso.GetAllUsersRequest
+	(*GetAllUsersResponse)(nil),   // 7: sso.GetAllUsersResponse
+	(*UpdateNameRequest)(nil),     // 8: sso.UpdateNameRequest
+	(*UpdateEmailRequest)(nil),    // 9: sso.UpdateEmailRequest
+	(*UpdatePasswordRequest)(nil), // 10: sso.UpdatePasswordRequest
+	(*UUID)(nil),                  // 11: sso.UUID
+	(*User)(nil),                  // 12: sso.User
+	(*emptypb.Empty)(nil),         // 13: google.protobuf.Empty
 }
 var file_sso_user_proto_depIdxs = []int32{
-	9,  // 0: sso.RegisterResponse.user_id:type_name -> sso.UUID
-	9,  // 1: sso.LoginResponse.user_id:type_name -> sso.UUID
-	9,  // 2: sso.GetProfileRequest.user_id:type_name -> sso.UUID
-	10, // 3: sso.GetProfileResponse.user:type_name -> sso.User
-	9,  // 4: sso.UpdateNameRequest.user_id:type_name -> sso.UUID
-	9,  // 5: sso.UpdateEmailRequest.user_id:type_name -> sso.UUID
-	9,  // 6: sso.UpdatePasswordRequest.user_id:type_name -> sso.UUID
-	0,  // 7: sso.UserService.Register:input_type -> sso.RegisterRequest
-	2,  // 8: sso.UserService.Login:input_type -> sso.LoginRequest
-	4,  // 9: sso.UserService.GetProfile:input_type -> sso.GetProfileRequest
-	6,  // 10: sso.UserService.UpdateName:input_type -> sso.UpdateNameRequest
-	7,  // 11: sso.UserService.UpdateEmail:input_type -> sso.UpdateEmailRequest
-	8,  // 12: sso.UserService.UpdatePassword:input_type -> sso.UpdatePasswordRequest
-	1,  // 13: sso.UserService.Register:output_type -> sso.RegisterResponse
-	3,  // 14: sso.UserService.Login:output_type -> sso.LoginResponse
-	5,  // 15: sso.UserService.GetProfile:output_type -> sso.GetProfileResponse
-	11, // 16: sso.UserService.UpdateName:output_type -> google.protobuf.Empty
-	11, // 17: sso.UserService.UpdateEmail:output_type -> google.protobuf.Empty
-	11, // 18: sso.UserService.UpdatePassword:output_type -> google.protobuf.Empty
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	11, // 0: sso.RegisterResponse.user_id:type_name -> sso.UUID
+	11, // 1: sso.LoginResponse.user_id:type_name -> sso.UUID
+	11, // 2: sso.GetProfileRequest.user_id:type_name -> sso.UUID
+	12, // 3: sso.GetProfileResponse.user:type_name -> sso.User
+	12, // 4: sso.GetAllUsersResponse.users:type_name -> sso.User
+	11, // 5: sso.UpdateNameRequest.user_id:type_name -> sso.UUID
+	11, // 6: sso.UpdateEmailRequest.user_id:type_name -> sso.UUID
+	11, // 7: sso.UpdatePasswordRequest.user_id:type_name -> sso.UUID
+	0,  // 8: sso.UserService.Register:input_type -> sso.RegisterRequest
+	2,  // 9: sso.UserService.Login:input_type -> sso.LoginRequest
+	4,  // 10: sso.UserService.GetProfile:input_type -> sso.GetProfileRequest
+	6,  // 11: sso.UserService.GetAllUsers:input_type -> sso.GetAllUsersRequest
+	8,  // 12: sso.UserService.UpdateName:input_type -> sso.UpdateNameRequest
+	9,  // 13: sso.UserService.UpdateEmail:input_type -> sso.UpdateEmailRequest
+	10, // 14: sso.UserService.UpdatePassword:input_type -> sso.UpdatePasswordRequest
+	1,  // 15: sso.UserService.Register:output_type -> sso.RegisterResponse
+	3,  // 16: sso.UserService.Login:output_type -> sso.LoginResponse
+	5,  // 17: sso.UserService.GetProfile:output_type -> sso.GetProfileResponse
+	7,  // 18: sso.UserService.GetAllUsers:output_type -> sso.GetAllUsersResponse
+	13, // 19: sso.UserService.UpdateName:output_type -> google.protobuf.Empty
+	13, // 20: sso.UserService.UpdateEmail:output_type -> google.protobuf.Empty
+	13, // 21: sso.UserService.UpdatePassword:output_type -> google.protobuf.Empty
+	15, // [15:22] is the sub-list for method output_type
+	8,  // [8:15] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_sso_user_proto_init() }
@@ -571,7 +678,7 @@ func file_sso_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_user_proto_rawDesc), len(file_sso_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

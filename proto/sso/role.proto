@@ -18,6 +18,7 @@ service RoleService {
   rpc CheckPermission (CheckPermissionRequest) returns (CheckPermissionResponse);
   rpc GetPermissionByName (GetPermissionByNameRequest) returns (GetPermissionByNameResponse);
   rpc GetEntityId (GetEntityIdRequest) returns (GetEntityIdResponse);
+  rpc GetAllEntities (google.protobuf.Empty) returns (GetAllEntitiesResponse);
   rpc GetAllPermissions (google.protobuf.Empty) returns (GetAllPermissionsResponse);
   rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse);
   rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
@@ -89,6 +90,10 @@ message GetEntityIdRequest {
 
 message GetEntityIdResponse {
   UUID id = 1;
+}
+
+message GetAllEntitiesResponse {
+  repeated Entity entities = 1;
 }
 
 message GetAllPermissionsResponse {

@@ -218,6 +218,58 @@ func (x *Session) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type Entity struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Entity) Reset() {
+	*x = Entity{}
+	mi := &file_sso_shared_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Entity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Entity) ProtoMessage() {}
+
+func (x *Entity) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_shared_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Entity.ProtoReflect.Descriptor instead.
+func (*Entity) Descriptor() ([]byte, []int) {
+	return file_sso_shared_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Entity) GetId() *UUID {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
+func (x *Entity) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
 type Permission struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -229,7 +281,7 @@ type Permission struct {
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_sso_shared_proto_msgTypes[3]
+	mi := &file_sso_shared_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -241,7 +293,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_shared_proto_msgTypes[3]
+	mi := &file_sso_shared_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -254,7 +306,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_sso_shared_proto_rawDescGZIP(), []int{3}
+	return file_sso_shared_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Permission) GetId() *UUID {
@@ -289,7 +341,7 @@ type Relation struct {
 
 func (x *Relation) Reset() {
 	*x = Relation{}
-	mi := &file_sso_shared_proto_msgTypes[4]
+	mi := &file_sso_shared_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -301,7 +353,7 @@ func (x *Relation) String() string {
 func (*Relation) ProtoMessage() {}
 
 func (x *Relation) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_shared_proto_msgTypes[4]
+	mi := &file_sso_shared_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -314,7 +366,7 @@ func (x *Relation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation.ProtoReflect.Descriptor instead.
 func (*Relation) Descriptor() ([]byte, []int) {
-	return file_sso_shared_proto_rawDescGZIP(), []int{4}
+	return file_sso_shared_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Relation) GetSourceId() *UUID {
@@ -357,7 +409,10 @@ const file_sso_shared_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x129\n" +
 	"\n" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
-	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"]\n" +
+	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
+	"\x06Entity\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x12\n" +
+	"\x04type\x18\x02 \x01(\tR\x04type\"]\n" +
 	"\n" +
 	"Permission\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x12\n" +
@@ -380,31 +435,33 @@ func file_sso_shared_proto_rawDescGZIP() []byte {
 	return file_sso_shared_proto_rawDescData
 }
 
-var file_sso_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_sso_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sso_shared_proto_goTypes = []any{
 	(*UUID)(nil),                  // 0: sso.UUID
 	(*User)(nil),                  // 1: sso.User
 	(*Session)(nil),               // 2: sso.Session
-	(*Permission)(nil),            // 3: sso.Permission
-	(*Relation)(nil),              // 4: sso.Relation
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(*Entity)(nil),                // 3: sso.Entity
+	(*Permission)(nil),            // 4: sso.Permission
+	(*Relation)(nil),              // 5: sso.Relation
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_sso_shared_proto_depIdxs = []int32{
 	0,  // 0: sso.User.id:type_name -> sso.UUID
-	5,  // 1: sso.User.createdAt:type_name -> google.protobuf.Timestamp
-	5,  // 2: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
+	6,  // 1: sso.User.createdAt:type_name -> google.protobuf.Timestamp
+	6,  // 2: sso.User.updatedAt:type_name -> google.protobuf.Timestamp
 	0,  // 3: sso.Session.id:type_name -> sso.UUID
 	0,  // 4: sso.Session.user_id:type_name -> sso.UUID
-	5,  // 5: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
-	5,  // 6: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
-	0,  // 7: sso.Permission.id:type_name -> sso.UUID
-	0,  // 8: sso.Relation.source_id:type_name -> sso.UUID
-	0,  // 9: sso.Relation.target_id:type_name -> sso.UUID
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	6,  // 5: sso.Session.expires_at:type_name -> google.protobuf.Timestamp
+	6,  // 6: sso.Session.createdAt:type_name -> google.protobuf.Timestamp
+	0,  // 7: sso.Entity.id:type_name -> sso.UUID
+	0,  // 8: sso.Permission.id:type_name -> sso.UUID
+	0,  // 9: sso.Relation.source_id:type_name -> sso.UUID
+	0,  // 10: sso.Relation.target_id:type_name -> sso.UUID
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_sso_shared_proto_init() }
@@ -418,7 +475,7 @@ func file_sso_shared_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_shared_proto_rawDesc), len(file_sso_shared_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
