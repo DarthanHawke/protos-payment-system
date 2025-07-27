@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	RoleService_CreateEntity_FullMethodName                  = "/sso.RoleService/CreateEntity"
+	RoleService_CreateEntityWithID_FullMethodName            = "/sso.RoleService/CreateEntityWithID"
 	RoleService_DeleteEntity_FullMethodName                  = "/sso.RoleService/DeleteEntity"
 	RoleService_CreateRelation_FullMethodName                = "/sso.RoleService/CreateRelation"
 	RoleService_DeleteRelation_FullMethodName                = "/sso.RoleService/DeleteRelation"
@@ -42,7 +43,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RoleServiceClient interface {
-	CreateEntity(ctx context.Context, in *CreateEntityRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	CreateEntity(ctx context.Context, in *CreateEntityRequest, opts ...grpc.CallOption) (*CreateEntityResponse, error)
+	CreateEntityWithID(ctx context.Context, in *CreateEntityWithIDRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteEntity(ctx context.Context, in *DeleteEntityRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CreateRelation(ctx context.Context, in *CreateRelationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DeleteRelation(ctx context.Context, in *DeleteRelationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -68,10 +70,20 @@ func NewRoleServiceClient(cc grpc.ClientConnInterface) RoleServiceClient {
 	return &roleServiceClient{cc}
 }
 
-func (c *roleServiceClient) CreateEntity(ctx context.Context, in *CreateEntityRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *roleServiceClient) CreateEntity(ctx context.Context, in *CreateEntityRequest, opts ...grpc.CallOption) (*CreateEntityResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateEntityResponse)
+	err := c.cc.Invoke(ctx, RoleService_CreateEntity_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *roleServiceClient) CreateEntityWithID(ctx context.Context, in *CreateEntityWithIDRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, RoleService_CreateEntity_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, RoleService_CreateEntityWithID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -232,7 +244,8 @@ func (c *roleServiceClient) GetEntityRelations(ctx context.Context, in *GetEntit
 // All implementations must embed UnimplementedRoleServiceServer
 // for forward compatibility.
 type RoleServiceServer interface {
-	CreateEntity(context.Context, *CreateEntityRequest) (*emptypb.Empty, error)
+	CreateEntity(context.Context, *CreateEntityRequest) (*CreateEntityResponse, error)
+	CreateEntityWithID(context.Context, *CreateEntityWithIDRequest) (*emptypb.Empty, error)
 	DeleteEntity(context.Context, *DeleteEntityRequest) (*emptypb.Empty, error)
 	CreateRelation(context.Context, *CreateRelationRequest) (*emptypb.Empty, error)
 	DeleteRelation(context.Context, *DeleteRelationRequest) (*emptypb.Empty, error)
@@ -258,8 +271,11 @@ type RoleServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRoleServiceServer struct{}
 
-func (UnimplementedRoleServiceServer) CreateEntity(context.Context, *CreateEntityRequest) (*emptypb.Empty, error) {
+func (UnimplementedRoleServiceServer) CreateEntity(context.Context, *CreateEntityRequest) (*CreateEntityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateEntity not implemented")
+}
+func (UnimplementedRoleServiceServer) CreateEntityWithID(context.Context, *CreateEntityWithIDRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateEntityWithID not implemented")
 }
 func (UnimplementedRoleServiceServer) DeleteEntity(context.Context, *DeleteEntityRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteEntity not implemented")
@@ -341,6 +357,24 @@ func _RoleService_CreateEntity_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RoleServiceServer).CreateEntity(ctx, req.(*CreateEntityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RoleService_CreateEntityWithID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateEntityWithIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).CreateEntityWithID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_CreateEntityWithID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).CreateEntityWithID(ctx, req.(*CreateEntityWithIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -625,6 +659,10 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateEntity",
 			Handler:    _RoleService_CreateEntity_Handler,
+		},
+		{
+			MethodName: "CreateEntityWithID",
+			Handler:    _RoleService_CreateEntityWithID_Handler,
 		},
 		{
 			MethodName: "DeleteEntity",

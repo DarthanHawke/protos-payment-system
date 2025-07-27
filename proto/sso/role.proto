@@ -8,7 +8,8 @@ import "sso/shared.proto";
 import "google/protobuf/empty.proto";
 
 service RoleService {
-  rpc CreateEntity (CreateEntityRequest) returns (google.protobuf.Empty);
+  rpc CreateEntity (CreateEntityRequest) returns (CreateEntityResponse);
+  rpc CreateEntityWithID (CreateEntityWithIDRequest) returns (google.protobuf.Empty);
   rpc DeleteEntity (DeleteEntityRequest) returns (google.protobuf.Empty);
   rpc CreateRelation (CreateRelationRequest) returns (google.protobuf.Empty);
   rpc DeleteRelation (DeleteRelationRequest) returns (google.protobuf.Empty);
@@ -27,7 +28,15 @@ service RoleService {
 }
 
 message CreateEntityRequest {
-  optional UUID id = 1;
+  string entity_type = 1;
+}
+
+message CreateEntityResponse {
+  UUID id = 1;
+}
+
+message CreateEntityWithIDRequest {
+  UUID id = 1;
   string entity_type = 2;
 }
 

@@ -25,6 +25,7 @@ const (
 	RoleService_AssignPermission_FullMethodName              = "/billing.RoleService/AssignPermission"
 	RoleService_RevokePermission_FullMethodName              = "/billing.RoleService/RevokePermission"
 	RoleService_CheckPermission_FullMethodName               = "/billing.RoleService/CheckPermission"
+	RoleService_GetAllEntities_FullMethodName                = "/billing.RoleService/GetAllEntities"
 	RoleService_GetAllPermissions_FullMethodName             = "/billing.RoleService/GetAllPermissions"
 	RoleService_GetUserRelations_FullMethodName              = "/billing.RoleService/GetUserRelations"
 	RoleService_GetUserPermissions_FullMethodName            = "/billing.RoleService/GetUserPermissions"
@@ -40,6 +41,7 @@ type RoleServiceClient interface {
 	AssignPermission(ctx context.Context, in *AssignPermissionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	RevokePermission(ctx context.Context, in *RevokePermissionRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CheckPermission(ctx context.Context, in *CheckPermissionRequest, opts ...grpc.CallOption) (*CheckPermissionResponse, error)
+	GetAllEntities(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllEntitiesResponse, error)
 	GetAllPermissions(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPermissionsResponse, error)
 	GetUserRelations(ctx context.Context, in *GetUserRelationsRequest, opts ...grpc.CallOption) (*GetUserRelationsResponse, error)
 	GetUserPermissions(ctx context.Context, in *GetUserPermissionsRequest, opts ...grpc.CallOption) (*GetUserPermissionsResponse, error)
@@ -104,6 +106,16 @@ func (c *roleServiceClient) CheckPermission(ctx context.Context, in *CheckPermis
 	return out, nil
 }
 
+func (c *roleServiceClient) GetAllEntities(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllEntitiesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllEntitiesResponse)
+	err := c.cc.Invoke(ctx, RoleService_GetAllEntities_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *roleServiceClient) GetAllPermissions(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetAllPermissionsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetAllPermissionsResponse)
@@ -153,6 +165,7 @@ type RoleServiceServer interface {
 	AssignPermission(context.Context, *AssignPermissionRequest) (*emptypb.Empty, error)
 	RevokePermission(context.Context, *RevokePermissionRequest) (*emptypb.Empty, error)
 	CheckPermission(context.Context, *CheckPermissionRequest) (*CheckPermissionResponse, error)
+	GetAllEntities(context.Context, *emptypb.Empty) (*GetAllEntitiesResponse, error)
 	GetAllPermissions(context.Context, *emptypb.Empty) (*GetAllPermissionsResponse, error)
 	GetUserRelations(context.Context, *GetUserRelationsRequest) (*GetUserRelationsResponse, error)
 	GetUserPermissions(context.Context, *GetUserPermissionsRequest) (*GetUserPermissionsResponse, error)
@@ -181,6 +194,9 @@ func (UnimplementedRoleServiceServer) RevokePermission(context.Context, *RevokeP
 }
 func (UnimplementedRoleServiceServer) CheckPermission(context.Context, *CheckPermissionRequest) (*CheckPermissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckPermission not implemented")
+}
+func (UnimplementedRoleServiceServer) GetAllEntities(context.Context, *emptypb.Empty) (*GetAllEntitiesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllEntities not implemented")
 }
 func (UnimplementedRoleServiceServer) GetAllPermissions(context.Context, *emptypb.Empty) (*GetAllPermissionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllPermissions not implemented")
@@ -305,6 +321,24 @@ func _RoleService_CheckPermission_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RoleService_GetAllEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).GetAllEntities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_GetAllEntities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).GetAllEntities(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RoleService_GetAllPermissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
@@ -403,6 +437,10 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckPermission",
 			Handler:    _RoleService_CheckPermission_Handler,
+		},
+		{
+			MethodName: "GetAllEntities",
+			Handler:    _RoleService_GetAllEntities_Handler,
 		},
 		{
 			MethodName: "GetAllPermissions",

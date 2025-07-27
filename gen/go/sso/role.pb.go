@@ -24,8 +24,7 @@ const (
 
 type CreateEntityRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	EntityType    string                 `protobuf:"bytes,2,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
+	EntityType    string                 `protobuf:"bytes,1,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -60,14 +59,103 @@ func (*CreateEntityRequest) Descriptor() ([]byte, []int) {
 	return file_sso_role_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *CreateEntityRequest) GetId() *UUID {
+func (x *CreateEntityRequest) GetEntityType() string {
+	if x != nil {
+		return x.EntityType
+	}
+	return ""
+}
+
+type CreateEntityResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateEntityResponse) Reset() {
+	*x = CreateEntityResponse{}
+	mi := &file_sso_role_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateEntityResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateEntityResponse) ProtoMessage() {}
+
+func (x *CreateEntityResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_role_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateEntityResponse.ProtoReflect.Descriptor instead.
+func (*CreateEntityResponse) Descriptor() ([]byte, []int) {
+	return file_sso_role_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateEntityResponse) GetId() *UUID {
 	if x != nil {
 		return x.Id
 	}
 	return nil
 }
 
-func (x *CreateEntityRequest) GetEntityType() string {
+type CreateEntityWithIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	EntityType    string                 `protobuf:"bytes,2,opt,name=entity_type,json=entityType,proto3" json:"entity_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateEntityWithIDRequest) Reset() {
+	*x = CreateEntityWithIDRequest{}
+	mi := &file_sso_role_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateEntityWithIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateEntityWithIDRequest) ProtoMessage() {}
+
+func (x *CreateEntityWithIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sso_role_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateEntityWithIDRequest.ProtoReflect.Descriptor instead.
+func (*CreateEntityWithIDRequest) Descriptor() ([]byte, []int) {
+	return file_sso_role_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateEntityWithIDRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
+func (x *CreateEntityWithIDRequest) GetEntityType() string {
 	if x != nil {
 		return x.EntityType
 	}
@@ -83,7 +171,7 @@ type DeleteEntityRequest struct {
 
 func (x *DeleteEntityRequest) Reset() {
 	*x = DeleteEntityRequest{}
-	mi := &file_sso_role_proto_msgTypes[1]
+	mi := &file_sso_role_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +183,7 @@ func (x *DeleteEntityRequest) String() string {
 func (*DeleteEntityRequest) ProtoMessage() {}
 
 func (x *DeleteEntityRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[1]
+	mi := &file_sso_role_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,7 +196,7 @@ func (x *DeleteEntityRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteEntityRequest.ProtoReflect.Descriptor instead.
 func (*DeleteEntityRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{1}
+	return file_sso_role_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *DeleteEntityRequest) GetId() *UUID {
@@ -129,7 +217,7 @@ type CreateRelationRequest struct {
 
 func (x *CreateRelationRequest) Reset() {
 	*x = CreateRelationRequest{}
-	mi := &file_sso_role_proto_msgTypes[2]
+	mi := &file_sso_role_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -141,7 +229,7 @@ func (x *CreateRelationRequest) String() string {
 func (*CreateRelationRequest) ProtoMessage() {}
 
 func (x *CreateRelationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[2]
+	mi := &file_sso_role_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -154,7 +242,7 @@ func (x *CreateRelationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRelationRequest.ProtoReflect.Descriptor instead.
 func (*CreateRelationRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{2}
+	return file_sso_role_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateRelationRequest) GetSourceId() *UUID {
@@ -189,7 +277,7 @@ type DeleteRelationRequest struct {
 
 func (x *DeleteRelationRequest) Reset() {
 	*x = DeleteRelationRequest{}
-	mi := &file_sso_role_proto_msgTypes[3]
+	mi := &file_sso_role_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +289,7 @@ func (x *DeleteRelationRequest) String() string {
 func (*DeleteRelationRequest) ProtoMessage() {}
 
 func (x *DeleteRelationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[3]
+	mi := &file_sso_role_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +302,7 @@ func (x *DeleteRelationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRelationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRelationRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{3}
+	return file_sso_role_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *DeleteRelationRequest) GetSourceId() *UUID {
@@ -248,7 +336,7 @@ type AddPermissionRequest struct {
 
 func (x *AddPermissionRequest) Reset() {
 	*x = AddPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[4]
+	mi := &file_sso_role_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +348,7 @@ func (x *AddPermissionRequest) String() string {
 func (*AddPermissionRequest) ProtoMessage() {}
 
 func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[4]
+	mi := &file_sso_role_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +361,7 @@ func (x *AddPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AddPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{4}
+	return file_sso_role_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *AddPermissionRequest) GetName() string {
@@ -299,7 +387,7 @@ type AddPermissionResponse struct {
 
 func (x *AddPermissionResponse) Reset() {
 	*x = AddPermissionResponse{}
-	mi := &file_sso_role_proto_msgTypes[5]
+	mi := &file_sso_role_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +399,7 @@ func (x *AddPermissionResponse) String() string {
 func (*AddPermissionResponse) ProtoMessage() {}
 
 func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[5]
+	mi := &file_sso_role_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +412,7 @@ func (x *AddPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddPermissionResponse.ProtoReflect.Descriptor instead.
 func (*AddPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{5}
+	return file_sso_role_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AddPermissionResponse) GetPermissionId() *UUID {
@@ -344,7 +432,7 @@ type AssignPermissionRequest struct {
 
 func (x *AssignPermissionRequest) Reset() {
 	*x = AssignPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[6]
+	mi := &file_sso_role_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +444,7 @@ func (x *AssignPermissionRequest) String() string {
 func (*AssignPermissionRequest) ProtoMessage() {}
 
 func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[6]
+	mi := &file_sso_role_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +457,7 @@ func (x *AssignPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AssignPermissionRequest.ProtoReflect.Descriptor instead.
 func (*AssignPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{6}
+	return file_sso_role_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *AssignPermissionRequest) GetPermissionId() *UUID {
@@ -396,7 +484,7 @@ type RevokePermissionRequest struct {
 
 func (x *RevokePermissionRequest) Reset() {
 	*x = RevokePermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[7]
+	mi := &file_sso_role_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -408,7 +496,7 @@ func (x *RevokePermissionRequest) String() string {
 func (*RevokePermissionRequest) ProtoMessage() {}
 
 func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[7]
+	mi := &file_sso_role_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +509,7 @@ func (x *RevokePermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokePermissionRequest.ProtoReflect.Descriptor instead.
 func (*RevokePermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{7}
+	return file_sso_role_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *RevokePermissionRequest) GetPermissionId() *UUID {
@@ -449,7 +537,7 @@ type CheckPermissionRequest struct {
 
 func (x *CheckPermissionRequest) Reset() {
 	*x = CheckPermissionRequest{}
-	mi := &file_sso_role_proto_msgTypes[8]
+	mi := &file_sso_role_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -461,7 +549,7 @@ func (x *CheckPermissionRequest) String() string {
 func (*CheckPermissionRequest) ProtoMessage() {}
 
 func (x *CheckPermissionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[8]
+	mi := &file_sso_role_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,7 +562,7 @@ func (x *CheckPermissionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermissionRequest.ProtoReflect.Descriptor instead.
 func (*CheckPermissionRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{8}
+	return file_sso_role_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CheckPermissionRequest) GetSubjectId() *UUID {
@@ -507,7 +595,7 @@ type CheckPermissionResponse struct {
 
 func (x *CheckPermissionResponse) Reset() {
 	*x = CheckPermissionResponse{}
-	mi := &file_sso_role_proto_msgTypes[9]
+	mi := &file_sso_role_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +607,7 @@ func (x *CheckPermissionResponse) String() string {
 func (*CheckPermissionResponse) ProtoMessage() {}
 
 func (x *CheckPermissionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[9]
+	mi := &file_sso_role_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +620,7 @@ func (x *CheckPermissionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CheckPermissionResponse.ProtoReflect.Descriptor instead.
 func (*CheckPermissionResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{9}
+	return file_sso_role_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CheckPermissionResponse) GetHasPermission() bool {
@@ -551,7 +639,7 @@ type GetPermissionByNameRequest struct {
 
 func (x *GetPermissionByNameRequest) Reset() {
 	*x = GetPermissionByNameRequest{}
-	mi := &file_sso_role_proto_msgTypes[10]
+	mi := &file_sso_role_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -563,7 +651,7 @@ func (x *GetPermissionByNameRequest) String() string {
 func (*GetPermissionByNameRequest) ProtoMessage() {}
 
 func (x *GetPermissionByNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[10]
+	mi := &file_sso_role_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -576,7 +664,7 @@ func (x *GetPermissionByNameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermissionByNameRequest.ProtoReflect.Descriptor instead.
 func (*GetPermissionByNameRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{10}
+	return file_sso_role_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetPermissionByNameRequest) GetName() string {
@@ -595,7 +683,7 @@ type GetPermissionByNameResponse struct {
 
 func (x *GetPermissionByNameResponse) Reset() {
 	*x = GetPermissionByNameResponse{}
-	mi := &file_sso_role_proto_msgTypes[11]
+	mi := &file_sso_role_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -607,7 +695,7 @@ func (x *GetPermissionByNameResponse) String() string {
 func (*GetPermissionByNameResponse) ProtoMessage() {}
 
 func (x *GetPermissionByNameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[11]
+	mi := &file_sso_role_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -620,7 +708,7 @@ func (x *GetPermissionByNameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetPermissionByNameResponse.ProtoReflect.Descriptor instead.
 func (*GetPermissionByNameResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{11}
+	return file_sso_role_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetPermissionByNameResponse) GetPermission() *Permission {
@@ -639,7 +727,7 @@ type GetEntityIdRequest struct {
 
 func (x *GetEntityIdRequest) Reset() {
 	*x = GetEntityIdRequest{}
-	mi := &file_sso_role_proto_msgTypes[12]
+	mi := &file_sso_role_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -651,7 +739,7 @@ func (x *GetEntityIdRequest) String() string {
 func (*GetEntityIdRequest) ProtoMessage() {}
 
 func (x *GetEntityIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[12]
+	mi := &file_sso_role_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -664,7 +752,7 @@ func (x *GetEntityIdRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityIdRequest.ProtoReflect.Descriptor instead.
 func (*GetEntityIdRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{12}
+	return file_sso_role_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GetEntityIdRequest) GetEntityType() string {
@@ -683,7 +771,7 @@ type GetEntityIdResponse struct {
 
 func (x *GetEntityIdResponse) Reset() {
 	*x = GetEntityIdResponse{}
-	mi := &file_sso_role_proto_msgTypes[13]
+	mi := &file_sso_role_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -695,7 +783,7 @@ func (x *GetEntityIdResponse) String() string {
 func (*GetEntityIdResponse) ProtoMessage() {}
 
 func (x *GetEntityIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[13]
+	mi := &file_sso_role_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -708,7 +796,7 @@ func (x *GetEntityIdResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityIdResponse.ProtoReflect.Descriptor instead.
 func (*GetEntityIdResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{13}
+	return file_sso_role_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GetEntityIdResponse) GetId() *UUID {
@@ -727,7 +815,7 @@ type GetAllEntitiesResponse struct {
 
 func (x *GetAllEntitiesResponse) Reset() {
 	*x = GetAllEntitiesResponse{}
-	mi := &file_sso_role_proto_msgTypes[14]
+	mi := &file_sso_role_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -739,7 +827,7 @@ func (x *GetAllEntitiesResponse) String() string {
 func (*GetAllEntitiesResponse) ProtoMessage() {}
 
 func (x *GetAllEntitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[14]
+	mi := &file_sso_role_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -752,7 +840,7 @@ func (x *GetAllEntitiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllEntitiesResponse.ProtoReflect.Descriptor instead.
 func (*GetAllEntitiesResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{14}
+	return file_sso_role_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetAllEntitiesResponse) GetEntities() []*Entity {
@@ -771,7 +859,7 @@ type GetAllPermissionsResponse struct {
 
 func (x *GetAllPermissionsResponse) Reset() {
 	*x = GetAllPermissionsResponse{}
-	mi := &file_sso_role_proto_msgTypes[15]
+	mi := &file_sso_role_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -783,7 +871,7 @@ func (x *GetAllPermissionsResponse) String() string {
 func (*GetAllPermissionsResponse) ProtoMessage() {}
 
 func (x *GetAllPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[15]
+	mi := &file_sso_role_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,7 +884,7 @@ func (x *GetAllPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetAllPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*GetAllPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{15}
+	return file_sso_role_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetAllPermissionsResponse) GetPermissions() []*Permission {
@@ -815,7 +903,7 @@ type GetUserRelationsRequest struct {
 
 func (x *GetUserRelationsRequest) Reset() {
 	*x = GetUserRelationsRequest{}
-	mi := &file_sso_role_proto_msgTypes[16]
+	mi := &file_sso_role_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +915,7 @@ func (x *GetUserRelationsRequest) String() string {
 func (*GetUserRelationsRequest) ProtoMessage() {}
 
 func (x *GetUserRelationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[16]
+	mi := &file_sso_role_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +928,7 @@ func (x *GetUserRelationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRelationsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRelationsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{16}
+	return file_sso_role_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetUserRelationsRequest) GetUserId() *UUID {
@@ -859,7 +947,7 @@ type GetUserRelationsResponse struct {
 
 func (x *GetUserRelationsResponse) Reset() {
 	*x = GetUserRelationsResponse{}
-	mi := &file_sso_role_proto_msgTypes[17]
+	mi := &file_sso_role_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -871,7 +959,7 @@ func (x *GetUserRelationsResponse) String() string {
 func (*GetUserRelationsResponse) ProtoMessage() {}
 
 func (x *GetUserRelationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[17]
+	mi := &file_sso_role_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -884,7 +972,7 @@ func (x *GetUserRelationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRelationsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserRelationsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{17}
+	return file_sso_role_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetUserRelationsResponse) GetRelations() []*Relation {
@@ -903,7 +991,7 @@ type GetUserPermissionsRequest struct {
 
 func (x *GetUserPermissionsRequest) Reset() {
 	*x = GetUserPermissionsRequest{}
-	mi := &file_sso_role_proto_msgTypes[18]
+	mi := &file_sso_role_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -915,7 +1003,7 @@ func (x *GetUserPermissionsRequest) String() string {
 func (*GetUserPermissionsRequest) ProtoMessage() {}
 
 func (x *GetUserPermissionsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[18]
+	mi := &file_sso_role_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -928,7 +1016,7 @@ func (x *GetUserPermissionsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserPermissionsRequest.ProtoReflect.Descriptor instead.
 func (*GetUserPermissionsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{18}
+	return file_sso_role_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetUserPermissionsRequest) GetUserId() *UUID {
@@ -947,7 +1035,7 @@ type GetUserPermissionsResponse struct {
 
 func (x *GetUserPermissionsResponse) Reset() {
 	*x = GetUserPermissionsResponse{}
-	mi := &file_sso_role_proto_msgTypes[19]
+	mi := &file_sso_role_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -959,7 +1047,7 @@ func (x *GetUserPermissionsResponse) String() string {
 func (*GetUserPermissionsResponse) ProtoMessage() {}
 
 func (x *GetUserPermissionsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[19]
+	mi := &file_sso_role_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -972,7 +1060,7 @@ func (x *GetUserPermissionsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserPermissionsResponse.ProtoReflect.Descriptor instead.
 func (*GetUserPermissionsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{19}
+	return file_sso_role_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetUserPermissionsResponse) GetPermissions() []*Permission {
@@ -991,7 +1079,7 @@ type GetPermissionsForRelationTypeRequest struct {
 
 func (x *GetPermissionsForRelationTypeRequest) Reset() {
 	*x = GetPermissionsForRelationTypeRequest{}
-	mi := &file_sso_role_proto_msgTypes[20]
+	mi := &file_sso_role_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1003,7 +1091,7 @@ func (x *GetPermissionsForRelationTypeRequest) String() string {
 func (*GetPermissionsForRelationTypeRequest) ProtoMessage() {}
 
 func (x *GetPermissionsForRelationTypeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[20]
+	mi := &file_sso_role_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1016,7 +1104,7 @@ func (x *GetPermissionsForRelationTypeRequest) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use GetPermissionsForRelationTypeRequest.ProtoReflect.Descriptor instead.
 func (*GetPermissionsForRelationTypeRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{20}
+	return file_sso_role_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetPermissionsForRelationTypeRequest) GetRelationType() string {
@@ -1035,7 +1123,7 @@ type GetPermissionsForRelationTypeResponse struct {
 
 func (x *GetPermissionsForRelationTypeResponse) Reset() {
 	*x = GetPermissionsForRelationTypeResponse{}
-	mi := &file_sso_role_proto_msgTypes[21]
+	mi := &file_sso_role_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1047,7 +1135,7 @@ func (x *GetPermissionsForRelationTypeResponse) String() string {
 func (*GetPermissionsForRelationTypeResponse) ProtoMessage() {}
 
 func (x *GetPermissionsForRelationTypeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[21]
+	mi := &file_sso_role_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1060,7 +1148,7 @@ func (x *GetPermissionsForRelationTypeResponse) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use GetPermissionsForRelationTypeResponse.ProtoReflect.Descriptor instead.
 func (*GetPermissionsForRelationTypeResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{21}
+	return file_sso_role_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetPermissionsForRelationTypeResponse) GetPermissions() []*Permission {
@@ -1079,7 +1167,7 @@ type GetEntityRelationsRequest struct {
 
 func (x *GetEntityRelationsRequest) Reset() {
 	*x = GetEntityRelationsRequest{}
-	mi := &file_sso_role_proto_msgTypes[22]
+	mi := &file_sso_role_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1091,7 +1179,7 @@ func (x *GetEntityRelationsRequest) String() string {
 func (*GetEntityRelationsRequest) ProtoMessage() {}
 
 func (x *GetEntityRelationsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[22]
+	mi := &file_sso_role_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1104,7 +1192,7 @@ func (x *GetEntityRelationsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityRelationsRequest.ProtoReflect.Descriptor instead.
 func (*GetEntityRelationsRequest) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{22}
+	return file_sso_role_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *GetEntityRelationsRequest) GetEntityId() *UUID {
@@ -1123,7 +1211,7 @@ type GetEntityRelationsResponse struct {
 
 func (x *GetEntityRelationsResponse) Reset() {
 	*x = GetEntityRelationsResponse{}
-	mi := &file_sso_role_proto_msgTypes[23]
+	mi := &file_sso_role_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1135,7 +1223,7 @@ func (x *GetEntityRelationsResponse) String() string {
 func (*GetEntityRelationsResponse) ProtoMessage() {}
 
 func (x *GetEntityRelationsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sso_role_proto_msgTypes[23]
+	mi := &file_sso_role_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1148,7 +1236,7 @@ func (x *GetEntityRelationsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEntityRelationsResponse.ProtoReflect.Descriptor instead.
 func (*GetEntityRelationsResponse) Descriptor() ([]byte, []int) {
-	return file_sso_role_proto_rawDescGZIP(), []int{23}
+	return file_sso_role_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *GetEntityRelationsResponse) GetRelations() []*Relation {
@@ -1162,12 +1250,16 @@ var File_sso_role_proto protoreflect.FileDescriptor
 
 const file_sso_role_proto_rawDesc = "" +
 	"\n" +
-	"\x0esso/role.proto\x12\x03sso\x1a\x10sso/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\"]\n" +
-	"\x13CreateEntityRequest\x12\x1e\n" +
-	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDH\x00R\x02id\x88\x01\x01\x12\x1f\n" +
+	"\x0esso/role.proto\x12\x03sso\x1a\x10sso/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\"6\n" +
+	"\x13CreateEntityRequest\x12\x1f\n" +
+	"\ventity_type\x18\x01 \x01(\tR\n" +
+	"entityType\"1\n" +
+	"\x14CreateEntityResponse\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\"W\n" +
+	"\x19CreateEntityWithIDRequest\x12\x19\n" +
+	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x1f\n" +
 	"\ventity_type\x18\x02 \x01(\tR\n" +
-	"entityTypeB\x05\n" +
-	"\x03_id\"0\n" +
+	"entityType\"0\n" +
 	"\x13DeleteEntityRequest\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\"\x8c\x01\n" +
 	"\x15CreateRelationRequest\x12&\n" +
@@ -1226,9 +1318,11 @@ const file_sso_role_proto_rawDesc = "" +
 	"\x19GetEntityRelationsRequest\x12&\n" +
 	"\tentity_id\x18\x01 \x01(\v2\t.sso.UUIDR\bentityId\"I\n" +
 	"\x1aGetEntityRelationsResponse\x12+\n" +
-	"\trelations\x18\x01 \x03(\v2\r.sso.RelationR\trelations2\xee\t\n" +
-	"\vRoleService\x12@\n" +
-	"\fCreateEntity\x12\x18.sso.CreateEntityRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
+	"\trelations\x18\x01 \x03(\v2\r.sso.RelationR\trelations2\xbf\n" +
+	"\n" +
+	"\vRoleService\x12C\n" +
+	"\fCreateEntity\x12\x18.sso.CreateEntityRequest\x1a\x19.sso.CreateEntityResponse\x12L\n" +
+	"\x12CreateEntityWithID\x12\x1e.sso.CreateEntityWithIDRequest\x1a\x16.google.protobuf.Empty\x12@\n" +
 	"\fDeleteEntity\x12\x18.sso.DeleteEntityRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
 	"\x0eCreateRelation\x12\x1a.sso.CreateRelationRequest\x1a\x16.google.protobuf.Empty\x12D\n" +
 	"\x0eDeleteRelation\x12\x1a.sso.DeleteRelationRequest\x1a\x16.google.protobuf.Empty\x12F\n" +
@@ -1257,98 +1351,103 @@ func file_sso_role_proto_rawDescGZIP() []byte {
 	return file_sso_role_proto_rawDescData
 }
 
-var file_sso_role_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_sso_role_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_sso_role_proto_goTypes = []any{
 	(*CreateEntityRequest)(nil),                   // 0: sso.CreateEntityRequest
-	(*DeleteEntityRequest)(nil),                   // 1: sso.DeleteEntityRequest
-	(*CreateRelationRequest)(nil),                 // 2: sso.CreateRelationRequest
-	(*DeleteRelationRequest)(nil),                 // 3: sso.DeleteRelationRequest
-	(*AddPermissionRequest)(nil),                  // 4: sso.AddPermissionRequest
-	(*AddPermissionResponse)(nil),                 // 5: sso.AddPermissionResponse
-	(*AssignPermissionRequest)(nil),               // 6: sso.AssignPermissionRequest
-	(*RevokePermissionRequest)(nil),               // 7: sso.RevokePermissionRequest
-	(*CheckPermissionRequest)(nil),                // 8: sso.CheckPermissionRequest
-	(*CheckPermissionResponse)(nil),               // 9: sso.CheckPermissionResponse
-	(*GetPermissionByNameRequest)(nil),            // 10: sso.GetPermissionByNameRequest
-	(*GetPermissionByNameResponse)(nil),           // 11: sso.GetPermissionByNameResponse
-	(*GetEntityIdRequest)(nil),                    // 12: sso.GetEntityIdRequest
-	(*GetEntityIdResponse)(nil),                   // 13: sso.GetEntityIdResponse
-	(*GetAllEntitiesResponse)(nil),                // 14: sso.GetAllEntitiesResponse
-	(*GetAllPermissionsResponse)(nil),             // 15: sso.GetAllPermissionsResponse
-	(*GetUserRelationsRequest)(nil),               // 16: sso.GetUserRelationsRequest
-	(*GetUserRelationsResponse)(nil),              // 17: sso.GetUserRelationsResponse
-	(*GetUserPermissionsRequest)(nil),             // 18: sso.GetUserPermissionsRequest
-	(*GetUserPermissionsResponse)(nil),            // 19: sso.GetUserPermissionsResponse
-	(*GetPermissionsForRelationTypeRequest)(nil),  // 20: sso.GetPermissionsForRelationTypeRequest
-	(*GetPermissionsForRelationTypeResponse)(nil), // 21: sso.GetPermissionsForRelationTypeResponse
-	(*GetEntityRelationsRequest)(nil),             // 22: sso.GetEntityRelationsRequest
-	(*GetEntityRelationsResponse)(nil),            // 23: sso.GetEntityRelationsResponse
-	(*UUID)(nil),                                  // 24: sso.UUID
-	(*Permission)(nil),                            // 25: sso.Permission
-	(*Entity)(nil),                                // 26: sso.Entity
-	(*Relation)(nil),                              // 27: sso.Relation
-	(*emptypb.Empty)(nil),                         // 28: google.protobuf.Empty
+	(*CreateEntityResponse)(nil),                  // 1: sso.CreateEntityResponse
+	(*CreateEntityWithIDRequest)(nil),             // 2: sso.CreateEntityWithIDRequest
+	(*DeleteEntityRequest)(nil),                   // 3: sso.DeleteEntityRequest
+	(*CreateRelationRequest)(nil),                 // 4: sso.CreateRelationRequest
+	(*DeleteRelationRequest)(nil),                 // 5: sso.DeleteRelationRequest
+	(*AddPermissionRequest)(nil),                  // 6: sso.AddPermissionRequest
+	(*AddPermissionResponse)(nil),                 // 7: sso.AddPermissionResponse
+	(*AssignPermissionRequest)(nil),               // 8: sso.AssignPermissionRequest
+	(*RevokePermissionRequest)(nil),               // 9: sso.RevokePermissionRequest
+	(*CheckPermissionRequest)(nil),                // 10: sso.CheckPermissionRequest
+	(*CheckPermissionResponse)(nil),               // 11: sso.CheckPermissionResponse
+	(*GetPermissionByNameRequest)(nil),            // 12: sso.GetPermissionByNameRequest
+	(*GetPermissionByNameResponse)(nil),           // 13: sso.GetPermissionByNameResponse
+	(*GetEntityIdRequest)(nil),                    // 14: sso.GetEntityIdRequest
+	(*GetEntityIdResponse)(nil),                   // 15: sso.GetEntityIdResponse
+	(*GetAllEntitiesResponse)(nil),                // 16: sso.GetAllEntitiesResponse
+	(*GetAllPermissionsResponse)(nil),             // 17: sso.GetAllPermissionsResponse
+	(*GetUserRelationsRequest)(nil),               // 18: sso.GetUserRelationsRequest
+	(*GetUserRelationsResponse)(nil),              // 19: sso.GetUserRelationsResponse
+	(*GetUserPermissionsRequest)(nil),             // 20: sso.GetUserPermissionsRequest
+	(*GetUserPermissionsResponse)(nil),            // 21: sso.GetUserPermissionsResponse
+	(*GetPermissionsForRelationTypeRequest)(nil),  // 22: sso.GetPermissionsForRelationTypeRequest
+	(*GetPermissionsForRelationTypeResponse)(nil), // 23: sso.GetPermissionsForRelationTypeResponse
+	(*GetEntityRelationsRequest)(nil),             // 24: sso.GetEntityRelationsRequest
+	(*GetEntityRelationsResponse)(nil),            // 25: sso.GetEntityRelationsResponse
+	(*UUID)(nil),                                  // 26: sso.UUID
+	(*Permission)(nil),                            // 27: sso.Permission
+	(*Entity)(nil),                                // 28: sso.Entity
+	(*Relation)(nil),                              // 29: sso.Relation
+	(*emptypb.Empty)(nil),                         // 30: google.protobuf.Empty
 }
 var file_sso_role_proto_depIdxs = []int32{
-	24, // 0: sso.CreateEntityRequest.id:type_name -> sso.UUID
-	24, // 1: sso.DeleteEntityRequest.id:type_name -> sso.UUID
-	24, // 2: sso.CreateRelationRequest.source_id:type_name -> sso.UUID
-	24, // 3: sso.CreateRelationRequest.target_id:type_name -> sso.UUID
-	24, // 4: sso.DeleteRelationRequest.source_id:type_name -> sso.UUID
-	24, // 5: sso.DeleteRelationRequest.target_id:type_name -> sso.UUID
-	24, // 6: sso.AddPermissionResponse.permission_id:type_name -> sso.UUID
-	24, // 7: sso.AssignPermissionRequest.permission_id:type_name -> sso.UUID
-	24, // 8: sso.RevokePermissionRequest.permission_id:type_name -> sso.UUID
-	24, // 9: sso.CheckPermissionRequest.subject_id:type_name -> sso.UUID
-	24, // 10: sso.CheckPermissionRequest.object_id:type_name -> sso.UUID
-	25, // 11: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
-	24, // 12: sso.GetEntityIdResponse.id:type_name -> sso.UUID
-	26, // 13: sso.GetAllEntitiesResponse.entities:type_name -> sso.Entity
-	25, // 14: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
-	24, // 15: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
-	27, // 16: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
-	24, // 17: sso.GetUserPermissionsRequest.user_id:type_name -> sso.UUID
-	25, // 18: sso.GetUserPermissionsResponse.permissions:type_name -> sso.Permission
-	25, // 19: sso.GetPermissionsForRelationTypeResponse.permissions:type_name -> sso.Permission
-	24, // 20: sso.GetEntityRelationsRequest.entity_id:type_name -> sso.UUID
-	27, // 21: sso.GetEntityRelationsResponse.relations:type_name -> sso.Relation
-	0,  // 22: sso.RoleService.CreateEntity:input_type -> sso.CreateEntityRequest
-	1,  // 23: sso.RoleService.DeleteEntity:input_type -> sso.DeleteEntityRequest
-	2,  // 24: sso.RoleService.CreateRelation:input_type -> sso.CreateRelationRequest
-	3,  // 25: sso.RoleService.DeleteRelation:input_type -> sso.DeleteRelationRequest
-	4,  // 26: sso.RoleService.AddPermission:input_type -> sso.AddPermissionRequest
-	6,  // 27: sso.RoleService.AssignPermission:input_type -> sso.AssignPermissionRequest
-	7,  // 28: sso.RoleService.RevokePermission:input_type -> sso.RevokePermissionRequest
-	8,  // 29: sso.RoleService.CheckPermission:input_type -> sso.CheckPermissionRequest
-	10, // 30: sso.RoleService.GetPermissionByName:input_type -> sso.GetPermissionByNameRequest
-	12, // 31: sso.RoleService.GetEntityId:input_type -> sso.GetEntityIdRequest
-	28, // 32: sso.RoleService.GetAllEntities:input_type -> google.protobuf.Empty
-	28, // 33: sso.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
-	16, // 34: sso.RoleService.GetUserRelations:input_type -> sso.GetUserRelationsRequest
-	18, // 35: sso.RoleService.GetUserPermissions:input_type -> sso.GetUserPermissionsRequest
-	20, // 36: sso.RoleService.GetPermissionsForRelationType:input_type -> sso.GetPermissionsForRelationTypeRequest
-	22, // 37: sso.RoleService.GetEntityRelations:input_type -> sso.GetEntityRelationsRequest
-	28, // 38: sso.RoleService.CreateEntity:output_type -> google.protobuf.Empty
-	28, // 39: sso.RoleService.DeleteEntity:output_type -> google.protobuf.Empty
-	28, // 40: sso.RoleService.CreateRelation:output_type -> google.protobuf.Empty
-	28, // 41: sso.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
-	5,  // 42: sso.RoleService.AddPermission:output_type -> sso.AddPermissionResponse
-	28, // 43: sso.RoleService.AssignPermission:output_type -> google.protobuf.Empty
-	28, // 44: sso.RoleService.RevokePermission:output_type -> google.protobuf.Empty
-	9,  // 45: sso.RoleService.CheckPermission:output_type -> sso.CheckPermissionResponse
-	11, // 46: sso.RoleService.GetPermissionByName:output_type -> sso.GetPermissionByNameResponse
-	13, // 47: sso.RoleService.GetEntityId:output_type -> sso.GetEntityIdResponse
-	14, // 48: sso.RoleService.GetAllEntities:output_type -> sso.GetAllEntitiesResponse
-	15, // 49: sso.RoleService.GetAllPermissions:output_type -> sso.GetAllPermissionsResponse
-	17, // 50: sso.RoleService.GetUserRelations:output_type -> sso.GetUserRelationsResponse
-	19, // 51: sso.RoleService.GetUserPermissions:output_type -> sso.GetUserPermissionsResponse
-	21, // 52: sso.RoleService.GetPermissionsForRelationType:output_type -> sso.GetPermissionsForRelationTypeResponse
-	23, // 53: sso.RoleService.GetEntityRelations:output_type -> sso.GetEntityRelationsResponse
-	38, // [38:54] is the sub-list for method output_type
-	22, // [22:38] is the sub-list for method input_type
-	22, // [22:22] is the sub-list for extension type_name
-	22, // [22:22] is the sub-list for extension extendee
-	0,  // [0:22] is the sub-list for field type_name
+	26, // 0: sso.CreateEntityResponse.id:type_name -> sso.UUID
+	26, // 1: sso.CreateEntityWithIDRequest.id:type_name -> sso.UUID
+	26, // 2: sso.DeleteEntityRequest.id:type_name -> sso.UUID
+	26, // 3: sso.CreateRelationRequest.source_id:type_name -> sso.UUID
+	26, // 4: sso.CreateRelationRequest.target_id:type_name -> sso.UUID
+	26, // 5: sso.DeleteRelationRequest.source_id:type_name -> sso.UUID
+	26, // 6: sso.DeleteRelationRequest.target_id:type_name -> sso.UUID
+	26, // 7: sso.AddPermissionResponse.permission_id:type_name -> sso.UUID
+	26, // 8: sso.AssignPermissionRequest.permission_id:type_name -> sso.UUID
+	26, // 9: sso.RevokePermissionRequest.permission_id:type_name -> sso.UUID
+	26, // 10: sso.CheckPermissionRequest.subject_id:type_name -> sso.UUID
+	26, // 11: sso.CheckPermissionRequest.object_id:type_name -> sso.UUID
+	27, // 12: sso.GetPermissionByNameResponse.permission:type_name -> sso.Permission
+	26, // 13: sso.GetEntityIdResponse.id:type_name -> sso.UUID
+	28, // 14: sso.GetAllEntitiesResponse.entities:type_name -> sso.Entity
+	27, // 15: sso.GetAllPermissionsResponse.permissions:type_name -> sso.Permission
+	26, // 16: sso.GetUserRelationsRequest.user_id:type_name -> sso.UUID
+	29, // 17: sso.GetUserRelationsResponse.relations:type_name -> sso.Relation
+	26, // 18: sso.GetUserPermissionsRequest.user_id:type_name -> sso.UUID
+	27, // 19: sso.GetUserPermissionsResponse.permissions:type_name -> sso.Permission
+	27, // 20: sso.GetPermissionsForRelationTypeResponse.permissions:type_name -> sso.Permission
+	26, // 21: sso.GetEntityRelationsRequest.entity_id:type_name -> sso.UUID
+	29, // 22: sso.GetEntityRelationsResponse.relations:type_name -> sso.Relation
+	0,  // 23: sso.RoleService.CreateEntity:input_type -> sso.CreateEntityRequest
+	2,  // 24: sso.RoleService.CreateEntityWithID:input_type -> sso.CreateEntityWithIDRequest
+	3,  // 25: sso.RoleService.DeleteEntity:input_type -> sso.DeleteEntityRequest
+	4,  // 26: sso.RoleService.CreateRelation:input_type -> sso.CreateRelationRequest
+	5,  // 27: sso.RoleService.DeleteRelation:input_type -> sso.DeleteRelationRequest
+	6,  // 28: sso.RoleService.AddPermission:input_type -> sso.AddPermissionRequest
+	8,  // 29: sso.RoleService.AssignPermission:input_type -> sso.AssignPermissionRequest
+	9,  // 30: sso.RoleService.RevokePermission:input_type -> sso.RevokePermissionRequest
+	10, // 31: sso.RoleService.CheckPermission:input_type -> sso.CheckPermissionRequest
+	12, // 32: sso.RoleService.GetPermissionByName:input_type -> sso.GetPermissionByNameRequest
+	14, // 33: sso.RoleService.GetEntityId:input_type -> sso.GetEntityIdRequest
+	30, // 34: sso.RoleService.GetAllEntities:input_type -> google.protobuf.Empty
+	30, // 35: sso.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
+	18, // 36: sso.RoleService.GetUserRelations:input_type -> sso.GetUserRelationsRequest
+	20, // 37: sso.RoleService.GetUserPermissions:input_type -> sso.GetUserPermissionsRequest
+	22, // 38: sso.RoleService.GetPermissionsForRelationType:input_type -> sso.GetPermissionsForRelationTypeRequest
+	24, // 39: sso.RoleService.GetEntityRelations:input_type -> sso.GetEntityRelationsRequest
+	1,  // 40: sso.RoleService.CreateEntity:output_type -> sso.CreateEntityResponse
+	30, // 41: sso.RoleService.CreateEntityWithID:output_type -> google.protobuf.Empty
+	30, // 42: sso.RoleService.DeleteEntity:output_type -> google.protobuf.Empty
+	30, // 43: sso.RoleService.CreateRelation:output_type -> google.protobuf.Empty
+	30, // 44: sso.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
+	7,  // 45: sso.RoleService.AddPermission:output_type -> sso.AddPermissionResponse
+	30, // 46: sso.RoleService.AssignPermission:output_type -> google.protobuf.Empty
+	30, // 47: sso.RoleService.RevokePermission:output_type -> google.protobuf.Empty
+	11, // 48: sso.RoleService.CheckPermission:output_type -> sso.CheckPermissionResponse
+	13, // 49: sso.RoleService.GetPermissionByName:output_type -> sso.GetPermissionByNameResponse
+	15, // 50: sso.RoleService.GetEntityId:output_type -> sso.GetEntityIdResponse
+	16, // 51: sso.RoleService.GetAllEntities:output_type -> sso.GetAllEntitiesResponse
+	17, // 52: sso.RoleService.GetAllPermissions:output_type -> sso.GetAllPermissionsResponse
+	19, // 53: sso.RoleService.GetUserRelations:output_type -> sso.GetUserRelationsResponse
+	21, // 54: sso.RoleService.GetUserPermissions:output_type -> sso.GetUserPermissionsResponse
+	23, // 55: sso.RoleService.GetPermissionsForRelationType:output_type -> sso.GetPermissionsForRelationTypeResponse
+	25, // 56: sso.RoleService.GetEntityRelations:output_type -> sso.GetEntityRelationsResponse
+	40, // [40:57] is the sub-list for method output_type
+	23, // [23:40] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
 func init() { file_sso_role_proto_init() }
@@ -1357,14 +1456,13 @@ func file_sso_role_proto_init() {
 		return
 	}
 	file_sso_shared_proto_init()
-	file_sso_role_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sso_role_proto_rawDesc), len(file_sso_role_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   24,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
