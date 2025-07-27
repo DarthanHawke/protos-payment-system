@@ -40,5 +40,5 @@ message UpdateStatusPaymentRequest {
 }
 
 message CancelPaymentRequest {
-  UUID payment_id = 1;
+  UUID id = 1;
 }

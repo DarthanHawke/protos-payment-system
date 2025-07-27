@@ -23,9 +23,11 @@ const (
 
 type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Amount        float32                `protobuf:"fixed32,1,opt,name=amount,proto3" json:"amount,omitempty"`
-	Currency      string                 `protobuf:"bytes,2,opt,name=currency,proto3" json:"currency,omitempty"`
-	Description   *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Sender        string                 `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	Receiver      string                 `protobuf:"bytes,2,opt,name=receiver,proto3" json:"receiver,omitempty"`
+	Amount        float32                `protobuf:"fixed32,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
+	Description   *string                `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,6 +60,20 @@ func (x *CreatePaymentRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreatePaymentRequest.ProtoReflect.Descriptor instead.
 func (*CreatePaymentRequest) Descriptor() ([]byte, []int) {
 	return file_billing_payment_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CreatePaymentRequest) GetSender() string {
+	if x != nil {
+		return x.Sender
+	}
+	return ""
+}
+
+func (x *CreatePaymentRequest) GetReceiver() string {
+	if x != nil {
+		return x.Receiver
+	}
+	return ""
 }
 
 func (x *CreatePaymentRequest) GetAmount() float32 {
@@ -497,11 +513,13 @@ var File_billing_payment_proto protoreflect.FileDescriptor
 
 const file_billing_payment_proto_rawDesc = "" +
 	"\n" +
-	"\x15billing/payment.proto\x12\abilling\x1a\x14billing/shared.proto\"\x81\x01\n" +
+	"\x15billing/payment.proto\x12\abilling\x1a\x14billing/shared.proto\"\xb5\x01\n" +
 	"\x14CreatePaymentRequest\x12\x16\n" +
-	"\x06amount\x18\x01 \x01(\x02R\x06amount\x12\x1a\n" +
-	"\bcurrency\x18\x02 \x01(\tR\bcurrency\x12%\n" +
-	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
+	"\x06sender\x18\x01 \x01(\tR\x06sender\x12\x1a\n" +
+	"\breceiver\x18\x02 \x01(\tR\breceiver\x12\x16\n" +
+	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12\x1a\n" +
+	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12%\n" +
+	"\vdescription\x18\x05 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
 	"\f_description\"6\n" +
 	"\x15CreatePaymentResponse\x12\x1d\n" +
 	"\n" +

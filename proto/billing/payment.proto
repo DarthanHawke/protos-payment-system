@@ -15,9 +15,11 @@ service PaymentService {
 }
 
 message CreatePaymentRequest {
-  float amount = 1;
-  string currency = 2;
-  optional string description = 3;
+  string sender = 1;
+  string receiver = 2;
+  float amount = 3;
+  string currency = 4;
+  optional string description = 5;
 }
 
 message CreatePaymentResponse {

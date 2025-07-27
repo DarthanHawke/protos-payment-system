@@ -7,10 +7,20 @@ package billing;
 import "billing/shared.proto";
 
 service UserService {
+  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
   rpc UpdateName (UpdateNameRequest) returns (UpdateNameResponse);
   rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
   rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse);}
+
+message GetAllUsersRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+}
+
+message GetAllUsersResponse {
+  repeated User users = 1;
+}
 
 message GetProfileRequest {
   optional UUID id = 1;

@@ -284,7 +284,7 @@ func (x *UpdateStatusPaymentRequest) GetStatus() string {
 
 type CancelPaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PaymentId     *UUID                  `protobuf:"bytes,1,opt,name=payment_id,json=paymentId,proto3" json:"payment_id,omitempty"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -319,9 +319,9 @@ func (*CancelPaymentRequest) Descriptor() ([]byte, []int) {
 	return file_payment_payment_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CancelPaymentRequest) GetPaymentId() *UUID {
+func (x *CancelPaymentRequest) GetId() *UUID {
 	if x != nil {
-		return x.PaymentId
+		return x.Id
 	}
 	return nil
 }
@@ -346,10 +346,9 @@ const file_payment_payment_proto_rawDesc = "" +
 	"\apayment\x18\x01 \x01(\v2\x10.payment.PaymentR\apayment\"S\n" +
 	"\x1aUpdateStatusPaymentRequest\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\v2\r.payment.UUIDR\x02id\x12\x16\n" +
-	"\x06status\x18\x02 \x01(\tR\x06status\"D\n" +
-	"\x14CancelPaymentRequest\x12,\n" +
-	"\n" +
-	"payment_id\x18\x01 \x01(\v2\r.payment.UUIDR\tpaymentId2\xc3\x02\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\"5\n" +
+	"\x14CancelPaymentRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\v2\r.payment.UUIDR\x02id2\xc3\x02\n" +
 	"\x0ePaymentService\x12N\n" +
 	"\rCreatePayment\x12\x1d.payment.CreatePaymentRequest\x1a\x1e.payment.CreatePaymentResponse\x12E\n" +
 	"\n" +
@@ -386,7 +385,7 @@ var file_payment_payment_proto_depIdxs = []int32{
 	6, // 1: payment.GetPaymentRequest.id:type_name -> payment.UUID
 	7, // 2: payment.GetPaymentResponse.payment:type_name -> payment.Payment
 	6, // 3: payment.UpdateStatusPaymentRequest.id:type_name -> payment.UUID
-	6, // 4: payment.CancelPaymentRequest.payment_id:type_name -> payment.UUID
+	6, // 4: payment.CancelPaymentRequest.id:type_name -> payment.UUID
 	0, // 5: payment.PaymentService.CreatePayment:input_type -> payment.CreatePaymentRequest
 	2, // 6: payment.PaymentService.GetPayment:input_type -> payment.GetPaymentRequest
 	4, // 7: payment.PaymentService.UpdateStatusPayment:input_type -> payment.UpdateStatusPaymentRequest
