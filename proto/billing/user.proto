@@ -5,13 +5,14 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package billing;
 
 import "billing/shared.proto";
+import "google/protobuf/empty.proto";
 
 service UserService {
   rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse);
   rpc GetProfile (GetProfileRequest) returns (GetProfileResponse);
-  rpc UpdateName (UpdateNameRequest) returns (UpdateNameResponse);
-  rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
-  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse);}
+  rpc UpdateName (UpdateNameRequest) returns (google.protobuf.Empty);
+  rpc UpdateEmail (UpdateEmailRequest) returns (google.protobuf.Empty);
+  rpc UpdatePassword (UpdatePasswordRequest) returns (google.protobuf.Empty);}
 
 message GetAllUsersRequest {
   int32 limit = 1;
@@ -35,19 +36,11 @@ message UpdateNameRequest {
   string name = 2;
 }
 
-message UpdateNameResponse {}
-
 message UpdateEmailRequest {
   optional UUID id = 1;
   string email = 2;
 }
 
-message UpdateEmailResponse {}
-
 message UpdatePasswordRequest {
-  optional UUID id = 1;
-  string password = 2;
+  string password = 1;
 }
-
-message UpdatePasswordResponse {}
-

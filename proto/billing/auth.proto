@@ -5,16 +5,15 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package billing;
 
 import "billing/shared.proto";
+import "google/protobuf/empty.proto";
 
 service AuthService {
-  rpc RefreshSession (RefreshSessionRequest) returns (RefreshSessionResponse);
+  rpc RefreshSession (google.protobuf.Empty) returns (RefreshSessionResponse);
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
-  rpc Logout (LogoutRequest) returns (LogoutResponse);
-  rpc LogoutAll (LogoutAllRequest) returns (LogoutAllResponse);
+  rpc Logout (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc LogoutAll (google.protobuf.Empty) returns (google.protobuf.Empty);
 }
-
-message RefreshSessionRequest {}
 
 message RefreshSessionResponse {
   UserSession userSession = 1;
@@ -38,11 +37,3 @@ message LoginRequest {
 message LoginResponse {
   UserSession userSession = 1;
 }
-
-message LogoutRequest {}
-
-message LogoutResponse {}
-
-message LogoutAllRequest {}
-
-message LogoutAllResponse {}

@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option go_package = "pmtstm.v1;pmtstmv1";
+
+package billing;
+
+import "billing/shared.proto";
+import "google/protobuf/empty.proto";
+
+service AccountService {
+  rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty);
+  rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
+  rpc Deposit (DepositRequest) returns (DepositResponse);
+  rpc Withdraw (WithdrawRequest) returns (WithdrawResponse);
+  rpc Transfer (TransferRequest) returns (TransferResponse);
+  rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
+  rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
+}
+
+message CreateAccountRequest {
+  string currency = 1;
+}
+
+message GetBalanceRequest {
+  string currency = 1;
+}
+
+message GetBalanceResponse {
+  float balance = 1;
+}
+
+message DepositRequest {
+  string currency = 1;
+  float amount = 2;
+  string description = 3;
+}
+
+message DepositResponse {
+  UUID payment_id = 1;
+}
+
+message WithdrawRequest {
+  string currency = 1;
+  float amount = 2;
+  string description = 3;
+}
+
+message WithdrawResponse {
+  UUID payment_id = 1;
+}
+
+message TransferRequest {
+  UUID to_user_id = 1;
+  string currency = 2;
+  float amount = 3;
+  string description = 4;
+}
+
+message TransferResponse {
+  UUID payment_id = 1;
+}
+
+message ConvertCurrencyRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+  float amount = 3;
+  string description = 4;
+}
+
+message ConvertCurrencyResponse {
+  UUID operation_id = 1;
+}
+
+message GetOperationHistoryRequest {
+  string currency = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GetOperationHistoryResponse {
+  repeated BalanceOperation operations = 1;
+}

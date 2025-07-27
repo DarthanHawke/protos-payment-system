@@ -9,6 +9,7 @@ package pmtstmv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -21,42 +22,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type RefreshSessionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *RefreshSessionRequest) Reset() {
-	*x = RefreshSessionRequest{}
-	mi := &file_billing_auth_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *RefreshSessionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RefreshSessionRequest) ProtoMessage() {}
-
-func (x *RefreshSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RefreshSessionRequest.ProtoReflect.Descriptor instead.
-func (*RefreshSessionRequest) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{0}
-}
-
 type RefreshSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserSession   *UserSession           `protobuf:"bytes,1,opt,name=userSession,proto3" json:"userSession,omitempty"`
@@ -66,7 +31,7 @@ type RefreshSessionResponse struct {
 
 func (x *RefreshSessionResponse) Reset() {
 	*x = RefreshSessionResponse{}
-	mi := &file_billing_auth_proto_msgTypes[1]
+	mi := &file_billing_auth_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +43,7 @@ func (x *RefreshSessionResponse) String() string {
 func (*RefreshSessionResponse) ProtoMessage() {}
 
 func (x *RefreshSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[1]
+	mi := &file_billing_auth_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +56,7 @@ func (x *RefreshSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshSessionResponse.ProtoReflect.Descriptor instead.
 func (*RefreshSessionResponse) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{1}
+	return file_billing_auth_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RefreshSessionResponse) GetUserSession() *UserSession {
@@ -112,7 +77,7 @@ type RegisterRequest struct {
 
 func (x *RegisterRequest) Reset() {
 	*x = RegisterRequest{}
-	mi := &file_billing_auth_proto_msgTypes[2]
+	mi := &file_billing_auth_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -124,7 +89,7 @@ func (x *RegisterRequest) String() string {
 func (*RegisterRequest) ProtoMessage() {}
 
 func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[2]
+	mi := &file_billing_auth_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -137,7 +102,7 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{2}
+	return file_billing_auth_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *RegisterRequest) GetName() string {
@@ -170,7 +135,7 @@ type RegisterResponse struct {
 
 func (x *RegisterResponse) Reset() {
 	*x = RegisterResponse{}
-	mi := &file_billing_auth_proto_msgTypes[3]
+	mi := &file_billing_auth_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +147,7 @@ func (x *RegisterResponse) String() string {
 func (*RegisterResponse) ProtoMessage() {}
 
 func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[3]
+	mi := &file_billing_auth_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +160,7 @@ func (x *RegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterResponse.ProtoReflect.Descriptor instead.
 func (*RegisterResponse) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{3}
+	return file_billing_auth_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RegisterResponse) GetUserSession() *UserSession {
@@ -215,7 +180,7 @@ type LoginRequest struct {
 
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
-	mi := &file_billing_auth_proto_msgTypes[4]
+	mi := &file_billing_auth_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +192,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[4]
+	mi := &file_billing_auth_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +205,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{4}
+	return file_billing_auth_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -266,7 +231,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_billing_auth_proto_msgTypes[5]
+	mi := &file_billing_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +243,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[5]
+	mi := &file_billing_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +256,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{5}
+	return file_billing_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginResponse) GetUserSession() *UserSession {
@@ -301,156 +266,11 @@ func (x *LoginResponse) GetUserSession() *UserSession {
 	return nil
 }
 
-type LogoutRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutRequest) Reset() {
-	*x = LogoutRequest{}
-	mi := &file_billing_auth_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutRequest) ProtoMessage() {}
-
-func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
-func (*LogoutRequest) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{6}
-}
-
-type LogoutResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutResponse) Reset() {
-	*x = LogoutResponse{}
-	mi := &file_billing_auth_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutResponse) ProtoMessage() {}
-
-func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
-func (*LogoutResponse) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{7}
-}
-
-type LogoutAllRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutAllRequest) Reset() {
-	*x = LogoutAllRequest{}
-	mi := &file_billing_auth_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutAllRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutAllRequest) ProtoMessage() {}
-
-func (x *LogoutAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutAllRequest.ProtoReflect.Descriptor instead.
-func (*LogoutAllRequest) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{8}
-}
-
-type LogoutAllResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LogoutAllResponse) Reset() {
-	*x = LogoutAllResponse{}
-	mi := &file_billing_auth_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LogoutAllResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LogoutAllResponse) ProtoMessage() {}
-
-func (x *LogoutAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_auth_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LogoutAllResponse.ProtoReflect.Descriptor instead.
-func (*LogoutAllResponse) Descriptor() ([]byte, []int) {
-	return file_billing_auth_proto_rawDescGZIP(), []int{9}
-}
-
 var File_billing_auth_proto protoreflect.FileDescriptor
 
 const file_billing_auth_proto_rawDesc = "" +
 	"\n" +
-	"\x12billing/auth.proto\x12\abilling\x1a\x14billing/shared.proto\"\x17\n" +
-	"\x15RefreshSessionRequest\"P\n" +
+	"\x12billing/auth.proto\x12\abilling\x1a\x14billing/shared.proto\x1a\x1bgoogle/protobuf/empty.proto\"P\n" +
 	"\x16RefreshSessionResponse\x126\n" +
 	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"W\n" +
 	"\x0fRegisterRequest\x12\x12\n" +
@@ -463,17 +283,13 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"G\n" +
 	"\rLoginResponse\x126\n" +
-	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"\x0f\n" +
-	"\rLogoutRequest\"\x10\n" +
-	"\x0eLogoutResponse\"\x12\n" +
-	"\x10LogoutAllRequest\"\x13\n" +
-	"\x11LogoutAllResponse2\xd8\x02\n" +
-	"\vAuthService\x12Q\n" +
-	"\x0eRefreshSession\x12\x1e.billing.RefreshSessionRequest\x1a\x1f.billing.RefreshSessionResponse\x12?\n" +
+	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession2\xc8\x02\n" +
+	"\vAuthService\x12I\n" +
+	"\x0eRefreshSession\x12\x16.google.protobuf.Empty\x1a\x1f.billing.RefreshSessionResponse\x12?\n" +
 	"\bRegister\x12\x18.billing.RegisterRequest\x1a\x19.billing.RegisterResponse\x126\n" +
-	"\x05Login\x12\x15.billing.LoginRequest\x1a\x16.billing.LoginResponse\x129\n" +
-	"\x06Logout\x12\x16.billing.LogoutRequest\x1a\x17.billing.LogoutResponse\x12B\n" +
-	"\tLogoutAll\x12\x19.billing.LogoutAllRequest\x1a\x1a.billing.LogoutAllResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\x05Login\x12\x15.billing.LoginRequest\x1a\x16.billing.LoginResponse\x128\n" +
+	"\x06Logout\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.Empty\x12;\n" +
+	"\tLogoutAll\x12\x16.google.protobuf.Empty\x1a\x16.google.protobuf.EmptyB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_auth_proto_rawDescOnce sync.Once
@@ -487,39 +303,35 @@ func file_billing_auth_proto_rawDescGZIP() []byte {
 	return file_billing_auth_proto_rawDescData
 }
 
-var file_billing_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_billing_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_billing_auth_proto_goTypes = []any{
-	(*RefreshSessionRequest)(nil),  // 0: billing.RefreshSessionRequest
-	(*RefreshSessionResponse)(nil), // 1: billing.RefreshSessionResponse
-	(*RegisterRequest)(nil),        // 2: billing.RegisterRequest
-	(*RegisterResponse)(nil),       // 3: billing.RegisterResponse
-	(*LoginRequest)(nil),           // 4: billing.LoginRequest
-	(*LoginResponse)(nil),          // 5: billing.LoginResponse
-	(*LogoutRequest)(nil),          // 6: billing.LogoutRequest
-	(*LogoutResponse)(nil),         // 7: billing.LogoutResponse
-	(*LogoutAllRequest)(nil),       // 8: billing.LogoutAllRequest
-	(*LogoutAllResponse)(nil),      // 9: billing.LogoutAllResponse
-	(*UserSession)(nil),            // 10: billing.UserSession
+	(*RefreshSessionResponse)(nil), // 0: billing.RefreshSessionResponse
+	(*RegisterRequest)(nil),        // 1: billing.RegisterRequest
+	(*RegisterResponse)(nil),       // 2: billing.RegisterResponse
+	(*LoginRequest)(nil),           // 3: billing.LoginRequest
+	(*LoginResponse)(nil),          // 4: billing.LoginResponse
+	(*UserSession)(nil),            // 5: billing.UserSession
+	(*emptypb.Empty)(nil),          // 6: google.protobuf.Empty
 }
 var file_billing_auth_proto_depIdxs = []int32{
-	10, // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
-	10, // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
-	10, // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
-	0,  // 3: billing.AuthService.RefreshSession:input_type -> billing.RefreshSessionRequest
-	2,  // 4: billing.AuthService.Register:input_type -> billing.RegisterRequest
-	4,  // 5: billing.AuthService.Login:input_type -> billing.LoginRequest
-	6,  // 6: billing.AuthService.Logout:input_type -> billing.LogoutRequest
-	8,  // 7: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
-	1,  // 8: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
-	3,  // 9: billing.AuthService.Register:output_type -> billing.RegisterResponse
-	5,  // 10: billing.AuthService.Login:output_type -> billing.LoginResponse
-	7,  // 11: billing.AuthService.Logout:output_type -> billing.LogoutResponse
-	9,  // 12: billing.AuthService.LogoutAll:output_type -> billing.LogoutAllResponse
-	8,  // [8:13] is the sub-list for method output_type
-	3,  // [3:8] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	5, // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
+	5, // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
+	5, // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
+	6, // 3: billing.AuthService.RefreshSession:input_type -> google.protobuf.Empty
+	1, // 4: billing.AuthService.Register:input_type -> billing.RegisterRequest
+	3, // 5: billing.AuthService.Login:input_type -> billing.LoginRequest
+	6, // 6: billing.AuthService.Logout:input_type -> google.protobuf.Empty
+	6, // 7: billing.AuthService.LogoutAll:input_type -> google.protobuf.Empty
+	0, // 8: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
+	2, // 9: billing.AuthService.Register:output_type -> billing.RegisterResponse
+	4, // 10: billing.AuthService.Login:output_type -> billing.LoginResponse
+	6, // 11: billing.AuthService.Logout:output_type -> google.protobuf.Empty
+	6, // 12: billing.AuthService.LogoutAll:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_billing_auth_proto_init() }
@@ -534,7 +346,7 @@ func file_billing_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_auth_proto_rawDesc), len(file_billing_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

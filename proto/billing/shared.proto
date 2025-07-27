@@ -27,6 +27,17 @@ message Payment {
   google.protobuf.Timestamp updated_at = 9;
 }
 
+message BalanceOperation {
+  UUID id = 1;
+  UUID user_id = 2;
+  string currency = 3;
+  float amount = 4;
+  string operation_type = 5;
+  optional UUID payment_id = 6;
+  string description = 7;
+  google.protobuf.Timestamp created_at = 8;
+}
+
 message User {
   UUID id = 1;
   string email = 2;
