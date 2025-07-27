@@ -26,7 +26,7 @@ type CreatePaymentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Sender        string                 `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
 	Receiver      string                 `protobuf:"bytes,2,opt,name=receiver,proto3" json:"receiver,omitempty"`
-	Amount        float32                `protobuf:"fixed32,3,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,3,opt,name=amount,proto3" json:"amount,omitempty"`
 	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
 	Description   *string                `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -77,7 +77,7 @@ func (x *CreatePaymentRequest) GetReceiver() string {
 	return ""
 }
 
-func (x *CreatePaymentRequest) GetAmount() float32 {
+func (x *CreatePaymentRequest) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -334,7 +334,7 @@ const file_payment_payment_proto_rawDesc = "" +
 	"\x14CreatePaymentRequest\x12\x16\n" +
 	"\x06sender\x18\x01 \x01(\tR\x06sender\x12\x1a\n" +
 	"\breceiver\x18\x02 \x01(\tR\breceiver\x12\x16\n" +
-	"\x06amount\x18\x03 \x01(\x02R\x06amount\x12\x1a\n" +
+	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12\x1a\n" +
 	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12%\n" +
 	"\vdescription\x18\x05 \x01(\tH\x00R\vdescription\x88\x01\x01B\x0e\n" +
 	"\f_description\"6\n" +

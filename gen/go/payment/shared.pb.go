@@ -71,7 +71,7 @@ type Payment struct {
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Sender        string                 `protobuf:"bytes,2,opt,name=sender,proto3" json:"sender,omitempty"`
 	Receiver      string                 `protobuf:"bytes,3,opt,name=receiver,proto3" json:"receiver,omitempty"`
-	Amount        float32                `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount        float64                `protobuf:"fixed64,4,opt,name=amount,proto3" json:"amount,omitempty"`
 	Currency      string                 `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
 	Status        string                 `protobuf:"bytes,6,opt,name=status,proto3" json:"status,omitempty"`
 	Description   *string                `protobuf:"bytes,7,opt,name=description,proto3,oneof" json:"description,omitempty"`
@@ -132,7 +132,7 @@ func (x *Payment) GetReceiver() string {
 	return ""
 }
 
-func (x *Payment) GetAmount() float32 {
+func (x *Payment) GetAmount() float64 {
 	if x != nil {
 		return x.Amount
 	}
@@ -185,7 +185,7 @@ const file_payment_shared_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\v2\r.payment.UUIDR\x02id\x12\x16\n" +
 	"\x06sender\x18\x02 \x01(\tR\x06sender\x12\x1a\n" +
 	"\breceiver\x18\x03 \x01(\tR\breceiver\x12\x16\n" +
-	"\x06amount\x18\x04 \x01(\x02R\x06amount\x12\x1a\n" +
+	"\x06amount\x18\x04 \x01(\x01R\x06amount\x12\x1a\n" +
 	"\bcurrency\x18\x05 \x01(\tR\bcurrency\x12\x16\n" +
 	"\x06status\x18\x06 \x01(\tR\x06status\x12%\n" +
 	"\vdescription\x18\a \x01(\tH\x00R\vdescription\x88\x01\x01\x129\n" +

@@ -14,7 +14,7 @@ message Payment {
   UUID id = 1;
   string sender = 2;
   string receiver = 3;
-  float amount = 4;
+  double amount = 4;
   string currency = 5;
   string status = 6;
   optional string description = 7;
