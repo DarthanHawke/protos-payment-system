@@ -11,7 +11,6 @@ service AccountService {
   rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty);
   rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
   rpc Deposit (DepositRequest) returns (DepositResponse);
-  rpc Withdraw (WithdrawRequest) returns (WithdrawResponse);
   rpc Transfer (TransferRequest) returns (TransferResponse);
   rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
   rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
@@ -36,16 +35,6 @@ message DepositRequest {
 }
 
 message DepositResponse {
-  UUID payment_id = 1;
-}
-
-message WithdrawRequest {
-  string currency = 1;
-  double amount = 2;
-  string description = 3;
-}
-
-message WithdrawResponse {
   UUID payment_id = 1;
 }
 

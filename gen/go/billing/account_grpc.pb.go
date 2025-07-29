@@ -23,7 +23,6 @@ const (
 	AccountService_CreateAccount_FullMethodName       = "/billing.AccountService/CreateAccount"
 	AccountService_GetBalance_FullMethodName          = "/billing.AccountService/GetBalance"
 	AccountService_Deposit_FullMethodName             = "/billing.AccountService/Deposit"
-	AccountService_Withdraw_FullMethodName            = "/billing.AccountService/Withdraw"
 	AccountService_Transfer_FullMethodName            = "/billing.AccountService/Transfer"
 	AccountService_ConvertCurrency_FullMethodName     = "/billing.AccountService/ConvertCurrency"
 	AccountService_GetOperationHistory_FullMethodName = "/billing.AccountService/GetOperationHistory"
@@ -36,7 +35,6 @@ type AccountServiceClient interface {
 	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 	Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error)
-	Withdraw(ctx context.Context, in *WithdrawRequest, opts ...grpc.CallOption) (*WithdrawResponse, error)
 	Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error)
 	ConvertCurrency(ctx context.Context, in *ConvertCurrencyRequest, opts ...grpc.CallOption) (*ConvertCurrencyResponse, error)
 	GetOperationHistory(ctx context.Context, in *GetOperationHistoryRequest, opts ...grpc.CallOption) (*GetOperationHistoryResponse, error)
@@ -80,16 +78,6 @@ func (c *accountServiceClient) Deposit(ctx context.Context, in *DepositRequest, 
 	return out, nil
 }
 
-func (c *accountServiceClient) Withdraw(ctx context.Context, in *WithdrawRequest, opts ...grpc.CallOption) (*WithdrawResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(WithdrawResponse)
-	err := c.cc.Invoke(ctx, AccountService_Withdraw_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *accountServiceClient) Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(TransferResponse)
@@ -127,7 +115,6 @@ type AccountServiceServer interface {
 	CreateAccount(context.Context, *CreateAccountRequest) (*emptypb.Empty, error)
 	GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error)
 	Deposit(context.Context, *DepositRequest) (*DepositResponse, error)
-	Withdraw(context.Context, *WithdrawRequest) (*WithdrawResponse, error)
 	Transfer(context.Context, *TransferRequest) (*TransferResponse, error)
 	ConvertCurrency(context.Context, *ConvertCurrencyRequest) (*ConvertCurrencyResponse, error)
 	GetOperationHistory(context.Context, *GetOperationHistoryRequest) (*GetOperationHistoryResponse, error)
@@ -149,9 +136,6 @@ func (UnimplementedAccountServiceServer) GetBalance(context.Context, *GetBalance
 }
 func (UnimplementedAccountServiceServer) Deposit(context.Context, *DepositRequest) (*DepositResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Deposit not implemented")
-}
-func (UnimplementedAccountServiceServer) Withdraw(context.Context, *WithdrawRequest) (*WithdrawResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Withdraw not implemented")
 }
 func (UnimplementedAccountServiceServer) Transfer(context.Context, *TransferRequest) (*TransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Transfer not implemented")
@@ -237,24 +221,6 @@ func _AccountService_Deposit_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AccountService_Withdraw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(WithdrawRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AccountServiceServer).Withdraw(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AccountService_Withdraw_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).Withdraw(ctx, req.(*WithdrawRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _AccountService_Transfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TransferRequest)
 	if err := dec(in); err != nil {
@@ -327,10 +293,6 @@ var AccountService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Deposit",
 			Handler:    _AccountService_Deposit_Handler,
-		},
-		{
-			MethodName: "Withdraw",
-			Handler:    _AccountService_Withdraw_Handler,
 		},
 		{
 			MethodName: "Transfer",
