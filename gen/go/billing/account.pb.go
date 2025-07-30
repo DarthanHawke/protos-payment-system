@@ -668,7 +668,7 @@ func (x *ConvertCurrencyResponse) GetOperationId() *UUID {
 
 type GetOperationHistoryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Currency      string                 `protobuf:"bytes,1,opt,name=currency,proto3" json:"currency,omitempty"`
+	AccountId     string                 `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
 	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
 	Offset        int32                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -705,9 +705,9 @@ func (*GetOperationHistoryRequest) Descriptor() ([]byte, []int) {
 	return file_billing_account_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *GetOperationHistoryRequest) GetCurrency() string {
+func (x *GetOperationHistoryRequest) GetAccountId() string {
 	if x != nil {
-		return x.Currency
+		return x.AccountId
 	}
 	return ""
 }
@@ -875,9 +875,10 @@ const file_billing_account_proto_rawDesc = "" +
 	"\x06amount\x18\x03 \x01(\x01R\x06amount\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\"K\n" +
 	"\x17ConvertCurrencyResponse\x120\n" +
-	"\foperation_id\x18\x01 \x01(\v2\r.billing.UUIDR\voperationId\"f\n" +
-	"\x1aGetOperationHistoryRequest\x12\x1a\n" +
-	"\bcurrency\x18\x01 \x01(\tR\bcurrency\x12\x14\n" +
+	"\foperation_id\x18\x01 \x01(\v2\r.billing.UUIDR\voperationId\"i\n" +
+	"\x1aGetOperationHistoryRequest\x12\x1d\n" +
+	"\n" +
+	"account_id\x18\x01 \x01(\tR\taccountId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x16\n" +
 	"\x06offset\x18\x03 \x01(\x05R\x06offset\"X\n" +
 	"\x1bGetOperationHistoryResponse\x129\n" +
