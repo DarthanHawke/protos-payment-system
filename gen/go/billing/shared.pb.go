@@ -326,6 +326,98 @@ func (x *BalanceOperation) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type CurrencyAccount struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
+	Balance       float64                `protobuf:"fixed64,4,opt,name=balance,proto3" json:"balance,omitempty"`
+	BlockedAmount float64                `protobuf:"fixed64,5,opt,name=blocked_amount,json=blockedAmount,proto3" json:"blocked_amount,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CurrencyAccount) Reset() {
+	*x = CurrencyAccount{}
+	mi := &file_billing_shared_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CurrencyAccount) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CurrencyAccount) ProtoMessage() {}
+
+func (x *CurrencyAccount) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_shared_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CurrencyAccount.ProtoReflect.Descriptor instead.
+func (*CurrencyAccount) Descriptor() ([]byte, []int) {
+	return file_billing_shared_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CurrencyAccount) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *CurrencyAccount) GetUserId() *UUID {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
+func (x *CurrencyAccount) GetCurrency() string {
+	if x != nil {
+		return x.Currency
+	}
+	return ""
+}
+
+func (x *CurrencyAccount) GetBalance() float64 {
+	if x != nil {
+		return x.Balance
+	}
+	return 0
+}
+
+func (x *CurrencyAccount) GetBlockedAmount() float64 {
+	if x != nil {
+		return x.BlockedAmount
+	}
+	return 0
+}
+
+func (x *CurrencyAccount) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *CurrencyAccount) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -339,7 +431,7 @@ type User struct {
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_billing_shared_proto_msgTypes[4]
+	mi := &file_billing_shared_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -351,7 +443,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[4]
+	mi := &file_billing_shared_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -364,7 +456,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{4}
+	return file_billing_shared_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *User) GetId() *UUID {
@@ -412,7 +504,7 @@ type Entity struct {
 
 func (x *Entity) Reset() {
 	*x = Entity{}
-	mi := &file_billing_shared_proto_msgTypes[5]
+	mi := &file_billing_shared_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -424,7 +516,7 @@ func (x *Entity) String() string {
 func (*Entity) ProtoMessage() {}
 
 func (x *Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[5]
+	mi := &file_billing_shared_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -437,7 +529,7 @@ func (x *Entity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Entity.ProtoReflect.Descriptor instead.
 func (*Entity) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{5}
+	return file_billing_shared_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Entity) GetId() *UUID {
@@ -465,7 +557,7 @@ type Permission struct {
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_billing_shared_proto_msgTypes[6]
+	mi := &file_billing_shared_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -477,7 +569,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[6]
+	mi := &file_billing_shared_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -490,7 +582,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{6}
+	return file_billing_shared_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Permission) GetId() *UUID {
@@ -525,7 +617,7 @@ type Relation struct {
 
 func (x *Relation) Reset() {
 	*x = Relation{}
-	mi := &file_billing_shared_proto_msgTypes[7]
+	mi := &file_billing_shared_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -537,7 +629,7 @@ func (x *Relation) String() string {
 func (*Relation) ProtoMessage() {}
 
 func (x *Relation) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[7]
+	mi := &file_billing_shared_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -550,7 +642,7 @@ func (x *Relation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation.ProtoReflect.Descriptor instead.
 func (*Relation) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{7}
+	return file_billing_shared_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Relation) GetSourceId() *UUID {
@@ -608,7 +700,17 @@ const file_billing_shared_proto_rawDesc = "" +
 	"\vdescription\x18\a \x01(\tR\vdescription\x129\n" +
 	"\n" +
 	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\r\n" +
-	"\v_payment_id\"\xcc\x01\n" +
+	"\v_payment_id\"\x9c\x02\n" +
+	"\x0fCurrencyAccount\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
+	"\auser_id\x18\x02 \x01(\v2\r.billing.UUIDR\x06userId\x12\x1a\n" +
+	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12\x18\n" +
+	"\abalance\x18\x04 \x01(\x01R\abalance\x12%\n" +
+	"\x0eblocked_amount\x18\x05 \x01(\x01R\rblockedAmount\x129\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xcc\x01\n" +
 	"\x04User\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
@@ -640,38 +742,42 @@ func file_billing_shared_proto_rawDescGZIP() []byte {
 	return file_billing_shared_proto_rawDescData
 }
 
-var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_billing_shared_proto_goTypes = []any{
 	(*UUID)(nil),                  // 0: billing.UUID
 	(*UserSession)(nil),           // 1: billing.UserSession
 	(*Payment)(nil),               // 2: billing.Payment
 	(*BalanceOperation)(nil),      // 3: billing.BalanceOperation
-	(*User)(nil),                  // 4: billing.User
-	(*Entity)(nil),                // 5: billing.Entity
-	(*Permission)(nil),            // 6: billing.Permission
-	(*Relation)(nil),              // 7: billing.Relation
-	(*timestamppb.Timestamp)(nil), // 8: google.protobuf.Timestamp
+	(*CurrencyAccount)(nil),       // 4: billing.CurrencyAccount
+	(*User)(nil),                  // 5: billing.User
+	(*Entity)(nil),                // 6: billing.Entity
+	(*Permission)(nil),            // 7: billing.Permission
+	(*Relation)(nil),              // 8: billing.Relation
+	(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
 }
 var file_billing_shared_proto_depIdxs = []int32{
 	0,  // 0: billing.Payment.id:type_name -> billing.UUID
-	8,  // 1: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
-	8,  // 2: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 1: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 2: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: billing.BalanceOperation.id:type_name -> billing.UUID
 	0,  // 4: billing.BalanceOperation.user_id:type_name -> billing.UUID
 	0,  // 5: billing.BalanceOperation.payment_id:type_name -> billing.UUID
-	8,  // 6: billing.BalanceOperation.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 7: billing.User.id:type_name -> billing.UUID
-	8,  // 8: billing.User.createdAt:type_name -> google.protobuf.Timestamp
-	8,  // 9: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
-	0,  // 10: billing.Entity.id:type_name -> billing.UUID
-	0,  // 11: billing.Permission.id:type_name -> billing.UUID
-	0,  // 12: billing.Relation.source_id:type_name -> billing.UUID
-	0,  // 13: billing.Relation.target_id:type_name -> billing.UUID
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	9,  // 6: billing.BalanceOperation.created_at:type_name -> google.protobuf.Timestamp
+	0,  // 7: billing.CurrencyAccount.user_id:type_name -> billing.UUID
+	9,  // 8: billing.CurrencyAccount.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 9: billing.CurrencyAccount.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 10: billing.User.id:type_name -> billing.UUID
+	9,  // 11: billing.User.createdAt:type_name -> google.protobuf.Timestamp
+	9,  // 12: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
+	0,  // 13: billing.Entity.id:type_name -> billing.UUID
+	0,  // 14: billing.Permission.id:type_name -> billing.UUID
+	0,  // 15: billing.Relation.source_id:type_name -> billing.UUID
+	0,  // 16: billing.Relation.target_id:type_name -> billing.UUID
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_billing_shared_proto_init() }
@@ -687,7 +793,7 @@ func file_billing_shared_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_shared_proto_rawDesc), len(file_billing_shared_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -38,6 +38,16 @@ message BalanceOperation {
   google.protobuf.Timestamp created_at = 8;
 }
 
+message CurrencyAccount {
+    string id = 1;
+    UUID user_id = 2;
+    string currency = 3;
+    double balance = 4;
+    double blocked_amount = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+}
+
 message User {
   UUID id = 1;
   string email = 2;

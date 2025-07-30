@@ -9,6 +9,8 @@ import "google/protobuf/empty.proto";
 
 service AccountService {
   rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty);
+  rpc GetAccountId(GetAccountIdRequest) returns (GetAccountIdResponse);
+  rpc GetAllAccounts(google.protobuf.Empty) returns (GetAllAccountsResponse);
   rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
   rpc Deposit (DepositRequest) returns (DepositResponse);
   rpc Transfer (TransferRequest) returns (TransferResponse);
@@ -18,6 +20,18 @@ service AccountService {
 
 message CreateAccountRequest {
   string currency = 1;
+}
+
+message GetAccountIdRequest {
+    string currency = 1;
+}
+
+message GetAccountIdResponse {
+    string id = 1;
+}
+
+message GetAllAccountsResponse {
+    repeated CurrencyAccount accounts = 1;
 }
 
 message GetBalanceRequest {
@@ -39,7 +53,7 @@ message DepositResponse {
 }
 
 message TransferRequest {
-  UUID to_user_id = 1;
+  string target_id = 1;
   string currency = 2;
   double amount = 3;
   string description = 4;
