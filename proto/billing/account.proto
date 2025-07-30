@@ -8,34 +8,40 @@ import "billing/shared.proto";
 import "google/protobuf/empty.proto";
 
 service AccountService {
-  rpc CreateAccount (CreateAccountRequest) returns (google.protobuf.Empty);
-  rpc GetAccountId(GetAccountIdRequest) returns (GetAccountIdResponse);
-  rpc GetAllAccounts(google.protobuf.Empty) returns (GetAllAccountsResponse);
+  rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse);
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
+  rpc GetUserAccounts(google.protobuf.Empty) returns (GetUserAccountsResponse);
   rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
   rpc Deposit (DepositRequest) returns (DepositResponse);
   rpc Transfer (TransferRequest) returns (TransferResponse);
   rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
   rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
+  rpc UpdateCurrencyRate (UpdateCurrencyRateRequest) returns (google.protobuf.Empty);
 }
 
 message CreateAccountRequest {
   string currency = 1;
+  string name = 2;
 }
 
-message GetAccountIdRequest {
-    string currency = 1;
+message CreateAccountResponse {
+  string account_id = 1;
 }
 
-message GetAccountIdResponse {
-    string id = 1;
+message GetAccountRequest {
+  string account_id = 1;
 }
 
-message GetAllAccountsResponse {
+message GetAccountResponse {
+  CurrencyAccount account = 1;
+}
+
+message GetUserAccountsResponse {
     repeated CurrencyAccount accounts = 1;
 }
 
 message GetBalanceRequest {
-  string currency = 1;
+  string account_id = 1;
 }
 
 message GetBalanceResponse {
@@ -43,7 +49,7 @@ message GetBalanceResponse {
 }
 
 message DepositRequest {
-  string currency = 1;
+  string account_id = 1;
   double amount = 2;
   string description = 3;
 }
@@ -53,8 +59,8 @@ message DepositResponse {
 }
 
 message TransferRequest {
-  string target_id = 1;
-  string currency = 2;
+  string from_account_id = 1;
+  string to_account_id = 2;
   double amount = 3;
   string description = 4;
 }
@@ -64,8 +70,8 @@ message TransferResponse {
 }
 
 message ConvertCurrencyRequest {
-  string from_currency = 1;
-  string to_currency = 2;
+  string from_account_id = 1;
+  string to_account_id = 2;
   double amount = 3;
   string description = 4;
 }
@@ -82,4 +88,10 @@ message GetOperationHistoryRequest {
 
 message GetOperationHistoryResponse {
   repeated BalanceOperation operations = 1;
+}
+
+message UpdateCurrencyRateRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+  double rate = 3;
 }

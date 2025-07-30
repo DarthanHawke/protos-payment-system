@@ -229,13 +229,16 @@ func (x *Payment) GetUpdatedAt() *timestamppb.Timestamp {
 type BalanceOperation struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
-	Amount        float64                `protobuf:"fixed64,4,opt,name=amount,proto3" json:"amount,omitempty"`
-	OperationType string                 `protobuf:"bytes,5,opt,name=operation_type,json=operationType,proto3" json:"operation_type,omitempty"`
-	PaymentId     *UUID                  `protobuf:"bytes,6,opt,name=payment_id,json=paymentId,proto3,oneof" json:"payment_id,omitempty"`
-	Description   string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	OperationId   *UUID                  `protobuf:"bytes,2,opt,name=operation_id,json=operationId,proto3" json:"operation_id,omitempty"`
+	AccountId     string                 `protobuf:"bytes,3,opt,name=account_id,json=accountId,proto3" json:"account_id,omitempty"`
+	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
+	Amount        float64                `protobuf:"fixed64,5,opt,name=amount,proto3" json:"amount,omitempty"`
+	OperationType string                 `protobuf:"bytes,6,opt,name=operation_type,json=operationType,proto3" json:"operation_type,omitempty"`
+	Status        string                 `protobuf:"bytes,7,opt,name=status,proto3" json:"status,omitempty"`
+	PaymentId     *UUID                  `protobuf:"bytes,8,opt,name=payment_id,json=paymentId,proto3,oneof" json:"payment_id,omitempty"`
+	Description   string                 `protobuf:"bytes,9,opt,name=description,proto3" json:"description,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	ProcessedAt   *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=processed_at,json=processedAt,proto3" json:"processed_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -277,11 +280,18 @@ func (x *BalanceOperation) GetId() *UUID {
 	return nil
 }
 
-func (x *BalanceOperation) GetUserId() *UUID {
+func (x *BalanceOperation) GetOperationId() *UUID {
 	if x != nil {
-		return x.UserId
+		return x.OperationId
 	}
 	return nil
+}
+
+func (x *BalanceOperation) GetAccountId() string {
+	if x != nil {
+		return x.AccountId
+	}
+	return ""
 }
 
 func (x *BalanceOperation) GetCurrency() string {
@@ -301,6 +311,13 @@ func (x *BalanceOperation) GetAmount() float64 {
 func (x *BalanceOperation) GetOperationType() string {
 	if x != nil {
 		return x.OperationType
+	}
+	return ""
+}
+
+func (x *BalanceOperation) GetStatus() string {
+	if x != nil {
+		return x.Status
 	}
 	return ""
 }
@@ -326,15 +343,23 @@ func (x *BalanceOperation) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *BalanceOperation) GetProcessedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ProcessedAt
+	}
+	return nil
+}
+
 type CurrencyAccount struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Currency      string                 `protobuf:"bytes,3,opt,name=currency,proto3" json:"currency,omitempty"`
-	Balance       float64                `protobuf:"fixed64,4,opt,name=balance,proto3" json:"balance,omitempty"`
-	BlockedAmount float64                `protobuf:"fixed64,5,opt,name=blocked_amount,json=blockedAmount,proto3" json:"blocked_amount,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
+	Balance       float64                `protobuf:"fixed64,5,opt,name=balance,proto3" json:"balance,omitempty"`
+	BlockedAmount float64                `protobuf:"fixed64,6,opt,name=blocked_amount,json=blockedAmount,proto3" json:"blocked_amount,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -372,6 +397,13 @@ func (*CurrencyAccount) Descriptor() ([]byte, []int) {
 func (x *CurrencyAccount) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+func (x *CurrencyAccount) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -688,29 +720,35 @@ const file_billing_shared_proto_rawDesc = "" +
 	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
-	"\f_description\"\xd3\x02\n" +
+	"\f_description\"\xd3\x03\n" +
 	"\x10BalanceOperation\x12\x1d\n" +
-	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12&\n" +
-	"\auser_id\x18\x02 \x01(\v2\r.billing.UUIDR\x06userId\x12\x1a\n" +
-	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12\x16\n" +
-	"\x06amount\x18\x04 \x01(\x01R\x06amount\x12%\n" +
-	"\x0eoperation_type\x18\x05 \x01(\tR\roperationType\x121\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x120\n" +
+	"\foperation_id\x18\x02 \x01(\v2\r.billing.UUIDR\voperationId\x12\x1d\n" +
 	"\n" +
-	"payment_id\x18\x06 \x01(\v2\r.billing.UUIDH\x00R\tpaymentId\x88\x01\x01\x12 \n" +
-	"\vdescription\x18\a \x01(\tR\vdescription\x129\n" +
+	"account_id\x18\x03 \x01(\tR\taccountId\x12\x1a\n" +
+	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12\x16\n" +
+	"\x06amount\x18\x05 \x01(\x01R\x06amount\x12%\n" +
+	"\x0eoperation_type\x18\x06 \x01(\tR\roperationType\x12\x16\n" +
+	"\x06status\x18\a \x01(\tR\x06status\x121\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB\r\n" +
-	"\v_payment_id\"\x9c\x02\n" +
+	"payment_id\x18\b \x01(\v2\r.billing.UUIDH\x00R\tpaymentId\x88\x01\x01\x12 \n" +
+	"\vdescription\x18\t \x01(\tR\vdescription\x129\n" +
+	"\n" +
+	"created_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12=\n" +
+	"\fprocessed_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\vprocessedAtB\r\n" +
+	"\v_payment_id\"\xb0\x02\n" +
 	"\x0fCurrencyAccount\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12&\n" +
-	"\auser_id\x18\x02 \x01(\v2\r.billing.UUIDR\x06userId\x12\x1a\n" +
-	"\bcurrency\x18\x03 \x01(\tR\bcurrency\x12\x18\n" +
-	"\abalance\x18\x04 \x01(\x01R\abalance\x12%\n" +
-	"\x0eblocked_amount\x18\x05 \x01(\x01R\rblockedAmount\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12&\n" +
+	"\auser_id\x18\x03 \x01(\v2\r.billing.UUIDR\x06userId\x12\x1a\n" +
+	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12\x18\n" +
+	"\abalance\x18\x05 \x01(\x01R\abalance\x12%\n" +
+	"\x0eblocked_amount\x18\x06 \x01(\x01R\rblockedAmount\x129\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xcc\x01\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xcc\x01\n" +
 	"\x04User\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
@@ -760,24 +798,25 @@ var file_billing_shared_proto_depIdxs = []int32{
 	9,  // 1: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
 	9,  // 2: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: billing.BalanceOperation.id:type_name -> billing.UUID
-	0,  // 4: billing.BalanceOperation.user_id:type_name -> billing.UUID
+	0,  // 4: billing.BalanceOperation.operation_id:type_name -> billing.UUID
 	0,  // 5: billing.BalanceOperation.payment_id:type_name -> billing.UUID
 	9,  // 6: billing.BalanceOperation.created_at:type_name -> google.protobuf.Timestamp
-	0,  // 7: billing.CurrencyAccount.user_id:type_name -> billing.UUID
-	9,  // 8: billing.CurrencyAccount.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 9: billing.CurrencyAccount.updated_at:type_name -> google.protobuf.Timestamp
-	0,  // 10: billing.User.id:type_name -> billing.UUID
-	9,  // 11: billing.User.createdAt:type_name -> google.protobuf.Timestamp
-	9,  // 12: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
-	0,  // 13: billing.Entity.id:type_name -> billing.UUID
-	0,  // 14: billing.Permission.id:type_name -> billing.UUID
-	0,  // 15: billing.Relation.source_id:type_name -> billing.UUID
-	0,  // 16: billing.Relation.target_id:type_name -> billing.UUID
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	9,  // 7: billing.BalanceOperation.processed_at:type_name -> google.protobuf.Timestamp
+	0,  // 8: billing.CurrencyAccount.user_id:type_name -> billing.UUID
+	9,  // 9: billing.CurrencyAccount.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 10: billing.CurrencyAccount.updated_at:type_name -> google.protobuf.Timestamp
+	0,  // 11: billing.User.id:type_name -> billing.UUID
+	9,  // 12: billing.User.createdAt:type_name -> google.protobuf.Timestamp
+	9,  // 13: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
+	0,  // 14: billing.Entity.id:type_name -> billing.UUID
+	0,  // 15: billing.Permission.id:type_name -> billing.UUID
+	0,  // 16: billing.Relation.source_id:type_name -> billing.UUID
+	0,  // 17: billing.Relation.target_id:type_name -> billing.UUID
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_billing_shared_proto_init() }
