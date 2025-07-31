@@ -10,7 +10,7 @@ import "google/protobuf/empty.proto";
 service AccountService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse);
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
-  rpc GetUserAccounts(google.protobuf.Empty) returns (GetUserAccountsResponse);
+  rpc GetUserAccounts(GetUserAccountsRequest) returns (GetUserAccountsResponse);
   rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
   rpc Deposit (DepositRequest) returns (DepositResponse);
   rpc Transfer (TransferRequest) returns (TransferResponse);
@@ -36,8 +36,12 @@ message GetAccountResponse {
   CurrencyAccount account = 1;
 }
 
+message GetUserAccountsRequest {
+  optional string account_id = 1;
+}
+
 message GetUserAccountsResponse {
-    repeated CurrencyAccount accounts = 1;
+  repeated CurrencyAccount accounts = 1;
 }
 
 message GetBalanceRequest {

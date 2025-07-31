@@ -37,7 +37,7 @@ const (
 type AccountServiceClient interface {
 	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*CreateAccountResponse, error)
 	GetAccount(ctx context.Context, in *GetAccountRequest, opts ...grpc.CallOption) (*GetAccountResponse, error)
-	GetUserAccounts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetUserAccountsResponse, error)
+	GetUserAccounts(ctx context.Context, in *GetUserAccountsRequest, opts ...grpc.CallOption) (*GetUserAccountsResponse, error)
 	GetBalance(ctx context.Context, in *GetBalanceRequest, opts ...grpc.CallOption) (*GetBalanceResponse, error)
 	Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error)
 	Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error)
@@ -74,7 +74,7 @@ func (c *accountServiceClient) GetAccount(ctx context.Context, in *GetAccountReq
 	return out, nil
 }
 
-func (c *accountServiceClient) GetUserAccounts(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetUserAccountsResponse, error) {
+func (c *accountServiceClient) GetUserAccounts(ctx context.Context, in *GetUserAccountsRequest, opts ...grpc.CallOption) (*GetUserAccountsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetUserAccountsResponse)
 	err := c.cc.Invoke(ctx, AccountService_GetUserAccounts_FullMethodName, in, out, cOpts...)
@@ -150,7 +150,7 @@ func (c *accountServiceClient) UpdateCurrencyRate(ctx context.Context, in *Updat
 type AccountServiceServer interface {
 	CreateAccount(context.Context, *CreateAccountRequest) (*CreateAccountResponse, error)
 	GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error)
-	GetUserAccounts(context.Context, *emptypb.Empty) (*GetUserAccountsResponse, error)
+	GetUserAccounts(context.Context, *GetUserAccountsRequest) (*GetUserAccountsResponse, error)
 	GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error)
 	Deposit(context.Context, *DepositRequest) (*DepositResponse, error)
 	Transfer(context.Context, *TransferRequest) (*TransferResponse, error)
@@ -173,7 +173,7 @@ func (UnimplementedAccountServiceServer) CreateAccount(context.Context, *CreateA
 func (UnimplementedAccountServiceServer) GetAccount(context.Context, *GetAccountRequest) (*GetAccountResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAccount not implemented")
 }
-func (UnimplementedAccountServiceServer) GetUserAccounts(context.Context, *emptypb.Empty) (*GetUserAccountsResponse, error) {
+func (UnimplementedAccountServiceServer) GetUserAccounts(context.Context, *GetUserAccountsRequest) (*GetUserAccountsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserAccounts not implemented")
 }
 func (UnimplementedAccountServiceServer) GetBalance(context.Context, *GetBalanceRequest) (*GetBalanceResponse, error) {
@@ -252,7 +252,7 @@ func _AccountService_GetAccount_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _AccountService_GetUserAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(GetUserAccountsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -264,7 +264,7 @@ func _AccountService_GetUserAccounts_Handler(srv interface{}, ctx context.Contex
 		FullMethod: AccountService_GetUserAccounts_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).GetUserAccounts(ctx, req.(*emptypb.Empty))
+		return srv.(AccountServiceServer).GetUserAccounts(ctx, req.(*GetUserAccountsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
