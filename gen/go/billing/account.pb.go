@@ -208,7 +208,7 @@ func (x *GetAccountResponse) GetAccount() *CurrencyAccount {
 
 type GetUserAccountsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AccountId     *string                `protobuf:"bytes,1,opt,name=account_id,json=accountId,proto3,oneof" json:"account_id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -243,11 +243,11 @@ func (*GetUserAccountsRequest) Descriptor() ([]byte, []int) {
 	return file_billing_account_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetUserAccountsRequest) GetAccountId() string {
-	if x != nil && x.AccountId != nil {
-		return *x.AccountId
+func (x *GetUserAccountsRequest) GetUserId() *UUID {
+	if x != nil {
+		return x.UserId
 	}
-	return ""
+	return nil
 }
 
 type GetUserAccountsResponse struct {
@@ -889,11 +889,11 @@ const file_billing_account_proto_rawDesc = "" +
 	"\n" +
 	"account_id\x18\x01 \x01(\tR\taccountId\"H\n" +
 	"\x12GetAccountResponse\x122\n" +
-	"\aaccount\x18\x01 \x01(\v2\x18.billing.CurrencyAccountR\aaccount\"K\n" +
-	"\x16GetUserAccountsRequest\x12\"\n" +
+	"\aaccount\x18\x01 \x01(\v2\x18.billing.CurrencyAccountR\aaccount\"Q\n" +
+	"\x16GetUserAccountsRequest\x12+\n" +
+	"\auser_id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x06userId\x88\x01\x01B\n" +
 	"\n" +
-	"account_id\x18\x01 \x01(\tH\x00R\taccountId\x88\x01\x01B\r\n" +
-	"\v_account_id\"O\n" +
+	"\b_user_id\"O\n" +
 	"\x17GetUserAccountsResponse\x124\n" +
 	"\baccounts\x18\x01 \x03(\v2\x18.billing.CurrencyAccountR\baccounts\"2\n" +
 	"\x11GetBalanceRequest\x12\x1d\n" +
@@ -989,34 +989,35 @@ var file_billing_account_proto_goTypes = []any{
 }
 var file_billing_account_proto_depIdxs = []int32{
 	17, // 0: billing.GetAccountResponse.account:type_name -> billing.CurrencyAccount
-	17, // 1: billing.GetUserAccountsResponse.accounts:type_name -> billing.CurrencyAccount
-	18, // 2: billing.DepositResponse.payment_id:type_name -> billing.UUID
-	18, // 3: billing.TransferResponse.payment_id:type_name -> billing.UUID
-	18, // 4: billing.ConvertCurrencyResponse.operation_id:type_name -> billing.UUID
-	19, // 5: billing.GetOperationHistoryResponse.operations:type_name -> billing.BalanceOperation
-	0,  // 6: billing.AccountService.CreateAccount:input_type -> billing.CreateAccountRequest
-	2,  // 7: billing.AccountService.GetAccount:input_type -> billing.GetAccountRequest
-	4,  // 8: billing.AccountService.GetUserAccounts:input_type -> billing.GetUserAccountsRequest
-	6,  // 9: billing.AccountService.GetBalance:input_type -> billing.GetBalanceRequest
-	8,  // 10: billing.AccountService.Deposit:input_type -> billing.DepositRequest
-	10, // 11: billing.AccountService.Transfer:input_type -> billing.TransferRequest
-	12, // 12: billing.AccountService.ConvertCurrency:input_type -> billing.ConvertCurrencyRequest
-	14, // 13: billing.AccountService.GetOperationHistory:input_type -> billing.GetOperationHistoryRequest
-	16, // 14: billing.AccountService.UpdateCurrencyRate:input_type -> billing.UpdateCurrencyRateRequest
-	1,  // 15: billing.AccountService.CreateAccount:output_type -> billing.CreateAccountResponse
-	3,  // 16: billing.AccountService.GetAccount:output_type -> billing.GetAccountResponse
-	5,  // 17: billing.AccountService.GetUserAccounts:output_type -> billing.GetUserAccountsResponse
-	7,  // 18: billing.AccountService.GetBalance:output_type -> billing.GetBalanceResponse
-	9,  // 19: billing.AccountService.Deposit:output_type -> billing.DepositResponse
-	11, // 20: billing.AccountService.Transfer:output_type -> billing.TransferResponse
-	13, // 21: billing.AccountService.ConvertCurrency:output_type -> billing.ConvertCurrencyResponse
-	15, // 22: billing.AccountService.GetOperationHistory:output_type -> billing.GetOperationHistoryResponse
-	20, // 23: billing.AccountService.UpdateCurrencyRate:output_type -> google.protobuf.Empty
-	15, // [15:24] is the sub-list for method output_type
-	6,  // [6:15] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	18, // 1: billing.GetUserAccountsRequest.user_id:type_name -> billing.UUID
+	17, // 2: billing.GetUserAccountsResponse.accounts:type_name -> billing.CurrencyAccount
+	18, // 3: billing.DepositResponse.payment_id:type_name -> billing.UUID
+	18, // 4: billing.TransferResponse.payment_id:type_name -> billing.UUID
+	18, // 5: billing.ConvertCurrencyResponse.operation_id:type_name -> billing.UUID
+	19, // 6: billing.GetOperationHistoryResponse.operations:type_name -> billing.BalanceOperation
+	0,  // 7: billing.AccountService.CreateAccount:input_type -> billing.CreateAccountRequest
+	2,  // 8: billing.AccountService.GetAccount:input_type -> billing.GetAccountRequest
+	4,  // 9: billing.AccountService.GetUserAccounts:input_type -> billing.GetUserAccountsRequest
+	6,  // 10: billing.AccountService.GetBalance:input_type -> billing.GetBalanceRequest
+	8,  // 11: billing.AccountService.Deposit:input_type -> billing.DepositRequest
+	10, // 12: billing.AccountService.Transfer:input_type -> billing.TransferRequest
+	12, // 13: billing.AccountService.ConvertCurrency:input_type -> billing.ConvertCurrencyRequest
+	14, // 14: billing.AccountService.GetOperationHistory:input_type -> billing.GetOperationHistoryRequest
+	16, // 15: billing.AccountService.UpdateCurrencyRate:input_type -> billing.UpdateCurrencyRateRequest
+	1,  // 16: billing.AccountService.CreateAccount:output_type -> billing.CreateAccountResponse
+	3,  // 17: billing.AccountService.GetAccount:output_type -> billing.GetAccountResponse
+	5,  // 18: billing.AccountService.GetUserAccounts:output_type -> billing.GetUserAccountsResponse
+	7,  // 19: billing.AccountService.GetBalance:output_type -> billing.GetBalanceResponse
+	9,  // 20: billing.AccountService.Deposit:output_type -> billing.DepositResponse
+	11, // 21: billing.AccountService.Transfer:output_type -> billing.TransferResponse
+	13, // 22: billing.AccountService.ConvertCurrency:output_type -> billing.ConvertCurrencyResponse
+	15, // 23: billing.AccountService.GetOperationHistory:output_type -> billing.GetOperationHistoryResponse
+	20, // 24: billing.AccountService.UpdateCurrencyRate:output_type -> google.protobuf.Empty
+	16, // [16:25] is the sub-list for method output_type
+	7,  // [7:16] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_billing_account_proto_init() }

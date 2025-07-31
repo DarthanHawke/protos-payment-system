@@ -37,7 +37,7 @@ message GetAccountResponse {
 }
 
 message GetUserAccountsRequest {
-  optional string account_id = 1;
+  optional UUID user_id = 1;
 }
 
 message GetUserAccountsResponse {
