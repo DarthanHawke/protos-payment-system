@@ -8,22 +8,35 @@ import "billing/shared.proto";
 import "google/protobuf/empty.proto";
 
 service PaymentService {
-  rpc CreatePayment (CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc Transfer (TransferRequest) returns (TransferResponse);
+  rpc Deposit (DepositRequest) returns (DepositResponse);
   rpc GetPayment (GetPaymentRequest) returns (GetPaymentResponse);
   rpc GetAllPayment (GetAllPaymentRequest) returns (GetAllPaymentResponse);
   rpc UpdateStatusPayment (UpdateStatusPaymentRequest) returns (google.protobuf.Empty);
   rpc CancelPayment (CancelPaymentRequest) returns (google.protobuf.Empty);
+  rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
+  rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
+  rpc UpdateCurrencyRate (UpdateCurrencyRateRequest) returns (google.protobuf.Empty);
 }
 
-message CreatePaymentRequest {
+message TransferRequest {
   string sender = 1;
   string receiver = 2;
   double amount = 3;
-  string currency = 4;
-  optional string description = 5;
+  optional string description = 4;
 }
 
-message CreatePaymentResponse {
+message TransferResponse {
+  UUID payment_id = 1;
+}
+
+message DepositRequest {
+  string account_id = 1;
+  double amount = 2;
+  string description = 3;
+}
+
+message DepositResponse {
   UUID payment_id = 1;
 }
 
@@ -50,4 +63,31 @@ message UpdateStatusPaymentRequest {
 
 message CancelPaymentRequest {
   UUID payment_id = 2;
+}
+
+message ConvertCurrencyRequest {
+  string from_account_id = 1;
+  string to_account_id = 2;
+  double amount = 3;
+  string description = 4;
+}
+
+message ConvertCurrencyResponse {
+  UUID operation_id = 1;
+}
+
+message GetOperationHistoryRequest {
+  string account_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GetOperationHistoryResponse {
+  repeated BalanceOperation operations = 1;
+}
+
+message UpdateCurrencyRateRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+  double rate = 3;
 }

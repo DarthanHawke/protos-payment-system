@@ -20,22 +20,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	PaymentService_CreatePayment_FullMethodName       = "/billing.PaymentService/CreatePayment"
+	PaymentService_Transfer_FullMethodName            = "/billing.PaymentService/Transfer"
+	PaymentService_Deposit_FullMethodName             = "/billing.PaymentService/Deposit"
 	PaymentService_GetPayment_FullMethodName          = "/billing.PaymentService/GetPayment"
 	PaymentService_GetAllPayment_FullMethodName       = "/billing.PaymentService/GetAllPayment"
 	PaymentService_UpdateStatusPayment_FullMethodName = "/billing.PaymentService/UpdateStatusPayment"
 	PaymentService_CancelPayment_FullMethodName       = "/billing.PaymentService/CancelPayment"
+	PaymentService_ConvertCurrency_FullMethodName     = "/billing.PaymentService/ConvertCurrency"
+	PaymentService_GetOperationHistory_FullMethodName = "/billing.PaymentService/GetOperationHistory"
+	PaymentService_UpdateCurrencyRate_FullMethodName  = "/billing.PaymentService/UpdateCurrencyRate"
 )
 
 // PaymentServiceClient is the client API for PaymentService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type PaymentServiceClient interface {
-	CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*CreatePaymentResponse, error)
+	Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error)
+	Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error)
 	GetPayment(ctx context.Context, in *GetPaymentRequest, opts ...grpc.CallOption) (*GetPaymentResponse, error)
 	GetAllPayment(ctx context.Context, in *GetAllPaymentRequest, opts ...grpc.CallOption) (*GetAllPaymentResponse, error)
 	UpdateStatusPayment(ctx context.Context, in *UpdateStatusPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CancelPayment(ctx context.Context, in *CancelPaymentRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	ConvertCurrency(ctx context.Context, in *ConvertCurrencyRequest, opts ...grpc.CallOption) (*ConvertCurrencyResponse, error)
+	GetOperationHistory(ctx context.Context, in *GetOperationHistoryRequest, opts ...grpc.CallOption) (*GetOperationHistoryResponse, error)
+	UpdateCurrencyRate(ctx context.Context, in *UpdateCurrencyRateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type paymentServiceClient struct {
@@ -46,10 +54,20 @@ func NewPaymentServiceClient(cc grpc.ClientConnInterface) PaymentServiceClient {
 	return &paymentServiceClient{cc}
 }
 
-func (c *paymentServiceClient) CreatePayment(ctx context.Context, in *CreatePaymentRequest, opts ...grpc.CallOption) (*CreatePaymentResponse, error) {
+func (c *paymentServiceClient) Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreatePaymentResponse)
-	err := c.cc.Invoke(ctx, PaymentService_CreatePayment_FullMethodName, in, out, cOpts...)
+	out := new(TransferResponse)
+	err := c.cc.Invoke(ctx, PaymentService_Transfer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *paymentServiceClient) Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DepositResponse)
+	err := c.cc.Invoke(ctx, PaymentService_Deposit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,15 +114,49 @@ func (c *paymentServiceClient) CancelPayment(ctx context.Context, in *CancelPaym
 	return out, nil
 }
 
+func (c *paymentServiceClient) ConvertCurrency(ctx context.Context, in *ConvertCurrencyRequest, opts ...grpc.CallOption) (*ConvertCurrencyResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ConvertCurrencyResponse)
+	err := c.cc.Invoke(ctx, PaymentService_ConvertCurrency_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *paymentServiceClient) GetOperationHistory(ctx context.Context, in *GetOperationHistoryRequest, opts ...grpc.CallOption) (*GetOperationHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetOperationHistoryResponse)
+	err := c.cc.Invoke(ctx, PaymentService_GetOperationHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *paymentServiceClient) UpdateCurrencyRate(ctx context.Context, in *UpdateCurrencyRateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, PaymentService_UpdateCurrencyRate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PaymentServiceServer is the server API for PaymentService service.
 // All implementations must embed UnimplementedPaymentServiceServer
 // for forward compatibility.
 type PaymentServiceServer interface {
-	CreatePayment(context.Context, *CreatePaymentRequest) (*CreatePaymentResponse, error)
+	Transfer(context.Context, *TransferRequest) (*TransferResponse, error)
+	Deposit(context.Context, *DepositRequest) (*DepositResponse, error)
 	GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error)
 	GetAllPayment(context.Context, *GetAllPaymentRequest) (*GetAllPaymentResponse, error)
 	UpdateStatusPayment(context.Context, *UpdateStatusPaymentRequest) (*emptypb.Empty, error)
 	CancelPayment(context.Context, *CancelPaymentRequest) (*emptypb.Empty, error)
+	ConvertCurrency(context.Context, *ConvertCurrencyRequest) (*ConvertCurrencyResponse, error)
+	GetOperationHistory(context.Context, *GetOperationHistoryRequest) (*GetOperationHistoryResponse, error)
+	UpdateCurrencyRate(context.Context, *UpdateCurrencyRateRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
 
@@ -115,8 +167,11 @@ type PaymentServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedPaymentServiceServer struct{}
 
-func (UnimplementedPaymentServiceServer) CreatePayment(context.Context, *CreatePaymentRequest) (*CreatePaymentResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePayment not implemented")
+func (UnimplementedPaymentServiceServer) Transfer(context.Context, *TransferRequest) (*TransferResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Transfer not implemented")
+}
+func (UnimplementedPaymentServiceServer) Deposit(context.Context, *DepositRequest) (*DepositResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Deposit not implemented")
 }
 func (UnimplementedPaymentServiceServer) GetPayment(context.Context, *GetPaymentRequest) (*GetPaymentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPayment not implemented")
@@ -129,6 +184,15 @@ func (UnimplementedPaymentServiceServer) UpdateStatusPayment(context.Context, *U
 }
 func (UnimplementedPaymentServiceServer) CancelPayment(context.Context, *CancelPaymentRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelPayment not implemented")
+}
+func (UnimplementedPaymentServiceServer) ConvertCurrency(context.Context, *ConvertCurrencyRequest) (*ConvertCurrencyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ConvertCurrency not implemented")
+}
+func (UnimplementedPaymentServiceServer) GetOperationHistory(context.Context, *GetOperationHistoryRequest) (*GetOperationHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOperationHistory not implemented")
+}
+func (UnimplementedPaymentServiceServer) UpdateCurrencyRate(context.Context, *UpdateCurrencyRateRequest) (*emptypb.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCurrencyRate not implemented")
 }
 func (UnimplementedPaymentServiceServer) mustEmbedUnimplementedPaymentServiceServer() {}
 func (UnimplementedPaymentServiceServer) testEmbeddedByValue()                        {}
@@ -151,20 +215,38 @@ func RegisterPaymentServiceServer(s grpc.ServiceRegistrar, srv PaymentServiceSer
 	s.RegisterService(&PaymentService_ServiceDesc, srv)
 }
 
-func _PaymentService_CreatePayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePaymentRequest)
+func _PaymentService_Transfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PaymentServiceServer).CreatePayment(ctx, in)
+		return srv.(PaymentServiceServer).Transfer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: PaymentService_CreatePayment_FullMethodName,
+		FullMethod: PaymentService_Transfer_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentServiceServer).CreatePayment(ctx, req.(*CreatePaymentRequest))
+		return srv.(PaymentServiceServer).Transfer(ctx, req.(*TransferRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PaymentService_Deposit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DepositRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).Deposit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_Deposit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).Deposit(ctx, req.(*DepositRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -241,6 +323,60 @@ func _PaymentService_CancelPayment_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PaymentService_ConvertCurrency_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ConvertCurrencyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).ConvertCurrency(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_ConvertCurrency_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).ConvertCurrency(ctx, req.(*ConvertCurrencyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PaymentService_GetOperationHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOperationHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).GetOperationHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_GetOperationHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).GetOperationHistory(ctx, req.(*GetOperationHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _PaymentService_UpdateCurrencyRate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCurrencyRateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).UpdateCurrencyRate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_UpdateCurrencyRate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).UpdateCurrencyRate(ctx, req.(*UpdateCurrencyRateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PaymentService_ServiceDesc is the grpc.ServiceDesc for PaymentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -249,8 +385,12 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*PaymentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreatePayment",
-			Handler:    _PaymentService_CreatePayment_Handler,
+			MethodName: "Transfer",
+			Handler:    _PaymentService_Transfer_Handler,
+		},
+		{
+			MethodName: "Deposit",
+			Handler:    _PaymentService_Deposit_Handler,
 		},
 		{
 			MethodName: "GetPayment",
@@ -267,6 +407,18 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelPayment",
 			Handler:    _PaymentService_CancelPayment_Handler,
+		},
+		{
+			MethodName: "ConvertCurrency",
+			Handler:    _PaymentService_ConvertCurrency_Handler,
+		},
+		{
+			MethodName: "GetOperationHistory",
+			Handler:    _PaymentService_GetOperationHistory_Handler,
+		},
+		{
+			MethodName: "UpdateCurrencyRate",
+			Handler:    _PaymentService_UpdateCurrencyRate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

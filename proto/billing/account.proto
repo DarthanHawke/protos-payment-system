@@ -5,18 +5,12 @@ option go_package = "pmtstm.v1;pmtstmv1";
 package billing;
 
 import "billing/shared.proto";
-import "google/protobuf/empty.proto";
 
 service AccountService {
   rpc CreateAccount (CreateAccountRequest) returns (CreateAccountResponse);
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse);
   rpc GetUserAccounts(GetUserAccountsRequest) returns (GetUserAccountsResponse);
   rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
-  rpc Deposit (DepositRequest) returns (DepositResponse);
-  rpc Transfer (TransferRequest) returns (TransferResponse);
-  rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
-  rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
-  rpc UpdateCurrencyRate (UpdateCurrencyRateRequest) returns (google.protobuf.Empty);
 }
 
 message CreateAccountRequest {
@@ -50,52 +44,4 @@ message GetBalanceRequest {
 
 message GetBalanceResponse {
   double balance = 1;
-}
-
-message DepositRequest {
-  string account_id = 1;
-  double amount = 2;
-  string description = 3;
-}
-
-message DepositResponse {
-  UUID payment_id = 1;
-}
-
-message TransferRequest {
-  string from_account_id = 1;
-  string to_account_id = 2;
-  double amount = 3;
-  string description = 4;
-}
-
-message TransferResponse {
-  UUID payment_id = 1;
-}
-
-message ConvertCurrencyRequest {
-  string from_account_id = 1;
-  string to_account_id = 2;
-  double amount = 3;
-  string description = 4;
-}
-
-message ConvertCurrencyResponse {
-  UUID operation_id = 1;
-}
-
-message GetOperationHistoryRequest {
-  string account_id = 1;
-  int32 limit = 2;
-  int32 offset = 3;
-}
-
-message GetOperationHistoryResponse {
-  repeated BalanceOperation operations = 1;
-}
-
-message UpdateCurrencyRateRequest {
-  string from_currency = 1;
-  string to_currency = 2;
-  double rate = 3;
 }
