@@ -30,6 +30,7 @@ const (
 	RoleService_GetUserRelations_FullMethodName              = "/billing.RoleService/GetUserRelations"
 	RoleService_GetUserPermissions_FullMethodName            = "/billing.RoleService/GetUserPermissions"
 	RoleService_GetPermissionsForRelationType_FullMethodName = "/billing.RoleService/GetPermissionsForRelationType"
+	RoleService_GetUserRole_FullMethodName                   = "/billing.RoleService/GetUserRole"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -46,6 +47,7 @@ type RoleServiceClient interface {
 	GetUserRelations(ctx context.Context, in *GetUserRelationsRequest, opts ...grpc.CallOption) (*GetUserRelationsResponse, error)
 	GetUserPermissions(ctx context.Context, in *GetUserPermissionsRequest, opts ...grpc.CallOption) (*GetUserPermissionsResponse, error)
 	GetPermissionsForRelationType(ctx context.Context, in *GetPermissionsForRelationTypeRequest, opts ...grpc.CallOption) (*GetPermissionsForRelationTypeResponse, error)
+	GetUserRole(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetUserRoleResponse, error)
 }
 
 type roleServiceClient struct {
@@ -156,6 +158,16 @@ func (c *roleServiceClient) GetPermissionsForRelationType(ctx context.Context, i
 	return out, nil
 }
 
+func (c *roleServiceClient) GetUserRole(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetUserRoleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserRoleResponse)
+	err := c.cc.Invoke(ctx, RoleService_GetUserRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RoleServiceServer is the server API for RoleService service.
 // All implementations must embed UnimplementedRoleServiceServer
 // for forward compatibility.
@@ -170,6 +182,7 @@ type RoleServiceServer interface {
 	GetUserRelations(context.Context, *GetUserRelationsRequest) (*GetUserRelationsResponse, error)
 	GetUserPermissions(context.Context, *GetUserPermissionsRequest) (*GetUserPermissionsResponse, error)
 	GetPermissionsForRelationType(context.Context, *GetPermissionsForRelationTypeRequest) (*GetPermissionsForRelationTypeResponse, error)
+	GetUserRole(context.Context, *emptypb.Empty) (*GetUserRoleResponse, error)
 	mustEmbedUnimplementedRoleServiceServer()
 }
 
@@ -209,6 +222,9 @@ func (UnimplementedRoleServiceServer) GetUserPermissions(context.Context, *GetUs
 }
 func (UnimplementedRoleServiceServer) GetPermissionsForRelationType(context.Context, *GetPermissionsForRelationTypeRequest) (*GetPermissionsForRelationTypeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPermissionsForRelationType not implemented")
+}
+func (UnimplementedRoleServiceServer) GetUserRole(context.Context, *emptypb.Empty) (*GetUserRoleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserRole not implemented")
 }
 func (UnimplementedRoleServiceServer) mustEmbedUnimplementedRoleServiceServer() {}
 func (UnimplementedRoleServiceServer) testEmbeddedByValue()                     {}
@@ -411,6 +427,24 @@ func _RoleService_GetPermissionsForRelationType_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RoleService_GetUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RoleServiceServer).GetUserRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RoleService_GetUserRole_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RoleServiceServer).GetUserRole(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RoleService_ServiceDesc is the grpc.ServiceDesc for RoleService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -457,6 +491,10 @@ var RoleService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPermissionsForRelationType",
 			Handler:    _RoleService_GetPermissionsForRelationType_Handler,
+		},
+		{
+			MethodName: "GetUserRole",
+			Handler:    _RoleService_GetUserRole_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

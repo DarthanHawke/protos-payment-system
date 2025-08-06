@@ -18,6 +18,7 @@ service RoleService {
   rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse);
   rpc GetUserPermissions (GetUserPermissionsRequest) returns (GetUserPermissionsResponse);
   rpc GetPermissionsForRelationType (GetPermissionsForRelationTypeRequest) returns (GetPermissionsForRelationTypeResponse);
+  rpc GetUserRole (google.protobuf.Empty) returns (GetUserRoleResponse);
 }
 
 message CreateEntityRequest {
@@ -116,4 +117,8 @@ message GetEntityRelationsRequest {
 
 message GetEntityRelationsResponse {
   repeated Relation relations = 1;
+}
+
+message GetUserRoleResponse {
+  string role = 1;
 }

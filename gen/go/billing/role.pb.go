@@ -1070,6 +1070,50 @@ func (x *GetEntityRelationsResponse) GetRelations() []*Relation {
 	return nil
 }
 
+type GetUserRoleResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Role          string                 `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserRoleResponse) Reset() {
+	*x = GetUserRoleResponse{}
+	mi := &file_billing_role_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserRoleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserRoleResponse) ProtoMessage() {}
+
+func (x *GetUserRoleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_role_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserRoleResponse.ProtoReflect.Descriptor instead.
+func (*GetUserRoleResponse) Descriptor() ([]byte, []int) {
+	return file_billing_role_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *GetUserRoleResponse) GetRole() string {
+	if x != nil {
+		return x.Role
+	}
+	return ""
+}
+
 var File_billing_role_proto protoreflect.FileDescriptor
 
 const file_billing_role_proto_rawDesc = "" +
@@ -1132,7 +1176,9 @@ const file_billing_role_proto_rawDesc = "" +
 	"\x19GetEntityRelationsRequest\x12*\n" +
 	"\tentity_id\x18\x01 \x01(\v2\r.billing.UUIDR\bentityId\"M\n" +
 	"\x1aGetEntityRelationsResponse\x12/\n" +
-	"\trelations\x18\x01 \x03(\v2\x11.billing.RelationR\trelations2\xe7\x06\n" +
+	"\trelations\x18\x01 \x03(\v2\x11.billing.RelationR\trelations\")\n" +
+	"\x13GetUserRoleResponse\x12\x12\n" +
+	"\x04role\x18\x01 \x01(\tR\x04role2\xac\a\n" +
 	"\vRoleService\x12H\n" +
 	"\x0eCreateRelation\x12\x1e.billing.CreateRelationRequest\x1a\x16.google.protobuf.Empty\x12H\n" +
 	"\x0eDeleteRelation\x12\x1e.billing.DeleteRelationRequest\x1a\x16.google.protobuf.Empty\x12L\n" +
@@ -1143,7 +1189,8 @@ const file_billing_role_proto_rawDesc = "" +
 	"\x11GetAllPermissions\x12\x16.google.protobuf.Empty\x1a\".billing.GetAllPermissionsResponse\x12W\n" +
 	"\x10GetUserRelations\x12 .billing.GetUserRelationsRequest\x1a!.billing.GetUserRelationsResponse\x12]\n" +
 	"\x12GetUserPermissions\x12\".billing.GetUserPermissionsRequest\x1a#.billing.GetUserPermissionsResponse\x12~\n" +
-	"\x1dGetPermissionsForRelationType\x12-.billing.GetPermissionsForRelationTypeRequest\x1a..billing.GetPermissionsForRelationTypeResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\x1dGetPermissionsForRelationType\x12-.billing.GetPermissionsForRelationTypeRequest\x1a..billing.GetPermissionsForRelationTypeResponse\x12C\n" +
+	"\vGetUserRole\x12\x16.google.protobuf.Empty\x1a\x1c.billing.GetUserRoleResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_role_proto_rawDescOnce sync.Once
@@ -1157,7 +1204,7 @@ func file_billing_role_proto_rawDescGZIP() []byte {
 	return file_billing_role_proto_rawDescData
 }
 
-var file_billing_role_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_billing_role_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_billing_role_proto_goTypes = []any{
 	(*CreateEntityRequest)(nil),                   // 0: billing.CreateEntityRequest
 	(*DeleteEntityRequest)(nil),                   // 1: billing.DeleteEntityRequest
@@ -1181,56 +1228,59 @@ var file_billing_role_proto_goTypes = []any{
 	(*GetPermissionsForRelationTypeResponse)(nil), // 19: billing.GetPermissionsForRelationTypeResponse
 	(*GetEntityRelationsRequest)(nil),             // 20: billing.GetEntityRelationsRequest
 	(*GetEntityRelationsResponse)(nil),            // 21: billing.GetEntityRelationsResponse
-	(*UUID)(nil),                                  // 22: billing.UUID
-	(*Permission)(nil),                            // 23: billing.Permission
-	(*Entity)(nil),                                // 24: billing.Entity
-	(*Relation)(nil),                              // 25: billing.Relation
-	(*emptypb.Empty)(nil),                         // 26: google.protobuf.Empty
+	(*GetUserRoleResponse)(nil),                   // 22: billing.GetUserRoleResponse
+	(*UUID)(nil),                                  // 23: billing.UUID
+	(*Permission)(nil),                            // 24: billing.Permission
+	(*Entity)(nil),                                // 25: billing.Entity
+	(*Relation)(nil),                              // 26: billing.Relation
+	(*emptypb.Empty)(nil),                         // 27: google.protobuf.Empty
 }
 var file_billing_role_proto_depIdxs = []int32{
-	22, // 0: billing.CreateEntityRequest.id:type_name -> billing.UUID
-	22, // 1: billing.DeleteEntityRequest.id:type_name -> billing.UUID
-	22, // 2: billing.CreateRelationRequest.source_id:type_name -> billing.UUID
-	22, // 3: billing.CreateRelationRequest.target_id:type_name -> billing.UUID
-	22, // 4: billing.DeleteRelationRequest.source_id:type_name -> billing.UUID
-	22, // 5: billing.DeleteRelationRequest.target_id:type_name -> billing.UUID
-	22, // 6: billing.AddPermissionResponse.permission_id:type_name -> billing.UUID
-	22, // 7: billing.AssignPermissionRequest.permission_id:type_name -> billing.UUID
-	22, // 8: billing.RevokePermissionRequest.permission_id:type_name -> billing.UUID
-	22, // 9: billing.CheckPermissionRequest.subject_id:type_name -> billing.UUID
-	22, // 10: billing.CheckPermissionRequest.object_id:type_name -> billing.UUID
-	23, // 11: billing.GetPermissionByNameResponse.permission:type_name -> billing.Permission
-	24, // 12: billing.GetAllEntitiesResponse.entities:type_name -> billing.Entity
-	23, // 13: billing.GetAllPermissionsResponse.permissions:type_name -> billing.Permission
-	22, // 14: billing.GetUserRelationsRequest.user_id:type_name -> billing.UUID
-	25, // 15: billing.GetUserRelationsResponse.relations:type_name -> billing.Relation
-	22, // 16: billing.GetUserPermissionsRequest.user_id:type_name -> billing.UUID
-	23, // 17: billing.GetUserPermissionsResponse.permissions:type_name -> billing.Permission
-	23, // 18: billing.GetPermissionsForRelationTypeResponse.permissions:type_name -> billing.Permission
-	22, // 19: billing.GetEntityRelationsRequest.entity_id:type_name -> billing.UUID
-	25, // 20: billing.GetEntityRelationsResponse.relations:type_name -> billing.Relation
+	23, // 0: billing.CreateEntityRequest.id:type_name -> billing.UUID
+	23, // 1: billing.DeleteEntityRequest.id:type_name -> billing.UUID
+	23, // 2: billing.CreateRelationRequest.source_id:type_name -> billing.UUID
+	23, // 3: billing.CreateRelationRequest.target_id:type_name -> billing.UUID
+	23, // 4: billing.DeleteRelationRequest.source_id:type_name -> billing.UUID
+	23, // 5: billing.DeleteRelationRequest.target_id:type_name -> billing.UUID
+	23, // 6: billing.AddPermissionResponse.permission_id:type_name -> billing.UUID
+	23, // 7: billing.AssignPermissionRequest.permission_id:type_name -> billing.UUID
+	23, // 8: billing.RevokePermissionRequest.permission_id:type_name -> billing.UUID
+	23, // 9: billing.CheckPermissionRequest.subject_id:type_name -> billing.UUID
+	23, // 10: billing.CheckPermissionRequest.object_id:type_name -> billing.UUID
+	24, // 11: billing.GetPermissionByNameResponse.permission:type_name -> billing.Permission
+	25, // 12: billing.GetAllEntitiesResponse.entities:type_name -> billing.Entity
+	24, // 13: billing.GetAllPermissionsResponse.permissions:type_name -> billing.Permission
+	23, // 14: billing.GetUserRelationsRequest.user_id:type_name -> billing.UUID
+	26, // 15: billing.GetUserRelationsResponse.relations:type_name -> billing.Relation
+	23, // 16: billing.GetUserPermissionsRequest.user_id:type_name -> billing.UUID
+	24, // 17: billing.GetUserPermissionsResponse.permissions:type_name -> billing.Permission
+	24, // 18: billing.GetPermissionsForRelationTypeResponse.permissions:type_name -> billing.Permission
+	23, // 19: billing.GetEntityRelationsRequest.entity_id:type_name -> billing.UUID
+	26, // 20: billing.GetEntityRelationsResponse.relations:type_name -> billing.Relation
 	2,  // 21: billing.RoleService.CreateRelation:input_type -> billing.CreateRelationRequest
 	3,  // 22: billing.RoleService.DeleteRelation:input_type -> billing.DeleteRelationRequest
 	6,  // 23: billing.RoleService.AssignPermission:input_type -> billing.AssignPermissionRequest
 	7,  // 24: billing.RoleService.RevokePermission:input_type -> billing.RevokePermissionRequest
 	8,  // 25: billing.RoleService.CheckPermission:input_type -> billing.CheckPermissionRequest
-	26, // 26: billing.RoleService.GetAllEntities:input_type -> google.protobuf.Empty
-	26, // 27: billing.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
+	27, // 26: billing.RoleService.GetAllEntities:input_type -> google.protobuf.Empty
+	27, // 27: billing.RoleService.GetAllPermissions:input_type -> google.protobuf.Empty
 	14, // 28: billing.RoleService.GetUserRelations:input_type -> billing.GetUserRelationsRequest
 	16, // 29: billing.RoleService.GetUserPermissions:input_type -> billing.GetUserPermissionsRequest
 	18, // 30: billing.RoleService.GetPermissionsForRelationType:input_type -> billing.GetPermissionsForRelationTypeRequest
-	26, // 31: billing.RoleService.CreateRelation:output_type -> google.protobuf.Empty
-	26, // 32: billing.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
-	26, // 33: billing.RoleService.AssignPermission:output_type -> google.protobuf.Empty
-	26, // 34: billing.RoleService.RevokePermission:output_type -> google.protobuf.Empty
-	9,  // 35: billing.RoleService.CheckPermission:output_type -> billing.CheckPermissionResponse
-	12, // 36: billing.RoleService.GetAllEntities:output_type -> billing.GetAllEntitiesResponse
-	13, // 37: billing.RoleService.GetAllPermissions:output_type -> billing.GetAllPermissionsResponse
-	15, // 38: billing.RoleService.GetUserRelations:output_type -> billing.GetUserRelationsResponse
-	17, // 39: billing.RoleService.GetUserPermissions:output_type -> billing.GetUserPermissionsResponse
-	19, // 40: billing.RoleService.GetPermissionsForRelationType:output_type -> billing.GetPermissionsForRelationTypeResponse
-	31, // [31:41] is the sub-list for method output_type
-	21, // [21:31] is the sub-list for method input_type
+	27, // 31: billing.RoleService.GetUserRole:input_type -> google.protobuf.Empty
+	27, // 32: billing.RoleService.CreateRelation:output_type -> google.protobuf.Empty
+	27, // 33: billing.RoleService.DeleteRelation:output_type -> google.protobuf.Empty
+	27, // 34: billing.RoleService.AssignPermission:output_type -> google.protobuf.Empty
+	27, // 35: billing.RoleService.RevokePermission:output_type -> google.protobuf.Empty
+	9,  // 36: billing.RoleService.CheckPermission:output_type -> billing.CheckPermissionResponse
+	12, // 37: billing.RoleService.GetAllEntities:output_type -> billing.GetAllEntitiesResponse
+	13, // 38: billing.RoleService.GetAllPermissions:output_type -> billing.GetAllPermissionsResponse
+	15, // 39: billing.RoleService.GetUserRelations:output_type -> billing.GetUserRelationsResponse
+	17, // 40: billing.RoleService.GetUserPermissions:output_type -> billing.GetUserPermissionsResponse
+	19, // 41: billing.RoleService.GetPermissionsForRelationType:output_type -> billing.GetPermissionsForRelationTypeResponse
+	22, // 42: billing.RoleService.GetUserRole:output_type -> billing.GetUserRoleResponse
+	32, // [32:43] is the sub-list for method output_type
+	21, // [21:32] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name
 	21, // [21:21] is the sub-list for extension extendee
 	0,  // [0:21] is the sub-list for field type_name
@@ -1248,7 +1298,7 @@ func file_billing_role_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_role_proto_rawDesc), len(file_billing_role_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   22,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
