@@ -786,6 +786,102 @@ func (x *UpdateCurrencyRateRequest) GetRate() float64 {
 	return 0
 }
 
+type GetCurrencyRateRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FromCurrency  string                 `protobuf:"bytes,1,opt,name=from_currency,json=fromCurrency,proto3" json:"from_currency,omitempty"`
+	ToCurrency    string                 `protobuf:"bytes,2,opt,name=to_currency,json=toCurrency,proto3" json:"to_currency,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCurrencyRateRequest) Reset() {
+	*x = GetCurrencyRateRequest{}
+	mi := &file_billing_payment_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCurrencyRateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCurrencyRateRequest) ProtoMessage() {}
+
+func (x *GetCurrencyRateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_payment_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCurrencyRateRequest.ProtoReflect.Descriptor instead.
+func (*GetCurrencyRateRequest) Descriptor() ([]byte, []int) {
+	return file_billing_payment_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *GetCurrencyRateRequest) GetFromCurrency() string {
+	if x != nil {
+		return x.FromCurrency
+	}
+	return ""
+}
+
+func (x *GetCurrencyRateRequest) GetToCurrency() string {
+	if x != nil {
+		return x.ToCurrency
+	}
+	return ""
+}
+
+type GetCurrencyRateResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rate          float64                `protobuf:"fixed64,1,opt,name=rate,proto3" json:"rate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCurrencyRateResponse) Reset() {
+	*x = GetCurrencyRateResponse{}
+	mi := &file_billing_payment_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCurrencyRateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCurrencyRateResponse) ProtoMessage() {}
+
+func (x *GetCurrencyRateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_payment_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCurrencyRateResponse.ProtoReflect.Descriptor instead.
+func (*GetCurrencyRateResponse) Descriptor() ([]byte, []int) {
+	return file_billing_payment_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetCurrencyRateResponse) GetRate() float64 {
+	if x != nil {
+		return x.Rate
+	}
+	return 0
+}
+
 var File_billing_payment_proto protoreflect.FileDescriptor
 
 const file_billing_payment_proto_rawDesc = "" +
@@ -846,7 +942,13 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
 	"\vto_currency\x18\x02 \x01(\tR\n" +
 	"toCurrency\x12\x12\n" +
-	"\x04rate\x18\x03 \x01(\x01R\x04rate2\xcc\x05\n" +
+	"\x04rate\x18\x03 \x01(\x01R\x04rate\"^\n" +
+	"\x16GetCurrencyRateRequest\x12#\n" +
+	"\rfrom_currency\x18\x01 \x01(\tR\ffromCurrency\x12\x1f\n" +
+	"\vto_currency\x18\x02 \x01(\tR\n" +
+	"toCurrency\"-\n" +
+	"\x17GetCurrencyRateResponse\x12\x12\n" +
+	"\x04rate\x18\x01 \x01(\x01R\x04rate2\xa2\x06\n" +
 	"\x0ePaymentService\x12?\n" +
 	"\bTransfer\x12\x18.billing.TransferRequest\x1a\x19.billing.TransferResponse\x12<\n" +
 	"\aDeposit\x12\x17.billing.DepositRequest\x1a\x18.billing.DepositResponse\x12E\n" +
@@ -857,7 +959,8 @@ const file_billing_payment_proto_rawDesc = "" +
 	"\rCancelPayment\x12\x1d.billing.CancelPaymentRequest\x1a\x16.google.protobuf.Empty\x12T\n" +
 	"\x0fConvertCurrency\x12\x1f.billing.ConvertCurrencyRequest\x1a .billing.ConvertCurrencyResponse\x12`\n" +
 	"\x13GetOperationHistory\x12#.billing.GetOperationHistoryRequest\x1a$.billing.GetOperationHistoryResponse\x12P\n" +
-	"\x12UpdateCurrencyRate\x12\".billing.UpdateCurrencyRateRequest\x1a\x16.google.protobuf.EmptyB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\x12UpdateCurrencyRate\x12\".billing.UpdateCurrencyRateRequest\x1a\x16.google.protobuf.Empty\x12T\n" +
+	"\x0fGetCurrencyRate\x12\x1f.billing.GetCurrencyRateRequest\x1a .billing.GetCurrencyRateResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_payment_proto_rawDescOnce sync.Once
@@ -871,7 +974,7 @@ func file_billing_payment_proto_rawDescGZIP() []byte {
 	return file_billing_payment_proto_rawDescData
 }
 
-var file_billing_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_billing_payment_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_billing_payment_proto_goTypes = []any{
 	(*TransferRequest)(nil),             // 0: billing.TransferRequest
 	(*TransferResponse)(nil),            // 1: billing.TransferResponse
@@ -888,22 +991,24 @@ var file_billing_payment_proto_goTypes = []any{
 	(*GetOperationHistoryRequest)(nil),  // 12: billing.GetOperationHistoryRequest
 	(*GetOperationHistoryResponse)(nil), // 13: billing.GetOperationHistoryResponse
 	(*UpdateCurrencyRateRequest)(nil),   // 14: billing.UpdateCurrencyRateRequest
-	(*UUID)(nil),                        // 15: billing.UUID
-	(*Payment)(nil),                     // 16: billing.Payment
-	(*BalanceOperation)(nil),            // 17: billing.BalanceOperation
-	(*emptypb.Empty)(nil),               // 18: google.protobuf.Empty
+	(*GetCurrencyRateRequest)(nil),      // 15: billing.GetCurrencyRateRequest
+	(*GetCurrencyRateResponse)(nil),     // 16: billing.GetCurrencyRateResponse
+	(*UUID)(nil),                        // 17: billing.UUID
+	(*Payment)(nil),                     // 18: billing.Payment
+	(*BalanceOperation)(nil),            // 19: billing.BalanceOperation
+	(*emptypb.Empty)(nil),               // 20: google.protobuf.Empty
 }
 var file_billing_payment_proto_depIdxs = []int32{
-	15, // 0: billing.TransferResponse.payment_id:type_name -> billing.UUID
-	15, // 1: billing.DepositResponse.payment_id:type_name -> billing.UUID
-	15, // 2: billing.GetPaymentRequest.payment_id:type_name -> billing.UUID
-	16, // 3: billing.GetPaymentResponse.payment:type_name -> billing.Payment
-	15, // 4: billing.GetAllPaymentRequest.user_id:type_name -> billing.UUID
-	16, // 5: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
-	15, // 6: billing.UpdateStatusPaymentRequest.payment_id:type_name -> billing.UUID
-	15, // 7: billing.CancelPaymentRequest.payment_id:type_name -> billing.UUID
-	15, // 8: billing.ConvertCurrencyResponse.operation_id:type_name -> billing.UUID
-	17, // 9: billing.GetOperationHistoryResponse.operations:type_name -> billing.BalanceOperation
+	17, // 0: billing.TransferResponse.payment_id:type_name -> billing.UUID
+	17, // 1: billing.DepositResponse.payment_id:type_name -> billing.UUID
+	17, // 2: billing.GetPaymentRequest.payment_id:type_name -> billing.UUID
+	18, // 3: billing.GetPaymentResponse.payment:type_name -> billing.Payment
+	17, // 4: billing.GetAllPaymentRequest.user_id:type_name -> billing.UUID
+	18, // 5: billing.GetAllPaymentResponse.payment:type_name -> billing.Payment
+	17, // 6: billing.UpdateStatusPaymentRequest.payment_id:type_name -> billing.UUID
+	17, // 7: billing.CancelPaymentRequest.payment_id:type_name -> billing.UUID
+	17, // 8: billing.ConvertCurrencyResponse.operation_id:type_name -> billing.UUID
+	19, // 9: billing.GetOperationHistoryResponse.operations:type_name -> billing.BalanceOperation
 	0,  // 10: billing.PaymentService.Transfer:input_type -> billing.TransferRequest
 	2,  // 11: billing.PaymentService.Deposit:input_type -> billing.DepositRequest
 	4,  // 12: billing.PaymentService.GetPayment:input_type -> billing.GetPaymentRequest
@@ -913,17 +1018,19 @@ var file_billing_payment_proto_depIdxs = []int32{
 	10, // 16: billing.PaymentService.ConvertCurrency:input_type -> billing.ConvertCurrencyRequest
 	12, // 17: billing.PaymentService.GetOperationHistory:input_type -> billing.GetOperationHistoryRequest
 	14, // 18: billing.PaymentService.UpdateCurrencyRate:input_type -> billing.UpdateCurrencyRateRequest
-	1,  // 19: billing.PaymentService.Transfer:output_type -> billing.TransferResponse
-	3,  // 20: billing.PaymentService.Deposit:output_type -> billing.DepositResponse
-	5,  // 21: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
-	7,  // 22: billing.PaymentService.GetAllPayment:output_type -> billing.GetAllPaymentResponse
-	18, // 23: billing.PaymentService.UpdateStatusPayment:output_type -> google.protobuf.Empty
-	18, // 24: billing.PaymentService.CancelPayment:output_type -> google.protobuf.Empty
-	11, // 25: billing.PaymentService.ConvertCurrency:output_type -> billing.ConvertCurrencyResponse
-	13, // 26: billing.PaymentService.GetOperationHistory:output_type -> billing.GetOperationHistoryResponse
-	18, // 27: billing.PaymentService.UpdateCurrencyRate:output_type -> google.protobuf.Empty
-	19, // [19:28] is the sub-list for method output_type
-	10, // [10:19] is the sub-list for method input_type
+	15, // 19: billing.PaymentService.GetCurrencyRate:input_type -> billing.GetCurrencyRateRequest
+	1,  // 20: billing.PaymentService.Transfer:output_type -> billing.TransferResponse
+	3,  // 21: billing.PaymentService.Deposit:output_type -> billing.DepositResponse
+	5,  // 22: billing.PaymentService.GetPayment:output_type -> billing.GetPaymentResponse
+	7,  // 23: billing.PaymentService.GetAllPayment:output_type -> billing.GetAllPaymentResponse
+	20, // 24: billing.PaymentService.UpdateStatusPayment:output_type -> google.protobuf.Empty
+	20, // 25: billing.PaymentService.CancelPayment:output_type -> google.protobuf.Empty
+	11, // 26: billing.PaymentService.ConvertCurrency:output_type -> billing.ConvertCurrencyResponse
+	13, // 27: billing.PaymentService.GetOperationHistory:output_type -> billing.GetOperationHistoryResponse
+	20, // 28: billing.PaymentService.UpdateCurrencyRate:output_type -> google.protobuf.Empty
+	16, // 29: billing.PaymentService.GetCurrencyRate:output_type -> billing.GetCurrencyRateResponse
+	20, // [20:30] is the sub-list for method output_type
+	10, // [10:20] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
 	10, // [10:10] is the sub-list for extension extendee
 	0,  // [0:10] is the sub-list for field type_name
@@ -943,7 +1050,7 @@ func file_billing_payment_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_payment_proto_rawDesc), len(file_billing_payment_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

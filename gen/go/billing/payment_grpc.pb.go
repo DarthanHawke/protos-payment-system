@@ -29,6 +29,7 @@ const (
 	PaymentService_ConvertCurrency_FullMethodName     = "/billing.PaymentService/ConvertCurrency"
 	PaymentService_GetOperationHistory_FullMethodName = "/billing.PaymentService/GetOperationHistory"
 	PaymentService_UpdateCurrencyRate_FullMethodName  = "/billing.PaymentService/UpdateCurrencyRate"
+	PaymentService_GetCurrencyRate_FullMethodName     = "/billing.PaymentService/GetCurrencyRate"
 )
 
 // PaymentServiceClient is the client API for PaymentService service.
@@ -44,6 +45,7 @@ type PaymentServiceClient interface {
 	ConvertCurrency(ctx context.Context, in *ConvertCurrencyRequest, opts ...grpc.CallOption) (*ConvertCurrencyResponse, error)
 	GetOperationHistory(ctx context.Context, in *GetOperationHistoryRequest, opts ...grpc.CallOption) (*GetOperationHistoryResponse, error)
 	UpdateCurrencyRate(ctx context.Context, in *UpdateCurrencyRateRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetCurrencyRate(ctx context.Context, in *GetCurrencyRateRequest, opts ...grpc.CallOption) (*GetCurrencyRateResponse, error)
 }
 
 type paymentServiceClient struct {
@@ -144,6 +146,16 @@ func (c *paymentServiceClient) UpdateCurrencyRate(ctx context.Context, in *Updat
 	return out, nil
 }
 
+func (c *paymentServiceClient) GetCurrencyRate(ctx context.Context, in *GetCurrencyRateRequest, opts ...grpc.CallOption) (*GetCurrencyRateResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCurrencyRateResponse)
+	err := c.cc.Invoke(ctx, PaymentService_GetCurrencyRate_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PaymentServiceServer is the server API for PaymentService service.
 // All implementations must embed UnimplementedPaymentServiceServer
 // for forward compatibility.
@@ -157,6 +169,7 @@ type PaymentServiceServer interface {
 	ConvertCurrency(context.Context, *ConvertCurrencyRequest) (*ConvertCurrencyResponse, error)
 	GetOperationHistory(context.Context, *GetOperationHistoryRequest) (*GetOperationHistoryResponse, error)
 	UpdateCurrencyRate(context.Context, *UpdateCurrencyRateRequest) (*emptypb.Empty, error)
+	GetCurrencyRate(context.Context, *GetCurrencyRateRequest) (*GetCurrencyRateResponse, error)
 	mustEmbedUnimplementedPaymentServiceServer()
 }
 
@@ -193,6 +206,9 @@ func (UnimplementedPaymentServiceServer) GetOperationHistory(context.Context, *G
 }
 func (UnimplementedPaymentServiceServer) UpdateCurrencyRate(context.Context, *UpdateCurrencyRateRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCurrencyRate not implemented")
+}
+func (UnimplementedPaymentServiceServer) GetCurrencyRate(context.Context, *GetCurrencyRateRequest) (*GetCurrencyRateResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCurrencyRate not implemented")
 }
 func (UnimplementedPaymentServiceServer) mustEmbedUnimplementedPaymentServiceServer() {}
 func (UnimplementedPaymentServiceServer) testEmbeddedByValue()                        {}
@@ -377,6 +393,24 @@ func _PaymentService_UpdateCurrencyRate_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _PaymentService_GetCurrencyRate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCurrencyRateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServiceServer).GetCurrencyRate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: PaymentService_GetCurrencyRate_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServiceServer).GetCurrencyRate(ctx, req.(*GetCurrencyRateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // PaymentService_ServiceDesc is the grpc.ServiceDesc for PaymentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -419,6 +453,10 @@ var PaymentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateCurrencyRate",
 			Handler:    _PaymentService_UpdateCurrencyRate_Handler,
+		},
+		{
+			MethodName: "GetCurrencyRate",
+			Handler:    _PaymentService_GetCurrencyRate_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

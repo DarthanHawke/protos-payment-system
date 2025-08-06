@@ -17,6 +17,7 @@ service PaymentService {
   rpc ConvertCurrency (ConvertCurrencyRequest) returns (ConvertCurrencyResponse);
   rpc GetOperationHistory (GetOperationHistoryRequest) returns (GetOperationHistoryResponse);
   rpc UpdateCurrencyRate (UpdateCurrencyRateRequest) returns (google.protobuf.Empty);
+  rpc GetCurrencyRate (GetCurrencyRateRequest) returns (GetCurrencyRateResponse);
 }
 
 message TransferRequest {
@@ -90,4 +91,13 @@ message UpdateCurrencyRateRequest {
   string from_currency = 1;
   string to_currency = 2;
   double rate = 3;
+}
+
+message GetCurrencyRateRequest {
+  string from_currency = 1;
+  string to_currency = 2;
+}
+
+message GetCurrencyRateResponse {
+  double rate = 1;
 }

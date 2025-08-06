@@ -56,8 +56,9 @@ message User {
   UUID id = 1;
   string email = 2;
   string full_name = 3;
-  google.protobuf.Timestamp createdAt = 5;
-  google.protobuf.Timestamp updatedAt = 6;
+  bool active = 4;
+  google.protobuf.Timestamp createdAt = 6;
+  google.protobuf.Timestamp updatedAt = 7;
 }
 
 message Entity {
