@@ -14,7 +14,6 @@ message User {
   UUID id = 1;
   string email = 2;
   string full_name = 3;
-  bool active = 4;
   google.protobuf.Timestamp createdAt = 6;
   google.protobuf.Timestamp updatedAt = 7;
 }
