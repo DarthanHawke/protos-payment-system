@@ -11,8 +11,8 @@ service AuthService {
   rpc RefreshSession (google.protobuf.Empty) returns (RefreshSessionResponse);
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
-  rpc Logout (google.protobuf.Empty) returns (google.protobuf.Empty);
-  rpc LogoutAll (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc Logout (LogoutRequest) returns (google.protobuf.Empty);
+  rpc LogoutAll (LogoutAllRequest) returns (google.protobuf.Empty);
 }
 
 message RefreshSessionResponse {
@@ -36,4 +36,12 @@ message LoginRequest {
 
 message LoginResponse {
   UserSession userSession = 1;
+}
+
+message LogoutRequest {
+  optional UUID id = 1;
+}
+
+message LogoutAllRequest {
+  optional UUID id = 1;
 }
