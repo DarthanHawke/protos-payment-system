@@ -25,6 +25,7 @@ const (
 	AuthService_Login_FullMethodName          = "/billing.AuthService/Login"
 	AuthService_Logout_FullMethodName         = "/billing.AuthService/Logout"
 	AuthService_LogoutAll_FullMethodName      = "/billing.AuthService/LogoutAll"
+	AuthService_GetAllSessions_FullMethodName = "/billing.AuthService/GetAllSessions"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -36,6 +37,7 @@ type AuthServiceClient interface {
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	LogoutAll(ctx context.Context, in *LogoutAllRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	GetAllSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error)
 }
 
 type authServiceClient struct {
@@ -96,6 +98,16 @@ func (c *authServiceClient) LogoutAll(ctx context.Context, in *LogoutAllRequest,
 	return out, nil
 }
 
+func (c *authServiceClient) GetAllSessions(ctx context.Context, in *GetAllSessionsRequest, opts ...grpc.CallOption) (*GetAllSessionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllSessionsResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetAllSessions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility.
@@ -105,6 +117,7 @@ type AuthServiceServer interface {
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	Logout(context.Context, *LogoutRequest) (*emptypb.Empty, error)
 	LogoutAll(context.Context, *LogoutAllRequest) (*emptypb.Empty, error)
+	GetAllSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -129,6 +142,9 @@ func (UnimplementedAuthServiceServer) Logout(context.Context, *LogoutRequest) (*
 }
 func (UnimplementedAuthServiceServer) LogoutAll(context.Context, *LogoutAllRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogoutAll not implemented")
+}
+func (UnimplementedAuthServiceServer) GetAllSessions(context.Context, *GetAllSessionsRequest) (*GetAllSessionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllSessions not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
@@ -241,6 +257,24 @@ func _AuthService_LogoutAll_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthService_GetAllSessions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllSessionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetAllSessions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetAllSessions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetAllSessions(ctx, req.(*GetAllSessionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,6 +301,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LogoutAll",
 			Handler:    _AuthService_LogoutAll_Handler,
+		},
+		{
+			MethodName: "GetAllSessions",
+			Handler:    _AuthService_GetAllSessions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

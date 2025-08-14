@@ -526,6 +526,98 @@ func (x *User) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type Session struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	UserIp        string                 `protobuf:"bytes,4,opt,name=user_ip,json=userIp,proto3" json:"user_ip,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,5,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Session) Reset() {
+	*x = Session{}
+	mi := &file_billing_shared_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Session) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Session) ProtoMessage() {}
+
+func (x *Session) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_shared_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Session.ProtoReflect.Descriptor instead.
+func (*Session) Descriptor() ([]byte, []int) {
+	return file_billing_shared_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Session) GetId() *UUID {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
+func (x *Session) GetUserId() *UUID {
+	if x != nil {
+		return x.UserId
+	}
+	return nil
+}
+
+func (x *Session) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *Session) GetUserIp() string {
+	if x != nil {
+		return x.UserIp
+	}
+	return ""
+}
+
+func (x *Session) GetUserAgent() string {
+	if x != nil {
+		return x.UserAgent
+	}
+	return ""
+}
+
+func (x *Session) GetExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresAt
+	}
+	return nil
+}
+
+func (x *Session) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
 type Entity struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -536,7 +628,7 @@ type Entity struct {
 
 func (x *Entity) Reset() {
 	*x = Entity{}
-	mi := &file_billing_shared_proto_msgTypes[6]
+	mi := &file_billing_shared_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -548,7 +640,7 @@ func (x *Entity) String() string {
 func (*Entity) ProtoMessage() {}
 
 func (x *Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[6]
+	mi := &file_billing_shared_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -561,7 +653,7 @@ func (x *Entity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Entity.ProtoReflect.Descriptor instead.
 func (*Entity) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{6}
+	return file_billing_shared_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Entity) GetId() *UUID {
@@ -589,7 +681,7 @@ type Permission struct {
 
 func (x *Permission) Reset() {
 	*x = Permission{}
-	mi := &file_billing_shared_proto_msgTypes[7]
+	mi := &file_billing_shared_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -601,7 +693,7 @@ func (x *Permission) String() string {
 func (*Permission) ProtoMessage() {}
 
 func (x *Permission) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[7]
+	mi := &file_billing_shared_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -614,7 +706,7 @@ func (x *Permission) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Permission.ProtoReflect.Descriptor instead.
 func (*Permission) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{7}
+	return file_billing_shared_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Permission) GetId() *UUID {
@@ -649,7 +741,7 @@ type Relation struct {
 
 func (x *Relation) Reset() {
 	*x = Relation{}
-	mi := &file_billing_shared_proto_msgTypes[8]
+	mi := &file_billing_shared_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +753,7 @@ func (x *Relation) String() string {
 func (*Relation) ProtoMessage() {}
 
 func (x *Relation) ProtoReflect() protoreflect.Message {
-	mi := &file_billing_shared_proto_msgTypes[8]
+	mi := &file_billing_shared_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +766,7 @@ func (x *Relation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation.ProtoReflect.Descriptor instead.
 func (*Relation) Descriptor() ([]byte, []int) {
-	return file_billing_shared_proto_rawDescGZIP(), []int{8}
+	return file_billing_shared_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Relation) GetSourceId() *UUID {
@@ -754,7 +846,17 @@ const file_billing_shared_proto_rawDesc = "" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x128\n" +
 	"\tcreatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\";\n" +
+	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xa2\x02\n" +
+	"\aSession\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12&\n" +
+	"\auser_id\x18\x02 \x01(\v2\r.billing.UUIDR\x06userId\x12#\n" +
+	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12\x17\n" +
+	"\auser_ip\x18\x04 \x01(\tR\x06userIp\x12\x1d\n" +
+	"\n" +
+	"user_agent\x18\x05 \x01(\tR\tuserAgent\x129\n" +
+	"\n" +
+	"expires_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
+	"\tcreatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\";\n" +
 	"\x06Entity\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\"a\n" +
@@ -780,7 +882,7 @@ func file_billing_shared_proto_rawDescGZIP() []byte {
 	return file_billing_shared_proto_rawDescData
 }
 
-var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_billing_shared_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_billing_shared_proto_goTypes = []any{
 	(*UUID)(nil),                  // 0: billing.UUID
 	(*UserSession)(nil),           // 1: billing.UserSession
@@ -788,35 +890,40 @@ var file_billing_shared_proto_goTypes = []any{
 	(*BalanceOperation)(nil),      // 3: billing.BalanceOperation
 	(*CurrencyAccount)(nil),       // 4: billing.CurrencyAccount
 	(*User)(nil),                  // 5: billing.User
-	(*Entity)(nil),                // 6: billing.Entity
-	(*Permission)(nil),            // 7: billing.Permission
-	(*Relation)(nil),              // 8: billing.Relation
-	(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
+	(*Session)(nil),               // 6: billing.Session
+	(*Entity)(nil),                // 7: billing.Entity
+	(*Permission)(nil),            // 8: billing.Permission
+	(*Relation)(nil),              // 9: billing.Relation
+	(*timestamppb.Timestamp)(nil), // 10: google.protobuf.Timestamp
 }
 var file_billing_shared_proto_depIdxs = []int32{
 	0,  // 0: billing.Payment.id:type_name -> billing.UUID
-	9,  // 1: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 2: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 1: billing.Payment.created_at:type_name -> google.protobuf.Timestamp
+	10, // 2: billing.Payment.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: billing.BalanceOperation.id:type_name -> billing.UUID
 	0,  // 4: billing.BalanceOperation.operation_id:type_name -> billing.UUID
 	0,  // 5: billing.BalanceOperation.payment_id:type_name -> billing.UUID
-	9,  // 6: billing.BalanceOperation.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 7: billing.BalanceOperation.processed_at:type_name -> google.protobuf.Timestamp
+	10, // 6: billing.BalanceOperation.created_at:type_name -> google.protobuf.Timestamp
+	10, // 7: billing.BalanceOperation.processed_at:type_name -> google.protobuf.Timestamp
 	0,  // 8: billing.CurrencyAccount.user_id:type_name -> billing.UUID
-	9,  // 9: billing.CurrencyAccount.created_at:type_name -> google.protobuf.Timestamp
-	9,  // 10: billing.CurrencyAccount.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 9: billing.CurrencyAccount.created_at:type_name -> google.protobuf.Timestamp
+	10, // 10: billing.CurrencyAccount.updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 11: billing.User.id:type_name -> billing.UUID
-	9,  // 12: billing.User.createdAt:type_name -> google.protobuf.Timestamp
-	9,  // 13: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
-	0,  // 14: billing.Entity.id:type_name -> billing.UUID
-	0,  // 15: billing.Permission.id:type_name -> billing.UUID
-	0,  // 16: billing.Relation.source_id:type_name -> billing.UUID
-	0,  // 17: billing.Relation.target_id:type_name -> billing.UUID
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	10, // 12: billing.User.createdAt:type_name -> google.protobuf.Timestamp
+	10, // 13: billing.User.updatedAt:type_name -> google.protobuf.Timestamp
+	0,  // 14: billing.Session.id:type_name -> billing.UUID
+	0,  // 15: billing.Session.user_id:type_name -> billing.UUID
+	10, // 16: billing.Session.expires_at:type_name -> google.protobuf.Timestamp
+	10, // 17: billing.Session.createdAt:type_name -> google.protobuf.Timestamp
+	0,  // 18: billing.Entity.id:type_name -> billing.UUID
+	0,  // 19: billing.Permission.id:type_name -> billing.UUID
+	0,  // 20: billing.Relation.source_id:type_name -> billing.UUID
+	0,  // 21: billing.Relation.target_id:type_name -> billing.UUID
+	22, // [22:22] is the sub-list for method output_type
+	22, // [22:22] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_billing_shared_proto_init() }
@@ -832,7 +939,7 @@ func file_billing_shared_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_shared_proto_rawDesc), len(file_billing_shared_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

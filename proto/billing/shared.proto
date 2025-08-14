@@ -60,6 +60,16 @@ message User {
   google.protobuf.Timestamp updatedAt = 7;
 }
 
+message Session {
+  UUID id = 1;
+  UUID user_id = 2;
+  string refresh_token = 3;
+  string user_ip = 4;
+  string user_agent = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  google.protobuf.Timestamp createdAt = 7;
+}
+
 message Entity {
   UUID id = 1;
   string type = 2;

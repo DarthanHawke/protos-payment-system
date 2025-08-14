@@ -354,6 +354,94 @@ func (x *LogoutAllRequest) GetId() *UUID {
 	return nil
 }
 
+type GetAllSessionsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllSessionsRequest) Reset() {
+	*x = GetAllSessionsRequest{}
+	mi := &file_billing_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllSessionsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSessionsRequest) ProtoMessage() {}
+
+func (x *GetAllSessionsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSessionsRequest.ProtoReflect.Descriptor instead.
+func (*GetAllSessionsRequest) Descriptor() ([]byte, []int) {
+	return file_billing_auth_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetAllSessionsRequest) GetId() *UUID {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
+type GetAllSessionsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Session       []*Session             `protobuf:"bytes,1,rep,name=session,proto3" json:"session,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllSessionsResponse) Reset() {
+	*x = GetAllSessionsResponse{}
+	mi := &file_billing_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllSessionsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllSessionsResponse) ProtoMessage() {}
+
+func (x *GetAllSessionsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_billing_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllSessionsResponse.ProtoReflect.Descriptor instead.
+func (*GetAllSessionsResponse) Descriptor() ([]byte, []int) {
+	return file_billing_auth_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetAllSessionsResponse) GetSession() []*Session {
+	if x != nil {
+		return x.Session
+	}
+	return nil
+}
+
 var File_billing_auth_proto protoreflect.FileDescriptor
 
 const file_billing_auth_proto_rawDesc = "" +
@@ -377,13 +465,19 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\x03_id\"=\n" +
 	"\x10LogoutAllRequest\x12\"\n" +
 	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01B\x05\n" +
-	"\x03_id2\xcb\x02\n" +
+	"\x03_id\"B\n" +
+	"\x15GetAllSessionsRequest\x12\"\n" +
+	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"D\n" +
+	"\x16GetAllSessionsResponse\x12*\n" +
+	"\asession\x18\x01 \x03(\v2\x10.billing.SessionR\asession2\x9e\x03\n" +
 	"\vAuthService\x12I\n" +
 	"\x0eRefreshSession\x12\x16.google.protobuf.Empty\x1a\x1f.billing.RefreshSessionResponse\x12?\n" +
 	"\bRegister\x12\x18.billing.RegisterRequest\x1a\x19.billing.RegisterResponse\x126\n" +
 	"\x05Login\x12\x15.billing.LoginRequest\x1a\x16.billing.LoginResponse\x128\n" +
 	"\x06Logout\x12\x16.billing.LogoutRequest\x1a\x16.google.protobuf.Empty\x12>\n" +
-	"\tLogoutAll\x12\x19.billing.LogoutAllRequest\x1a\x16.google.protobuf.EmptyB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
+	"\tLogoutAll\x12\x19.billing.LogoutAllRequest\x1a\x16.google.protobuf.Empty\x12Q\n" +
+	"\x0eGetAllSessions\x12\x1e.billing.GetAllSessionsRequest\x1a\x1f.billing.GetAllSessionsResponseB\x14Z\x12pmtstm.v1;pmtstmv1b\x06proto3"
 
 var (
 	file_billing_auth_proto_rawDescOnce sync.Once
@@ -397,7 +491,7 @@ func file_billing_auth_proto_rawDescGZIP() []byte {
 	return file_billing_auth_proto_rawDescData
 }
 
-var file_billing_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_billing_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_billing_auth_proto_goTypes = []any{
 	(*RefreshSessionResponse)(nil), // 0: billing.RefreshSessionResponse
 	(*RegisterRequest)(nil),        // 1: billing.RegisterRequest
@@ -406,31 +500,38 @@ var file_billing_auth_proto_goTypes = []any{
 	(*LoginResponse)(nil),          // 4: billing.LoginResponse
 	(*LogoutRequest)(nil),          // 5: billing.LogoutRequest
 	(*LogoutAllRequest)(nil),       // 6: billing.LogoutAllRequest
-	(*UserSession)(nil),            // 7: billing.UserSession
-	(*UUID)(nil),                   // 8: billing.UUID
-	(*emptypb.Empty)(nil),          // 9: google.protobuf.Empty
+	(*GetAllSessionsRequest)(nil),  // 7: billing.GetAllSessionsRequest
+	(*GetAllSessionsResponse)(nil), // 8: billing.GetAllSessionsResponse
+	(*UserSession)(nil),            // 9: billing.UserSession
+	(*UUID)(nil),                   // 10: billing.UUID
+	(*Session)(nil),                // 11: billing.Session
+	(*emptypb.Empty)(nil),          // 12: google.protobuf.Empty
 }
 var file_billing_auth_proto_depIdxs = []int32{
-	7,  // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
-	7,  // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
-	7,  // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
-	8,  // 3: billing.LogoutRequest.id:type_name -> billing.UUID
-	8,  // 4: billing.LogoutAllRequest.id:type_name -> billing.UUID
-	9,  // 5: billing.AuthService.RefreshSession:input_type -> google.protobuf.Empty
-	1,  // 6: billing.AuthService.Register:input_type -> billing.RegisterRequest
-	3,  // 7: billing.AuthService.Login:input_type -> billing.LoginRequest
-	5,  // 8: billing.AuthService.Logout:input_type -> billing.LogoutRequest
-	6,  // 9: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
-	0,  // 10: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
-	2,  // 11: billing.AuthService.Register:output_type -> billing.RegisterResponse
-	4,  // 12: billing.AuthService.Login:output_type -> billing.LoginResponse
-	9,  // 13: billing.AuthService.Logout:output_type -> google.protobuf.Empty
-	9,  // 14: billing.AuthService.LogoutAll:output_type -> google.protobuf.Empty
-	10, // [10:15] is the sub-list for method output_type
-	5,  // [5:10] is the sub-list for method input_type
-	5,  // [5:5] is the sub-list for extension type_name
-	5,  // [5:5] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	9,  // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
+	9,  // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
+	9,  // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
+	10, // 3: billing.LogoutRequest.id:type_name -> billing.UUID
+	10, // 4: billing.LogoutAllRequest.id:type_name -> billing.UUID
+	10, // 5: billing.GetAllSessionsRequest.id:type_name -> billing.UUID
+	11, // 6: billing.GetAllSessionsResponse.session:type_name -> billing.Session
+	12, // 7: billing.AuthService.RefreshSession:input_type -> google.protobuf.Empty
+	1,  // 8: billing.AuthService.Register:input_type -> billing.RegisterRequest
+	3,  // 9: billing.AuthService.Login:input_type -> billing.LoginRequest
+	5,  // 10: billing.AuthService.Logout:input_type -> billing.LogoutRequest
+	6,  // 11: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
+	7,  // 12: billing.AuthService.GetAllSessions:input_type -> billing.GetAllSessionsRequest
+	0,  // 13: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
+	2,  // 14: billing.AuthService.Register:output_type -> billing.RegisterResponse
+	4,  // 15: billing.AuthService.Login:output_type -> billing.LoginResponse
+	12, // 16: billing.AuthService.Logout:output_type -> google.protobuf.Empty
+	12, // 17: billing.AuthService.LogoutAll:output_type -> google.protobuf.Empty
+	8,  // 18: billing.AuthService.GetAllSessions:output_type -> billing.GetAllSessionsResponse
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_billing_auth_proto_init() }
@@ -441,13 +542,14 @@ func file_billing_auth_proto_init() {
 	file_billing_shared_proto_init()
 	file_billing_auth_proto_msgTypes[5].OneofWrappers = []any{}
 	file_billing_auth_proto_msgTypes[6].OneofWrappers = []any{}
+	file_billing_auth_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_billing_auth_proto_rawDesc), len(file_billing_auth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

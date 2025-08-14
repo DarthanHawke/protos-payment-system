@@ -147,8 +147,10 @@ type Session struct {
 	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	UserId        *UUID                  `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	RefreshToken  string                 `protobuf:"bytes,3,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
-	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UserIp        string                 `protobuf:"bytes,4,opt,name=user_ip,json=userIp,proto3" json:"user_ip,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,5,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -200,6 +202,20 @@ func (x *Session) GetUserId() *UUID {
 func (x *Session) GetRefreshToken() string {
 	if x != nil {
 		return x.RefreshToken
+	}
+	return ""
+}
+
+func (x *Session) GetUserIp() string {
+	if x != nil {
+		return x.UserIp
+	}
+	return ""
+}
+
+func (x *Session) GetUserAgent() string {
+	if x != nil {
+		return x.UserAgent
 	}
 	return ""
 }
@@ -402,14 +418,17 @@ const file_sso_shared_proto_rawDesc = "" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1b\n" +
 	"\tfull_name\x18\x03 \x01(\tR\bfullName\x128\n" +
 	"\tcreatedAt\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
-	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\xe2\x01\n" +
+	"\tupdatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\"\x9a\x02\n" +
 	"\aSession\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\"\n" +
 	"\auser_id\x18\x02 \x01(\v2\t.sso.UUIDR\x06userId\x12#\n" +
-	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x129\n" +
+	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12\x17\n" +
+	"\auser_ip\x18\x04 \x01(\tR\x06userIp\x12\x1d\n" +
 	"\n" +
-	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
-	"\tcreatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
+	"user_agent\x18\x05 \x01(\tR\tuserAgent\x129\n" +
+	"\n" +
+	"expires_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x128\n" +
+	"\tcreatedAt\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
 	"\x06Entity\x12\x19\n" +
 	"\x02id\x18\x01 \x01(\v2\t.sso.UUIDR\x02id\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\"]\n" +

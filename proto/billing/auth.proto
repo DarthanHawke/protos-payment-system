@@ -13,6 +13,7 @@ service AuthService {
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc Logout (LogoutRequest) returns (google.protobuf.Empty);
   rpc LogoutAll (LogoutAllRequest) returns (google.protobuf.Empty);
+  rpc GetAllSessions (GetAllSessionsRequest) returns (GetAllSessionsResponse);
 }
 
 message RefreshSessionResponse {
@@ -44,4 +45,12 @@ message LogoutRequest {
 
 message LogoutAllRequest {
   optional UUID id = 1;
+}
+
+message GetAllSessionsRequest {
+  optional UUID id = 1;
+}
+
+message GetAllSessionsResponse {
+  repeated Session session = 1;
 }
