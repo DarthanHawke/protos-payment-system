@@ -268,7 +268,8 @@ func (x *LoginResponse) GetUserSession() *UserSession {
 
 type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *UUID                  `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	UserId        *UUID                  `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	SessionId     *UUID                  `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3,oneof" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -303,9 +304,16 @@ func (*LogoutRequest) Descriptor() ([]byte, []int) {
 	return file_billing_auth_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *LogoutRequest) GetId() *UUID {
+func (x *LogoutRequest) GetUserId() *UUID {
 	if x != nil {
-		return x.Id
+		return x.UserId
+	}
+	return nil
+}
+
+func (x *LogoutRequest) GetSessionId() *UUID {
+	if x != nil {
+		return x.SessionId
 	}
 	return nil
 }
@@ -459,10 +467,14 @@ const file_billing_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"G\n" +
 	"\rLoginResponse\x126\n" +
-	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\":\n" +
-	"\rLogoutRequest\x12\"\n" +
-	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01B\x05\n" +
-	"\x03_id\"=\n" +
+	"\vuserSession\x18\x01 \x01(\v2\x14.billing.UserSessionR\vuserSession\"\x8a\x01\n" +
+	"\rLogoutRequest\x12+\n" +
+	"\auser_id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x06userId\x88\x01\x01\x121\n" +
+	"\n" +
+	"session_id\x18\x02 \x01(\v2\r.billing.UUIDH\x01R\tsessionId\x88\x01\x01B\n" +
+	"\n" +
+	"\b_user_idB\r\n" +
+	"\v_session_id\"=\n" +
 	"\x10LogoutAllRequest\x12\"\n" +
 	"\x02id\x18\x01 \x01(\v2\r.billing.UUIDH\x00R\x02id\x88\x01\x01B\x05\n" +
 	"\x03_id\"B\n" +
@@ -511,27 +523,28 @@ var file_billing_auth_proto_depIdxs = []int32{
 	9,  // 0: billing.RefreshSessionResponse.userSession:type_name -> billing.UserSession
 	9,  // 1: billing.RegisterResponse.userSession:type_name -> billing.UserSession
 	9,  // 2: billing.LoginResponse.userSession:type_name -> billing.UserSession
-	10, // 3: billing.LogoutRequest.id:type_name -> billing.UUID
-	10, // 4: billing.LogoutAllRequest.id:type_name -> billing.UUID
-	10, // 5: billing.GetAllSessionsRequest.id:type_name -> billing.UUID
-	11, // 6: billing.GetAllSessionsResponse.session:type_name -> billing.Session
-	12, // 7: billing.AuthService.RefreshSession:input_type -> google.protobuf.Empty
-	1,  // 8: billing.AuthService.Register:input_type -> billing.RegisterRequest
-	3,  // 9: billing.AuthService.Login:input_type -> billing.LoginRequest
-	5,  // 10: billing.AuthService.Logout:input_type -> billing.LogoutRequest
-	6,  // 11: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
-	7,  // 12: billing.AuthService.GetAllSessions:input_type -> billing.GetAllSessionsRequest
-	0,  // 13: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
-	2,  // 14: billing.AuthService.Register:output_type -> billing.RegisterResponse
-	4,  // 15: billing.AuthService.Login:output_type -> billing.LoginResponse
-	12, // 16: billing.AuthService.Logout:output_type -> google.protobuf.Empty
-	12, // 17: billing.AuthService.LogoutAll:output_type -> google.protobuf.Empty
-	8,  // 18: billing.AuthService.GetAllSessions:output_type -> billing.GetAllSessionsResponse
-	13, // [13:19] is the sub-list for method output_type
-	7,  // [7:13] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	10, // 3: billing.LogoutRequest.user_id:type_name -> billing.UUID
+	10, // 4: billing.LogoutRequest.session_id:type_name -> billing.UUID
+	10, // 5: billing.LogoutAllRequest.id:type_name -> billing.UUID
+	10, // 6: billing.GetAllSessionsRequest.id:type_name -> billing.UUID
+	11, // 7: billing.GetAllSessionsResponse.session:type_name -> billing.Session
+	12, // 8: billing.AuthService.RefreshSession:input_type -> google.protobuf.Empty
+	1,  // 9: billing.AuthService.Register:input_type -> billing.RegisterRequest
+	3,  // 10: billing.AuthService.Login:input_type -> billing.LoginRequest
+	5,  // 11: billing.AuthService.Logout:input_type -> billing.LogoutRequest
+	6,  // 12: billing.AuthService.LogoutAll:input_type -> billing.LogoutAllRequest
+	7,  // 13: billing.AuthService.GetAllSessions:input_type -> billing.GetAllSessionsRequest
+	0,  // 14: billing.AuthService.RefreshSession:output_type -> billing.RefreshSessionResponse
+	2,  // 15: billing.AuthService.Register:output_type -> billing.RegisterResponse
+	4,  // 16: billing.AuthService.Login:output_type -> billing.LoginResponse
+	12, // 17: billing.AuthService.Logout:output_type -> google.protobuf.Empty
+	12, // 18: billing.AuthService.LogoutAll:output_type -> google.protobuf.Empty
+	8,  // 19: billing.AuthService.GetAllSessions:output_type -> billing.GetAllSessionsResponse
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_billing_auth_proto_init() }

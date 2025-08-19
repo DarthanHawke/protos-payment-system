@@ -40,7 +40,8 @@ message LoginResponse {
 }
 
 message LogoutRequest {
-  optional UUID id = 1;
+  optional UUID user_id = 1;
+  optional UUID session_id = 2;
 }
 
 message LogoutAllRequest {
